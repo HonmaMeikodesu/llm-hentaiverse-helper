@@ -1,0 +1,759 @@
+<!-- fetch("https://hentaiverse.org/?s=Battle&ss=ar", {
+  "body": "initid=11&inittoken=mt33nftac32",
+  "method": "POST",
+}); -->
+
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+        <title>The HentaiVerse</title>
+        <link rel="stylesheet" type="text/css" href="/z/090c/hvg.css"/>
+        <link rel="stylesheet" type="text/css" href="/z/090c/hvb.css"/>
+        <style type="text/css">
+            .fc2 {
+                display: inline;
+                height: 10px;
+                font-size: 8pt
+            }
+
+            .fc4 {
+                display: inline;
+                height: 12px;
+                font-size: 10pt
+            }
+
+            .fc2>div,.fc4>div {
+                font-family: 黑体
+            }
+        </style>
+        <meta name="robots" content="noindex,nofollow"/>
+        <link rel="icon" type="image/png" href="/y/favicon.png"/>
+    </head>
+    <body>
+        <script type="text/javascript" src="/z/090c/hvc.js"></script>
+        <script type="text/javascript">
+            var IMG_URL = "/y/";
+            var MAIN_URL = "https://hentaiverse.org/";
+        </script>
+        <div id="csp">
+            <div id="mainpane">
+                <div id="battle_top">
+                    <div id="pane_completion"></div>
+                    <div id="pane_effects"></div>
+                </div>
+                <div id="battle_main">
+                    <div id="battle_left">
+                        <div id="pane_action" onmouseout="battle.clear_infopane()">
+                            <div>
+                                <img id="ckey_attack" onclick="battle.lock_action(this,0,'attack')" onmouseover="battle.set_infopane('Attack')" src="/y/battle/attack_n.png"/>
+                            </div>
+                            <div>
+                                <img id="ckey_skill" onclick="battle.lock_action(this,0,'skill')" onmouseover="battle.set_infopane('Skillbook')" src="/y/battle/skill_n.png"/>
+                            </div>
+                            <div>
+                                <img id="ckey_items" onclick="battle.lock_action(this,0,'items')" onmouseover="battle.set_infopane('Items')" src="/y/battle/items_n.png"/>
+                            </div>
+                            <div>
+                                <img id="ckey_spirit" onclick="battle.lock_action(this,0,'spirit')" onmouseover="battle.set_infopane('Spirit')" src="/y/battle/spirit_n.png"/>
+                            </div>
+                            <div>
+                                <img id="ckey_defend" onclick="battle.lock_action(this,0,'defend')" onmouseover="battle.set_infopane('Defend')" src="/y/battle/defend_n.png"/>
+                            </div>
+                            <div>
+                                <img id="ckey_focus" onclick="battle.lock_action(this,0,'focus')" onmouseover="battle.set_infopane('Focus')" src="/y/battle/focus_n.png"/>
+                            </div>
+                        </div>
+                        <div id="pane_vitals" class="nosel">
+                            <div id="vbh">
+                                <div>
+                                    <img src="/y/bar_bgreen.png" style="width:496px"/>
+                                </div>
+                            </div>
+                            <div id="vbm">
+                                <div>
+                                    <img src="/y/bar_blue.png" style="width:207px"/>
+                                </div>
+                            </div>
+                            <div id="vbs">
+                                <div>
+                                    <img src="/y/bar_red.png" style="width:207px"/>
+                                </div>
+                            </div>
+                            <div id="vrhb">6107</div>
+                            <div id="vrm">492</div>
+                            <div id="vrs">323</div>
+                        </div>
+                        <div id="pane_quickbar" onmouseout="battle.clear_infopane()">
+                            <div id="quickbar">
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                                <div class="btqs">
+                                    <img src="/y/ab/b.png" class="btqb"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="infopane"></div>
+                        <div id="pane_log" class="bttp">
+                            <table id="textlog">
+                                <tr>
+                                    <td class="tl">Spawned Monster D: MID=111166 (Sexy Love) LV=166 HP=13838</td>
+                                </tr>
+                                <tr>
+                                    <td class="tl">Spawned Monster C: MID=197637 (Xperia R1 Plus) LV=166 HP=8516</td>
+                                </tr>
+                                <tr>
+                                    <td class="tl">Spawned Monster B: MID=32458 (Draco Not-lich) LV=166 HP=7573</td>
+                                </tr>
+                                <tr>
+                                    <td class="tl">Spawned Monster A: MID=189869 (Meme0) LV=166 HP=13396</td>
+                                </tr>
+                                <tr>
+                                    <td class="tl">Initializing arena challenge #11 (Round 1 / 12) ...</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="pane_skill" class="bttp" style="display:none" onmouseout="battle.clear_infopane()">
+                            <div class="btpm1">
+                                <div class="btpm2">
+                                    <img src="/y/battle/sbsel_skills_s.png"/>
+                                </div>
+                                <div class="btpm3">
+                                    <img src="/y/battle/sbsel_spells_n.png" onclick="battle.reset_skill(); battle.toggle_magic_pane()"/>
+                                </div>
+                            </div>
+                            <table id="table_skills" class="btp">
+                                <tr>
+                                    <td colspan="2">
+                                        <img src="/y/battle/skills_innate.png" style="padding-top:10px" alt="skills_innate"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="1001" class="btsd" onclick="battle.lock_action(this,1,'magic',1001); battle.set_friendly_skill(1001); battle.touch_and_go()" onmouseover="battle.set_infopane_spell('Flee', 'Run away from the current battle.', 'sflee', 0, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Flee</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="1011" class="btsd" onclick="battle.lock_action(this,1,'magic',1011); battle.set_hostile_skill(1011)" onmouseover="battle.set_infopane_spell('Scan', 'Retrieve data on the target.', 'sscan', 0, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Scan</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <img src="/y/battle/skills_weapon.png" style="padding-top:10px" alt="skills_weapon"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="2201" class="btsd" onmouseover="battle.set_infopane_spell('Shield Bash', 'Bash an enemy with your shield to stun it, which opens up for devastating strikes with your weapon.', 'sshieldbash', 0, 1, 10)" style="opacity:0.5">
+                                            <div class="fc2 fal fcb">
+                                                <div>Shield Bash</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="2202" class="btsd" onmouseover="battle.set_infopane_spell('Vital Strike', 'Follow up with an attack that, if used on a stunned target, causes a large amount of damage and a chance of inflicting bleed.', 'svital', 0, 2, 10)" style="opacity:0.5">
+                                            <div class="fc2 fal fcb">
+                                                <div>Vital Strike</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="2203" class="btsd" onmouseover="battle.set_infopane_spell('Merciful Blow', 'Finish off a mortally wounded enemy. Instantly kills a target with bleed and less than 25% health.', 'smerciful', 0, 4, 10)" style="opacity:0.5">
+                                            <div class="fc2 fal fcb">
+                                                <div>Merciful Blow</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="pane_magic" class="bttp" style="display:none" onmouseout="battle.clear_infopane()">
+                            <div class="btpm1">
+                                <div class="btpm2">
+                                    <img src="/y/battle/sbsel_skills_n.png" onclick="battle.reset_skill(); battle.toggle_skill_pane()"/>
+                                </div>
+                                <div class="btpm3">
+                                    <img src="/y/battle/sbsel_spells_s.png"/>
+                                </div>
+                            </div>
+                            <table id="table_magic" class="btp">
+                                <tr>
+                                    <td colspan="2">
+                                        <img src="/y/battle/magic_damage.png" style="padding-top:10px" alt="magic_damage"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="111" class="btsd" onclick="battle.lock_action(this,1,'magic',111); battle.set_hostile_skill(111)" onmouseover="battle.set_infopane_spell('Fiery Blast', 'A ball of fire is hurled at the target.', '0130', 14, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Fiery Blast</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="112" class="btsd" onclick="battle.lock_action(this,1,'magic',112); battle.set_hostile_skill(112)" onmouseover="battle.set_infopane_spell('Inferno', 'Unleashes an inferno of flames on all hostile targets, causing Fire damage.', '0132', 36, 0, 4)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Inferno</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="121" class="btsd" onclick="battle.lock_action(this,1,'magic',121); battle.set_hostile_skill(121)" onmouseover="battle.set_infopane_spell('Freeze', 'Cold damage.', '0730', 14, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Freeze</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="122" class="btsd" onclick="battle.lock_action(this,1,'magic',122); battle.set_hostile_skill(122)" onmouseover="battle.set_infopane_spell('Blizzard', 'Cold damage.', '0732', 36, 0, 4)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Blizzard</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="131" class="btsd" onclick="battle.lock_action(this,1,'magic',131); battle.set_hostile_skill(131)" onmouseover="battle.set_infopane_spell('Shockblast', 'A bolt of lightning strikes the target, causing Elec damage.', '0330', 14, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Shockblast</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="132" class="btsd" onclick="battle.lock_action(this,1,'magic',132); battle.set_hostile_skill(132)" onmouseover="battle.set_infopane_spell('Chained Lightning', 'Elec damage.', '0832', 36, 0, 4)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Chained Lightning</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="141" class="btsd" onclick="battle.lock_action(this,1,'magic',141); battle.set_hostile_skill(141)" onmouseover="battle.set_infopane_spell('Gale', 'A blast of wind hits the target, causing Wind damage.', '0430', 14, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Gale</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="142" class="btsd" onclick="battle.lock_action(this,1,'magic',142); battle.set_hostile_skill(142)" onmouseover="battle.set_infopane_spell('Downburst', 'Wind damage.', '0930', 36, 0, 4)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Downburst</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="151" class="btsd" onclick="battle.lock_action(this,1,'magic',151); battle.set_hostile_skill(151)" onmouseover="battle.set_infopane_spell('Smite', 'Holy damage.', '1130', 35, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Smite</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="161" class="btsd" onclick="battle.lock_action(this,1,'magic',161); battle.set_hostile_skill(161)" onmouseover="battle.set_infopane_spell('Corruption', 'Dark damage.', '1230', 35, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Corruption</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <img src="/y/battle/magic_debuff.png" style="padding-top:10px" alt="magic_debuff"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="211" class="btsd" onclick="battle.lock_action(this,1,'magic',211); battle.set_hostile_skill(211)" onmouseover="battle.set_infopane_spell('Drain', 'Inflicts Drain on one target, causing damage over time.', '0133', 35, 0, 30)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Drain</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="212" class="btsd" onclick="battle.lock_action(this,1,'magic',212); battle.set_hostile_skill(212)" onmouseover="battle.set_infopane_spell('Weaken', 'The target is weakened, making it deal less damage, and preventing it from scoring critical hits.', '0333', 24, 0, 3)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Weaken</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="213" class="btsd" onclick="battle.lock_action(this,1,'magic',213); battle.set_hostile_skill(213)" onmouseover="battle.set_infopane_spell('Imperil', 'The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.', 'm_imperil', 25, 0, 3)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Imperil</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="221" class="btsd" onclick="battle.lock_action(this,1,'magic',221); battle.set_hostile_skill(221)" onmouseover="battle.set_infopane_spell('Slow', 'The target is slowed by 30%, making it attack less frequently.', '0233', 42, 0, 3)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Slow</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="222" class="btsd" onclick="battle.lock_action(this,1,'magic',222); battle.set_hostile_skill(222)" onmouseover="battle.set_infopane_spell('Sleep', 'The target is lulled to sleep, preventing it from taking any actions.', '0433', 61, 0, 7)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Sleep</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="223" class="btsd" onclick="battle.lock_action(this,1,'magic',223); battle.set_hostile_skill(223)" onmouseover="battle.set_infopane_spell('Confuse', 'Confuses the target, making it lunge out wildly and strike friends and foes alike.', '0733', 64, 0, 10)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Confuse</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="231" class="btsd" onclick="battle.lock_action(this,1,'magic',231); battle.set_hostile_skill(231)" onmouseover="battle.set_infopane_spell('Blind', 'Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.', '0933', 46, 0, 7)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Blind</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="232" class="btsd" onclick="battle.lock_action(this,1,'magic',232); battle.set_hostile_skill(232)" onmouseover="battle.set_infopane_spell('Silence', 'The target is silenced, preventing it from using special attacks and magic.', '0833', 46, 0, 10)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Silence</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <img src="/y/battle/magic_curative.png" style="padding-top:10px" alt="magic_curative"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="311" class="btsd" onclick="battle.lock_action(this,1,'magic',311); battle.set_friendly_skill(311); battle.touch_and_go()" onmouseover="battle.set_infopane_spell('Cure', 'Restores a moderate amount of Health on the target.', '0530', 47, 0, 2)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Cure</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="312" class="btsd" onclick="battle.lock_action(this,1,'magic',312); battle.set_friendly_skill(312); battle.touch_and_go()" onmouseover="battle.set_infopane_spell('Regen', 'Places a heal over time effect on the target.', '1030', 111, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Regen</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <img src="/y/battle/magic_support.png" style="padding-top:10px" alt="magic_support"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="411" class="btsd" onclick="battle.lock_action(this,1,'magic',411); battle.set_friendly_skill(411); battle.touch_and_go()" onmouseover="battle.set_infopane_spell('Protection', 'Places a shield effect on the target, absorbing 25% of the damage from all attacks.', '0532', 56, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Protection</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="412" class="btsd" onclick="battle.lock_action(this,1,'magic',412); battle.set_friendly_skill(412); battle.touch_and_go()" onmouseover="battle.set_infopane_spell('Haste', 'Speeds up all actions of the target, allowing it to attack more frequently.', '0533', 70, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Haste</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="413" class="btsd" onclick="battle.lock_action(this,1,'magic',413); battle.set_friendly_skill(413); battle.touch_and_go()" onmouseover="battle.set_infopane_spell('Shadow Veil', 'Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.', '0633', 73, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Shadow Veil</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="421" class="btsd" onclick="battle.lock_action(this,1,'magic',421); battle.set_friendly_skill(421); battle.touch_and_go()" onmouseover="battle.set_infopane_spell('Absorb', 'The next magical attack against the target has a chance to be absorbed and partially converted to MP.', '1033', 69, 0, 20)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Absorb</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="bts">
+                                        <div id="422" class="btsd" onclick="battle.lock_action(this,1,'magic',422); battle.set_friendly_skill(422); battle.touch_and_go()" onmouseover="battle.set_infopane_spell('Spark of Life', 'Any attack that would one-shot a target with more than 1 HP leaves it alive but on the brink of defeat. The buff is removed when triggered.', '1133', 122, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Spark of Life</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="bts">
+                                        <div id="431" class="btsd" onclick="battle.lock_action(this,1,'magic',431); battle.set_friendly_skill(431); battle.touch_and_go()" onmouseover="battle.set_infopane_spell('Heartseeker', 'The target attains intimate knowledge of the flow of life in all living beings, increasing attack power and crit chance.', 'm4021', 246, 0, 0)">
+                                            <div class="fc2 fal fcb">
+                                                <div>Heartseeker</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="pane_item" class="bttp" style="display:none" onmouseout="battle.clear_infopane()">
+                            <div class="bti1">
+                                <div class="bti2">
+                                    <div class="fc2 fac fcb">
+                                        <div>P</div>
+                                    </div>
+                                </div>
+                                <div class="bti3"></div>
+                            </div>
+                            <div class="c">
+                                <div style="width:300px; float:left">
+                                    <div class="c">
+                                        <div class="bti1">
+                                            <div class="bti2">
+                                                <div class="fc2 fac fcb">
+                                                    <div>1</div>
+                                                </div>
+                                            </div>
+                                            <div class="bti3">
+                                                <div id="ikey_1" onclick="battle.lock_action(this,1,'items','ikey_1'); battle.set_friendly_skill('1'); battle.touch_and_go()" onmouseover="battle.set_infopane_item(11191)">
+                                                    <div class="fc2 fal fcb">
+                                                        <div>Health Draught</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="c">
+                                        <div class="bti1">
+                                            <div class="bti2">
+                                                <div class="fc2 fac fcb">
+                                                    <div>2</div>
+                                                </div>
+                                            </div>
+                                            <div class="bti3">
+                                                <div id="ikey_2" onclick="battle.lock_action(this,1,'items','ikey_2'); battle.set_friendly_skill('2'); battle.touch_and_go()" onmouseover="battle.set_infopane_item(11291)">
+                                                    <div class="fc2 fal fcb">
+                                                        <div>Mana Draught</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="c">
+                                        <div class="bti1">
+                                            <div class="bti2">
+                                                <div class="fc2 fac fcb">
+                                                    <div>3</div>
+                                                </div>
+                                            </div>
+                                            <div class="bti3">
+                                                <div id="ikey_3" onclick="battle.lock_action(this,1,'items','ikey_3'); battle.set_friendly_skill('3'); battle.touch_and_go()" onmouseover="battle.set_infopane_item(11391)">
+                                                    <div class="fc2 fal fcb">
+                                                        <div>Spirit Draught</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="c">
+                                        <div class="bti1">
+                                            <div class="bti2">
+                                                <div class="fc2 fac fcb">
+                                                    <div>4</div>
+                                                </div>
+                                            </div>
+                                            <div class="bti3">
+                                                <div id="ikey_4" onclick="battle.lock_action(this,1,'items','ikey_4'); battle.set_friendly_skill('4'); battle.touch_and_go()" onmouseover="battle.set_infopane_item(13111)">
+                                                    <div class="fc2 fal fcb">
+                                                        <div>Scroll of Protection</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="c">
+                                        <div class="bti1">
+                                            <div class="bti2">
+                                                <div class="fc2 fac fcb">
+                                                    <div>5</div>
+                                                </div>
+                                            </div>
+                                            <div class="bti3">
+                                                <div id="ikey_5" onclick="battle.lock_action(this,1,'items','ikey_5'); battle.set_friendly_skill('5'); battle.touch_and_go()" onmouseover="battle.set_infopane_item(13201)">
+                                                    <div class="fc2 fal fcb">
+                                                        <div>Scroll of Absorption</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width:300px; float:left">
+                                    <div class="c">
+                                        <div class="bti1">
+                                            <div class="bti2">
+                                                <div class="fc2 fac fcb">
+                                                    <div>S1</div>
+                                                </div>
+                                            </div>
+                                            <div class="bti3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="c">
+                                        <div class="bti1">
+                                            <div class="bti2">
+                                                <div class="fc2 fac fcb">
+                                                    <div>N1</div>
+                                                </div>
+                                            </div>
+                                            <div class="bti3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="battle_right">
+                        <img id="ta_monster_1" src="/y/battle/taright.png"/>
+                        <img id="ta_monster_2" src="/y/battle/taleft.png"/>
+                        <div id="pane_monster">
+                            <div id="mkey_1" class="btm1" onclick="battle.hover_target(this); battle.commit_target(1)" onmouseover="battle.hover_target(this)" onmouseout="battle.unhover_target()">
+                                <div class="btm2">
+                                    <div>
+                                        <img src="/y/battle/mon_a.png" alt="a"/>
+                                    </div>
+                                    <div>
+                                        <div class="fc4 fac fcb">
+                                            <div>166</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btm3">
+                                    <div class="fc2 fal fcb">
+                                        <div>Meme0</div>
+                                    </div>
+                                </div>
+                                <div class="btm4">
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbargreen.png" style="width:120px" alt="health"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbarblue.png" style="width:13px" alt="magic"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbarred.png" style="width:40px" alt="spirit"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btm6"></div>
+                            </div>
+                            <div id="mkey_2" class="btm1" onclick="battle.hover_target(this); battle.commit_target(2)" onmouseover="battle.hover_target(this)" onmouseout="battle.unhover_target()">
+                                <div class="btm2">
+                                    <div>
+                                        <img src="/y/battle/mon_b.png" alt="b"/>
+                                    </div>
+                                    <div>
+                                        <div class="fc4 fac fcb">
+                                            <div>166</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btm3">
+                                    <div class="fc2 fal fcb">
+                                        <div>Draco Not-lich</div>
+                                    </div>
+                                </div>
+                                <div class="btm4">
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbargreen.png" style="width:120px" alt="health"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbarblue.png" style="width:1px" alt="magic"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbarred.png" style="width:42px" alt="spirit"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btm6"></div>
+                            </div>
+                            <div id="mkey_3" class="btm1" onclick="battle.hover_target(this); battle.commit_target(3)" onmouseover="battle.hover_target(this)" onmouseout="battle.unhover_target()">
+                                <div class="btm2">
+                                    <div>
+                                        <img src="/y/battle/mon_c.png" alt="c"/>
+                                    </div>
+                                    <div>
+                                        <div class="fc4 fac fcb">
+                                            <div>166</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btm3">
+                                    <div class="fc2 fal fcb">
+                                        <div>Xperia R1 Plus</div>
+                                    </div>
+                                </div>
+                                <div class="btm4">
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbargreen.png" style="width:120px" alt="health"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbarblue.png" style="width:12px" alt="magic"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbarred.png" style="width:40px" alt="spirit"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btm6"></div>
+                            </div>
+                            <div id="mkey_4" class="btm1" onclick="battle.hover_target(this); battle.commit_target(4)" onmouseover="battle.hover_target(this)" onmouseout="battle.unhover_target()">
+                                <div class="btm2">
+                                    <div>
+                                        <img src="/y/battle/mon_d.png" alt="d"/>
+                                    </div>
+                                    <div>
+                                        <div class="fc4 fac fcb">
+                                            <div>166</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btm3">
+                                    <div class="fc2 fal fcb">
+                                        <div>Sexy Love</div>
+                                    </div>
+                                </div>
+                                <div class="btm4">
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbargreen.png" style="width:120px" alt="health"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbarblue.png" style="width:58px" alt="magic"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                    <div class="btm5">
+                                        <div class="chbd">
+                                            <img src="/y/s/nbarred.png" style="width:30px" alt="spirit"/>
+                                            <img src="/y/s/nbarfg.png"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btm6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="expholder">
+                    <img src="/y/expbar.png"/>
+                    <img id="expbar" src="/y/bar_blue.png" style="width:73px"/>
+                </div>
+                <script type="text/javascript" src="/dynjs/149140/itemc.js"></script>
+                <script type="text/javascript">
+                    var default_magic_pane = 'skill';
+                    var quickbar_spell = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                    var quickbar_self = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                    var do_healthflash = false;
+                    var vital_prefix = "";
+                    var has_debug = false;
+                    var battle_token = "d7nds9eac32";
+
+                    var battle = new Battle();
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
