@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/HonmaMeikodesu/llm-hentaiverse-helper/issues"
   },
-  "homepage": "https://github.com/HonmaMeikodesu/llm-hentaiverse-helper#readme"
+  "homepage": "https://github.com/HonmaMeikodesu/llm-hentaiverse-helper#readme",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
 }
