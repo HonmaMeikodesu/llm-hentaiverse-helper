@@ -1,0 +1,14 @@
+{
+    "include": ["src/**/*"],
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ES2022",
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "sourceMap": false
+    },
+    "exclude": [
+       "node_modules"
+    ]
+}

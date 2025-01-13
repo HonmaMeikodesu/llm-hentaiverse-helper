@@ -1,4 +1,4 @@
-import { FightStyle, ArmorStyle, SpellStyle, DamageType, MagicDamageType } from "./common";
+import { FightStyle, ArmorStyle, SpellStyle, DamageType, MagicDamageType } from "./common.js";
 
 export type Vital = {
     health: number;

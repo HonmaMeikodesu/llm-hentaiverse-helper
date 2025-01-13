@@ -1,4 +1,3 @@
-
 export enum FireSpell {
     FieryBlast = "fiery blast",
     Inferno = "inferno",

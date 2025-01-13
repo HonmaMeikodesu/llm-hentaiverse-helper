@@ -1,16 +1,20 @@
-import { MonsterEffect, PlayerEffect } from "./effect";
-import { Vital } from "./stats";
+import { MonsterEffect, PlayerEffect } from "./effect.js";
+import { Vital } from "./stats.js";
 
 export type VitalSigRep = Pick<Vital, "health" | "magic" | "spirit">
 
 export type MonsterVitalSigRep = `${keyof VitalSigRep}Percent`;
 
 export type MonsterSigRep = {
-    vital: MonsterVitalSigRep;
-    effect: MonsterEffect
+    vital: {
+        [key in MonsterVitalSigRep]: number;
+    };
+    effects: MonsterEffect[]
 }
 
 export type PlayerSigRep = {
-    vital: VitalSigRep;
-    effect: PlayerEffect
+    vital: VitalSigRep & {
+        overcharge: number;
+    };
+    effects: PlayerEffect[]
 }

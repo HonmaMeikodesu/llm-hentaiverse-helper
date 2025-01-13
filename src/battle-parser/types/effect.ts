@@ -1,3 +1,5 @@
+import { DeprecatingSpell, OffensiveSpell, SupportiveSpell } from "./spell.js";
+
 export enum SpellEffect {
     // Offensive Effect
     SearingSkin = "searing skin",
@@ -49,6 +51,6 @@ export enum ItemEffect {
     SleeperImprint = "sleeper imprint"
 }
 
-export type PlayerEffect = ItemEffect | FightingStyleEffect.Channeling | FightingStyleEffect.OverwhelmingStrikes;
+export type PlayerEffect = ItemEffect | FightingStyleEffect.Channeling | FightingStyleEffect.OverwhelmingStrikes | SupportiveSpell;
 
-export type MonsterEffect = SpellEffect | WeapoonSkillEffect | FightingStyleEffect.CoalescedMana | FightingStyleEffect.EtherTap;
+export type MonsterEffect = SpellEffect | WeapoonSkillEffect | FightingStyleEffect.CoalescedMana | FightingStyleEffect.EtherTap | DeprecatingSpell;
