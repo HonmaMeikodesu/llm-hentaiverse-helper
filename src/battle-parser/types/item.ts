@@ -1,46 +1,46 @@
 export enum PowerupSlotItem {
-    MysticGem,
-    HealthGem,
-    ManaGem,
-    SpiritGem,
+    MysticGem = "mystic gem",
+    HealthGem = "health gem",
+    ManaGem = "mana gem",
+    SpiritGem = "spirit gem",
 }
 
 export enum RestorativeSlotItem {
-    HealthDraught,
-    HealthPotion,
-    HealthElixir,
-    ManaDraught,
-    ManaPotion,
-    ManaElixir,
-    SpiritDraught,
-    SpiritPotion,
-    SpiritElixir,
+    HealthDraught = "health draught",
+    HealthPotion = "health potion",
+    HealthElixir = "health elixir",
+    ManaDraught = "mana draught",
+    ManaPotion = "mana potion",
+    ManaElixir = "mana elixir",
+    SpiritDraught = "spirit draught",
+    SpiritPotion = "spirit potion",
+    SpiritElixir = "spirit elixir",
 
-    EnergyDrink,
-    CaffeinatedCandy,
-    LastElixir,
+    EnergyDrink = "energy drink",
+    CaffeinatedCandy = "caffeinated candy",
+    LastElixir = "last elixir",
 
-    BubbleGum,
-    FlowerVase
+    BubbleGum = "bubble gum",
+    FlowerVase = "flower vase",
 }
 
 export enum InfusionSlotItem {
-    Flames,
-    Frost,
-    Lightning,
-    Storms,
-    Divinity,
-    Darkness,
+    Flames = "flames",
+    Frost = "frost",
+    Lightning = "lightning",
+    Storms = "storms",
+    Divinity = "divinity",
+    Darkness = "darkness",
 }
 
 export enum ScrollSlotItem {
-    Swiftness,
-    Protection,
-    Shadows,
-    TheAvatar,
-    Absorption,
-    Life,
-    TheGods
+    Swiftness = "swiftness",
+    Protection = "protection",
+    Shadows = "shadows",
+    TheAvatar = "the avatar",
+    Absorption = "absorption",
+    Life = "life",
+    TheGods = "the gods",
 }
 
 export type BattleToolkit = PowerupSlotItem | RestorativeSlotItem | InfusionSlotItem | ScrollSlotItem;

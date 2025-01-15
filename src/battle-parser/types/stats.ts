@@ -71,7 +71,7 @@ export type PlayerStats = {
     fightStyle: FightStyleStats;
     psychicAttack: PhysicAttack;
     magicalAttack: MagicalAttack;
-    Defense: Defense;
+    defense: Defense;
     specificMitigation: SpecificMitigation[];
     magicDamageSpellBonus:  MagicDamageSpellBonus[];
 }

@@ -34,3 +34,5 @@ export enum StaffSkill {
 }
 
 export type WeaponSkill = OneHandedWeaponSkill | TwoHandedWeaponSkill | DualWieldingSkill | StaffSkill | SpecialSkill;
+
+export type Skill = WeaponSkill | InnateSkill;

@@ -1,0 +1,1026 @@
+<h2><span class="mw-headline" id="Learning_Spells">Learning Spells</span></h2>
+<p>Spells are automatically added to a player's skillbook once they have reached the minimum level <b>AND</b> base <a href="/wiki/proficiency" class="mw-redirect" title="proficiency">proficiency</a> requirements. Usually it is possible to improve the spell by using <a href="/wiki/ability" class="mw-redirect" title="ability">ability</a> points right away but some abilities will only be available at higher levels.
+</p>
+<h2><span class="mw-headline" id="Spell_Costs">Spell Costs</span></h2>
+<p>Spell costs are all a percentage of the player's <a href="/wiki/level" class="mw-redirect" title="level">level</a>, rounded up.
+</p><p><b>Example</b>: 'Fiery Blast' has a base cost of 5, meaning its MP cost is 5% of the player's level. At level 51 Fiery Blast costs:
+</p>
+<pre style="overflow: auto;">roundup(51 * 0.05) = roundup(2.55) = 3 MP</pre>
+<p>Spell costs are further modified by:
+</p>
+<table class="wikitable">
+<tbody><tr>
+<th>Factor
+</th>
+<th>▲/▼
+</th>
+<th>Amount
+</th>
+<th>Duration
+</th></tr>
+<tr>
+<td><a href="/wiki/Interference" title="Interference">Interference</a></td>
+<td>▲</td>
+<td>0.5% per point</td>
+<td>Permanent (can be <a href="/wiki/The_Forge#Shards" title="The Forge">temporarily removed</a>)
+</td></tr>
+<tr>
+<td>Mana Conservation</td>
+<td>▼</td>
+<td>Stated&#160;%</td>
+<td>Permanent
+</td></tr>
+<tr>
+<td><a href="/wiki/Spirit_Stance" title="Spirit Stance">Spirit Stance</a></td>
+<td>▼</td>
+<td>25%</td>
+<td>As long as it can be maintained
+</td></tr>
+<tr>
+<td><a href="/wiki/Fighting_Styles#Staff" title="Fighting Styles">Coalesced Mana</a></td>
+<td>▼</td>
+<td>50%</td>
+<td>Up to 5 turns (and the monster stays alive to be targeted)
+</td></tr>
+<tr>
+<td><a href="/wiki/Channeling" class="mw-redirect" title="Channeling">Channeling</a></td>
+<td>▼</td>
+<td>100%</td>
+<td>Consumed upon casting
+</td></tr>
+<tr>
+<td><a href="/wiki/The_Forge#Shards" title="The Forge">Suffused Aether</a></td>
+<td>▼</td>
+<td>10%</td>
+<td>Up to 1 hour <a href="/wiki/The_Forge#Shards" title="The Forge">per shard</a>
+</td></tr></tbody></table>
+<pre style="overflow: auto;"><b>Spell Cost</b> = roundup((Level * Base_cost / 100) * (1 + interference * 0.5%) * (1 - mana_conservation) * (1 - spirit_stance) * (1 - coalesced) * (1 - suffused_aether))</pre>
+<p>All of the passive factors also affect the upkeep cost of <a href="/wiki/Innate_Arcana" class="mw-redirect" title="Innate Arcana">Innate Arcana</a>.
+</p>
+<h2><span class="mw-headline" id="Spell_Durations">Spell Durations</span></h2>
+<p>The duration of spells lasting more than one turn depends on their base duration, the number of <a href="/wiki/Ability_Points" class="mw-redirect" title="Ability Points">Ability Points</a> invested (where applicable) and the relevant <a href="/wiki/proficiencies" class="mw-redirect" title="proficiencies">proficiencies</a>.
+</p>
+<h2><span class="mw-headline" id="Spell_Damage"><a href="/wiki/Spell_Damage" title="Spell Damage">Spell Damage</a></span></h2>
+<h2><span class="mw-headline" id="Table_Legend">Table Legend</span></h2>
+<table class="wikitable">
+<tbody><tr>
+<th>Column
+</th>
+<th>Meaning
+</th></tr>
+<tr>
+<td>Tier</td>
+<td>The tier of the spell. Can be 1-3.
+</td></tr>
+<tr>
+<td>Level</td>
+<td>The minimum <a href="/wiki/level" class="mw-redirect" title="level">level</a> needed to access the spell.
+</td></tr>
+<tr>
+<td>Min/Max Prof</td>
+<td>The minimum <i>base</i> <a href="/wiki/proficiency" class="mw-redirect" title="proficiency">proficiency</a> needed to access the spell and the maximum <i>effective</i> proficiency needed to get the highest bonuses.
+</td></tr>
+<tr>
+<td>Cost</td>
+<td>The base mana cost of the spell and the reduced/increased cost via <a href="/wiki/abilities" class="mw-redirect" title="abilities">abilities</a>.
+</td></tr>
+<tr>
+<td>CD</td>
+<td>The base cooldown of the spell and the reduced cooldown via <a href="/wiki/abilities" class="mw-redirect" title="abilities">abilities</a>.
+</td></tr>
+<tr>
+<td>Targets</td>
+<td>The base number of targets the spell can hit and the increased number via <a href="/wiki/abilities" class="mw-redirect" title="abilities">abilities</a>.
+</td></tr>
+<tr>
+<td>Duration</td>
+<td>The base duration of the spell's effect and the increased duration via <a href="/wiki/abilities" class="mw-redirect" title="abilities">abilities</a>.
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Offensive_Spells">Offensive Spells</span></h2>
+<p>These spells are used to inflict direct damage on monsters. Missing the primary target of an spell does not prevent it from hitting other targets if the spell is capable of doing so; each chance-to-hit is calculated independently.
+</p><p>Each <a href="/wiki/Monster_Lab#Monster_Classes" title="Monster Lab">type of monster</a> has different levels of resistance to each <a href="/wiki/damage_type" class="mw-redirect" title="damage type">damage types</a>, which should be taken into consideration when choosing which spell to cast at which target. Monsters hit by offensive magic may also be afflicted by a set of negative <a href="#Status_Effects">status effects</a>.
+</p>
+<table class="wikitable" width="100%">
+<tbody><tr>
+<th>Name
+</th>
+<th>Description
+</th>
+<th width="40">Tier
+</th>
+<th width="40"><a href="/wiki/Level" class="mw-redirect" title="Level">Level</a>
+</th>
+<th width="50"><span title="Minimum base prof needed to unlock the spell/Effective prof that maximizes spell&#39;s effects" style="border-bottom:1px dotted">Min/Max</span> <a href="/wiki/Proficiency" class="mw-redirect" title="Proficiency">Prof</a>
+</th>
+<th width="40">Cost
+</th>
+<th width="40">CD
+</th>
+<th width="40">Targets
+</th></tr>
+<tr>
+<th colspan="8">
+<h3><span class="mw-headline" id="Elemental">Elemental</span></h3>
+</th></tr>
+<tr>
+<th colspan="8">
+<h4><span class="mw-headline" id="Fire"><a href="/wiki/Fire" class="mw-redirect" title="Fire">Fire</a></span></h4>
+</th></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Fireball.png" class="image"><img alt="Abilities Fireball.png" src="/images/a/a9/Abilities_Fireball.png" decoding="async" width="30" height="32" /></a><br />Fiery Blast
+</th>
+<td>A ball of fire is hurled at the target.
+</td>
+<td>1
+</td>
+<td>15
+</td>
+<td>0/200
+</td>
+<td>6
+</td>
+<td>0
+</td>
+<td>3/5
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Inferno.png" class="image"><img alt="Abilities Inferno.png" src="/images/1/1b/Abilities_Inferno.png" decoding="async" width="30" height="32" /></a><br />Inferno
+</th>
+<td>Unleashes an inferno of flames on all hostile targets, causing Fire damage.
+</td>
+<td>2
+</td>
+<td>95
+</td>
+<td>50?/500
+</td>
+<td>14
+</td>
+<td>4/2
+</td>
+<td>5/7
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Nova.png" class="image"><img alt="Abilities Nova.png" src="/images/5/50/Abilities_Nova.png" decoding="async" width="30" height="32" /></a><br />Flames of Loki
+</th>
+<td>Fire damage.
+</td>
+<td>3
+</td>
+<td>175
+</td>
+<td>150/800
+</td>
+<td>21
+</td>
+<td>7/4
+</td>
+<td>7/10
+</td></tr>
+<tr>
+<th colspan="8">
+<h4><span class="mw-headline" id="Cold"><a href="/wiki/Cold" class="mw-redirect" title="Cold">Cold</a></span></h4>
+</th></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Freeze.png" class="image"><img alt="Abilities Freeze.png" src="/images/5/50/Abilities_Freeze.png" decoding="async" width="30" height="32" /></a><br />Freeze
+</th>
+<td>Cold damage.
+</td>
+<td>1
+</td>
+<td>25
+</td>
+<td>0/200
+</td>
+<td>6
+</td>
+<td>0
+</td>
+<td>3/5
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Blizzard.png" class="image"><img alt="Abilities Blizzard.png" src="/images/9/93/Abilities_Blizzard.png" decoding="async" width="30" height="32" /></a><br />Blizzard
+</th>
+<td>Cold damage.
+</td>
+<td>2
+</td>
+<td>105
+</td>
+<td>50/500
+</td>
+<td>14
+</td>
+<td>4/2
+</td>
+<td>5/7
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Fimbulvetr.png" class="image"><img alt="Abilities Fimbulvetr.png" src="/images/f/f3/Abilities_Fimbulvetr.png" decoding="async" width="30" height="32" /></a><br />Fimbulvetr
+</th>
+<td>Cold damage.
+</td>
+<td>3
+</td>
+<td>185
+</td>
+<td>150/800
+</td>
+<td>21
+</td>
+<td>7/4
+</td>
+<td>7/10
+</td></tr>
+<tr>
+<th colspan="8">
+<h4><span class="mw-headline" id="Elec"><a href="/wiki/Elec" class="mw-redirect" title="Elec">Elec</a></span></h4>
+</th></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Lightning.png" class="image"><img alt="Abilities Lightning.png" src="/images/4/4e/Abilities_Lightning.png" decoding="async" width="30" height="32" /></a><br />Shockblast
+</th>
+<td>A bolt of lightning strikes the target, causing Elec damage.
+</td>
+<td>1
+</td>
+<td>35
+</td>
+<td>0/200
+</td>
+<td>6
+</td>
+<td>0
+</td>
+<td>3/5
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Column_Lightning.png" class="image"><img alt="Abilities Column Lightning.png" src="/images/d/dd/Abilities_Column_Lightning.png" decoding="async" width="30" height="32" /></a><br />Chained Lightning
+</th>
+<td>Elec damage.
+</td>
+<td>2
+</td>
+<td>115?
+</td>
+<td>50?/500
+</td>
+<td>14
+</td>
+<td>4/2
+</td>
+<td>5/7
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Shockblast.png" class="image"><img alt="Abilities Shockblast.png" src="/images/b/bb/Abilities_Shockblast.png" decoding="async" width="30" height="32" /></a><br />Wrath of Thor
+</th>
+<td>Elec damage.
+</td>
+<td>3
+</td>
+<td>195
+</td>
+<td>150/800
+</td>
+<td>21
+</td>
+<td>7/4
+</td>
+<td>7/10
+</td></tr>
+<tr>
+<th colspan="8">
+<h4><span class="mw-headline" id="Wind"><a href="/wiki/Wind" class="mw-redirect" title="Wind">Wind</a></span></h4>
+</th></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Windblast.png" class="image"><img alt="Abilities Windblast.png" src="/images/a/ac/Abilities_Windblast.png" decoding="async" width="30" height="32" /></a><br />Gale
+</th>
+<td>A blast of wind hits the target, causing Wind damage.
+</td>
+<td>1
+</td>
+<td>45
+</td>
+<td>0/200
+</td>
+<td>6
+</td>
+<td>0
+</td>
+<td>3/5
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Gale.png" class="image"><img alt="Abilities Gale.png" src="/images/e/e2/Abilities_Gale.png" decoding="async" width="30" height="32" /></a><br />Downburst
+</th>
+<td>Wind damage.
+</td>
+<td>2
+</td>
+<td>125?
+</td>
+<td>60/500
+</td>
+<td>14
+</td>
+<td>4/2
+</td>
+<td>5/7
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Storms_of_Njord.png" class="image"><img alt="Abilities Storms of Njord.png" src="/images/9/93/Abilities_Storms_of_Njord.png" decoding="async" width="30" height="32" /></a><br />Storms of Njord
+</th>
+<td>Wind damage.
+</td>
+<td>3
+</td>
+<td>205
+</td>
+<td>150/800
+</td>
+<td>21
+</td>
+<td>7/4
+</td>
+<td>7/10
+</td></tr>
+<tr>
+<th colspan="8">
+<div id="Holy"></div>
+<h3><span class="mw-headline" id="Divine">Divine</span></h3>
+</th></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Smite.png" class="image"><img alt="Abilities Smite.png" src="/images/f/ff/Abilities_Smite.png" decoding="async" width="30" height="32" /></a><br />Smite
+</th>
+<td>Holy damage.
+</td>
+<td>1
+</td>
+<td>65
+</td>
+<td>0/500
+</td>
+<td>14
+</td>
+<td>0
+</td>
+<td>3/5
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Banish.png" class="image"><img alt="Abilities Banish.png" src="/images/9/9c/Abilities_Banish.png" decoding="async" width="30" height="32" /></a><br />Banishment
+</th>
+<td>Holy damage.
+</td>
+<td>2
+</td>
+<td>100?
+</td>
+<td>100/700
+</td>
+<td>21
+</td>
+<td>4/2
+</td>
+<td>5/7
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Soul_Fire.png" class="image"><img alt="Abilities Soul Fire.png" src="/images/9/92/Abilities_Soul_Fire.png" decoding="async" width="30" height="32" /></a><br />Paradise Lost
+</th>
+<td>Holy damage.
+</td>
+<td>3
+</td>
+<td>200?
+</td>
+<td>200/900
+</td>
+<td>30
+</td>
+<td>7/4
+</td>
+<td>7/10
+</td></tr>
+<tr>
+<th colspan="9">
+<div id="Dark"></div>
+<h3><span class="mw-headline" id="Forbidden">Forbidden</span></h3>
+</th></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Corruption.png" class="image"><img alt="Abilities Corruption.png" src="/images/c/cc/Abilities_Corruption.png" decoding="async" width="30" height="32" /></a><br />Corruption
+</th>
+<td>Dark damage.
+</td>
+<td>1
+</td>
+<td>85
+</td>
+<td>0/500
+</td>
+<td>14
+</td>
+<td>0
+</td>
+<td>3/5
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Disintegrate.png" class="image"><img alt="Abilities Disintegrate.png" src="/images/1/17/Abilities_Disintegrate.png" decoding="async" width="30" height="32" /></a><br />Disintegrate
+</th>
+<td>Dark damage.
+</td>
+<td>2
+</td>
+<td>100?
+</td>
+<td>100/700
+</td>
+<td>18.5?
+</td>
+<td>4/2
+</td>
+<td>5/7
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Ragnarok.png" class="image"><img alt="Abilities Ragnarok.png" src="/images/3/3c/Abilities_Ragnarok.png" decoding="async" width="30" height="32" /></a><br />Ragnarok
+</th>
+<td>Dark damage.
+</td>
+<td>3
+</td>
+<td>245
+</td>
+<td>200/900
+</td>
+<td>28?
+</td>
+<td>7/4
+</td>
+<td>7/10
+</td></tr></tbody></table>
+<div id="Deprecating_Magic"></div>
+<h2><span class="mw-headline" id="Deprecating_Spells">Deprecating Spells</span></h2>
+<p>These spells are used to inflict debuffs on the monsters. Most of these debuffs will assist you in increasing your survival chances by weakening the attack power/frequency of the monsters (like Weaken or Silence), some others will make them more vulnerable to your attacks (Imperil), some will do both at once (Sleep, MagNet with its ability slotted).
+The minimum proficiency corresponds to the proficiency needed to have the spell available. The maximum proficiency corresponds to the breakpoint when the debuff's duration reaches the maximum multiplier (x4 duration).
+</p>
+<table class="wikitable" width="100%">
+
+<tbody><tr>
+<th>Spell
+</th>
+<th>Description
+</th>
+<th width="40"><a href="/wiki/Level" class="mw-redirect" title="Level">Level</a>
+</th>
+<th width="50"><span title="Minimum base prof needed to unlock the spell/Effective prof that maximizes spell&#39;s effects" style="border-bottom:1px dotted">Min/Max</span> <a href="/wiki/Proficiency" class="mw-redirect" title="Proficiency">Prof</a>
+</th>
+<th width="40">Cost
+</th>
+<th width="40">CD
+</th>
+<th width="40">Duration
+<div id="Drain"></div>
+</th></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Poison.png" class="image"><img alt="Abilities Poison.png" src="/images/6/63/Abilities_Poison.png" decoding="async" width="30" height="32" /></a><br />Drain
+</th>
+<td>Inflicts Drain on one target, causing damage over time.
+<ul><li><i>Inflicts <a href="#Theft_Effects">Vital Theft</a> on the target</i></li></ul>
+</td>
+<td>30?
+</td>
+<td>0/300?
+</td>
+<td>11.5
+</td>
+<td>20/15
+</td>
+<td>7?
+<div id="Slow"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Slow.png" class="image"><img alt="Abilities Slow.png" src="/images/a/a7/Abilities_Slow.png" decoding="async" width="30" height="32" /></a><br />Slow
+</th>
+<td>The target is slowed by x%, making it attack less frequently.
+<ul><li><i>Base action speed reduction: 30%/50%</i></li></ul>
+</td>
+<td>10?
+</td>
+<td>0/300?
+</td>
+<td>18/25
+</td>
+<td>3
+</td>
+<td>3/6
+<div id="Weaken"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Weaken.png" class="image"><img alt="Abilities Weaken.png" src="/images/5/53/Abilities_Weaken.png" decoding="async" width="30" height="32" /></a><br />Weaken
+</th>
+<td>The target is weakened, making it deal less damage, and preventing it from scoring critical hits.
+<ul><li><i>Base Physical and Magical damage reduction: 25%/50%</i></li></ul>
+</td>
+<td>70
+</td>
+<td>0/345
+</td>
+<td>10/16
+</td>
+<td>3/0
+</td>
+<td>5/10
+<div id="Sleep"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Sleep.png" class="image"><img alt="Abilities Sleep.png" src="/images/f/fc/Abilities_Sleep.png" decoding="async" width="30" height="32" /></a><br />Sleep
+</th>
+<td>The target is lulled to sleep, preventing it from taking any actions.
+<ul><li><i>Base chance of breaking on damage: 90%?</i></li>
+<li><i>Sleeping monsters cannot attack, evade, parry, or resist attacks?</i></li></ul>
+</td>
+<td>80
+</td>
+<td>0/410
+</td>
+<td>22/35
+</td>
+<td>7
+</td>
+<td>4/7
+<div id="Confuse"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Confuse.png" class="image"><img alt="Abilities Confuse.png" src="/images/2/26/Abilities_Confuse.png" decoding="async" width="30" height="32" /></a><br />Confuse
+</th>
+<td>Confuses the target, making it lunge out wildly and strike friends and foes alike.
+<ul><li><i>Base chance of breaking on damage: 90%?</i></li>
+<li><i>Base chance of monster hitting itself: 25%?</i></li></ul>
+</td>
+<td>150
+</td>
+<td>45/660
+</td>
+<td>25/35
+</td>
+<td>10
+</td>
+<td>3/6
+<div id="Imperil"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Imperil.png" class="image"><img alt="Abilities Imperil.png" src="/images/1/14/Abilities_Imperil.png" decoding="async" width="30" height="32" /></a><br />Imperil
+</th>
+<td>The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.
+<ul><li><i>Base Physical and Magical defense reduction: 25%/50%</i></li>
+<li><i>Base Fire/Cold/Elec/Wind resistance reduction: 10%/40%</i></li>
+<li>Base <i>Dark/Holy resistance reduction: 0%/25%</i></li>
+<li><i>This reduction is multiplicative (ie, a monster with 80% physical mitigation would be reduced to 60%, or lower with <a href="/wiki/Abilities#Deprecating" title="Abilities">Abilities</a>.</i>
+<ul><li><i> The <a href="/wiki/Equipment_Procs" title="Equipment Procs">Penetrated Armor</a> multiplier is layered with this reduction (ie 0.8 physical mitigation * 0.5 imperil reduction * 0.25 penetrated armor reduction = 0.1 physical mitigation).</i></li></ul></li></ul>
+</td>
+<td>130
+</td>
+<td>30/495
+</td>
+<td>10/15
+</td>
+<td>3/0
+</td>
+<td>5/10
+<div id="Blind"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Blind.png" class="image"><img alt="Abilities Blind.png" src="/images/a/a5/Abilities_Blind.png" decoding="async" width="30" height="32" /></a><br />Blind
+</th>
+<td>Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.
+<ul><li><i>Base attack/magic hit chance reduction: 20%/30%</i></li></ul>
+</td>
+<td>80?
+</td>
+<td>30/610
+</td>
+<td>18/25
+</td>
+<td>7/3
+</td>
+<td>5/10
+<div id="Silence"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Silence.png" class="image"><img alt="Abilities Silence.png" src="/images/5/5a/Abilities_Silence.png" decoding="async" width="30" height="32" /></a><br />Silence
+</th>
+<td>The target is silenced, preventing it from using special attacks and magic.
+</td>
+<td>120
+</td>
+<td>40/665
+</td>
+<td>18
+</td>
+<td>10/5
+</td>
+<td>7/10
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_MagNet.png" class="image"><img alt="Abilities MagNet.png" src="/images/4/40/Abilities_MagNet.png" decoding="async" width="30" height="32" /></a><br />MagNet
+</th>
+<td>A net of pure energy ensnares the target, (slowing it by 25%) and making it unable to evade attacks or spells.
+<ul><li><i>Slowing effect requires at least 1 AP investment.</i></li>
+<li><i>Does not disable parrying.</i></li>
+<li><i>Also prevents the target from resisting your spells.</i></li></ul>
+</td>
+<td>250?
+</td>
+<td>100?/800
+</td>
+<td>22
+</td>
+<td>15/10
+</td>
+<td>4/9
+</td></tr></tbody></table>
+<div id="Supportive_Magic"></div>
+<h2><span class="mw-headline" id="Supportive_Spells">Supportive Spells</span></h2>
+<div id="Protection"></div><table class="wikitable">
+
+<tbody><tr>
+<th>Spell
+</th>
+<th>Description
+</th>
+<th width="40"><a href="/wiki/Level" class="mw-redirect" title="Level">Level</a>
+</th>
+<th width="50"><span title="Minimum base prof needed to unlock the spell/Effective prof that maximizes spell&#39;s effects" style="border-bottom:1px dotted">Min/Max</span> <a href="/wiki/Proficiency" class="mw-redirect" title="Proficiency">Prof</a>
+</th>
+<th width="40">Cost
+</th>
+<th width="40">CD
+</th>
+<th width="40">Duration
+</th></tr>
+<tr>
+<th colspan="7">
+<div id="Curative_Magic"></div><div id="Curative_Spells"></div>
+<h3><span class="mw-headline" id="Curative">Curative</span></h3>
+</th></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Cure.png" class="image"><img alt="Abilities Cure.png" src="/images/5/51/Abilities_Cure.png" decoding="async" width="30" height="32" /></a><br />Cure
+</th>
+<td>Restores a moderate amount of Health on the target.
+<ul><li><i>Base health restored = base_health * (AP / 100) * MIN (1.5, MAX ((0.8 + supportive_proficiency / player_level * 0.2), (1 + (supportive_proficiency - player_level) / player_level * 0.5)))</i></li></ul>
+</td>
+<td>5
+</td>
+<td>0/385+
+</td>
+<td>20
+</td>
+<td>5/2
+</td>
+<td>N/A
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Regen.png" class="image"><img alt="Abilities Regen.png" src="/images/4/46/Abilities_Regen.png" decoding="async" width="30" height="32" /></a><br />Regen
+</th>
+<td>Places a heal over time effect on the target.
+<ul><li><i>Base health restored per turn = base_health * (<a href="/wiki/AP" class="mw-redirect" title="AP">AP</a> / 100)</i></li></ul>
+</td>
+<td>50?
+</td>
+<td>0/845
+</td>
+<td>22.5/75
+</td>
+<td>0
+</td>
+<td>14/30
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Cure.png" class="image"><img alt="Abilities Cure.png" src="/images/5/51/Abilities_Cure.png" decoding="async" width="30" height="32" /></a><br />Full-Cure
+</th>
+<td>Fully restores the Health of the target.
+</td>
+<td>220
+</td>
+<td>0/945+
+</td>
+<td>50
+</td>
+<td>10
+</td>
+<td>N/A
+</td></tr>
+<tr>
+<th colspan="7">
+<h3><span class="mw-headline" id="Supportive">Supportive</span></h3>
+</th></tr>
+
+<tr>
+<th><a href="/wiki/File:Abilities_Protection.png" class="image"><img alt="Abilities Protection.png" src="/images/b/b5/Abilities_Protection.png" decoding="async" width="30" height="32" /></a><br />Protection
+</th>
+<td>Places a shield effect on the target, absorbing 25%/30% of the damage from all attacks.
+</td>
+<td>10?
+</td>
+<td>0/320
+</td>
+<td>25
+</td>
+<td>0
+</td>
+<td>15?/30
+<div id="Haste"></div><div id="haste"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Haste.png" class="image"><img alt="Abilities Haste.png" src="/images/2/23/Abilities_Haste.png" decoding="async" width="30" height="32" /></a><br />Haste
+</th>
+<td>Speeds up all actions of the target, allowing it to attack more frequently.
+<ul><li><i>Base <a href="/wiki/Action_Speed" title="Action Speed">Action Speed</a> increase: 25%/50%</i></li></ul>
+</td>
+<td>60?
+</td>
+<td>0/450
+</td>
+<td>30
+</td>
+<td>0
+</td>
+<td>10?/20
+<div id="Shadow_Veil"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Shadow_Veil.png" class="image"><img alt="Abilities Shadow Veil.png" src="/images/8/84/Abilities_Shadow_Veil.png" decoding="async" width="30" height="32" /></a><br />Shadow Veil
+</th>
+<td>Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.
+<ul><li><i>Base evade chance increase: 15%/25%</i></li></ul>
+</td>
+<td>90
+</td>
+<td>0/610
+</td>
+<td>30
+</td>
+<td>0
+</td>
+<td>10?/20
+<div id="Absorb"></div><div id="absorb"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Absorb.png" class="image"><img alt="Abilities Absorb.png" src="/images/a/a4/Abilities_Absorb.png" decoding="async" width="30" height="32" /></a><br />Absorb
+</th>
+<td>The next magical attack against the target has a chance to be absorbed and partially converted to MP.
+<ul><li><i>The effect is permanent until it absorbs a spell.</i></li>
+<li><i>Base chance to absorb: 60%/90%</i></li>
+<li><i>Cannot absorb critical hits</i></li>
+<li><i>Absorbed MP is between 5-10% of the monster's base max MP? Very little MP regained</i></li>
+<li><i>Can absorb more than 1 spell if they occur on the same turn.</i></li></ul>
+</td>
+<td>50?
+</td>
+<td>0/385+?
+</td>
+<td>30
+</td>
+<td>20
+</td>
+<td>∞
+<div id="Spark_of_Life"></div><div id="SoL"></div><div id="spark_of_life"></div><div id="sol"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Spark_of_Life.png" class="image"><img alt="Abilities Spark of Life.png" src="/images/6/69/Abilities_Spark_of_Life.png" decoding="async" width="30" height="32" /></a><br />Spark of Life
+</th>
+<td>Any attack that would one-shot a target with 2 or more HP leaves it alive but on the brink of defeat. The buff is removed when triggered (and 50% of the player's base SP is consumed). If the player does not have enough SP remaining the trigger will fail and the player will die.
+<ul><li><i>When active <b>and</b> enough SP is available the player's health bar will turn dark green.</i></li></ul>
+</td>
+<td>100
+</td>
+<td>0/750?
+</td>
+<td>44?/30
+</td>
+<td>0
+</td>
+<td>15?/30
+</td></tr>
+<tr>
+<th><a href="/wiki/File:fallenshield.png" class="image"><img alt="fallenshield.png" src="/images/5/5b/fallenshield.png" decoding="async" width="30" height="32" /></a><br /><i>Cloak of the Fallen</i>
+</th>
+<td>Being brought back by Spark of Life has draped you with this powerful protective shield, increasing your damage resistance for a brief time.
+<ul><li><i>When Spark of Life is triggered <b>Cloak of the Fallen</b> procs, which grants full immunity to damage during the turn that Spark triggers.</i></li>
+<li><i>Grants +75%? physical and magical mitigation bonus after the original proc.</i></li></ul>
+</td>
+<td colspan="4">
+</td>
+<td>3?
+<div id="Arcane_Focus"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Arcane_Focus.png" class="image"><img alt="Abilities Arcane Focus.png" src="/images/8/8b/Abilities_Arcane_Focus.png" decoding="async" width="30" height="32" /></a><br />Arcane Focus
+</th>
+<td>The target attains a higher level of attunement with the arcane forces, increasing magic power and crit chance.
+<ul><li><i>Magical damage bonus: 25%</i></li>
+<li><i>Magical crit chance bonus: 10%</i></li>
+<li><i>Magical crit damage bonus: 0%/15%</i></li></ul>
+</td>
+<td>175
+</td>
+<td>0/980?
+</td>
+<td>100
+</td>
+<td>0
+</td>
+<td>50?/100
+<div id="Heartseeker"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Heartseeker.png" class="image"><img alt="Abilities Heartseeker.png" src="/images/4/46/Abilities_Heartseeker.png" decoding="async" width="30" height="32" /></a><br />Heartseeker
+</th>
+<td>The target attains intimate knowledge of the flow of life in all living beings, increasing attack power and crit chance.
+<ul><li><i>Physical damage bonus: 25%</i></li>
+<li><i>Physical crit chance bonus: 10%</i>; this means on-battle crit chance will become: <i>(100 - crit) * 0.1 + crit = 10 + 0.9 * crit</i></li>
+<li><i>Physical crit damage bonus: 0%/15%</i></li></ul>
+</td>
+<td>140
+</td>
+<td>0/880?
+</td>
+<td>100
+</td>
+<td>0
+</td>
+<td>50?/100
+<div id="Spirit_Shield"></div>
+</td></tr>
+<tr>
+<th><a href="/wiki/File:Abilities_Spirit_Shield.png" class="image"><img alt="Abilities Spirit Shield.png" src="/images/2/25/Abilities_Spirit_Shield.png" decoding="async" width="30" height="32" /></a><br />Spirit Shield
+</th>
+<td>Powerful attacks against you will be partially absorbed and damage your spirit gauge instead of health.
+<ul><li><i>Any attack that hits for more than 45-20% of max HP will cause the player to lose exactly 45-20% of their health, with the remainder absorbed as damage to their spirit.<sup><a href="#spirit">(Formula)</a></sup></i></li>
+<li><i>The spell will fail if the player does not have sufficient SP.</i></li></ul>
+</td>
+<td>200
+</td>
+<td>0/950?
+</td>
+<td>25
+</td>
+<td>0
+</td>
+<td>15?/30
+</td></tr></tbody></table>
+<div id="spirit"><div id="Spirit">
+<pre style="overflow: auto;"><b>Spirit Damage</b> = Base_SP * SS_AP_Damage * MIN( (Damage - Max_HP * SS_AP_Damage) / (Max_HP * SS_AP_Damage * 3) , 1)<br />
+<i>(<b>SS_AP_Damage</b> = percentage of damage required for Spirit shield to kick in)</i> <br /><br />Note: This formula works in such way that increasing base spirit points (e.g. by increasing STR <a href="/wiki/Character_Stats#primary_attributes" title="Character Stats">primary attribute</a> or through the Suffusive Spirit hath perk) increase the spirit cost of Spirit Shield (and Spark of Life) proportionately. </pre>
+<h2><span class="mw-headline" id="Status_Effects">Status Effects</span></h2>
+<p>When an <a href="#Offensive_Magic">offensive spell</a> or a <a href="/wiki/Spells#Spike_Shields" title="Spells">spike shield</a> hits a monster, it may produce an associated status effect on the target, which lasts for a number of turns. In addition, these status effect will explode for bonus damage on the monster when struck by the next <a href="#Offensive_Magic">offensive spell</a> in the cycle. For example a monster afflicted by Searing Skin will receive extra damage when struck by a Cold spell. Drain counts as a Dark spell for this and can explode Breached Defense. The status effect will dissipate after it explodes.
+</p>
+<table class="wikitable" width="100%">
+
+<tbody><tr>
+<th width="15%">Name
+</th>
+<th width="50%">Description
+</th>
+<th width="30%">Effect(s)
+</th>
+<th width="10%">Duration
+</th></tr>
+<tr>
+<td><a href="/wiki/File:Abilities_Flare.png" class="image"><img alt="Abilities Flare.png" src="/images/a/ad/Abilities_Flare.png" decoding="async" width="30" height="32" /></a> <b>Searing Skin</b>
+</td>
+<td>The skin of the target has been scorched, inhibiting its attack damage.
+<ul><li>Caused by Fire spells/spike shield</li>
+<li><i>Damage reduction: 10%</i></li></ul>
+</td>
+<td><a href="/wiki/Cold" class="mw-redirect" title="Cold">Cold</a> resistance is lowered by 25.
+</td>
+<td rowspan="6">3
+</td></tr>
+<tr>
+<td><a href="/wiki/File:Abilities_Freeze.png" class="image"><img alt="Abilities Freeze.png" src="/images/5/50/Abilities_Freeze.png" decoding="async" width="30" height="32" /></a> <b>Freezing Limbs</b>
+</td>
+<td>The limbs of the target have been frozen, causing slower movement.
+<ul><li>Caused by Cold spells/spike shield</li>
+<li><i>Speed reduction: 10%</i></li></ul>
+</td>
+<td><a href="/wiki/Wind" class="mw-redirect" title="Wind">Wind</a> resistance is lowered by 25.
+</td></tr>
+<tr>
+<td><a href="/wiki/File:Abilities_Gale.png" class="image"><img alt="Abilities Gale.png" src="/images/e/e2/Abilities_Gale.png" decoding="async" width="30" height="32" /></a> <b>Turbulent Air</b>
+</td>
+<td>The air around the target has been upset, blowing up dust and increasing its miss chance.
+<ul><li>Caused by Wind attacks/spike shield</li>
+<li><i>Miss chance increase: 10%</i></li></ul>
+</td>
+<td><a href="/wiki/Elec" class="mw-redirect" title="Elec">Elec</a> resistance is lowered by 25.
+</td></tr>
+<tr>
+<td><a href="/wiki/File:Abilities_Lightning.png" class="image"><img alt="Abilities Lightning.png" src="/images/4/4e/Abilities_Lightning.png" decoding="async" width="30" height="32" /></a> <b>Deep Burns</b>
+</td>
+<td>Internal damage causes slower reactions and lowers evade and resist chance.
+<ul><li>Caused by Elec spells/spike shield</li>
+<li><i>Evade and Resist reduction: 10%</i></li></ul>
+</td>
+<td><a href="/wiki/Fire" class="mw-redirect" title="Fire">Fire</a> resistance is lowered by 25.
+</td></tr>
+<tr>
+<td><a href="/wiki/File:Abilities_Smite.png" class="image"><img alt="Abilities Smite.png" src="/images/f/ff/Abilities_Smite.png" decoding="async" width="30" height="32" /></a> <b>Breached Defense</b>
+</td>
+<td>The holy attack has penetrated the target's defenses, making it take more damage.
+<ul><li>Caused by Holy spells</li>
+<li><i>Physical &amp; Magical mitigation reduction: 10%</i></li></ul>
+</td>
+<td><a href="/wiki/Dark" class="mw-redirect" title="Dark">Dark</a> resistance is lowered by 25.
+</td></tr>
+<tr>
+<td><a href="/wiki/File:Abilities_Disintegrate.png" class="image"><img alt="Abilities Disintegrate.png" src="/images/1/17/Abilities_Disintegrate.png" decoding="async" width="30" height="32" /></a> <b>Blunted Attack</b>
+</td>
+<td>The decaying effects of the spell has blunted the target's offenses, making it deal less damage.
+<ul><li>Caused by Dark spells</li>
+<li><i>Damage reduction: 10%</i></li></ul>
+</td>
+<td><a href="/wiki/Holy" class="mw-redirect" title="Holy">Holy</a> resistance is lowered by 25.
+</td></tr>
+<tr>
+<td><a href="/wiki/File:Abilities_Soul_Fire.png" class="image"><img alt="Abilities Soul Fire.png" src="/images/9/92/Abilities_Soul_Fire.png" decoding="async" width="30" height="32" /></a> <b>Burning Soul</b>
+</td>
+<td>The life essence of the target has been set ablaze, damaging its physical form over time.
+<ul><li>Caused by Holy spells with Soul Fire <a href="/wiki/ability" class="mw-redirect" title="ability">ability</a> slotted</li>
+<li><i>Damage over time = MDB * (1 + EDB / 100) * 0.2</i></li></ul>
+</td>
+<td>Will cause Ether Theft if targeted by Drain and the <a href="/wiki/ability" class="mw-redirect" title="ability">ability</a> Ether Theft is active (even if Drain is resisted/absorbed/evaded)
+</td>
+<td rowspan="2">7
+</td></tr>
+<tr>
+<td><a href="/wiki/File:Abilities_Ripened_Soul.png" class="image"><img alt="Abilities Ripened Soul.png" src="/images/8/88/Abilities_Ripened_Soul.png" decoding="async" width="30" height="32" /></a> <b>Ripened Soul</b>
+</td>
+<td>The life essence of the target has been corrupted beyond repair, damaging its physical form over time.
+<ul><li>Caused by Dark spells with Ripened Soul <a href="/wiki/ability" class="mw-redirect" title="ability">ability</a> slotted</li>
+<li><i>Damage over time = MDB * (1 + EDB / 100) * 0.2</i></li></ul>
+</td>
+<td>Will cause Spirit Theft if targeted by Drain and the <a href="/wiki/ability" class="mw-redirect" title="ability">ability</a> Spirit Theft is active (even if Drain is resisted/absorbed/evaded)
+</td></tr></tbody></table>
+<h3><span class="mw-headline" id="Chance_on_Hit">Chance on Hit</span></h3>
+<p>The chance-on-hit to proc one of these effects on a monster varies based on the spell cast.
+</p><p>The following base averages have been observed:
+</p>
+<ul><li>From being hit with a spike shield active: 17.5%</li>
+<li>T1: 25%</li>
+<li>T2: 50%</li>
+<li>T3: 75%</li></ul>
+<h3><span class="mw-headline" id="Theft_Effects">Theft Effects</span></h3>
+<p>Thefts are status effects inflicted by Drain. Casting Drain on a target will inflict Vital Theft, and will also inflict Ether Theft or Spirit Theft when specific conditions are met.
+</p>
+<table class="wikitable" width="100%">
+
+<tbody><tr>
+<th width="10%">Name
+</th>
+<th width="55%">Description
+</th>
+<th width="30%">Effect(s)
+</th>
+<th width="10%">Duration
+</th></tr>
+<tr>
+<td><a href="/wiki/File:Abilities_Lifestream.png" class="image"><img alt="Abilities Lifestream.png" src="/images/7/78/Abilities_Lifestream.png" decoding="async" width="30" height="32" /></a> <b>Vital Theft</b>
+</td>
+<td>Siphons off the target's life essence over time. This causes a damage-over-time effect and returns a small amount of health to the player.
+<ul><li><i>Damage over time = MDB * (1 + forbidden EDB / 100) * 0.1</i></li>
+<li><i>HP damage/drained = 5% of the target's current HP or 5% of your total base HP, whichever is lower</i></li></ul>
+</td>
+<td>Damages the target then heals the player after each of the target's turn.
+<ul><li><i>Damage occurs first, before healing the player.</i></li></ul>
+</td>
+<td>See <a href="#Deprecating_Spells">Drain</a>
+</td></tr>
+<tr>
+<td><a href="/wiki/File:drainmp.png" class="image"><img alt="drainmp.png" src="/images/6/6e/drainmp.png" decoding="async" width="30" height="32" /></a> <b>Ether Theft</b>
+</td>
+<td>Siphons off the target's mana over time. This returns a small amount of mana to the player.
+<ul><li><i>MP damage/drained = 5% of the target's current MP or 5% of your total base MP, whichever is lower</i></li></ul>
+</td>
+<td>Reduces the target's MP and recovers the player's MP after each of the target's turn.
+</td>
+<td rowspan="2">5
+</td></tr>
+<tr>
+<td><a href="/wiki/File:drainsp.png" class="image"><img alt="drainsp.png" src="/images/8/8a/drainsp.png" decoding="async" width="30" height="32" /></a> <b>Spirit Theft</b>
+</td>
+<td>Siphons off the target's spirit over time. This returns a small amount of spirit to the player.
+<ul><li><i>SP damage/drained = 5% of the target's current SP or 5% of your total base SP, whichever is lower</i></li></ul>
+</td>
+<td>Reduces the target's SP and recovers the player's SP after each of the target's turn.
+</td></tr></tbody></table>
+<h2><span class="mw-headline" id="Spike_Shields">Spike Shields</span></h2>
+<p>Spike Shields are an <a href="/wiki/ability" class="mw-redirect" title="ability">ability</a> that grant an added effect to the Protection spell. Only 1 of 4 elemental shields can be active at one time.
+</p>
+<ul><li>Can proc upon parrying or blocking an attack.</li>
+<li>Do a minimum of 5 damage to monsters regardless of damage taken.</li>
+<li>Count as physical damage.</li>
+<li>Can proc <a href="#Status_Effects">status effects</a> (~20%? chance).</li></ul>
+<h2><span class="mw-headline" id="Procs">Procs</span></h2>
+<p>Spell procs take priority in the following order (assuming they are applicable):
+</p><p>Absorb &gt; Spirit Shield &gt; Spark of Life &gt; Spike effects
+</p>
+<h2><span class="mw-headline" id="Stacking">Stacking</span></h2>
+<p>The effects of Arcane Focus and Heartseeker cannot be active simultaneously: in the case one is already active, casting the second will result in the dissipation of the first one.
+</p>

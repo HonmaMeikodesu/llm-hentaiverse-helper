@@ -7,9 +7,10 @@ import { calcLevenshteinDistance } from "./utils.js";
 import { FightingStyleEffect, ItemEffect, MonsterEffect, PlayerEffect, SpellEffect, WeapoonSkillEffect } from "../types/effect.js";
 import { DeprecatingSpell, SupportiveSpell } from "../types/spell.js";
 
-type BattleSigRep = {
-    player: PlayerSigRep
-    monsters: Array<MonsterSigRep & Pick<MonsterStats, "name">>
+export type BattleSigRep = {
+    player: PlayerSigRep;
+    monsters: Array<MonsterSigRep & Pick<MonsterStats, "name">>;
+    battleLogs: string[]
 }
 
 function pickNearestEnumValueForTarget<T>(e: Object, target: string): T {
@@ -96,7 +97,7 @@ export class BattleParser {
                 manaCostModifier: toNumber(list.find(item => item.textContent === "% mana cost modifier")?.previousSibling?.textContent) / 100,
                 castSpeedBonus: toNumber(list.find(item => item.textContent === "% cast speed bonus")?.previousSibling?.textContent) / 100
             },
-            Defense: {
+            defense: {
                 physicalMitigationPercent: toNumber(list.find(item => item.textContent === "% physical mitigation")?.previousSibling?.textContent) / 100,
                 magicalMitigationPercent: toNumber(list.find(item => item.textContent === "% magical mitigation")?.previousSibling?.textContent) / 100,
                 evadeChance: toNumber(list.find(item => item.textContent === "% evade chance")?.previousSibling?.textContent) / 100,
@@ -192,6 +193,7 @@ export class BattleParser {
                 spirit: toNumber(q("#vrs")?.textContent),
                 overcharge: toNumber(q<HTMLDivElement>("#vcp div")?.style?.width?.match(/\d+/)![0]) / 19
             },
+            isInSpiritStance: !!q<HTMLImageElement>("#ckey_spirit")?.src?.includes("spirit_a"),
             effects: [ ...qa<HTMLImageElement>("#pane_effects img") ].map((img) => {
                 const effect: PlayerEffect = pickNearestEnumValueForTarget(merge(ItemEffect, FightingStyleEffect, SupportiveSpell), img.attributes.getNamedItem("onmouseover")!.textContent!.match(/set_infopane_effect\('(.*?)'/)![1]);
                 return effect;
@@ -215,7 +217,17 @@ export class BattleParser {
 
         return {
             player: playerSigRep,
-            monsters: monsterSigReps
+            monsters: monsterSigReps,
+            battleLogs: [...qa<HTMLTableRowElement>("#textlog tr")].map(td => td.textContent!.trim())
         }
+    }
+
+    async getAvailabelSkills() {
+    }
+
+    async getAvailabelSpells() {
+    }
+
+    async getAvailabelItems() {
     }
 }

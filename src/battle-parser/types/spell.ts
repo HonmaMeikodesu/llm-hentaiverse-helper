@@ -96,3 +96,5 @@ export enum ProtectionAugment {
     // wind
     StormSpikes = "storm spikes"
 }
+
+export type Spell = OffensiveSpell | DeprecatingSpell | SupportiveSpell;

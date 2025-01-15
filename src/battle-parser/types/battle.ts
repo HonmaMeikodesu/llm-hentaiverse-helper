@@ -16,5 +16,6 @@ export type PlayerSigRep = {
     vital: VitalSigRep & {
         overcharge: number;
     };
+    isInSpiritStance: boolean;
     effects: PlayerEffect[]
 }

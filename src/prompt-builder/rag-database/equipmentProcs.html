@@ -1,0 +1,261 @@
+<body
+    class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Equipment_Procs rootpage-Equipment_Procs skin-monobook action-view">
+    <div id="globalWrapper">
+        <div id="column-content">
+            <div id="content" class="mw-body" role="main">
+                <a id="top"></a>
+                <div class="mw-indicators mw-body-content"></div>
+                <h1 id="firstHeading" class="firstHeading" lang="en">Equipment Procs</h1>
+                <div id="bodyContent" class="mw-body-content">
+                    <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr">
+                        <div class="mw-parser-output">
+                            <p>
+                                This is a list of the various <a href="/wiki/Equipment_Basics"
+                                    title="Equipment Basics">equipment</a>
+                                procs in the <a href="/wiki/HentaiVerse" title="HentaiVerse">HentaiVerse</a>
+                                . They may also be applied through <a href="/wiki/Skills#Weapon_Skills"
+                                    title="Skills">weapon skills</a>
+                                .
+
+                            </p>
+                            <p>
+                                All <a href="/wiki/Weapons" class="mw-redirect" title="Weapons">weapons</a>
+                                are generated with a status effect that can proc on successfully hitting an enemy. The
+                                chance of it being applied is determined by the specific piece of equipment with a
+                                maximum chance of 25% for all weapons except the mace which has a maximum of 30%. The
+                                specific proc is determined by the type of weapon.
+
+                            </p>
+                            <p>Landing a critical strike will always proc your weapon's status effect.
+                            </p>
+                            <p>The three procs are:
+                            </p>
+                            <table class="wikitable">
+                                <tbody>
+                                    <tr>
+                                        <th width="15%">Sources
+                                        </th>
+                                        <th>Proc</th>
+                                        <th>Description
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <small>
+                                                One-Hand: Rapier<br />
+                                                Two-Hand: Estoc<br />Skills: Rending Blow, Skyward Sword
+                                            </small>
+                                        </td>
+                                        <th>
+                                            <a href="/wiki/File:wpn_ap.png" class="image">
+                                                <img alt="wpn ap.png" src="/images/0/08/wpn_ap.png" decoding="async"
+                                                    width="30" height="32" />
+                                            </a>
+                                            <br />Penetrated Armor
+
+                                        </th>
+                                        <td>
+                                            <i>The armor of this target has been breached, reducing its defenses.</i>
+                                            <ul>
+                                                <li>
+                                                    Monster's physical mitigation is reduced by 25% per stack, with
+                                                    maximum of 3 stacks (mitigation reduced to 25%.)
+
+                                                    <ul>
+                                                        <li>Penetrated Armor is a multiplier applied to the monster's
+                                                            physical resistance (ie 3 stacks on a monster with 80% =
+                                                            80%*25% = 20%).</li>
+                                                        <li>This multiplier is layered with Imperil. This means that a
+                                                            monster with 80% physical mitigation will have 40% after
+                                                            imperil, and then 10% after 3 stacks of PA.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Penetrating Armor is applied <i>after</i>
+                                                    the damage for the attack is dealt. This means the player will not
+                                                    benefit from it until the following turn.
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <small>
+                                                One-Hand: Axe, Shortsword, Wakizashi<br />
+                                                Two-Hand: Longsword, Katana<br />Skills: Vital Strike, Skyward Sword
+                                            </small>
+                                        </td>
+                                        <th>
+                                            <a href="/wiki/File:wpn_bleed.png" class="image">
+                                                <img alt="wpn bleed.png" src="/images/a/ad/wpn_bleed.png"
+                                                    decoding="async" width="30" height="32" />
+                                            </a>
+                                            <br />Bleeding Wound
+
+                                        </th>
+                                        <td>
+                                            <i>A gushing wound is making this target take damage over time.</i>
+                                            <ul>
+                                                <li>
+                                                    <ul>
+                                                        <li>5 stacks at maximum</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    Damage done = ADB * DOT% * 0.4 * Stack count
+
+                                                    <ul>
+                                                        <li>Other damage bonuses are applied each as separate
+                                                            multipliers (ie, Bleed Damage * Heartseeker (1.25) *
+                                                            Overwhelming Strikes (1.15) * Daemonic Duality (1.1 to 1.5)
+                                                            * Title Bonus (1.0 to 1.1)... etc)</li>
+                                                        <li>ADB is as seen on the character sheet (not the weapon's
+                                                            ADB), and the DOT% is either from the weapon (eg 20% on a
+                                                            shortsword, 30% on a longsword) or specific to the skill
+                                                            (50% for Vital Strike, 20% for Skyward Sword).</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Bleed damage is consistent and untyped; it is not affected by the
+                                                    monster's mitigations or any other stats.</li>
+                                                <li>Bleed damage is only recalculated when a new stack is applied; the
+                                                    damage will not change when a buff expires unless the player
+                                                    reapplies Bleeding Wound.</li>
+                                                <li>Bleeding Wound is applied before Overwhelming Strikes, and as such,
+                                                    on turns where a player gains Overwhelming Strikes (and it was not
+                                                    already active) it is not factored into the damage until the next
+                                                    time the stack is refreshed.</li>
+                                                <li>
+                                                    Bleeding Wound does not initiate a timer starting from its
+                                                    application; damage is simply applied at exact intervals of one game
+                                                    tick.
+
+                                                    <ul>
+                                                        <li>This also means that it does not benefit from attack speed -
+                                                            in fact, higher attack speed means more turns will be taken
+                                                            between damage applications.</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <small>
+                                                One-Hand: Club<br />
+                                                Two-Hand: Mace<br />Skills: Shield Bash, Shatter Strike, Concussive
+                                                Strike, FUS RO DAH
+                                            </small>
+                                        </td>
+                                        <th>
+                                            <a href="/wiki/File:wpn_stun.png" class="image">
+                                                <img alt="wpn stun.png" src="/images/e/ec/wpn_stun.png" decoding="async"
+                                                    width="30" height="32" />
+                                            </a>
+                                            <br />Stunned
+
+                                        </th>
+                                        <td>
+                                            <i>A powerful blow has temporarily stunned this target.</i>
+                                            <ul>
+                                                <li>Stunned monsters cannot take any offensive action and cannot evade
+                                                    or parry.</li>
+                                                <li>Monsters receive a free action when a stun expires on them.</li>
+                                                <li>
+                                                    Stuns cannot be overwritten regardless of source or duration.
+
+                                                    <ul>
+                                                        <li>For example, a critical hit with a club against a stunned
+                                                            target will not refresh a stun, nor will using Shield Bash.
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>The following is the table for the maximum proc chance, duration and damage from weapon
+                                sources. Proc chance and duration scale with weapon level; bleed damage is the same at
+                                any level.
+                            </p>
+                            <table class="wikitable" style="text-align: center">
+                                <tbody>
+                                    <tr>
+                                        <th>Weapon type</th>
+                                        <th>Proc</th>
+                                        <th>Chance</th>
+                                        <th>Duration</th>
+                                        <th>Bleeding &#160;%
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td>Estoc</td>
+                                        <td>Penetrated Armor</td>
+                                        <td>25%</td>
+                                        <td>7</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Longsword</td>
+                                        <td>Bleeding Wound</td>
+                                        <td>25%</td>
+                                        <td>7</td>
+                                        <td>30
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mace</td>
+                                        <td>Stun</td>
+                                        <td>30%</td>
+                                        <td>4</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Katana</td>
+                                        <td>Bleeding Wound</td>
+                                        <td>25%</td>
+                                        <td>7</td>
+                                        <td>30
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Axe</td>
+                                        <td>Bleeding Wound</td>
+                                        <td>25%</td>
+                                        <td>7</td>
+                                        <td>20
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Club</td>
+                                        <td>Stun</td>
+                                        <td>25%</td>
+                                        <td>4</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rapier</td>
+                                        <td>Penetrated Armor</td>
+                                        <td>25%</td>
+                                        <td>7</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shortsword</td>
+                                        <td>Bleeding Wound</td>
+                                        <td>25%</td>
+                                        <td>7</td>
+                                        <td>20
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wakizashi</td>
+                                        <td>Bleeding Wound</td>
+                                        <td>25%</td>
+                                        <td>7</td>
+                                        <td>20
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+</body>

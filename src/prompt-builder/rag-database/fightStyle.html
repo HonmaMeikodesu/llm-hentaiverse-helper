@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<h2><span class="mw-headline" id="Any">Any</span></h2>
+<p>The following can randomly trigger whenever the player casts any <a href="/wiki/spell" class="mw-redirect" title="spell">spell</a> that costs mana. The chance of the spell triggering depends on how much mana a spell costs compared to the player's base mana (spells cast under Channeling cannot re-trigger it):
+</p>
+<ul><li><a href="/wiki/File:channeling.png" class="image"><img alt="channeling.png" src="/images/f/f3/channeling.png" decoding="async" width="30" height="32" /></a> <b>Channeling</b>: You are channeling the mystic forces of the ever-after. Your next spell is powered up by 50%, and costs 1 MP.
+<ul><li>Direct damage and healing spells are 50% stronger.</li>
+<li><a href="/wiki/Spells#Deprecating_Magic" title="Spells">Deprecating</a> and <a href="/wiki/Spells#Supportive_Magic" title="Spells">supportive</a> spell effects (including Regen) last 50% longer.</li>
+<li>Offensive spells will always hit their target(s).</li>
+<li>Target(s) can still partially resist direct damage spells.</li>
+<li>Lasts 5 ticks (15 if triggered with a <a href="/wiki/Items#Battle_Powerups" title="Items">Mystic Gem</a>).</li></ul></li></ul>
+<p>The <b>estimated</b> chance to proc is:
+</p>
+<pre style="overflow: auto;">(spell cost) / (base mana * 1.2)</pre>
+<h2><span class="mw-headline" id="Unarmed">Unarmed</span></h2>
+<p>Since new players begin with no <a href="/wiki/weapon" class="mw-redirect" title="weapon">weapons</a>, this style was designed for them to be viable fighters until they can obtain and equip one. There are no procs and no <a href="/wiki/proficiencies" class="mw-redirect" title="proficiencies">proficiencies</a> related to this style.
+</p>
+<ul><li>Does Crushing damage.</li>
+<li>Has a native +10% attack accuracy.</li></ul>
+<h2><span class="mw-headline" id="One-Handed">One-Handed</span></h2>
+<p>If a player is using a single one-handed weapon (possibly in combination with a <a href="/wiki/Shield_(Equipment)" class="mw-redirect" title="Shield (Equipment)">shield</a>), they have the chance to proc:
+</p>
+<ul><li><a href="/wiki/File:overwhelming_strikes.png" class="image"><img alt="overwhelming strikes.png" src="/images/2/2e/overwhelming_strikes.png" decoding="async" width="30" height="32" /></a> <b>Overwhelming Strikes</b> after hitting an enemy
+<ul><li>Increases attack damage by 15% and attack accuracy by 50% for 4 ticks</li>
+<li>20% counter-parry chance per stack, 5 stacks at maximum (20% to ignore monster's successful parry per stack)</li>
+<li>Proc chance, in order of importance, is calculated from One-Handed <a href="/wiki/Proficiencies" title="Proficiencies">Proficiency</a>, Endurance, and Strength. It can be calculated with the following formula:</li></ul></li></ul>
+<pre style="overflow: auto;"><b>Overwhelming Strikes Chance</b> = 5 + (STR + END) * 0.01 + 1H / 20</pre>
+<ul><li>Proc chance is capped at 30%.</li></ul>
+<p>Another proc that can be triggered: a <b>Counter-Attack</b> on an enemy whose attack has been blocked or parried.
+</p>
+<ul><li>This is a normal attack with a chance to stun and cannot proc any other weapon effects. It is also affected by Overwhelming Strikes.</li>
+<li>A successful counter will add 5-10% of <a href="/wiki/Overcharge" title="Overcharge">Overcharge</a>, but only once per turn.</li>
+<li>The number of Counter-Attacks that can be performed each turn depends on proficiency.
+<ul><li>&lt;100 - one counter</li>
+<li>100-199 - two counters</li>
+<li>&gt;200 - three counters</li></ul></li>
+<li>Proc chance, in order of importance, is calculated from One-Handed Proficiency, Dexterity, and Strength. It can be calculated with the following formula:</li></ul>
+<pre style="overflow: auto;"><b>Counter-Attack Chance</b> = 25 + (STR + DEX) * 0.02 + 1H / 10</pre>
+<ul><li>Proc chance is capped at 75%.</li></ul>
+<h2><span class="mw-headline" id="Two-Handed">Two-Handed</span></h2>
+<p>Two-Handed weapons have a chance to proc <b>Domino Strikes</b> on hit, which will cause splash damage to nearby enemies. When Domino Strikes procs, it will hit at least one adjacent or one off enemy, and up to two enemies in either direction (a total number of 4 enemies splashed). Splash damage does not skip over dead enemies or wraps around. Splash damage targets have an unreduced chance to be affected by standard weapon procs like Bleeding Wounds. 
+</p>
+<ul><li>Domino Strike can reach up to 3 monsters away from the primary target at 100 proficiency (6 enemies splashed at maximum). Getting domino strike to proc on the second monster will automatically proc domino strike on the third monster.</li>
+<li>The damage of Domino Strike starts at 75%/60%/40%, increasing by one percentage point for every 10 points of proficiency, capping at 250 proficiency at 100%/85%/65%.</li>
+<li>Domino Strikes are not guaranteed hits, they can still miss. However, the next enemy in the line can still proc domino strike even if the target enemy miss. (unless it's the primary target, in which case no domino strike will proc)</li>
+<li>Domino Strikes can go around an adjacent dead monster if the player rolls a hit on a one off monster.</li>
+<li>Proc chance, in order of importance, is calculated from Two-Handed Proficiency, Strength, and Dexterity. It can be calculated with the following formula:</li></ul>
+<pre style="overflow: auto;"><b>Domino Strike Chance</b> = 40 + (STR + DEX) * 0.02 + 2H / 10</pre>
+<ul><li>Weapon drain effects (Vampire, Banshee, Illithid) and elemental strike effects can only proc on the primary target.</li>
+<li>Proc chance is capped at 90%.</li></ul>
+<h2><span class="mw-headline" id="Dual_Wielding">Dual Wielding</span></h2>
+<p>Equipping two one-handed weapons has a chance to proc an <b>Offhand Strike</b> on hit, which will cause an extra attack against the targeted enemy with the same damage type as the player's offhand weapon, this attack deals 50% of the player's <i>attack base damage</i>.
+</p>
+<ul><li>Equipped offhand's attack damage bonus is reduced by 20%</li>
+<li>Attack accuracy of the offhand weapon is not added to the base accuracy, instead half the offhand weapon's accuracy is added to the <i>Offhand Strike</i> proc chance.</li>
+<li>The offhand weapon also gets a 50% boost to its Parry.</li>
+<li><i>Offhand Strike</i> proc chance, in order of importance, is calculated from Dual Wielding Proficiency, Agility, and Dexterity. It can be calculated with the following formula:</li></ul>
+<pre style="overflow: auto;"><b>Offhand Strike Chance</b> = 50 + (DEX + AGI) * 0.01 + DW / 20 + Offhand_Accuracy / 2</pre>
+<ul><li>Proc chance is capped at 75% + half of the offhand weapon's attack accuracy, there is an upper limit of 100%.</li>
+<li><i>Offhand Strikes</i> will also trigger all <a href="/wiki/Equipment_Basics#Elemental_Strikes" title="Equipment Basics">elemental strikes</a> the offhand weapon has, with the damage taking a 50% penalty (10% of attack base damage).</li>
+<li><i>Offhand Strikes</i> have the chance to proc their own weapon proc.</li></ul>
+<p>Two weapons with different effect will have separate proc chance. If the two weapons have the same effect, the proc percentage numbers are combined just like accuracy. The number of ticks are a weighted average with the main hand being 3 times as important as the off hand, while the bleeding damage uses the higher damage from the two weapons.
+</p><p>Let X = the mainhand and Y = the offhand:
+</p>
+<pre style="overflow: auto;"><b>Proc Chance</b> = 1 - (1 - X)(1 - Y)
+<b>Proc Duration</b> = X * 0.75 + Y * 0.25</pre>
+<p>When a Dual Wield player uses <a href="/wiki/Skills" title="Skills">skill</a> <a href="/wiki/Skills#Weapon_Skills" title="Skills">Backstab</a> on a monster affected by <a href="/wiki/Spells#Deprecating_Spells" title="Spells">Blind</a>, the monster has a chance to be affected by Spreading Poison:
+</p>
+<ul><li><a href="/wiki/File:Abilities_Poison.png" class="image"><img alt="Abilities Poison.png" src="/images/6/63/Abilities_Poison.png" decoding="async" width="30" height="32" /></a> <b>Spreading Poison</b>: Poison courses through the target's veins. This causes a damage-over-time effect, and eliminates its evade chance.</li></ul>
+<h2><span class="mw-headline" id="Niten_Ichiryu"><a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Niten_Ichi-ry%C5%AB">Niten Ichiryu</a></span></h2>
+<p>A special Fighting Style that allows a Wakizashi to be equipped in the offhand with a Katana in the mainhand, bypassing the Katana's two-handed nature. While using Niten Ichiryu, both the Dual Wielding and Two-Handed proficiencies partially come into play.
+</p>
+<ul><li>Stat bonuses, bleeding wounds, and offhand strike chance work as they do with DW proficiency.</li>
+<li>Unlike DW, there is no parry bonus for the offhand weapon, and its attack damage bonus is reduced by 50%.</li>
+<li>The chance to proc domino strikes are the same as with Two-Handed proficiency. Niten does not gain bonus range or damage from proficiency, unlike 2H.</li>
+<li>When using this style players earn 50% 2H and 50% DW proficiency.</li></ul>
+<h2><span class="mw-headline" id="Staff">Staff</span></h2>
+<p>The default attack, Arcane Blow, is a physical attack that utilizes the player's physical and magical damage stats.
+</p>
+<pre style="overflow:auto;"><b>Arcane Blow Damage</b> = <a href="/wiki/Stats#Bases" class="mw-redirect" title="Stats">Physical Damage</a> + <a href="/wiki/Stats#Bases" class="mw-redirect" title="Stats">Magical Damage</a></pre>
+<p>If the player is wielding a staff, casting a <a href="/wiki/spell" class="mw-redirect" title="spell">spell</a> or using <a href="/wiki/Skills#Weapon_Skills" title="Skills">skill</a> Concussive Strike on an enemy has a chance to proc:
+</p>
+<ul><li><a href="/wiki/File:coalesced_mana.png" class="image"><img alt="coalesced mana.png" src="/images/2/24/coalesced_mana.png" decoding="async" width="30" height="32" /></a> <b>Coalesced Mana</b>: Mystical energies have converged on this target. Striking it with any magic spell will consume only half the normal mana cost (stacks with <a href="/wiki/Spirit_Stance" title="Spirit Stance">Spirit Stance</a>).
+<ul><li>Proc chance can be calculated with the following formula:</li></ul></li></ul>
+<pre style="overflow: auto;"><b>Coalesced Mana Chance</b> = 10 + (INT + WIS) * 0.01 + Staff / 20</pre>
+<ul><li>Proc chance is capped at 35%.</li>
+<li>Duration capped at 5 ticks.</li>
+<li>If Coalesced Mana is affecting an enemy, hitting it with Arcane Blow has a chance to proc:
+<ul><li><a href="/wiki/File:ether_tap.png" class="image"><img alt="ether tap.png" src="/images/4/48/ether_tap.png" decoding="async" width="30" height="32" /></a> <b>Ether Tap</b>: You are absorbing magicks from shattering the Coalesced Mana surrounding a target.
+<ul><li>Restores mana equal to 2% of the player's base MP per turn.
+<ul><li>The restoration effect can be stacked once for double amount of MP restored.</li></ul></li>
+<li>Proc chance is based on the staff used.</li>
+<li>Duration capped at 4 ticks.</li>
+<li>This removes the effects of Coalesced Mana from the target.</li>
+<li>A killing blow to a target that has Coalesced Mana with Arcane Blow will always trigger Ether Tap.</li></ul></li></ul></li></ul>
