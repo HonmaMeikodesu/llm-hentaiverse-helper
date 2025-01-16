@@ -3,7 +3,7 @@ import { Vital } from "./stats.js";
 
 export type VitalSigRep = Pick<Vital, "health" | "magic" | "spirit">
 
-export type MonsterVitalSigRep = `${keyof VitalSigRep}Percent`;
+export type MonsterVitalSigRep = `%${keyof VitalSigRep}Percent`;
 
 export type MonsterSigRep = {
     vital: {
@@ -14,7 +14,7 @@ export type MonsterSigRep = {
 
 export type PlayerSigRep = {
     vital: VitalSigRep & {
-        overcharge: number;
+        "%overcharge": number;
     };
     isInSpiritStance: boolean;
     effects: PlayerEffect[]

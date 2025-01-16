@@ -1,7 +1,4 @@
 export enum InnateSkill {
-    Attack = "attack",
-    Defend = "defend",
-    Focus = "focus",
     Flee = "flee",
     Scan = "scan",
 }

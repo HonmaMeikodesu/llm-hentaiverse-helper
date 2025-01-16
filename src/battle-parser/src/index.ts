@@ -1,15 +1,26 @@
 import { parseHTML } from "linkedom"
 import { MonsterStats, PlayerStats } from "../types/stats.js"
 import { MonsterSigRep, PlayerSigRep } from "../types/battle.js";
-import { DamageType, FightStyle, MagicDamageType, PhysicDamageType } from "../types/common.js";
+import { BattleAction, DamageType, FightStyle, MagicDamageType, PhysicDamageType } from "../types/common.js";
 import { findLast, lowerCase, merge, toNumber, trim } from "lodash";
 import { calcLevenshteinDistance } from "./utils.js";
-import { FightingStyleEffect, ItemEffect, MonsterEffect, PlayerEffect, SpellEffect, WeapoonSkillEffect } from "../types/effect.js";
-import { DeprecatingSpell, SupportiveSpell } from "../types/spell.js";
+import { FightingStyleEffect, ItemEffect, MonsterEffect, PlayerEffect, SpellEffect, WeaponSkillEffect } from "../types/effect.js";
+import { CodeSpell, DeprecatingSpell, DivineSpell, ElecSpell, FireSpell, ForbiddenSpell, Spell, SupportiveSpell, WindSpell } from "../types/spell.js";
+import { DualWieldingSkill, OneHandedWeaponSkill, Skill, SpecialSkill, StaffSkill, TwoHandedWeaponSkill } from "../types/skill.js";
+import { BattleToolkit, InfusionSlotItem, PowerupSlotItem, RestorativeSlotItem, ScrollSlotItem } from "../types/item.js";
 
 export type BattleSigRep = {
     player: PlayerSigRep;
     monsters: Array<MonsterSigRep & Pick<MonsterStats, "name">>;
+    availableAction: {
+        [BattleAction.ATTACK]: "attack",
+        [BattleAction.DEFEND]: "defend",
+        [BattleAction.FOCUS]: "focus",
+        [BattleAction.SPIRIT]: "spirit",
+        [BattleAction.ITEMS]: BattleToolkit[],
+        [BattleAction.SKILL]: Skill[],
+        [BattleAction.SPELL]: Spell[]
+    }
     battleLogs: string[]
 }
 
@@ -79,98 +90,98 @@ export class BattleParser {
             },
             fightStyle: {
                 type: pickNearestEnumValueForTarget(FightStyle, list.find(item => item.textContent === "Fighting Style")?.nextSibling?.textContent!),
-                overwhelmingStrikesOnHitChance: toNumber(list.find(item => item.textContent === "% Overwhelming Strikes on hit")?.previousSibling?.textContent) / 100,
-                counterAttackOnBlockOrParryChance: toNumber(list.find(item => item.textContent === "% Counter-Attack on block/parry")?.previousSibling?.textContent) / 100
+                "%overwhelmingStrikesOnHitChance": toNumber(list.find(item => item.textContent === "% Overwhelming Strikes on hit")?.previousSibling?.textContent),
+                "%counterAttackOnBlockOrParryChance": toNumber(list.find(item => item.textContent === "% Counter-Attack on block/parry")?.previousSibling?.textContent),
             },
             psychicAttack: {
                 type: "physical",
                 baseDamage: toNumber(list.find(item => item.textContent === "attack base damage")?.previousSibling?.textContent),
-                hitChance: toNumber(list.find(item => item.textContent === "% hit chance")?.previousSibling?.textContent) / 100,
-                critChance: toNumber(list.find(item => item.textContent === "% crit chance / +50 % damage")?.previousSibling?.textContent) / 100,
-                attackSpeedBonus: toNumber(list.find(item => item.textContent === "% attack speed bonus")?.previousSibling?.textContent) / 100,
+                "%hitChance": toNumber(list.find(item => item.textContent === "% hit chance")?.previousSibling?.textContent),
+                "%critChance": toNumber(list.find(item => item.textContent === "% crit chance / +50 % damage")?.previousSibling?.textContent),
+                "%attackSpeedBonus": toNumber(list.find(item => item.textContent === "% attack speed bonus")?.previousSibling?.textContent),
             },
             magicalAttack: {
                 type: "magical",
                 baseDamage: toNumber(list.find(item => item.textContent === "magic base damage")?.previousSibling?.textContent),
-                hitChance: toNumber(findLast(list, item => item.textContent === "% hit chance")?.previousSibling?.textContent) / 100,
-                critChance: toNumber(findLast(list, item => item.textContent === "% crit chance / +50 % damage")?.previousSibling?.textContent) / 100,
-                manaCostModifier: toNumber(list.find(item => item.textContent === "% mana cost modifier")?.previousSibling?.textContent) / 100,
-                castSpeedBonus: toNumber(list.find(item => item.textContent === "% cast speed bonus")?.previousSibling?.textContent) / 100
+                "%hitChance": toNumber(findLast(list, item => item.textContent === "% hit chance")?.previousSibling?.textContent),
+                "%critChance": toNumber(findLast(list, item => item.textContent === "% crit chance / +50 % damage")?.previousSibling?.textContent),
+                "%manaCostModifier": toNumber(list.find(item => item.textContent === "% mana cost modifier")?.previousSibling?.textContent),
+                "%castSpeedBonus": toNumber(list.find(item => item.textContent === "% cast speed bonus")?.previousSibling?.textContent)
             },
             defense: {
-                physicalMitigationPercent: toNumber(list.find(item => item.textContent === "% physical mitigation")?.previousSibling?.textContent) / 100,
-                magicalMitigationPercent: toNumber(list.find(item => item.textContent === "% magical mitigation")?.previousSibling?.textContent) / 100,
-                evadeChance: toNumber(list.find(item => item.textContent === "% evade chance")?.previousSibling?.textContent) / 100,
-                blockChance: toNumber(list.find(item => item.textContent === "% block chance")?.previousSibling?.textContent) / 100,
-                parryChance: toNumber(list.find(item => item.textContent === "% parry chance")?.previousSibling?.textContent) / 100,
-                resistChance: toNumber(list.find(item => item.textContent === "% resist chance")?.previousSibling?.textContent) / 100
+                "%physicalMitigationPercent": toNumber(list.find(item => item.textContent === "% physical mitigation")?.previousSibling?.textContent),
+                "%magicalMitigationPercent": toNumber(list.find(item => item.textContent === "% magical mitigation")?.previousSibling?.textContent),
+                "%evadeChance": toNumber(list.find(item => item.textContent === "% evade chance")?.previousSibling?.textContent),
+                "%blockChance": toNumber(list.find(item => item.textContent === "% block chance")?.previousSibling?.textContent),
+                "%parryChance": toNumber(list.find(item => item.textContent === "% parry chance")?.previousSibling?.textContent),
+                "%resistChance": toNumber(list.find(item => item.textContent === "% resist chance")?.previousSibling?.textContent)
             },
             specificMitigation: [
                 {
                     damageType: MagicDamageType.Fire,
-                    percent: toNumber(list.find(item => item.textContent === "% fire")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% fire")?.previousSibling?.textContent) ,
                 },
                 {
                     damageType: MagicDamageType.Cold,
-                    percent: toNumber(list.find(item => item.textContent === "% cold")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% cold")?.previousSibling?.textContent) ,
                 },
                 {
                     damageType: MagicDamageType.Elec,
-                    percent: toNumber(list.find(item => item.textContent === "% elec")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% elec")?.previousSibling?.textContent) ,
                 },               
                 {
                     damageType: MagicDamageType.Wind,
-                    percent: toNumber(list.find(item => item.textContent === "% wind")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% wind")?.previousSibling?.textContent) ,
                 },
                 {
                     damageType: MagicDamageType.Holy,
-                    percent: toNumber(list.find(item => item.textContent === "% holy")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% holy")?.previousSibling?.textContent) ,
                 },
                 {
                     damageType: MagicDamageType.Dark,
-                    percent: toNumber(list.find(item => item.textContent === "% dark")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% dark")?.previousSibling?.textContent) ,
                 },               
                 {
                     damageType: PhysicDamageType.Crushing,
-                    percent: toNumber(list.find(item => item.textContent === "% crushing")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% crushing")?.previousSibling?.textContent) ,
                 },
                 {
                     damageType: PhysicDamageType.Slashing,
-                    percent: toNumber(list.find(item => item.textContent === "% slashing")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% slashing")?.previousSibling?.textContent) ,
                 },
                 {
                     damageType: PhysicDamageType.Piercing,
-                    percent: toNumber(list.find(item => item.textContent === "% piercing")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% piercing")?.previousSibling?.textContent) ,
                 },
                 {
                     damageType: PhysicDamageType.Void,
-                    percent: toNumber(list.find(item => item.textContent === "% void")?.previousSibling?.textContent) / 100,
+                    "%percent": toNumber(list.find(item => item.textContent === "% void")?.previousSibling?.textContent) ,
                 }
             ],
             magicDamageSpellBonus: [
                 {
                     type: MagicDamageType.Fire,
-                    bonusPercent: toNumber(findLast(list, item => item.textContent === "% fire")?.previousSibling?.textContent) / 100,
+                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% fire")?.previousSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Cold,
-                    bonusPercent: toNumber(findLast(list, item => item.textContent === "% cold")?.previousSibling?.textContent) / 100,
+                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% cold")?.previousSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Elec,
-                    bonusPercent: toNumber(findLast(list, item => item.textContent === "% elec")?.previousSibling?.textContent) / 100,
+                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% elec")?.previousSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Wind,
-                    bonusPercent: toNumber(findLast(list, item => item.textContent === "% wind")?.previousSibling?.textContent) / 100,
+                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% wind")?.previousSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Holy,
-                    bonusPercent: toNumber(findLast(list, item => item.textContent === "% holy")?.previousSibling?.textContent) / 100,
+                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% holy")?.previousSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Dark,
-                    bonusPercent: toNumber(findLast(list, item => item.textContent === "% dark")?.previousSibling?.textContent) / 100,
+                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% dark")?.previousSibling?.textContent) ,
                 }
             ]
         }
@@ -191,7 +202,7 @@ export class BattleParser {
                 health: toNumber(q("#vrhb")?.textContent),
                 magic: toNumber(q("#vrm")?.textContent),
                 spirit: toNumber(q("#vrs")?.textContent),
-                overcharge: toNumber(q<HTMLDivElement>("#vcp div")?.style?.width?.match(/\d+/)![0]) / 19
+                "%overcharge": toNumber(q<HTMLDivElement>("#vcp div")?.style?.width?.match(/\d+/)![0]) / 190 * 250
             },
             isInSpiritStance: !!q<HTMLImageElement>("#ckey_spirit")?.src?.includes("spirit_a"),
             effects: [ ...qa<HTMLImageElement>("#pane_effects img") ].map((img) => {
@@ -204,12 +215,12 @@ export class BattleParser {
             return {
                 name: div.querySelector("#btm3m div div")!.textContent || "",
                 vital: {
-                    healthPercent: toNumber(div.querySelector<HTMLImageElement>("img[alt='health']")?.style?.width.match(/\d+/)![0]) / 120,
-                    magicPercent: toNumber(div.querySelector<HTMLImageElement>("img[alt='magic']")?.style?.width.match(/\d+/)![0]) / 120,
-                    spiritPercent: toNumber(div.querySelector<HTMLImageElement>("img[alt='spirit']")?.style?.width.match(/\d+/)![0]) / 120,
+                    "%healthPercent": toNumber(div.querySelector<HTMLImageElement>("img[alt='health']")?.style?.width.match(/\d+/)![0]) / 120,
+                    "%magicPercent": toNumber(div.querySelector<HTMLImageElement>("img[alt='magic']")?.style?.width.match(/\d+/)![0]) / 120,
+                    "%spiritPercent": toNumber(div.querySelector<HTMLImageElement>("img[alt='spirit']")?.style?.width.match(/\d+/)![0]) / 120,
                 },
             effects: [ ...qa<HTMLImageElement>("#pane_monster .btm6 img") ].map((img) => {
-                const effect: MonsterEffect = pickNearestEnumValueForTarget(merge(SpellEffect, WeapoonSkillEffect, FightingStyleEffect, DeprecatingSpell ), img.attributes.getNamedItem("onmouseover")!.textContent!.match(/set_infopane_effect\('(.*?)'/)![1]);
+                const effect: MonsterEffect = pickNearestEnumValueForTarget(merge(SpellEffect, WeaponSkillEffect, FightingStyleEffect, DeprecatingSpell ), img.attributes.getNamedItem("onmouseover")!.textContent!.match(/set_infopane_effect\('(.*?)'/)![1]);
                 return effect;
             })
             }
@@ -218,16 +229,28 @@ export class BattleParser {
         return {
             player: playerSigRep,
             monsters: monsterSigReps,
-            battleLogs: [...qa<HTMLTableRowElement>("#textlog tr")].map(td => td.textContent!.trim())
+            battleLogs: [...qa<HTMLTableRowElement>("#textlog tr")].map(td => td.textContent!.trim()),
+            availableAction: {
+                [BattleAction.ATTACK]: "attack",
+                [BattleAction.DEFEND]: "defend",
+                [BattleAction.FOCUS]: "focus",
+                [BattleAction.SPIRIT]: "spirit",
+                [BattleAction.SKILL]: await this.getAvailabelSkills(document),
+                [BattleAction.SPELL]: await this.getAvailabelSpells(document),
+                [BattleAction.ITEMS]: await this.getAvailabelItems(document)
+            }
         }
     }
 
-    async getAvailabelSkills() {
+    async getAvailabelSkills(battleDOM: Document) {
+        return [...battleDOM.querySelectorAll<HTMLDivElement>("#table_skills .btsd")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<Skill>(merge(OneHandedWeaponSkill, TwoHandedWeaponSkill, DualWieldingSkill, StaffSkill, SpecialSkill), item.textContent!));
     }
 
-    async getAvailabelSpells() {
+    async getAvailabelSpells(battleDOM: Document) {
+        return [...battleDOM.querySelectorAll<HTMLDivElement>("#table_magic .btsd")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<Spell>(merge(FireSpell, CodeSpell, ElecSpell, WindSpell, DivineSpell, ForbiddenSpell, DeprecatingSpell, SupportiveSpell), item.textContent!));
     }
 
-    async getAvailabelItems() {
+    async getAvailabelItems(battleDOM: Document) {
+        return [...battleDOM.querySelectorAll<HTMLDivElement>("#pane_item .bti3")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<BattleToolkit>(merge(PowerupSlotItem, RestorativeSlotItem, InfusionSlotItem, ScrollSlotItem), item.textContent!));
     }
 }

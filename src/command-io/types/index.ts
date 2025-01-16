@@ -18,13 +18,3 @@ type BattleResponse = {
     healthflash: boolean;
     exp: number
 }
-
-export enum BattleAction {
-    ATTACK = "attack",
-    SKILL = "skill",
-    SPELL = "spell",
-    ITEMS = "items",
-    SPIRIT = "spirit",
-    DEFEND = "defend",
-    FOCUS = "focus"
-}

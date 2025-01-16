@@ -37,4 +37,12 @@ export enum SpellStyle {
 
 export type DamageType = MagicDamageType | PhysicDamageType;
 
-
+export enum BattleAction {
+    ATTACK = "attack",
+    SKILL = "skill",
+    SPELL = "spell",
+    ITEMS = "items",
+    SPIRIT = "spirit",
+    DEFEND = "defend",
+    FOCUS = "focus"
+}

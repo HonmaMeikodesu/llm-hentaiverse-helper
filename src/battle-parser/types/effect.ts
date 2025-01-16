@@ -16,7 +16,7 @@ export enum SpellEffect {
     SpiritTheft = "spirit theft"
 }
 
-export enum WeapoonSkillEffect {
+export enum WeaponSkillEffect {
     PenetratedArmor = "penetrated armor",
     BleedingWound = "bleeding wound",
     Stunned = "stunned"
@@ -53,4 +53,4 @@ export enum ItemEffect {
 
 export type PlayerEffect = ItemEffect | FightingStyleEffect.Channeling | FightingStyleEffect.OverwhelmingStrikes | SupportiveSpell;
 
-export type MonsterEffect = SpellEffect | WeapoonSkillEffect | FightingStyleEffect.CoalescedMana | FightingStyleEffect.EtherTap | DeprecatingSpell;
+export type MonsterEffect = SpellEffect | WeaponSkillEffect | FightingStyleEffect.CoalescedMana | FightingStyleEffect.EtherTap | DeprecatingSpell;

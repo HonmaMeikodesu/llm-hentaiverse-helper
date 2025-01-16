@@ -10,8 +10,8 @@ export type Vital = {
 
 export type FightStyleStats = {
     type: FightStyle;
-    overwhelmingStrikesOnHitChance?: number;
-    counterAttackOnBlockOrParryChance?: number
+    "%overwhelmingStrikesOnHitChance"?: number;
+    "%counterAttackOnBlockOrParryChance"?: number
 }
 
 export type EffectivePrimaryStats = {
@@ -31,39 +31,39 @@ export type EffectiveProficiency = {
 export type PhysicAttack = {
     type: "physical",
     baseDamage: number;
-    hitChance: number;
-    critChance: number;
-    attackSpeedBonus: number
+    "%hitChance": number;
+    "%critChance": number;
+    "%attackSpeedBonus": number
 }
 
 export type MagicalAttack = {
     type: "magical",
     baseDamage: number;
-    hitChance: number;
-    critChance: number;
-    manaCostModifier: number
-    castSpeedBonus: number
+    "%hitChance": number;
+    "%critChance": number;
+    "%manaCostModifier": number
+    "%castSpeedBonus": number
 }
 
 export type Attack = PhysicAttack | MagicalAttack
 
 export type Defense = {
-    physicalMitigationPercent: number;
-    magicalMitigationPercent: number;
-    evadeChance: number;
-    blockChance: number;
-    parryChance: number;
-    resistChance: number
+    "%physicalMitigationPercent": number;
+    "%magicalMitigationPercent": number;
+    "%evadeChance": number;
+    "%blockChance": number;
+    "%parryChance": number;
+    "%resistChance": number
 }
 
 export type SpecificMitigation = {
     damageType: DamageType;
-    percent: number
+    "%percent": number
 }
 
 export type MagicDamageSpellBonus = {
     type: MagicDamageType
-    bonusPercent: number
+    "%bonusPercent": number
 }
 
 export type PlayerStats = {
