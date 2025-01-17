@@ -1,4 +1,14 @@
-export function buildRoundStartPrompt() {
-    return `A new round is starting! A new group of monsters has been spawned. Below is 
+import { MonsterStats } from "../../../battle-parser/types/stats.js";
+
+export function buildRoundStartPrompt(monstersStats: MonsterStats[]) {
+    return `**A new round is starting**
+New monsters spawned, heads up! Below is the new monsters stats report:
+${JSON.stringify(monstersStats, null, 2)}
+`
+}
+
+export function buildRoundEndPrompt(hasNextRound: boolean) {
+    return `All monsters of current round have been neutralized, good job!
+${hasNextRound ? "Prepare yourself for next round and new enemies!" : "No more rounds are left!"}
 `
 }
