@@ -21,8 +21,6 @@ async function testFirstTurn() {
 
     const monstersStats = await Promise.all(battleSigRep.monsters.map(monster => battleParser.getMonsterStats({ name: monster.name }))) as MonsterStats[];
 
-    debugger;
-
     await pipeline.step({
         type: State.ROUND_BEGIN,
         payload: {

@@ -6,7 +6,7 @@ import { findLast, isUndefined, lowerCase, merge, toNumber, trim } from "lodash"
 import { closest } from "fastest-levenshtein";
 import { FightingStyleEffect, ItemEffect, MonsterEffect, PlayerEffect, SpellEffect, WeaponSkillEffect } from "../types/effect.js";
 import { CodeSpell, DeprecatingSpell, DivineSpell, ElecSpell, FireSpell, ForbiddenSpell, Spell, SupportiveSpell, WindSpell } from "../types/spell.js";
-import { DualWieldingSkill, OneHandedWeaponSkill, Skill, SpecialSkill, StaffSkill, TwoHandedWeaponSkill } from "../types/skill.js";
+import { DualWieldingSkill, InnateSkill, OneHandedWeaponSkill, Skill, SpecialSkill, StaffSkill, TwoHandedWeaponSkill } from "../types/skill.js";
 import { BattleToolkit, InfusionSlotItem, PowerupSlotItem, RestorativeSlotItem, ScrollSlotItem } from "../types/item.js";
 
 export type BattleSigRep = {
@@ -92,8 +92,8 @@ export default class BattleParser {
 
         return {
             vitalRegenRate: {
-                magicRegenPerTick: toNumber(list.find(item => item.textContent = "magic regen per tick")?.previousSibling?.textContent),
-                spiritRegenPerTick: toNumber(list.find(item => item.textContent = "spirit regen per tick")?.previousSibling?.textContent),
+                magicRegenPerTick: toNumber(list.find(item => item.textContent === "magic regen per tick")?.previousSibling?.textContent),
+                spiritRegenPerTick: toNumber(list.find(item => item.textContent === "spirit regen per tick")?.previousSibling?.textContent),
             },
             fightStyle: {
                 type: pickNearestEnumValueForTarget(FightStyle, list.find(item => item.textContent === "Fighting Style")?.nextSibling?.textContent!),
@@ -199,6 +199,7 @@ export default class BattleParser {
         if (isUndefined(this.monsterDatas)) {
             await this.initMonsterDatabase();
         }
+        // TODO what if monster data is not found?
         return this.monsterDatas.find(monster => id && name ? id === monster.id && name === monster.name : id ? id === monster.id : name === monster.name);
     }
 
@@ -214,7 +215,7 @@ export default class BattleParser {
                 health: toNumber(q("#vrhb")?.textContent),
                 magic: toNumber(q("#vrm")?.textContent),
                 spirit: toNumber(q("#vrs")?.textContent),
-                "%overcharge": toNumber(q<HTMLDivElement>("#vcp div")?.style?.width?.match(/\d+/)![0]) / 190 * 250
+                "%overcharge": Math.round(toNumber(q<HTMLDivElement>("#vcp div")?.style?.width?.match(/\d+/)![0] || 0) / 190 * 250) 
             },
             isInSpiritStance: !!q<HTMLImageElement>("#ckey_spirit")?.src?.includes("spirit_a"),
             effects: [ ...qa<HTMLImageElement>("#pane_effects img") ].map((img) => {
@@ -227,9 +228,9 @@ export default class BattleParser {
             return {
                 name: div.querySelector(".btm3 div div")!.textContent || "",
                 vital: {
-                    "%healthPercent": toNumber(div.querySelector<HTMLImageElement>("img[alt='health']")?.style?.width.match(/\d+/)![0]) / 120,
-                    "%magicPercent": toNumber(div.querySelector<HTMLImageElement>("img[alt='magic']")?.style?.width.match(/\d+/)![0]) / 120,
-                    "%spiritPercent": toNumber(div.querySelector<HTMLImageElement>("img[alt='spirit']")?.style?.width.match(/\d+/)![0]) / 120,
+                    "%healthPercent": Math.round(toNumber(div.querySelector<HTMLImageElement>("img[alt='health']")?.style?.width.match(/\d+/)![0]) / 120 * 100),
+                    "%magicPercent": Math.round(toNumber(div.querySelector<HTMLImageElement>("img[alt='magic']")?.style?.width.match(/\d+/)![0]) / 120 * 100),
+                    "%spiritPercent": Math.round(toNumber(div.querySelector<HTMLImageElement>("img[alt='spirit']")?.style?.width.match(/\d+/)![0]) / 120 * 100)
                 },
                 rankIndex: toNumber(div.getAttribute("onclick")!.match(/battle.commit_target\((\d+)\)/)![1]),
                 effects: [...qa<HTMLImageElement>("#pane_monster .btm6 img")].map((img) => {
@@ -256,7 +257,7 @@ export default class BattleParser {
     }
 
     async getAvailabelSkills() {
-        return [...this.battlePage.document.querySelectorAll<HTMLDivElement>("#table_skills .btsd")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<Skill>(merge(OneHandedWeaponSkill, TwoHandedWeaponSkill, DualWieldingSkill, StaffSkill, SpecialSkill), item.textContent!));
+        return [...this.battlePage.document.querySelectorAll<HTMLDivElement>("#table_skills .btsd")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<Skill>(merge(InnateSkill, OneHandedWeaponSkill, TwoHandedWeaponSkill, DualWieldingSkill, StaffSkill, SpecialSkill), item.textContent!));
     }
 
     async getAvailabelSpells() {
