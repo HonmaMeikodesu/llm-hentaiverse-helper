@@ -85,10 +85,10 @@ export default class CommandPipeline {
         const { systemInit, roleInit } = initPromopt();
 
         this.systemInitContext = [
-            {
+            ...Object.values(systemInit).map(init => ({
                 role: "system",
-                content: systemInit
-            },
+                content: init
+            })) as OpenAI.Chat.Completions.ChatCompletionMessageParam[],
             {
                 role: "user",
                 content: roleInit

@@ -11,11 +11,7 @@ declare global {
 
 async function fetchBattleSigRep() {
 
-    const battleParser = new BattleParser({
-        initBattlePageContent: document.documentElement.innerHTML
-    });
 
-    return battleParser;
 }
 
 async function sendCommandToServer(command: BattleCommand) {

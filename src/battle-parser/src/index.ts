@@ -31,8 +31,9 @@ function pickNearestEnumValueForTarget<T>(e: Object, target: string): T {
 
 export default class BattleParser {
 
-    constructor(params: {initBattlePageContent: string}) {
+    constructor(params: {initBattlePageContent: string; initStatusPageContent: string}) {
         this.setBattlePage(params.initBattlePageContent);
+        this.setStatusPage(params.initStatusPageContent);
         this.initMonsterDatabase();
     }
 
@@ -40,12 +41,22 @@ export default class BattleParser {
 
     private battlePage: Window;
 
+    private statusPage: Window;
+
     setBattlePage(battlePageContent: string) {
         this.battlePage = parseHTML(battlePageContent);
     }
 
+    setStatusPage(statusPageContent: string) {
+        this.statusPage = parseHTML(statusPageContent);
+    }
+
     getBattlePage() {
         return this.battlePage;
+    }
+
+    getStatusPage() {
+        return this.statusPage;
     }
 
     async initMonsterDatabase() {
@@ -86,109 +97,109 @@ export default class BattleParser {
     }
 
     async getPlayerStats(): Promise<PlayerStats> {
-        const { document } = this.battlePage;
+        const { document } = this.statusPage;
 
         const list = [ ...document.querySelectorAll(".fc2.fal.fcb") ];
 
         return {
             vitalRegenRate: {
-                magicRegenPerTick: toNumber(list.find(item => item.textContent === "magic regen per tick")?.previousSibling?.textContent),
-                spiritRegenPerTick: toNumber(list.find(item => item.textContent === "spirit regen per tick")?.previousSibling?.textContent),
+                magicRegenPerTick: toNumber(( list.find(item => item.textContent!.trim() === "magic regen per tick")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                spiritRegenPerTick: toNumber(( list.find(item => item.textContent!.trim() === "spirit regen per tick")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
             },
             fightStyle: {
-                type: pickNearestEnumValueForTarget(FightStyle, list.find(item => item.textContent === "Fighting Style")?.nextSibling?.textContent!),
-                "%overwhelmingStrikesOnHitChance": toNumber(list.find(item => item.textContent === "% Overwhelming Strikes on hit")?.previousSibling?.textContent),
-                "%counterAttackOnBlockOrParryChance": toNumber(list.find(item => item.textContent === "% Counter-Attack on block/parry")?.previousSibling?.textContent),
+                type: pickNearestEnumValueForTarget(FightStyle, ( list.find(item => item.textContent!.trim() === "Fighting Style")?.parentNode as HTMLDivElement )?.nextElementSibling?.textContent!),
+                "%overwhelmingStrikesOnHitChance": toNumber(( list.find(item => item.textContent!.trim() === "% Overwhelming Strikes on hit")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%counterAttackOnBlockOrParryChance": toNumber(( list.find(item => item.textContent!.trim() === "% Counter-Attack on block/parry")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
             },
             psychicAttack: {
                 type: "physical",
-                baseDamage: toNumber(list.find(item => item.textContent === "attack base damage")?.previousSibling?.textContent),
-                "%hitChance": toNumber(list.find(item => item.textContent === "% hit chance")?.previousSibling?.textContent),
-                "%critChance": toNumber(list.find(item => item.textContent === "% crit chance / +50 % damage")?.previousSibling?.textContent),
-                "%attackSpeedBonus": toNumber(list.find(item => item.textContent === "% attack speed bonus")?.previousSibling?.textContent),
+                baseDamage: toNumber(( list.find(item => item.textContent!.trim() === "attack base damage")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%hitChance": toNumber(( list.find(item => item.textContent!.trim() === "% hit chance")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%critChance": toNumber(( list.find(item => item.textContent!.trim() === "% crit chance / +50 % damage")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%attackSpeedBonus": toNumber(( list.find(item => item.textContent!.trim() === "% attack speed bonus")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
             },
             magicalAttack: {
                 type: "magical",
-                baseDamage: toNumber(list.find(item => item.textContent === "magic base damage")?.previousSibling?.textContent),
-                "%hitChance": toNumber(findLast(list, item => item.textContent === "% hit chance")?.previousSibling?.textContent),
-                "%critChance": toNumber(findLast(list, item => item.textContent === "% crit chance / +50 % damage")?.previousSibling?.textContent),
-                "%manaCostModifier": toNumber(list.find(item => item.textContent === "% mana cost modifier")?.previousSibling?.textContent),
-                "%castSpeedBonus": toNumber(list.find(item => item.textContent === "% cast speed bonus")?.previousSibling?.textContent)
+                baseDamage: toNumber(( list.find(item => item.textContent!.trim() === "magic base damage")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%hitChance": toNumber(( findLast(list, item => item.textContent!.trim() === "% hit chance")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%critChance": toNumber(( findLast(list, item => item.textContent!.trim() === "% crit chance / +50 % damage")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%manaCostModifier": toNumber(( list.find(item => item.textContent!.trim() === "% mana cost modifier")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%castSpeedBonus": toNumber(( list.find(item => item.textContent!.trim() === "% cast speed bonus")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent)
             },
             defense: {
-                "%physicalMitigationPercent": toNumber(list.find(item => item.textContent === "% physical mitigation")?.previousSibling?.textContent),
-                "%magicalMitigationPercent": toNumber(list.find(item => item.textContent === "% magical mitigation")?.previousSibling?.textContent),
-                "%evadeChance": toNumber(list.find(item => item.textContent === "% evade chance")?.previousSibling?.textContent),
-                "%blockChance": toNumber(list.find(item => item.textContent === "% block chance")?.previousSibling?.textContent),
-                "%parryChance": toNumber(list.find(item => item.textContent === "% parry chance")?.previousSibling?.textContent),
-                "%resistChance": toNumber(list.find(item => item.textContent === "% resist chance")?.previousSibling?.textContent)
+                "%physicalMitigationPercent": toNumber(( list.find(item => item.textContent!.trim() === "% physical mitigation")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%magicalMitigationPercent": toNumber(( list.find(item => item.textContent!.trim() === "% magical mitigation")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%evadeChance": toNumber(( list.find(item => item.textContent!.trim() === "% evade chance")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%blockChance": toNumber(( list.find(item => item.textContent!.trim() === "% block chance")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%parryChance": toNumber(( list.find(item => item.textContent!.trim() === "% parry chance")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent),
+                "%resistChance": toNumber(( list.find(item => item.textContent!.trim() === "% resist chance")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent)
             },
             specificMitigation: [
                 {
                     damageType: MagicDamageType.Fire,
-                    "%percent": toNumber(list.find(item => item.textContent === "% fire")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% fire")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     damageType: MagicDamageType.Cold,
-                    "%percent": toNumber(list.find(item => item.textContent === "% cold")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% cold")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     damageType: MagicDamageType.Elec,
-                    "%percent": toNumber(list.find(item => item.textContent === "% elec")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% elec")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },               
                 {
                     damageType: MagicDamageType.Wind,
-                    "%percent": toNumber(list.find(item => item.textContent === "% wind")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% wind")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     damageType: MagicDamageType.Holy,
-                    "%percent": toNumber(list.find(item => item.textContent === "% holy")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% holy")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     damageType: MagicDamageType.Dark,
-                    "%percent": toNumber(list.find(item => item.textContent === "% dark")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% dark")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },               
                 {
                     damageType: PhysicDamageType.Crushing,
-                    "%percent": toNumber(list.find(item => item.textContent === "% crushing")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% crushing")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     damageType: PhysicDamageType.Slashing,
-                    "%percent": toNumber(list.find(item => item.textContent === "% slashing")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% slashing")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     damageType: PhysicDamageType.Piercing,
-                    "%percent": toNumber(list.find(item => item.textContent === "% piercing")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% piercing")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     damageType: PhysicDamageType.Void,
-                    "%percent": toNumber(list.find(item => item.textContent === "% void")?.previousSibling?.textContent) ,
+                    "%percent": toNumber(( list.find(item => item.textContent!.trim() === "% void")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 }
             ],
             magicDamageSpellBonus: [
                 {
                     type: MagicDamageType.Fire,
-                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% fire")?.previousSibling?.textContent) ,
+                    "%bonusPercent": toNumber(( findLast(list, item => item.textContent!.trim() === "% fire")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Cold,
-                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% cold")?.previousSibling?.textContent) ,
+                    "%bonusPercent": toNumber(( findLast(list, item => item.textContent!.trim() === "% cold")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Elec,
-                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% elec")?.previousSibling?.textContent) ,
+                    "%bonusPercent": toNumber(( findLast(list, item => item.textContent!.trim() === "% elec")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Wind,
-                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% wind")?.previousSibling?.textContent) ,
+                    "%bonusPercent": toNumber(( findLast(list, item => item.textContent!.trim() === "% wind")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Holy,
-                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% holy")?.previousSibling?.textContent) ,
+                    "%bonusPercent": toNumber(( findLast(list, item => item.textContent!.trim() === "% holy")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 },
                 {
                     type: MagicDamageType.Dark,
-                    "%bonusPercent": toNumber(findLast(list, item => item.textContent === "% dark")?.previousSibling?.textContent) ,
+                    "%bonusPercent": toNumber(( findLast(list, item => item.textContent!.trim() === "% dark")?.parentNode as HTMLDivElement )?.previousElementSibling?.textContent) ,
                 }
             ]
         }

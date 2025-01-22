@@ -7,11 +7,6 @@ async function startBattle() {
 
 async function fetchBattleSigRep() {
 
-    const battleParser = new BattleParser({
-        initBattlePageContent: await ( await fetch("https://hentaiverse.org/?s=Battle") ).text()
-    });
-
-    return battleParser;
 }
 
 async function sendCommandToServer(command: BattleCommand) {

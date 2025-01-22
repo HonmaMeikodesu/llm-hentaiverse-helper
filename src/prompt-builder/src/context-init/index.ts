@@ -257,6 +257,7 @@ ${BattleAction.SPELL}: persist ${[SupportiveSpell.Protection, SupportiveSpell.He
 
 export const interactionPromptBuilder = () => `For every battle, after being provided a player stats report, you will be requested to analyze the overall stats of current player, like how much pyshical and magical damages player can deal, how much defense, how much mitigation to specific types of spell it is against enemies, is current player tend to be warrior or wizard and what is his fight style.
 For each round, after being provided a monsters stats, you will be requested to analyze the overall stats of all monsters in this round, like what type of attack each monster deals, what type of attack could be its weak point and mitigation.
+For each turn, DO NOT just jump to a conclusion. Give a brief analyze and reason process first, then output the action you want to perform in designated format at last.
 `
 
 export const evaluatePromptBuilder = () => `Before the game starts, i need you to evaluate first, from 0 to 10, how would you grade the system init prompts above? what critical information do you find missing?`
@@ -265,10 +266,11 @@ export const roleInitPromptBuilder = () => `Now you are about to play the game, 
 
 export default function initPromopt() {
     return {
-        systemInit: `${systemInitPromptBuilder()}
-${fightStyleInitPromptBuilder()}
-${interactionPromptBuilder()}
-`,
+        systemInit: {
+            backrgound: systemInitPromptBuilder(),
+            fightStyle: fightStyleInitPromptBuilder(),
+            interaction: interactionPromptBuilder()
+        },
         roleInit: roleInitPromptBuilder(),
         evaluate: evaluatePromptBuilder()
     }

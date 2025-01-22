@@ -18,14 +18,13 @@ export default class LLMClient {
     }
 
     async invoke(msgs: OpenAI.ChatCompletionMessageParam[]) {
+        debugger;
         const completion = await this.openai.chat.completions.create({
             model: "qwen-plus",
             messages: msgs,
         });
 
         this.collectLogs({ msgs, usage: completion.usage!, created: completion.created! });
-
-        debugger;
 
         return completion.choices[0].message!;
     }

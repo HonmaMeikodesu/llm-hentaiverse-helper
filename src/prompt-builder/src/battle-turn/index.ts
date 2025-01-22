@@ -82,6 +82,6 @@ ${JSON.stringify(focustDemo, null, 2)}
 export function buildTurnPrompt(battleSigRep: BattleSigRep) {
     return `It is now your turn to move! Below is the battle report:
 ${JSON.stringify(battleSigRep, null, 2)}
-Please respond with the action you decide to perform in the specific JSON format designated at system prompt.
+Please respond with an analyze and reason process as requested in system prompt, then put the action you decide to perform in the specific JSON format designated at system prompt at the end of your response.
 `
 }
