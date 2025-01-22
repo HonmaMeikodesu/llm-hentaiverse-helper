@@ -25,6 +25,8 @@ export default class LLMClient {
 
         this.collectLogs({ msgs, usage: completion.usage!, created: completion.created! });
 
+        debugger;
+
         return completion.choices[0].message!;
     }
 

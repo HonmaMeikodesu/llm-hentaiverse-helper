@@ -42,7 +42,7 @@ const spellDemo: LLMBattleSpellAction = {
 
 export function buildTurnRespondFormatPrompt() {
     return `For each turn, you have to perform an action, to make your action output parsable and understandable by code, each type of action has its own fixated format, which all are JSON.
-Note that target field could refer to player self or monsters, if referring to player, than set it to "player", otherwise(referring to monster) sticks to this format: "monster_\${monsterId}", you can get monsterId from the monsters stats report.
+Note that \`target\` field could refer to player self or monsters, if referring to player, than set it to "player", otherwise(referring to monster) sticks to this format: "monster_\${monsterId}", you can get monsterId from the monsters stats report.
 
 For ${BattleAction.ATTACK} action, respond in following format:
 ${JSON.stringify(attackDemo, null, 2)}
@@ -65,7 +65,7 @@ ${JSON.stringify(spellDemo, null, 2)}
 
 For ${BattleAction.SPIRIT} action, respond in following format:
 ${JSON.stringify(spiritDemo, null, 2)}
-Note that you can turn the Spirit Stance off by setting the enable field to false.
+Note that you can turn the Spirit Stance off by setting the \`enable\` field to false.
 
 ---
 

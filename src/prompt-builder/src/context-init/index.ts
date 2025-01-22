@@ -230,6 +230,7 @@ For each round, you will be given a monsters stats report of current round.
 The monsters stats report is in following format:
 \`\`\`
 ${JSON.stringify(monstersStatsDemo)}
+Note that the \`attack\` field is the type of attack the monster can deal. Other fields like \`piercing\`, \`slashing\`, \`fire\`, \`holy\` and so on indicates the mitigation level of the monster against specific type of attack. With higher number means more mitigation, with lower number means this type of attack could be its weak point.
 \`\`\`
 
 ---
@@ -254,6 +255,10 @@ ${BattleAction.SPELL}: persist ${[SupportiveSpell.Protection, SupportiveSpell.He
 ---
 `
 
+export const interactionPromptBuilder = () => `For every battle, after being provided a player stats report, you will be requested to analyze the overall stats of current player, like how much pyshical and magical damages player can deal, how much defense, how much mitigation to specific types of spell it is against enemies, is current player tend to be warrior or wizard and what is his fight style.
+For each round, after being provided a monsters stats, you will be requested to analyze the overall stats of all monsters in this round, like what type of attack each monster deals, what type of attack could be its weak point and mitigation.
+`
+
 export const evaluatePromptBuilder = () => `Before the game starts, i need you to evaluate first, from 0 to 10, how would you grade the system init prompts above? what critical information do you find missing?`
 
 export const roleInitPromptBuilder = () => `Now you are about to play the game, note that for most of the time you will be situated at midst of a round already started instead of the beginning of the game`
@@ -262,6 +267,7 @@ export default function initPromopt() {
     return {
         systemInit: `${systemInitPromptBuilder()}
 ${fightStyleInitPromptBuilder()}
+${interactionPromptBuilder()}
 `,
         roleInit: roleInitPromptBuilder(),
         evaluate: evaluatePromptBuilder()

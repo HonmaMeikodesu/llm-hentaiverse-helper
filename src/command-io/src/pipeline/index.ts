@@ -62,11 +62,11 @@ export default class CommandPipeline {
 
     private systemInitContext: OpenAI.ChatCompletionMessageParam[];
 
-    private battleContext: OpenAI.ChatCompletionMessageParam[];
+    private battleContext: { user: OpenAI.ChatCompletionMessageParam[], asistant: OpenAI.ChatCompletionMessageParam  };
 
     private battlePayloadCache: BattlePayload["payload"]
 
-    private roundContext: OpenAI.ChatCompletionMessageParam[];
+    private roundContext: { user: OpenAI.ChatCompletionMessageParam[], asistant: OpenAI.ChatCompletionMessageParam  };
 
     private roundPayloadCache: RoundPayload["payload"];
 
@@ -100,14 +100,15 @@ export default class CommandPipeline {
         this.currentState = State.SYSTEM_INIT;
     }
 
-    buildBattleContext(playerStats: PlayerStats, isBegin = false) {
+    buildBattlePrompt(playerStats: PlayerStats, isBegin = false) {
+        let userPrompt: OpenAI.ChatCompletionMessageParam[] = [];
         if (isBegin) {
-            this.battleContext = [{
+            userPrompt = [{
                 role: "user",
                 content: buildBattleStartPrompt(playerStats)
             }];
         } else {
-            this.battleContext = [{
+            userPrompt = [{
                 role: "user",
                 content: buildBattlePrompt(playerStats)
             }];
@@ -115,23 +116,28 @@ export default class CommandPipeline {
         this.battlePayloadCache = {
             playerStats
         };
+        return userPrompt;
     }
 
-    buildRoundContext(monstersStats: MonsterStats[], isBegin = false) {
+    buildRoundPrompt(monstersStats: MonsterStats[], isBegin = false) {
+        let userPrompt: OpenAI.ChatCompletionMessageParam[] = [];
         if (isBegin) {
-            this.roundContext = [{
+            userPrompt = [{
                 role: "user",
                 content: buildRoundStartPrompt(monstersStats)
             }];
         } else {
-            this.roundContext = [{
+            userPrompt = [{
                 role: "user",
                 content: buildRoundPrompt(monstersStats)
             }];
         }
+
         this.roundPayloadCache = {
             monstersStats
         }
+
+        return userPrompt;
     }
 
     stateTransitionCheck(next: Payload) {
@@ -164,8 +170,10 @@ export default class CommandPipeline {
         const complet = await this.LLMClient.invoke(
             [
                 ...this.systemInitContext,
-                ...this.battleContext,
-                ...this.roundContext,
+                ...this.battleContext.user,
+                this.battleContext.asistant,
+                ...this.roundContext.user,
+                this.roundContext.asistant,
                 turnPrompt
             ]
         )
@@ -182,16 +190,46 @@ export default class CommandPipeline {
         this.stateTransitionCheck(next);
         switch(next.type) {
             case State.BATTLE_BEGIN:
-                this.buildBattleContext(next.payload.playerStats, true)
+                const battleUserPrompt = this.buildBattlePrompt(next.payload.playerStats, true)
+                const battleComplet = await this.LLMClient.invoke(
+                    [
+                        ...this.systemInitContext,
+                        ...battleUserPrompt
+                    ]
+                );
+                this.battleContext = {
+                    user: battleUserPrompt,
+                    asistant: {
+                        role: "assistant",
+                        content: battleComplet.content
+                    }
+                }
                 this.currentState = next.type;
                 break;
             case State.ROUND_BEGIN:
-                this.buildBattleContext(this.battlePayloadCache.playerStats, this.currentState === State.BATTLE_BEGIN);
-                this.buildRoundContext(next.payload.monstersStats, true)
+                const roundUserPrompt = this.buildRoundPrompt(next.payload.monstersStats, true)
+                const roundComplet = await this.LLMClient.invoke(
+                    [
+                        ...this.systemInitContext,
+                        ...this.battleContext.user,
+                        this.battleContext.asistant,
+                        ...roundUserPrompt
+                    ]
+                );
+                this.roundContext = {
+                    user: roundUserPrompt,
+                    asistant: {
+                        role: "assistant",
+                        content: roundComplet.content
+                    }
+                }
                 this.currentState = next.type;
                 break;
             case State.TURN:
-                this.buildRoundContext(this.roundPayloadCache.monstersStats, this.currentState === State.ROUND_BEGIN)
+                if (this.currentState === State.TURN) {
+                    this.battleContext.user = this.buildBattlePrompt(this.battlePayloadCache.playerStats, false);
+                    this.roundContext.user = this.buildRoundPrompt(this.roundPayloadCache.monstersStats, false);
+                }
                 this.currentState = next.type;
                 await this.triggerSideEffects({ role: "user", content: buildTurnPrompt(next.payload.battleSigRep) });
                 break;
@@ -199,6 +237,7 @@ export default class CommandPipeline {
                 this.disposed = true;
             case State.ROUND_END:
                 this.currentState = next.type;
+                this.battleContext.user = this.buildBattlePrompt(this.battlePayloadCache.playerStats, false);
         }
     }
 }
