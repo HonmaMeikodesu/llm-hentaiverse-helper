@@ -20,7 +20,7 @@ export type LLMBattleAction =
 
 export type LLMBattleAttackAction = {
     action: BattleAction.ATTACK;
-    target: `monster_${string}`;
+    target: string;
 }
 
 export type LLMBattleItemsAction = {
@@ -44,11 +44,11 @@ export type LLMBattleFocusAction = {
 export type LLMBattleSkillAction = {
     action: BattleAction.SKILL;
     skillName: string;
-    target: "player" | `monster_${string}`;
+    target: string;
 }
 
 export type LLMBattleSpellAction = {
     action: BattleAction.SPELL;
     spellName: string;
-    target: "player" | `monster_${string}`;
+    target: string;
 }

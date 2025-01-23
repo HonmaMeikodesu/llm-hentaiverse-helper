@@ -1,17 +1,17 @@
 import { toNumber } from "lodash";
 import { BattleAction } from "../../battle-parser/types/common.js";
 import { BattleCommand, LLMBattleAction, LLMBattleItemsAction, LLMBattleSkillAction, LLMBattleSpellAction } from "../types/index.js";
+import { closest } from "fastest-levenshtein";
 import BattleParser from "../../battle-parser/src/index.js";
 
 async function parseCommandTarget(target: LLMBattleSpellAction["target"], battleParser: BattleParser) {
-    if (target === "player") {
+    if (target === "_player_") {
         return 0;
-    } else if (target.startsWith("monster_")) {
-        const monsterId = toNumber(target.replace("monster_", ""));
-        const monsterName = (await battleParser.getMonsterStats({ id: monsterId }))!.name;
-        return ( await battleParser.getBattleSigRep() ).monsters.find(monster => monster.name === monsterName)!.rankIndex;
+    } else {
+        const monsterList = (await battleParser.getBattleSigRep()).monsters;
+        const monsterName = closest(target, monsterList.map(monster => monster.name));
+        return monsterList.find(monster => monster.name === monsterName)!.rankIndex;
     }
-    throw new Error(`Invalid target: ${target}`);
 }
 
 export async function convertBattleActionToServerCommand(battleAction: LLMBattleAction, battleParser: BattleParser, token: string): Promise<BattleCommand> {

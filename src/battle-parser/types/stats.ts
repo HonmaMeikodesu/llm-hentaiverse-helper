@@ -77,7 +77,6 @@ export type PlayerStats = {
 }
 
 export type MonsterStats = {
-    id: number;
     name: string;
     attack: DamageType;
     piercing: number;

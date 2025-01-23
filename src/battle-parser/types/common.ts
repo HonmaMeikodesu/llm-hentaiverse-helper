@@ -1,6 +1,6 @@
 export enum MagicDamageType {
     Fire = "fire",
-    Cold = "code",
+    Cold = "cold",
     Elec = "elec",
     Wind = "wind",
     Holy = "holy",

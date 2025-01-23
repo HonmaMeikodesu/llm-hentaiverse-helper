@@ -1,8 +1,8 @@
-import { BattleSigRep } from "../../../battle-parser/src/index.js";
+import { BattleSigRep, MonsterRarity } from "../../../battle-parser/src/index.js";
 import { FightStyle, MagicDamageType, PhysicDamageType, BattleAction } from "../../../battle-parser/types/common.js";
 import { FightingStyleEffect, ItemEffect, PlayerEffect, SpellEffect, WeaponSkillEffect } from "../../../battle-parser/types/effect.js";
 import { RestorativeSlotItem, ScrollSlotItem } from "../../../battle-parser/types/item.js";
-import { OneHandedWeaponSkill } from "../../../battle-parser/types/skill.js";
+import { InnateSkill, OneHandedWeaponSkill } from "../../../battle-parser/types/skill.js";
 import { DeprecatingSpell, ElecSpell, FireSpell, SupportiveSpell, WindSpell } from "../../../battle-parser/types/spell.js";
 import { MonsterStats, PlayerStats } from "../../../battle-parser/types/stats.js"
 import { buildTurnRespondFormatPrompt } from "../battle-turn/index.js";
@@ -112,7 +112,6 @@ const playerStatsDemo: PlayerStats = {
 
 const monstersStatsDemo: MonsterStats[] = [
     {
-        id: 81535,
         name: "Beta-gravis 00a",
         attack: MagicDamageType.Cold,
         piercing: 0,
@@ -125,7 +124,6 @@ const monstersStatsDemo: MonsterStats[] = [
         holy: 0
     },
     {
-        id: 100147,
         name: "Alpha-gravis 011",
         attack: MagicDamageType.Cold,
         piercing: 0,
@@ -157,6 +155,7 @@ const battleSigrepDemo: BattleSigRep = {
             "%magicPercent": 0.5,
             "%spiritPercent": 0.1
         },
+        monsterRarity: MonsterRarity.Ordinary,
         rankIndex: 1,
         effects: [SpellEffect.BluntedAttack, SpellEffect.FreezingLimbs, WeaponSkillEffect.Stunned]
     },
@@ -167,6 +166,7 @@ const battleSigrepDemo: BattleSigRep = {
             "%magicPercent": 0.1,
             "%spiritPercent": 0.9
         },
+        monsterRarity: MonsterRarity.Boss,
         rankIndex: 2,
         effects: [DeprecatingSpell.Silence, DeprecatingSpell.Drain, DeprecatingSpell.Weaken]
     }],
@@ -230,8 +230,10 @@ For each round, you will be given a monsters stats report of current round.
 The monsters stats report is in following format:
 \`\`\`
 ${JSON.stringify(monstersStatsDemo)}
-Note that the \`attack\` field is the type of attack the monster can deal. Other fields like \`piercing\`, \`slashing\`, \`fire\`, \`holy\` and so on indicates the mitigation level of the monster against specific type of attack. With higher number means more mitigation, with lower number means this type of attack could be its weak point.
 \`\`\`
+Note that the \`attack\` field is the type of attack the monster can deal. Other fields like \`piercing\`, \`slashing\`, \`fire\`, \`holy\` and so on indicates the mitigation level of the monster against specific type of attack. With higher number means more mitigation, with lower number means this type of attack could be its weak point.
+Note that monsters stats report might be empty or missing some monsters' stats because of insufficient information.
+You can use ${InnateSkill.Scan} to get missing information of a monster, but **dont scan a monster other than boss type and use ${InnateSkill.Scan} as less often as possibe** because it only brings you very little benefits. The scan result will be shown at \`battleLogs\` field of the battle report.
 
 ---
 

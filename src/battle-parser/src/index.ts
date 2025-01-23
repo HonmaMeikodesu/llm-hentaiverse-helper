@@ -9,9 +9,16 @@ import { CodeSpell, DeprecatingSpell, DivineSpell, ElecSpell, FireSpell, Forbidd
 import { DualWieldingSkill, InnateSkill, OneHandedWeaponSkill, Skill, SpecialSkill, StaffSkill, TwoHandedWeaponSkill } from "../types/skill.js";
 import { BattleToolkit, InfusionSlotItem, PowerupSlotItem, RestorativeSlotItem, ScrollSlotItem } from "../types/item.js";
 
+export enum MonsterRarity {
+    Ordinary = "Ordinary",
+    Boss = "Boss",
+    Schoolgirl = "Schoolgirl",
+    God = "God"
+}
+
 export type BattleSigRep = {
     player: PlayerSigRep;
-    monsters: Array<MonsterSigRep & Pick<MonsterStats, "name">>;
+    monsters: Array<MonsterSigRep & Pick<MonsterStats, "name"> & { monsterRarity: MonsterRarity }>;
     availableAction: {
         [BattleAction.ATTACK]: "attack",
         [BattleAction.DEFEND]: "defend",
@@ -82,7 +89,6 @@ export default class BattleParser {
         
 
         this.monsterDatas = res.map(monster => ({
-            id: monster.monsterId,
             name: monster.monsterName,
             attack: monster.attack.toLowerCase() as DamageType,
             piercing: monster.piercing,
@@ -205,13 +211,11 @@ export default class BattleParser {
         }
     }
 
-    async getMonsterStats(queryCondition: { id?: number, name?: string }) {
-        const { id, name} = queryCondition;
+    async getMonsterStats(name: string) {
         if (isUndefined(this.monsterDatas)) {
             await this.initMonsterDatabase();
         }
-        // TODO what if monster data is not found?
-        return this.monsterDatas.find(monster => id && name ? id === monster.id && name === monster.name : id ? id === monster.id : name === monster.name);
+        return this.monsterDatas.find(monster => name === monster.name);
     }
 
     async getBattleSigRep(): Promise<BattleSigRep> {
@@ -244,6 +248,8 @@ export default class BattleParser {
                     "%spiritPercent": Math.round(toNumber(div.querySelector<HTMLImageElement>("img[alt='spirit']")?.style?.width.match(/\d+/)![0]) / 120 * 100)
                 },
                 rankIndex: toNumber(div.getAttribute("onclick")!.match(/battle.commit_target\((\d+)\)/)![1]),
+                // TODO
+                monsterRarity: MonsterRarity.Ordinary,
                 effects: [...qa<HTMLImageElement>("#pane_monster .btm6 img")].map((img) => {
                     const effect: MonsterEffect = pickNearestEnumValueForTarget(merge(SpellEffect, WeaponSkillEffect, FightingStyleEffect, DeprecatingSpell), img.attributes.getNamedItem("onmouseover")!.textContent!.match(/set_infopane_effect\('(.*?)'/)![1]);
                     return effect;

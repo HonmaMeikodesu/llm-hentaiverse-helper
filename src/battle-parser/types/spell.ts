@@ -89,7 +89,7 @@ export enum SupportiveSpell {
 export enum ProtectionAugment {
     // fire
     FlameSpike = "flame spike",
-    // code 
+    // cold 
     FrostSpikes = "frost spikes",
     // elec
     ShockSpikes = "shock spikes",
