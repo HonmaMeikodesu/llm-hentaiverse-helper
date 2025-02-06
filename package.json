@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "webpack --mode development"
+    "test": "webpack --mode development && node --inspect-brk dist/test.cjs"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
+    "@types/chrome": "^0.0.299",
     "@types/lodash": "^4.17.14",
     "babel-loader": "^9.2.1",
     "ts-loader": "^9.5.1",

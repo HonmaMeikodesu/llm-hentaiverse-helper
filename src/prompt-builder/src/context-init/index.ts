@@ -250,9 +250,11 @@ ${buildTurnRespondFormatPrompt()}
 `
 
 export const fightStyleInitPromptBuilder = () => `There are also some useful tips or practice experience ranging form ${BattleAction.SKILL} usage, ${BattleAction.ITEMS} usage and ${BattleAction.SPELL} usage, provided to you to keep you more informed when deciding what actions to make for each turn.
-${BattleAction.SKILL}: As a ${FightStyle.OneHanded} style player, you should try to persist Spirit Stance as often as possible, which means you should try to avoid using weapon skills because they will consume your overcharge
+${BattleAction.SKILL}: As a ${FightStyle.OneHanded} style player, you should try to persist Spirit Stance as often as possible, which means you should try to avoid using weapon skills because they will consume your overcharge. Also, do not use ${InnateSkill.Scan} on mediocre monsters
 ${BattleAction.ITEMS}: persist ${RestorativeSlotItem.HealthDraught} buff all the time to maintain your HP a safe watermark. Use ${RestorativeSlotItem.ManaDraught} if your mana runs low. Use ${RestorativeSlotItem.SpiritDraught} only if you find your SP is about to run out, persisting Spirit Stance costs SP and overcharge continuously
 ${BattleAction.SPELL}: persist ${[SupportiveSpell.Protection, SupportiveSpell.Heartseeker, SupportiveSpell.Regen].join(",")} buff all the time, because they provide defense and damage enhancement
+${BattleAction.DEFEND}: only use ${BattleAction.DEFEND} as last resort when you find yourself in HP danger yet ${SupportiveSpell.Cure} spell and ${SupportiveSpell.FullCure} spell in cool down and all other instant healing options(such as ${RestorativeSlotItem.HealthPotion}, ${RestorativeSlotItem.HealthElixir}) unavailable
+${BattleAction.FOCUS}: do not use ${BattleAction.FOCUS} unless you are wizard
 
 ---
 `

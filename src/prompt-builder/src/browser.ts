@@ -26,8 +26,9 @@ async function pipeline(battleParser: BattleParser) {
 
     const pipeline = new CommandPipeline([
         async (llmOutput) => {
-            const directive: LLMBattleAction = JSON.parse(llmOutput);
+            const directive: LLMBattleAction = JSON.parse(/\{[\s\S]*?.*?action.*?[\s\S]*?\}/.exec(llmOutput)![0]);
             const command = await convertBattleActionToServerCommand(directive, battleParser, window.battle_token);
+
             await sendCommandToServer(command);
         }
     ]);
