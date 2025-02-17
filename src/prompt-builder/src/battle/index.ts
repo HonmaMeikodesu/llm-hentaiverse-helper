@@ -1,7 +1,13 @@
 import { PlayerStats } from "../../../battle-parser/types/stats.js";
 
 export function buildBattleStartPrompt(playerStats: PlayerStats) {
-    return `**You encouter a battle**
+    return `**You encounter a battle**
+below is the player stats report:
+${JSON.stringify(playerStats, null, 2)}
+`}
+
+export function buildBattlePrompt(playerStats: PlayerStats) {
+    return `**You are in a battle**
 below is the player stats report:
 ${JSON.stringify(playerStats, null, 2)}
 `}

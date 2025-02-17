@@ -5,6 +5,7 @@ import { RestorativeSlotItem, ScrollSlotItem } from "../../../battle-parser/type
 import { OneHandedWeaponSkill } from "../../../battle-parser/types/skill.js";
 import { DeprecatingSpell, ElecSpell, FireSpell, SupportiveSpell, WindSpell } from "../../../battle-parser/types/spell.js";
 import { MonsterStats, PlayerStats } from "../../../battle-parser/types/stats.js"
+import { buildTurnRespondFormatPrompt } from "../battle-turn/index.js";
 
 const playerStatsDemo: PlayerStats = {
     vitalRegenRate: {
@@ -156,6 +157,7 @@ const battleSigrepDemo: BattleSigRep = {
             "%magicPercent": 0.5,
             "%spiritPercent": 0.1
         },
+        rankIndex: 1,
         effects: [SpellEffect.BluntedAttack, SpellEffect.FreezingLimbs, WeaponSkillEffect.Stunned]
     },
     {
@@ -165,6 +167,7 @@ const battleSigrepDemo: BattleSigRep = {
             "%magicPercent": 0.1,
             "%spiritPercent": 0.9
         },
+        rankIndex: 2,
         effects: [DeprecatingSpell.Silence, DeprecatingSpell.Drain, DeprecatingSpell.Weaken]
     }],
     battleLogs: [
@@ -189,13 +192,15 @@ Because you can't do anything in monsters turn, from here on now we only focus o
 Victory Condition: You win the battle if you eliminate(doing harm to make monster HP drop to 0) all the monsters in all rounds of a battle.
 Defeat Condition: Whenever your HP drops to 0, you are defeated and the battle is over immediately.
 
-If you receive the prompt **You encouter a battle**, that marks the begin of a battle
+If you receive the prompt **You encounter a battle**, that marks the begin of a battle
 For each battle, player will be initialized with full amount of HP, MP and SP.
+If you receive the prompt **You are in a battle**, that means you are in halfway of a battle.
 
 If you receive the prompt **A new round is starting**, that marks the begin of a new round.
 For each round, a new group of monsters will be spawned. But player will inherit the HP, MP and SP from the previous round.
 Making all the monsters' HP drop to 0 marks the end of current round and a new round to begin. If no more rounds are left, the battle is over and you win the battle.
 Player will always get the first turn in a round to perform an action.
+If you receive the prompt **You are in a round**, that means you are in halfway of a round.
 
 If you receive the prompt **Time for a new turn**, that marks a new turn.
 For each turn, player will have to perform an action to fight or flight. An action can be one of the following:
@@ -207,13 +212,13 @@ For each turn, player will have to perform an action to fight or flight. An acti
 - ${BattleAction.DEFEND}: player defends against an attack
 - ${BattleAction.FOCUS}: player focuses on a monster to attack it next turn
 
-For each battle/round/turn to start, you, as the player, will be given different types of reports in JSON format to help you make decisions.
+For each battle/round/turn, you, as the player, will be given different types of reports in JSON format to help you make decisions.
 Note that you will see some fields in the report which affixed with "%" percentage sign, which means the value is a percentage and every 100 represents "100%" as a whole.
 Detailed report format will be depicted in below section.
 
 ---
 
-For each battle start, you will be given a player stats report
+For each battle, you will be given a player stats report
 The player stats report is in following format:
 \`\`\`
 ${JSON.stringify(playerStatsDemo)}
@@ -221,7 +226,7 @@ ${JSON.stringify(playerStatsDemo)}
 
 ---
 
-For each round start, since new monsters are spawned, you will be given a new monsters stats report.
+For each round, you will be given a monsters stats report of current round.
 The monsters stats report is in following format:
 \`\`\`
 ${JSON.stringify(monstersStatsDemo)}
@@ -236,6 +241,7 @@ The battle report is in following format:
 ${JSON.stringify(battleSigrepDemo)}
 \`\`\`
 Note that the action player can perfrom is recored in the \`availableAction\` field, which is a map from action type to action name.
+${buildTurnRespondFormatPrompt()}
 
 ---
 `
@@ -250,7 +256,7 @@ ${BattleAction.SPELL}: persist ${[SupportiveSpell.Protection, SupportiveSpell.He
 
 export const evaluatePromptBuilder = () => `Before the game starts, i need you to evaluate first, from 0 to 10, how would you grade the system init prompts above? what critical information do you find missing?`
 
-export const roleInitPromptBuilder = () => `Now you are about to start the game, for next prompt a new realtime battle will approach, get ready!`
+export const roleInitPromptBuilder = () => `Now you are about to play the game, note that for most of the time you will be situated at midst of a round already started instead of the beginning of the game`
 
 export default function initPromopt() {
     return {

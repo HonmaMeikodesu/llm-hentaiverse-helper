@@ -9,6 +9,7 @@ export type MonsterSigRep = {
     vital: {
         [key in MonsterVitalSigRep]: number;
     };
+    rankIndex: number;
     effects: MonsterEffect[]
 }
 

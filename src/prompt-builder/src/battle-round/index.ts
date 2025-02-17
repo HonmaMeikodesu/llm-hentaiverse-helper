@@ -7,6 +7,13 @@ ${JSON.stringify(monstersStats, null, 2)}
 `
 }
 
+export function buildRoundPrompt(monstersStats: MonsterStats[]) {
+    return `**You are in a round**
+Monsters stats report of current round is as follows:
+${JSON.stringify(monstersStats, null, 2)}
+`
+}
+
 export function buildRoundEndPrompt(hasNextRound: boolean) {
     return `All monsters of current round have been neutralized, good job!
 ${hasNextRound ? "Prepare yourself for next round and new enemies!" : "No more rounds are left!"}

@@ -2,8 +2,8 @@ import { parseHTML } from "linkedom"
 import { MonsterStats, PlayerStats } from "../types/stats.js"
 import { MonsterSigRep, PlayerSigRep } from "../types/battle.js";
 import { BattleAction, DamageType, FightStyle, MagicDamageType, PhysicDamageType } from "../types/common.js";
-import { findLast, lowerCase, merge, toNumber, trim } from "lodash";
-import { calcLevenshteinDistance } from "./utils.js";
+import { findLast, isUndefined, lowerCase, merge, toNumber, trim } from "lodash";
+import { closest } from "fastest-levenshtein";
 import { FightingStyleEffect, ItemEffect, MonsterEffect, PlayerEffect, SpellEffect, WeaponSkillEffect } from "../types/effect.js";
 import { CodeSpell, DeprecatingSpell, DivineSpell, ElecSpell, FireSpell, ForbiddenSpell, Spell, SupportiveSpell, WindSpell } from "../types/spell.js";
 import { DualWieldingSkill, OneHandedWeaponSkill, Skill, SpecialSkill, StaffSkill, TwoHandedWeaponSkill } from "../types/skill.js";
@@ -26,20 +26,27 @@ export type BattleSigRep = {
 
 function pickNearestEnumValueForTarget<T>(e: Object, target: string): T {
     let minDist = Number.MAX_SAFE_INTEGER;
-    let ret: T = null as never;
-    Object.values(e).forEach((item) => {
-        const dist = calcLevenshteinDistance(item, lowerCase(trim(target)));
-        if (dist < minDist) {
-            minDist = dist;
-            ret = item;
-        }
-    });
-    return ret;
+    return closest(lowerCase(trim(target)), Object.values(e)) as T;
 }
 
-export class BattleParser {
+export default class BattleParser {
 
-    private monsterDatas: MonsterStats[]
+    constructor(params: {initBattlePageContent: string}) {
+        this.setBattlePage(params.initBattlePageContent);
+        this.initMonsterDatabase();
+    }
+
+    private monsterDatas: MonsterStats[];
+
+    private battlePage: Window;
+
+    setBattlePage(battlePageContent: string) {
+        this.battlePage = parseHTML(battlePageContent);
+    }
+
+    getBattlePage() {
+        return this.battlePage;
+    }
 
     async initMonsterDatabase() {
         const res: Array<{
@@ -79,7 +86,7 @@ export class BattleParser {
     }
 
     async getPlayerStats(): Promise<PlayerStats> {
-        const { document } = parseHTML(await ((await fetch("")).text()));
+        const { document } = this.battlePage;
 
         const list = [ ...document.querySelectorAll(".fc2.fal.fcb") ];
 
@@ -187,15 +194,20 @@ export class BattleParser {
         }
     }
 
-    async getMonsterStats(name: string) {
-        return this.monsterDatas.find(monster => monster.name === name);
+    async getMonsterStats(queryCondition: { id?: number, name?: string }) {
+        const { id, name} = queryCondition;
+        if (isUndefined(this.monsterDatas)) {
+            await this.initMonsterDatabase();
+        }
+        return this.monsterDatas.find(monster => id && name ? id === monster.id && name === monster.name : id ? id === monster.id : name === monster.name);
     }
 
-    async parseBattleSigRep(battlePage: string): Promise<BattleSigRep> {
-        const { document } = parseHTML(battlePage);
+    async getBattleSigRep(): Promise<BattleSigRep> {
 
-        const q = document.querySelector;
-        const qa = document.querySelectorAll;
+        const { document } = this.battlePage;
+
+        const q: typeof document.querySelector = document.querySelector.bind(document);
+        const qa: typeof document.querySelectorAll = document.querySelectorAll.bind(document);
 
         const playerSigRep: BattleSigRep["player"] = {
             vital: {
@@ -213,16 +225,17 @@ export class BattleParser {
 
         const monsterSigReps: BattleSigRep["monsters"] = [...qa("#pane_monster > div")].map((div) => {
             return {
-                name: div.querySelector("#btm3m div div")!.textContent || "",
+                name: div.querySelector(".btm3 div div")!.textContent || "",
                 vital: {
                     "%healthPercent": toNumber(div.querySelector<HTMLImageElement>("img[alt='health']")?.style?.width.match(/\d+/)![0]) / 120,
                     "%magicPercent": toNumber(div.querySelector<HTMLImageElement>("img[alt='magic']")?.style?.width.match(/\d+/)![0]) / 120,
                     "%spiritPercent": toNumber(div.querySelector<HTMLImageElement>("img[alt='spirit']")?.style?.width.match(/\d+/)![0]) / 120,
                 },
-            effects: [ ...qa<HTMLImageElement>("#pane_monster .btm6 img") ].map((img) => {
-                const effect: MonsterEffect = pickNearestEnumValueForTarget(merge(SpellEffect, WeaponSkillEffect, FightingStyleEffect, DeprecatingSpell ), img.attributes.getNamedItem("onmouseover")!.textContent!.match(/set_infopane_effect\('(.*?)'/)![1]);
-                return effect;
-            })
+                rankIndex: toNumber(div.getAttribute("onclick")!.match(/battle.commit_target\((\d+)\)/)![1]),
+                effects: [...qa<HTMLImageElement>("#pane_monster .btm6 img")].map((img) => {
+                    const effect: MonsterEffect = pickNearestEnumValueForTarget(merge(SpellEffect, WeaponSkillEffect, FightingStyleEffect, DeprecatingSpell), img.attributes.getNamedItem("onmouseover")!.textContent!.match(/set_infopane_effect\('(.*?)'/)![1]);
+                    return effect;
+                })
             }
         });
 
@@ -235,22 +248,22 @@ export class BattleParser {
                 [BattleAction.DEFEND]: "defend",
                 [BattleAction.FOCUS]: "focus",
                 [BattleAction.SPIRIT]: "spirit",
-                [BattleAction.SKILL]: await this.getAvailabelSkills(document),
-                [BattleAction.SPELL]: await this.getAvailabelSpells(document),
-                [BattleAction.ITEMS]: await this.getAvailabelItems(document)
+                [BattleAction.SKILL]: await this.getAvailabelSkills(),
+                [BattleAction.SPELL]: await this.getAvailabelSpells(),
+                [BattleAction.ITEMS]: await this.getAvailabelItems()
             }
         }
     }
 
-    async getAvailabelSkills(battleDOM: Document) {
-        return [...battleDOM.querySelectorAll<HTMLDivElement>("#table_skills .btsd")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<Skill>(merge(OneHandedWeaponSkill, TwoHandedWeaponSkill, DualWieldingSkill, StaffSkill, SpecialSkill), item.textContent!));
+    async getAvailabelSkills() {
+        return [...this.battlePage.document.querySelectorAll<HTMLDivElement>("#table_skills .btsd")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<Skill>(merge(OneHandedWeaponSkill, TwoHandedWeaponSkill, DualWieldingSkill, StaffSkill, SpecialSkill), item.textContent!));
     }
 
-    async getAvailabelSpells(battleDOM: Document) {
-        return [...battleDOM.querySelectorAll<HTMLDivElement>("#table_magic .btsd")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<Spell>(merge(FireSpell, CodeSpell, ElecSpell, WindSpell, DivineSpell, ForbiddenSpell, DeprecatingSpell, SupportiveSpell), item.textContent!));
+    async getAvailabelSpells() {
+        return [...this.battlePage.document.querySelectorAll<HTMLDivElement>("#table_magic .btsd")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<Spell>(merge(FireSpell, CodeSpell, ElecSpell, WindSpell, DivineSpell, ForbiddenSpell, DeprecatingSpell, SupportiveSpell), item.textContent!));
     }
 
-    async getAvailabelItems(battleDOM: Document) {
-        return [...battleDOM.querySelectorAll<HTMLDivElement>("#pane_item .bti3")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<BattleToolkit>(merge(PowerupSlotItem, RestorativeSlotItem, InfusionSlotItem, ScrollSlotItem), item.textContent!));
+    async getAvailabelItems() {
+        return [...this.battlePage.document.querySelectorAll<HTMLDivElement>("#pane_item .bti3")].filter(div => !div.style.opacity && !!(div.textContent!.trim())).map((item) => pickNearestEnumValueForTarget<BattleToolkit>(merge(PowerupSlotItem, RestorativeSlotItem, InfusionSlotItem, ScrollSlotItem), item.textContent!));
     }
 }
