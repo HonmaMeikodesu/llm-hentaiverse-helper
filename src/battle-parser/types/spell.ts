@@ -4,7 +4,7 @@ export enum FireSpell {
     FlamesofLoki = "flames of loki",
 }
 
-export enum CodeSpell {
+export enum ColdSpell {
     Freeze = "freeze",
     Blizzard = "blizzard",
     Fimbulvetr = "fimbulvetr"
@@ -22,7 +22,7 @@ export enum WindSpell {
     StormsofNjord = "storms of njord",
 }
 
-export type ElementalSpell = FireSpell | CodeSpell | ElecSpell | WindSpell;
+export type ElementalSpell = FireSpell | ColdSpell | ElecSpell | WindSpell;
 
 export enum DivineSpell {
     Smite = "smite",

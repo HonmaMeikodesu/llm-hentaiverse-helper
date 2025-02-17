@@ -1,10 +1,19 @@
 import { OpenAI } from "openai";
-import { MonsterStats, PlayerStats } from "../../../battle-parser/types/stats.js";
+import {
+    MonsterStats,
+    PlayerStats,
+} from "../../../battle-parser/types/stats.js";
 import { BattleSigRep } from "../../../battle-parser/src/index.js";
 import initPromopt from "../../../prompt-builder/src/context-init/index.js";
-import { buildBattlePrompt, buildBattleStartPrompt } from "../../../prompt-builder/src/battle/index.js";
+import {
+    buildBattlePrompt,
+    buildBattleStartPrompt,
+} from "../../../prompt-builder/src/battle/index.js";
 import LLMClient from "../llm/index.js";
-import { buildRoundPrompt, buildRoundStartPrompt } from "../../../prompt-builder/src/battle-round/index.js";
+import {
+    buildRoundPrompt,
+    buildRoundStartPrompt,
+} from "../../../prompt-builder/src/battle-round/index.js";
 import { buildTurnPrompt } from "../../../prompt-builder/src/battle-turn/index.js";
 
 export enum State {
@@ -14,88 +23,95 @@ export enum State {
     TURN,
     ROUND_END,
     BATTLE_END,
-} 
+}
 
 export type BattlePayload = {
     type: State.BATTLE_BEGIN;
     payload: {
         playerStats: PlayerStats;
-    }
-}
+    };
+};
 
 export type RoundPayload = {
     type: State.ROUND_BEGIN;
     payload: {
         monstersStats: MonsterStats[];
-    }
-}
+    };
+};
 
 export type TurnPayload = {
     type: State.TURN;
     payload: {
         battleSigRep: BattleSigRep;
-    }
-}
+    };
+};
 
 export type RoundEndPayload = {
     type: State.ROUND_END;
     payload: {
         hasNextRound: boolean;
-    }
+    };
 };
 
 export type BattleEndPayload = {
     type: State.BATTLE_END;
     payload: {
         turnover: {
-            result: "victory" | "defeat",
-            detail: any
-        }
-    }
-}
+            result: "victory" | "defeat";
+            detail: any;
+        };
+    };
+};
 
-type Payload = BattlePayload | RoundPayload | TurnPayload | RoundEndPayload | BattleEndPayload;
+type Payload =
+    | BattlePayload
+    | RoundPayload
+    | TurnPayload
+    | RoundEndPayload
+    | BattleEndPayload;
 
 export default class CommandPipeline {
-
-    private LLMClient: LLMClient;
-
     private systemInitContext: OpenAI.ChatCompletionMessageParam[];
 
-    private battleContext: { user: OpenAI.ChatCompletionMessageParam[], asistant: OpenAI.ChatCompletionMessageParam  };
+    private battleContext: {
+        user: OpenAI.ChatCompletionMessageParam[];
+        asistant: OpenAI.ChatCompletionMessageParam;
+    };
 
-    private battlePayloadCache: BattlePayload["payload"]
+    private battlePayloadCache: BattlePayload["payload"];
 
-    private roundContext: { user: OpenAI.ChatCompletionMessageParam[], asistant: OpenAI.ChatCompletionMessageParam  };
+    private roundContext: {
+        user: OpenAI.ChatCompletionMessageParam[];
+        asistant: OpenAI.ChatCompletionMessageParam;
+    };
 
     private roundPayloadCache: RoundPayload["payload"];
 
     private currentState: State;
-    
+
     private disposed = false;
 
-    private sideEffects: Array<(llmOutput: string) => Promise<void>> = [];
+    private invokeLLM: LLMClient["invoke"];
 
-    constructor(sideEffects: typeof this.sideEffects) {
-        this.sideEffects = sideEffects;
+    constructor(params: { invokeLLM: LLMClient["invoke"] }) {
+        const { invokeLLM } = params;
         this.init();
+        this.invokeLLM = invokeLLM;
     }
 
     private init() {
         const { systemInit, roleInit } = initPromopt();
 
         this.systemInitContext = [
-            ...Object.values(systemInit).map(init => ({
+            ...(Object.values(systemInit).map((init) => ({
                 role: "system",
-                content: init
-            })) as OpenAI.Chat.Completions.ChatCompletionMessageParam[],
+                content: init,
+            })) as OpenAI.Chat.Completions.ChatCompletionMessageParam[]),
             {
                 role: "user",
-                content: roleInit
-            }
+                content: roleInit,
+            },
         ];
-
-        this.LLMClient = new LLMClient();
 
         this.currentState = State.SYSTEM_INIT;
     }
@@ -103,18 +119,22 @@ export default class CommandPipeline {
     buildBattlePrompt(playerStats: PlayerStats, isBegin = false) {
         let userPrompt: OpenAI.ChatCompletionMessageParam[] = [];
         if (isBegin) {
-            userPrompt = [{
-                role: "user",
-                content: buildBattleStartPrompt(playerStats)
-            }];
+            userPrompt = [
+                {
+                    role: "user",
+                    content: buildBattleStartPrompt(playerStats),
+                },
+            ];
         } else {
-            userPrompt = [{
-                role: "user",
-                content: buildBattlePrompt(playerStats)
-            }];
+            userPrompt = [
+                {
+                    role: "user",
+                    content: buildBattlePrompt(playerStats),
+                },
+            ];
         }
         this.battlePayloadCache = {
-            playerStats
+            playerStats,
         };
         return userPrompt;
     }
@@ -122,20 +142,24 @@ export default class CommandPipeline {
     buildRoundPrompt(monstersStats: MonsterStats[], isBegin = false) {
         let userPrompt: OpenAI.ChatCompletionMessageParam[] = [];
         if (isBegin) {
-            userPrompt = [{
-                role: "user",
-                content: buildRoundStartPrompt(monstersStats)
-            }];
+            userPrompt = [
+                {
+                    role: "user",
+                    content: buildRoundStartPrompt(monstersStats),
+                },
+            ];
         } else {
-            userPrompt = [{
-                role: "user",
-                content: buildRoundPrompt(monstersStats)
-            }];
+            userPrompt = [
+                {
+                    role: "user",
+                    content: buildRoundPrompt(monstersStats),
+                },
+            ];
         }
 
         this.roundPayloadCache = {
-            monstersStats
-        }
+            monstersStats,
+        };
 
         return userPrompt;
     }
@@ -143,41 +167,45 @@ export default class CommandPipeline {
     stateTransitionCheck(next: Payload) {
         switch (next.type) {
             case State.BATTLE_BEGIN:
-                if (this.currentState !== State.SYSTEM_INIT) throw new Error(`Invalid state transition! ${this.currentState} -> ${next.type}`)
-                    break;
+                if (this.currentState !== State.SYSTEM_INIT)
+                    throw new Error(
+                        `Invalid state transition! ${this.currentState} -> ${next.type}`
+                    );
+                break;
             case State.ROUND_BEGIN:
-                if (![State.BATTLE_BEGIN, State.ROUND_END].includes(this.currentState)) throw new Error(`Invalid state transition! ${this.currentState} -> ${next.type}`)
-                    break;
+                if (
+                    ![State.BATTLE_BEGIN, State.ROUND_END].includes(
+                        this.currentState
+                    )
+                )
+                    throw new Error(
+                        `Invalid state transition! ${this.currentState} -> ${next.type}`
+                    );
+                break;
             case State.TURN:
-                if (![State.TURN, State.ROUND_BEGIN].includes(this.currentState)) throw new Error(`Invalid state transition! ${this.currentState} -> ${next.type}`)
-                    break;
+                if (
+                    ![State.TURN, State.ROUND_BEGIN].includes(this.currentState)
+                )
+                    throw new Error(
+                        `Invalid state transition! ${this.currentState} -> ${next.type}`
+                    );
+                break;
             case State.ROUND_END:
-                if (this.currentState !== State.TURN) throw new Error(`Invalid state transition! ${this.currentState} -> ${next.type}`)
-                    break;
+                if (this.currentState !== State.TURN)
+                    throw new Error(
+                        `Invalid state transition! ${this.currentState} -> ${next.type}`
+                    );
+                break;
             case State.BATTLE_END:
-                if (this.currentState !== State.ROUND_END) throw new Error(`Invalid state transition! ${this.currentState} -> ${next.type}`)
-                    break;
+                if (this.currentState !== State.ROUND_END)
+                    throw new Error(
+                        `Invalid state transition! ${this.currentState} -> ${next.type}`
+                    );
+                break;
             default:
                 // @ts-expect-error never
-                throw new Error(`Unknown state ${next.type}`)
+                throw new Error(`Unknown state ${next.type}`);
         }
-    }
-
-    async triggerSideEffects(turnPrompt: OpenAI.ChatCompletionMessageParam) {
-        if (this.currentState !== State.TURN) {
-            throw new Error(`Invalid side effects triggering! current state: ${this.currentState}`);
-        }
-        const complet = await this.LLMClient.invoke(
-            [
-                ...this.systemInitContext,
-                ...this.battleContext.user,
-                this.battleContext.asistant,
-                ...this.roundContext.user,
-                this.roundContext.asistant,
-                turnPrompt
-            ]
-        )
-        await Promise.all(this.sideEffects.map(sideEffect => sideEffect(complet.content!)));
     }
 
     /**
@@ -188,56 +216,94 @@ export default class CommandPipeline {
             throw new Error("CommandPipeline has been disposed");
         }
         this.stateTransitionCheck(next);
-        switch(next.type) {
+        switch (next.type) {
             case State.BATTLE_BEGIN:
-                const battleUserPrompt = this.buildBattlePrompt(next.payload.playerStats, true)
-                const battleComplet = await this.LLMClient.invoke(
-                    [
-                        ...this.systemInitContext,
-                        ...battleUserPrompt
-                    ]
+                const battleUserPrompt = this.buildBattlePrompt(
+                    next.payload.playerStats,
+                    true
                 );
-                this.battleContext = {
-                    user: battleUserPrompt,
-                    asistant: {
-                        role: "assistant",
-                        content: battleComplet.content
-                    }
+                try {
+                    const battleComplet = await this.invokeLLM([
+                        ...this.systemInitContext,
+                        ...battleUserPrompt,
+                    ]);
+                    this.battleContext = {
+                        user: battleUserPrompt,
+                        asistant: {
+                            role: "assistant",
+                            content: battleComplet!.content,
+                        },
+                    };
+                    this.currentState = next.type;
+                } catch (e) {
+                    // pass
                 }
-                this.currentState = next.type;
                 break;
             case State.ROUND_BEGIN:
-                const roundUserPrompt = this.buildRoundPrompt(next.payload.monstersStats, true)
-                const roundComplet = await this.LLMClient.invoke(
-                    [
+                const roundUserPrompt = this.buildRoundPrompt(
+                    next.payload.monstersStats,
+                    true
+                );
+                try {
+                    const roundComplet = await this.invokeLLM([
                         ...this.systemInitContext,
                         ...this.battleContext.user,
                         this.battleContext.asistant,
-                        ...roundUserPrompt
-                    ]
-                );
-                this.roundContext = {
-                    user: roundUserPrompt,
-                    asistant: {
-                        role: "assistant",
-                        content: roundComplet.content
-                    }
+                        ...roundUserPrompt,
+                    ]);
+                    this.roundContext = {
+                        user: roundUserPrompt,
+                        asistant: {
+                            role: "assistant",
+                            content: roundComplet!.content,
+                        },
+                    };
+                    this.currentState = next.type;
+                } catch (e) {
+                    // pass
                 }
-                this.currentState = next.type;
                 break;
             case State.TURN:
                 if (this.currentState === State.TURN) {
-                    this.battleContext.user = this.buildBattlePrompt(this.battlePayloadCache.playerStats, false);
-                    this.roundContext.user = this.buildRoundPrompt(this.roundPayloadCache.monstersStats, false);
+                    try {
+                        this.battleContext.user = this.buildBattlePrompt(
+                            this.battlePayloadCache.playerStats,
+                            false
+                        );
+                        this.roundContext.user = this.buildRoundPrompt(
+                            this.roundPayloadCache.monstersStats,
+                            false
+                        );
+                        const turnPrompt: OpenAI.ChatCompletionMessageParam[] =
+                            [
+                                ...this.systemInitContext,
+                                ...this.battleContext.user,
+                                this.battleContext.asistant,
+                                ...this.roundContext.user,
+                                this.roundContext.asistant,
+                                {
+                                    role: "user",
+                                    content: buildTurnPrompt(
+                                        next.payload.battleSigRep
+                                    ),
+                                },
+                            ];
+
+                        await this.invokeLLM(turnPrompt);
+                        this.currentState = next.type;
+                    } catch (e) {
+                        // pass
+                    }
                 }
-                this.currentState = next.type;
-                await this.triggerSideEffects({ role: "user", content: buildTurnPrompt(next.payload.battleSigRep) });
                 break;
             case State.BATTLE_END:
                 this.disposed = true;
             case State.ROUND_END:
                 this.currentState = next.type;
-                this.battleContext.user = this.buildBattlePrompt(this.battlePayloadCache.playerStats, false);
+                this.battleContext.user = this.buildBattlePrompt(
+                    this.battlePayloadCache.playerStats,
+                    false
+                );
         }
     }
 }

@@ -16,7 +16,7 @@ export enum DualWieldingSkill {
 }
 
 export enum TwoHandedWeaponSkill {
-    greatCleave = "great cleave",
+    GneatCleave = "great cleave",
     RendingBlow = "rending blow",
     ShatterStrike = "shatter strike"
 }
