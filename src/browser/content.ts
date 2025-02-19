@@ -33,7 +33,9 @@ async function main() {
 
         const llmClient = new LLMClient({
             beforeInvoke: async (msgs) => {},
-            afterInvoke: async (completions) => {},
+            afterInvoke: async (completions) => {
+                const resp = completions.message;
+            },
             onInvokeError: async () => {},
         });
 

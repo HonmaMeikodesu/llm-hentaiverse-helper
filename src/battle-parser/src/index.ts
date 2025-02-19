@@ -688,10 +688,21 @@ export default class BattleParser {
                 "#pane_item > .c > div:first-child .c"
             ),
         ];
-        const itemsMap: Record<string, string> = {};
+        const itemsMap: Record<BattleToolkit, number> = {} as any;
 
         slotItems.forEach((item) => {
-            itemsMap[item!.querySelector(".bti2")!.textContent!.trim()] = item!.querySelector(".bti3")!.textContent!.trim();
+            const slotIndex = toNumber(item!.querySelector(".bti2")!.textContent!.trim());
+
+            const itemName = pickNearestEnumValueForTarget<BattleToolkit>(
+                merge(
+                    PowerupSlotItem,
+                    RestorativeSlotItem,
+                    InfusionSlotItem,
+                    ScrollSlotItem
+                ),
+                item!.querySelector(".bti3")!.textContent!.trim()
+            );
+            itemsMap[itemName] = slotIndex;
         });
         return itemsMap;
     }

@@ -1,8 +1,4 @@
 import {
-    PowerupSlotItem,
-    RestorativeSlotItem,
-} from "../../../battle-parser/types/item.js";
-import {
     DualWieldingSkill,
     InnateSkill,
     OneHandedWeaponSkill,
@@ -21,8 +17,9 @@ import {
     SupportiveSpell,
     WindSpell,
 } from "../../../battle-parser/types/spell.js";
+import { BattleCommand } from "../../types/index.js";
 
-const SKILL_CODE_MAP = {
+export const SKILL_CODE_MAP = {
     [InnateSkill.Flee]: 1001,
     [InnateSkill.Scan]: 1011,
     [OneHandedWeaponSkill.MercifulBlow]: 2203,
@@ -39,7 +36,7 @@ const SKILL_CODE_MAP = {
     [StaffSkill.ConcussiveStrike]: NaN,
 };
 
-const SPELL_CODE_MAP = {
+export const SPELL_CODE_MAP = {
     // offensive
     [FireSpell.FieryBlast]: 111,
     [FireSpell.Inferno]: 112,
@@ -83,84 +80,71 @@ const SPELL_CODE_MAP = {
     [SupportiveSpell.SpiritShield]: NaN,
 };
 
-export class ServerCommand {
+export default class ServerCommand {
     private battleToken: string;
 
     constructor(params: { battleToken: string }) {
         this.battleToken = params.battleToken;
     }
 
-    attack(target: number) {
+    attack(target: number): BattleCommand {
         return {
             type: "battle",
             method: "action",
             token: this.battleToken,
             mode: "attack",
             target,
-            skill: "",
+            skill: 0,
         };
     }
 
-    defend() {
+    defend(): BattleCommand {
         return {
             type: "battle",
             method: "action",
             token: this.battleToken,
             mode: "defend",
             target: 0,
-            skill: "",
+            skill: 0,
         };
     }
 
-    focus() {
+    focus(): BattleCommand {
         return {
             type: "battle",
             method: "action",
             token: this.battleToken,
             mode: "focus",
             target: 0,
-            skill: "",
+            skill: 0,
         };
     }
 
-    spirit() {
+    spirit(): BattleCommand {
         return {
             type: "battle",
             method: "action",
             token: this.battleToken,
             mode: "spirit",
             target: 0,
-            skill: "",
-        }
+            skill: 0,
+        };
     }
 
-    skill(params: { skillName: Skill; target: number }) {
+    skill(params: { skillName: Skill; target: number }): BattleCommand {
         const { skillName, target } = params;
 
-        if (skillName === InnateSkill.Flee) {
-            return {
-                type: "battle",
-                method: "action",
-                token: this.battleToken,
-                mode: "magic",
-                target: 0,
-                skill: SKILL_CODE_MAP[InnateSkill.Flee],
-            };
-        }
-
-        if (Object.keys(SPELL_CODE_MAP).includes(skillName)) {
-            return {
-                type: "battle",
-                method: "action",
-                token: this.battleToken,
-                mode: "magic",
-                target,
-                skill: SKILL_CODE_MAP[skillName],
-            };
-        }
+        return {
+            type: "battle",
+            method: "action",
+            token: this.battleToken,
+            mode: "magic",
+            target: skillName === InnateSkill.Flee ? 0 : target,
+            skill: SKILL_CODE_MAP[skillName],
+        };
     }
 
-    spell(params: { spellName: string; target: number }) {
+    spell(params: { spellName: string; target: number }): BattleCommand {
         const { spellName, target } = params;
 
         switch (spellName) {
@@ -195,15 +179,16 @@ export class ServerCommand {
         }
     }
 
-    item(params: { itemKey: string }) {
-        const { itemKey } = params;
+    item(params: { slotIdx: number }): BattleCommand {
+        const { slotIdx } = params;
         return {
             type: "battle",
             method: "action",
             token: this.battleToken,
             mode: "items",
             target: 0,
-            skill: itemKey,
+            skill: slotIdx,
         };
     }
 }
+

@@ -2,11 +2,11 @@ import { BattleAction } from "../../battle-parser/types/common.js";
 
 export type BattleCommand = {
     type: "battle",
-    method: string,
+    method: "action",
     token: string,
-    mode: string,
+    mode: "attack" | "defend" | "focus" | "spirit" | "magic" | "items",
     target: number,
-    skill: number | string
+    skill: number
 }
 
 export type LLMBattleAction =
