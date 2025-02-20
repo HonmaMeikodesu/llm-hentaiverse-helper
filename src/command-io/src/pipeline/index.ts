@@ -6,13 +6,11 @@ import {
 import { BattleSigRep } from "../../../battle-parser/src/index.js";
 import initPromopt from "../../../prompt-builder/src/context-init/index.js";
 import {
-    buildBattlePrompt,
-    buildBattleStartPrompt,
+    buildBattlePrompt
 } from "../../../prompt-builder/src/battle/index.js";
 import LLMClient from "../llm/index.js";
 import {
-    buildRoundPrompt,
-    buildRoundStartPrompt,
+    buildRoundPrompt
 } from "../../../prompt-builder/src/battle-round/index.js";
 import { buildTurnPrompt } from "../../../prompt-builder/src/battle-turn/index.js";
 
@@ -116,46 +114,28 @@ export default class CommandPipeline {
         this.currentState = State.SYSTEM_INIT;
     }
 
-    buildBattlePrompt(playerStats: PlayerStats, isBegin = false) {
+    buildBattlePrompt(playerStats: PlayerStats) {
         let userPrompt: OpenAI.ChatCompletionMessageParam[] = [];
-        if (isBegin) {
-            userPrompt = [
-                {
-                    role: "user",
-                    content: buildBattleStartPrompt(playerStats),
-                },
-            ];
-        } else {
             userPrompt = [
                 {
                     role: "user",
                     content: buildBattlePrompt(playerStats),
                 },
             ];
-        }
         this.battlePayloadCache = {
             playerStats,
         };
         return userPrompt;
     }
 
-    buildRoundPrompt(monstersStats: MonsterStats[], isBegin = false) {
+    buildRoundPrompt(monstersStats: MonsterStats[]) {
         let userPrompt: OpenAI.ChatCompletionMessageParam[] = [];
-        if (isBegin) {
-            userPrompt = [
-                {
-                    role: "user",
-                    content: buildRoundStartPrompt(monstersStats),
-                },
-            ];
-        } else {
             userPrompt = [
                 {
                     role: "user",
                     content: buildRoundPrompt(monstersStats),
                 },
             ];
-        }
 
         this.roundPayloadCache = {
             monstersStats,
@@ -219,8 +199,7 @@ export default class CommandPipeline {
         switch (next.type) {
             case State.BATTLE_BEGIN:
                 const battleUserPrompt = this.buildBattlePrompt(
-                    next.payload.playerStats,
-                    true
+                    next.payload.playerStats
                 );
                 try {
                     const battleComplet = await this.invokeLLM([
@@ -241,8 +220,7 @@ export default class CommandPipeline {
                 break;
             case State.ROUND_BEGIN:
                 const roundUserPrompt = this.buildRoundPrompt(
-                    next.payload.monstersStats,
-                    true
+                    next.payload.monstersStats
                 );
                 try {
                     const roundComplet = await this.invokeLLM([
@@ -266,12 +244,10 @@ export default class CommandPipeline {
             case State.TURN:
                 try {
                     this.battleContext.user = this.buildBattlePrompt(
-                        this.battlePayloadCache.playerStats,
-                        false
+                        this.battlePayloadCache.playerStats
                     );
                     this.roundContext.user = this.buildRoundPrompt(
-                        this.roundPayloadCache.monstersStats,
-                        false
+                        this.roundPayloadCache.monstersStats
                     );
                     const turnPrompt: OpenAI.ChatCompletionMessageParam[] = [
                         ...this.systemInitContext,
@@ -296,8 +272,7 @@ export default class CommandPipeline {
             case State.ROUND_END:
                 this.currentState = next.type;
                 this.battleContext.user = this.buildBattlePrompt(
-                    this.battlePayloadCache.playerStats,
-                    false
+                    this.battlePayloadCache.playerStats
                 );
         }
     }

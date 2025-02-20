@@ -1,25 +1,13 @@
 import { PlayerStats } from "../../../battle-parser/types/stats.js";
 
-const commonBattleInteractionPrompt = `Now Analyze the player stats report as requested in system prompt before we move on.`;
-
-export function buildBattleStartPrompt(playerStats: PlayerStats) {
+export function buildBattlePrompt(playerStats: PlayerStats) {
     return `**You encounter a battle**
 below is the player stats report:
 \`\`\`
 ${JSON.stringify(playerStats, null, 2)}
 \`\`\`
 ---
-${commonBattleInteractionPrompt}
-`}
-
-export function buildBattlePrompt(playerStats: PlayerStats) {
-    return `**You are in a battle**
-below is the player stats report:
-\`\`\`
-${JSON.stringify(playerStats, null, 2)}
-\`\`\`
----
-${commonBattleInteractionPrompt}
+Now analyze the overall stats of current player, like how much pyshical and magical damages player can deal, how much defense, how much mitigation to specific types of spell it is against enemies, is current player tend to be warrior or wizard and what is his fight style. After that we can move on.
 `}
 
 export function buildBattleEndPrompt(turnover: { result: "victory" | "defeat", detail: any }) {
