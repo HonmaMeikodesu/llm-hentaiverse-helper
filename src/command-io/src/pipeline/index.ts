@@ -236,7 +236,7 @@ export default class CommandPipeline {
                     };
                     this.currentState = next.type;
                 } catch (e) {
-                    // pass
+                    console.error(e);
                 }
                 break;
             case State.ROUND_BEGIN:
@@ -260,40 +260,35 @@ export default class CommandPipeline {
                     };
                     this.currentState = next.type;
                 } catch (e) {
-                    // pass
+                    console.error(e);
                 }
                 break;
             case State.TURN:
-                if (this.currentState === State.TURN) {
-                    try {
-                        this.battleContext.user = this.buildBattlePrompt(
-                            this.battlePayloadCache.playerStats,
-                            false
-                        );
-                        this.roundContext.user = this.buildRoundPrompt(
-                            this.roundPayloadCache.monstersStats,
-                            false
-                        );
-                        const turnPrompt: OpenAI.ChatCompletionMessageParam[] =
-                            [
-                                ...this.systemInitContext,
-                                ...this.battleContext.user,
-                                this.battleContext.asistant,
-                                ...this.roundContext.user,
-                                this.roundContext.asistant,
-                                {
-                                    role: "user",
-                                    content: buildTurnPrompt(
-                                        next.payload.battleSigRep
-                                    ),
-                                },
-                            ];
+                try {
+                    this.battleContext.user = this.buildBattlePrompt(
+                        this.battlePayloadCache.playerStats,
+                        false
+                    );
+                    this.roundContext.user = this.buildRoundPrompt(
+                        this.roundPayloadCache.monstersStats,
+                        false
+                    );
+                    const turnPrompt: OpenAI.ChatCompletionMessageParam[] = [
+                        ...this.systemInitContext,
+                        ...this.battleContext.user,
+                        this.battleContext.asistant,
+                        ...this.roundContext.user,
+                        this.roundContext.asistant,
+                        {
+                            role: "user",
+                            content: buildTurnPrompt(next.payload.battleSigRep),
+                        },
+                    ];
 
-                        await this.invokeLLM(turnPrompt);
-                        this.currentState = next.type;
-                    } catch (e) {
-                        // pass
-                    }
+                    await this.invokeLLM(turnPrompt);
+                    this.currentState = next.type;
+                } catch (e) {
+                    console.error((e));
                 }
                 break;
             case State.BATTLE_END:

@@ -106,12 +106,8 @@ export default class BattleParser {
         this.battlePage = parseHTML(battlePageContent);
     }
 
-    getBattlePage() {
-        return this.battlePage;
-    }
-
-    async initMonsterDatabase() {
-        const res: Array<{
+    private async initMonsterDatabase() {
+        let res: Array<{
             monsterId: number;
             created_at: string;
             monsterClass:
@@ -156,11 +152,19 @@ export default class BattleParser {
             dark: number;
             holy: number;
             lastUpdate: string;
-        }> = JSON.parse(
-            await (
-                await fetch("https://hv-monsterdb-data.skk.moe/persistent.json")
-            ).text()
-        );
+        }> = [];
+
+        try {
+            res = JSON.parse(
+                await (
+                    await fetch(
+                        "https://hv-monsterdb-data.skk.moe/persistent.json"
+                    )
+                ).text()
+            );
+        } catch (e) {
+            res = [];
+        }
 
         this.monsterDatas = res.map((monster) => ({
             name: monster.monsterName,
@@ -176,7 +180,9 @@ export default class BattleParser {
         }));
     }
 
-    static async getPlayerStats(statsPageContent): Promise<PlayerStats> {
+    static async getPlayerStats(
+        statsPageContent: string
+    ): Promise<PlayerStats> {
         const { document } = parseHTML(statsPageContent);
 
         const list = [...document.querySelectorAll("#stats_pane .fc2.fal.fcb")];
@@ -691,7 +697,9 @@ export default class BattleParser {
         const itemsMap: Record<BattleToolkit, number> = {} as any;
 
         slotItems.forEach((item) => {
-            const slotIndex = toNumber(item!.querySelector(".bti2")!.textContent!.trim());
+            const slotIndex = toNumber(
+                item!.querySelector(".bti2")!.textContent!.trim()
+            );
 
             const itemName = pickNearestEnumValueForTarget<BattleToolkit>(
                 merge(
