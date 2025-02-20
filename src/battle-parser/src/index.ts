@@ -571,15 +571,10 @@ export default class BattleParser {
                 health: toNumber(q("#vrhb")?.textContent),
                 magic: toNumber(q("#vrm")?.textContent),
                 spirit: toNumber(q("#vrs")?.textContent),
-                "%overcharge": Math.round(
-                    (toNumber(
-                        q<HTMLDivElement>("#vcp div")?.style?.width?.match(
-                            /\d+/
-                        )![0] || 0
-                    ) /
-                        190) *
-                        250
-                ),
+                "%overcharge":
+                    (q<HTMLDivElement>("#vcp > div")!?.children.length - 1) * 100 /
+                        10 +
+                    (!!q<HTMLDivElement>("#vcp > div > div#vcr") ? 10 : 5),
             },
             isInSpiritStance:
                 !!q<HTMLImageElement>("#ckey_spirit")?.src?.includes(

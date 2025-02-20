@@ -102,7 +102,7 @@ Note that \`target\` field could refer to player self or monsters, if referring 
 }
 export const fightStyleInitPromptBuilder = () => `There are also some useful tips provided to you to keep you more informed to decide what actions to make.
 ${BattleAction.SKILL}: As a ${FightStyle.OneHanded} style player, you should try to persist Spirit Stance as often as possible, which means you should try to avoid using weapon skills because they will consume your overcharge. You can use ${InnateSkill.Scan} to get missing information of a monster, but **dont scan a monster other than boss type and use ${InnateSkill.Scan} as less often as possibe** because it only brings you very little benefits.
-${BattleAction.ITEMS}: persist ${RestorativeSlotItem.HealthDraught} buff all the time to maintain your HP a safe watermark. Use ${RestorativeSlotItem.ManaDraught} if your mana runs low. Use ${RestorativeSlotItem.SpiritDraught} only if you find your SP is about to run out, persisting Spirit Stance costs SP and overcharge continuously
+${BattleAction.ITEMS}: persist ${RestorativeSlotItem.HealthDraught} buff all the time to maintain your HP a safe watermark. Use ${RestorativeSlotItem.ManaDraught} if your mana runs low. Use ${RestorativeSlotItem.SpiritDraught} only if you find your SP is about to run out, 
 ${BattleAction.SPELL}: persist ${[SupportiveSpell.Protection, SupportiveSpell.Heartseeker, SupportiveSpell.Regen].join(",")} buff all the time, because they provide defense and damage enhancement
 ${BattleAction.DEFEND}: only use ${BattleAction.DEFEND} as last resort when you find yourself in HP danger yet ${SupportiveSpell.Cure} spell and ${SupportiveSpell.FullCure} spell in cool down and all other instant healing options(such as ${RestorativeSlotItem.HealthPotion}, ${RestorativeSlotItem.HealthElixir}) unavailable
 ${BattleAction.FOCUS}: do not use ${BattleAction.FOCUS} unless you are wizard
@@ -121,7 +121,7 @@ you have to choose an action to fight or flight. below is the description for ea
 - ${BattleAction.SKILL}: player uses a skill from their available skill list.
 - ${BattleAction.SPELL}: player uses a spell from their available spell list.
 - ${BattleAction.ITEMS}: player uses an item from their item list.
-- ${BattleAction.SPIRIT}: player toggles Spirit Stance.
+- ${BattleAction.SPIRIT}: player toggles Spirit Stance. Note that you need at least 20% of \`%overcharge\` to enable it and persisting Spirit Stance will cost both SP and overcharge continuously
 - ${BattleAction.DEFEND}: player defends against an attack
 - ${BattleAction.FOCUS}: player focuses on a monster to attack it next turn
 

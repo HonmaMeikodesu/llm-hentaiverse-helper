@@ -15,6 +15,7 @@ let step = 0;
 
 const llmClient = new LLMClient({
     beforeInvoke: async (msgs) => {
+        console.log(msgs);
         debugger;
     },
     afterInvoke: async (completions) => {
