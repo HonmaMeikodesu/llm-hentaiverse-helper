@@ -85,8 +85,8 @@ async function main() {
 
         let step = 0;
 
-        const llmClient = new LLMClient({
-            beforeInvoke: async (msgs) => {},
+        const llmClient = new LLMClient(( window as any ).OPENAI_AI_KEY, {
+            beforeInvoke: async (msgs) => { },
             afterInvoke: async (completions) => {
                 if (step < 2) return;
                 const resp = completions.choices[0];
@@ -103,9 +103,9 @@ async function main() {
                             battle_token
                         );
                     commandBridge(serverCommand);
-                } catch (e) {}
+                } catch (e) { }
             },
-            onInvokeError: async () => {},
+            onInvokeError: async () => { },
         });
 
         const pipeline = new CommandPipeline({

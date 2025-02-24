@@ -17,7 +17,7 @@ export default class LLMClient {
 
     private onInvokeErrorHook?: OnInvokeErrorHook;
 
-    constructor(hooks?: {
+    constructor(openApiKey: string, hooks?: {
         beforeInvoke?: BeforeInvokeHook;
         afterInvoke?: AfterInvokeHook;
         onInvokeError?: OnInvokeErrorHook;
@@ -29,8 +29,9 @@ export default class LLMClient {
         this.onInvokeErrorHook = onInvokeError;
 
         this.openai = new OpenAI({
-            apiKey: process.env.OPENAI_API_KEY,
+            apiKey: openApiKey,
             baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
+            dangerouslyAllowBrowser: true
         });
     }
 

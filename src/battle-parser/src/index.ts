@@ -586,7 +586,7 @@ export default class BattleParser {
                         merge(ItemEffect, FightingStyleEffect, SupportiveSpell),
                         img.attributes
                             .getNamedItem("onmouseover")!
-                            .textContent!.match(
+                            .value!.match(
                                 /set_infopane_effect\('(.*?)'/
                             )![1]
                     );
@@ -654,7 +654,7 @@ export default class BattleParser {
                         ),
                         img.attributes
                             .getNamedItem("onmouseover")!
-                            .textContent!.match(
+                            .value!.match(
                                 /set_infopane_effect\('(.*?)'/
                             )![1]
                     );

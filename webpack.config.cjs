@@ -2,7 +2,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 /** @type {import("webpack").Configuration}  */
 const browserConfig = {
-    target: "node",
+    target: "web",
     entry: {
         content: "./src/browser/content.ts",
         worker: "./src/browser/worker.ts"

@@ -13,7 +13,7 @@ import BattleParser from "../battle-parser/src/index.js";
 
 let step = 0;
 
-const llmClient = new LLMClient({
+const llmClient = new LLMClient(( process.env as any ).OPENAI_AI_KEY, {
     beforeInvoke: async (msgs) => {
         console.log(msgs);
         debugger;
