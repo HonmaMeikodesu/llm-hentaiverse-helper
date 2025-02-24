@@ -1,12 +1,8 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
 /** @type {import("webpack").Configuration}  */
-const browserConfig = {
+const testConfig = {
     target: "node",
-    entry: {
-        content: "./src/browser/content.ts",
-        worker: "./src/browser/worker.ts"
-    },
+    entry: "./src/test/firstTurn.ts",
+    output: { path: path.resolve(__dirname, "dist"), filename: "test.cjs" },
     resolve: {
         extensions: [".ts", ".js"],
         extensionAlias: {
@@ -42,12 +38,11 @@ const browserConfig = {
             },
         ],
     },
-    devtool: false,
+    devtool: "eval",
     plugins: [
         process.env.ANALYZE_FLAG ? new BundleAnalyzerPlugin({ analyzerPort: 9000 }) : undefined
     ].filter(Boolean),
 };
 
-exports.default = [browserConfig]
-
+exports.default = [testConfig];
 

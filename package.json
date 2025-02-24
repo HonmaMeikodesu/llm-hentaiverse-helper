@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "webpack --mode development && node --inspect-brk dist/test.cjs"
+      "start": "webpack --mode development && node --inspect-brk dist/test.cjs",
+      "test": "webpack -c ./webpack.test.cjs --mode development && node --inspect-brk dist/test.cjs"
   },
   "repository": {
     "type": "git",
