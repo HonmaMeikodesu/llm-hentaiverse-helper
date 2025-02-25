@@ -11,7 +11,5 @@ export async function savePlayerStatsToStorage(
 }
 
 export async function getPlayerStatsFromStorage() {
-	return (await chrome.storage.local.get(playerStatsReportKey)[
-		playerStatsReportKey
-	]) as PlayerStats;
+    return (await chrome.storage.local.get(playerStatsReportKey))[playerStatsReportKey] as PlayerStats;
 }

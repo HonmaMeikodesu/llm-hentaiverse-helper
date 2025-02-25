@@ -13,8 +13,6 @@ import { commandBridge } from "./utils.js";
 
 let currentHtmlContent = document.documentElement.outerHTML;
 
-declare var battle_token: string;
-
 function decideNextState(): RoundEndPayload | BattleEndPayload | TurnPayload {
     const monsterPane = document.querySelector("#pane_monster");
     if ([ "You have been defeated","You have run away" ].includes(monsterPane!.innerHTML)) {
@@ -29,21 +27,21 @@ function decideNextState(): RoundEndPayload | BattleEndPayload | TurnPayload {
         };
     }
     if (["You are victorious"].includes(monsterPane!.innerHTML)) {
+        if (["challenge cleared"].includes(monsterPane!.innerHTML)) {
+            return {
+                type: State.BATTLE_END,
+                payload: {
+                    turnover: {
+                        result: "victory",
+                        detail: "",
+                    }
+                }
+            }
+        }
         return {
             type: State.ROUND_END,
             payload: {
                 hasNextRound: true
-            }
-        }
-    }
-    if ([""].includes(monsterPane!.innerHTML)) {
-        return {
-            type: State.BATTLE_END,
-            payload: {
-                turnover: {
-                    result: "victory",
-                    detail: "",
-                }
             }
         }
     }
@@ -55,12 +53,11 @@ function decideNextState(): RoundEndPayload | BattleEndPayload | TurnPayload {
     }
 }
 
-
 async function main() {
     // playerStatus
     if (BattleParser.ifIsPlayerStatsPage(currentHtmlContent)) {
         const playerStatsReport =
-            BattleParser.getPlayerStats(currentHtmlContent);
+            await BattleParser.getPlayerStats(currentHtmlContent);
         chrome.runtime
             .sendMessage({
                 type: EVENT.SAVE_PLAYER_STATS,
@@ -84,6 +81,8 @@ async function main() {
         const battleSigRep = await battleParser.getBattleSigRep();
 
         let step = 0;
+
+        const battle_token = document.documentElement!.outerHTML!.match(/var battle_token = \"(.*?)\"/)![1];
 
         const llmClient = new LLMClient(( window as any ).OPENAI_AI_KEY, {
             beforeInvoke: async (msgs) => { },

@@ -82,10 +82,13 @@ function pickNearestEnumValueForTarget<T>(e: Object, target: string): T {
     return closest(lowerCase(trim(target)), Object.values(e)) as T;
 }
 
+
+let initMonsterDatabasePromise: Promise<void> | undefined = undefined;
+
 export default class BattleParser {
     constructor(params: { initBattlePageContent?: string }) {
         this.setBattlePage(params.initBattlePageContent || "");
-        this.initMonsterDatabase();
+        initMonsterDatabasePromise = this.initMonsterDatabase();
     }
 
     static ifIsPlayerStatsPage(pageContent: string) {
@@ -552,9 +555,7 @@ export default class BattleParser {
     }
 
     async getMonsterStats(name: string) {
-        if (isUndefined(this.monsterDatas)) {
-            await this.initMonsterDatabase();
-        }
+        await initMonsterDatabasePromise;
         return this.monsterDatas.find((monster) => name === monster.name);
     }
 

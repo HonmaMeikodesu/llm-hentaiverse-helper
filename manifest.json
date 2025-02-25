@@ -10,7 +10,7 @@
     "host_permissions": [],
     "content_scripts": [
         {
-            "matches": ["*://hentaiverse.org/*"],
+            "matches": ["*://hentaiverse.org/*", "http://127.0.0.1:7001/*"],
             "js": ["dist/content.js"]
         }
     ],

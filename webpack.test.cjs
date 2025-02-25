@@ -38,7 +38,7 @@ const testConfig = {
             },
         ],
     },
-    devtool: "eval",
+    devtool: "inline-source-map",
     plugins: [
         process.env.ANALYZE_FLAG ? new BundleAnalyzerPlugin({ analyzerPort: 9000 }) : undefined
     ].filter(Boolean),
