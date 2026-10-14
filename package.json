@@ -5,8 +5,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-      "start": "webpack --mode development",
-      "test": "webpack -c ./webpack.test.cjs --mode development && node --inspect-brk dist/test.cjs"
+    "start": "webpack --mode development",
+    "build": "webpack --mode production",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test .test-build/tests/*.test.js",
+    "test:browser": "npm run build && playwright test"
   },
   "repository": {
     "type": "git",
@@ -25,9 +28,12 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
+    "@playwright/test": "^1.64.0",
     "@types/chrome": "^0.0.299",
     "@types/lodash": "^4.17.14",
+    "@types/node": "^26.6.5",
     "babel-loader": "^9.2.1",
+    "fake-indexeddb": "^6.2.5",
     "ts-loader": "^9.5.1",
     "typescript": "^5.7.2",
     "webpack": "^5.96.1",

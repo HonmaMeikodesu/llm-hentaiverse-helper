@@ -1,0 +1,2741 @@
+{
+  "schema_version": 1,
+  "extracted_on": "2026-10-13",
+  "live_browser_collected": false,
+  "snapshots": [
+    {
+      "source": "docs/research/startBattle.html",
+      "sha256": "43bfa7657aaf05174974e87c68c9a2836923e00fc978ca4dada0eb5a34b6e149",
+      "capture_date": null,
+      "provenance": "user-provided historical repository HTML; not collected from current browser",
+      "asset_version_hints": [
+        "090c"
+      ],
+      "controls": [
+        {
+          "dom_id": "ckey_attack",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'attack')",
+          "tooltip_handler": "battle.set_infopane('Attack')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "attack",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_skill",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'skill')",
+          "tooltip_handler": "battle.set_infopane('Skillbook')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "skill",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_items",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'items')",
+          "tooltip_handler": "battle.set_infopane('Items')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "items",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_spirit",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'spirit')",
+          "tooltip_handler": "battle.set_infopane('Spirit')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "spirit",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_defend",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'defend')",
+          "tooltip_handler": "battle.set_infopane('Defend')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "defend",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_focus",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'focus')",
+          "tooltip_handler": "battle.set_infopane('Focus')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "focus",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "1001",
+          "text": "Flee",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',1001); battle.set_friendly_skill(1001); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Flee', 'Run away from the current battle.', 'sflee', 0, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Flee",
+            "description": "Run away from the current battle.",
+            "icon_key": "sflee",
+            "mana_cost_display": 0,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Flee",
+          "target_selection_observed": "none"
+        },
+        {
+          "dom_id": "1011",
+          "text": "Scan",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',1011); battle.set_hostile_skill(1011)",
+          "tooltip_handler": "battle.set_infopane_spell('Scan', 'Retrieve data on the target.', 'sscan', 0, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Scan",
+            "description": "Retrieve data on the target.",
+            "icon_key": "sscan",
+            "mana_cost_display": 0,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Scan",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "2201",
+          "text": "Shield Bash",
+          "onclick_present": false,
+          "style": "opacity:0.5",
+          "onclick": null,
+          "tooltip_handler": "battle.set_infopane_spell('Shield Bash', 'Bash an enemy with your shield to stun it, which opens up for devastating strikes with your weapon.', 'sshieldbash', 0, 1, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Shield Bash",
+            "description": "Bash an enemy with your shield to stun it, which opens up for devastating strikes with your weapon.",
+            "icon_key": "sshieldbash",
+            "mana_cost_display": 0,
+            "charge_cost_display": 1,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Shield Bash",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "2202",
+          "text": "Vital Strike",
+          "onclick_present": false,
+          "style": "opacity:0.5",
+          "onclick": null,
+          "tooltip_handler": "battle.set_infopane_spell('Vital Strike', 'Follow up with an attack that, if used on a stunned target, causes a large amount of damage and a chance of inflicting bleed.', 'svital', 0, 2, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Vital Strike",
+            "description": "Follow up with an attack that, if used on a stunned target, causes a large amount of damage and a chance of inflicting bleed.",
+            "icon_key": "svital",
+            "mana_cost_display": 0,
+            "charge_cost_display": 2,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Vital Strike",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "2203",
+          "text": "Merciful Blow",
+          "onclick_present": false,
+          "style": "opacity:0.5",
+          "onclick": null,
+          "tooltip_handler": "battle.set_infopane_spell('Merciful Blow', 'Finish off a mortally wounded enemy. Instantly kills a target with bleed and less than 25% health.', 'smerciful', 0, 4, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Merciful Blow",
+            "description": "Finish off a mortally wounded enemy. Instantly kills a target with bleed and less than 25% health.",
+            "icon_key": "smerciful",
+            "mana_cost_display": 0,
+            "charge_cost_display": 4,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Merciful Blow",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "111",
+          "text": "Fiery Blast",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',111); battle.set_hostile_skill(111)",
+          "tooltip_handler": "battle.set_infopane_spell('Fiery Blast', 'A ball of fire is hurled at the target.', '0130', 14, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Fiery Blast",
+            "description": "A ball of fire is hurled at the target.",
+            "icon_key": "0130",
+            "mana_cost_display": 14,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Fiery Blast",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "112",
+          "text": "Inferno",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',112); battle.set_hostile_skill(112)",
+          "tooltip_handler": "battle.set_infopane_spell('Inferno', 'Unleashes an inferno of flames on all hostile targets, causing Fire damage.', '0132', 36, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Inferno",
+            "description": "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "icon_key": "0132",
+            "mana_cost_display": 36,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Inferno",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "121",
+          "text": "Freeze",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',121); battle.set_hostile_skill(121)",
+          "tooltip_handler": "battle.set_infopane_spell('Freeze', 'Cold damage.', '0730', 14, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Freeze",
+            "description": "Cold damage.",
+            "icon_key": "0730",
+            "mana_cost_display": 14,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Freeze",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "122",
+          "text": "Blizzard",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',122); battle.set_hostile_skill(122)",
+          "tooltip_handler": "battle.set_infopane_spell('Blizzard', 'Cold damage.', '0732', 36, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Blizzard",
+            "description": "Cold damage.",
+            "icon_key": "0732",
+            "mana_cost_display": 36,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Blizzard",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "131",
+          "text": "Shockblast",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',131); battle.set_hostile_skill(131)",
+          "tooltip_handler": "battle.set_infopane_spell('Shockblast', 'A bolt of lightning strikes the target, causing Elec damage.', '0330', 14, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Shockblast",
+            "description": "A bolt of lightning strikes the target, causing Elec damage.",
+            "icon_key": "0330",
+            "mana_cost_display": 14,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Shockblast",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "132",
+          "text": "Chained Lightning",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',132); battle.set_hostile_skill(132)",
+          "tooltip_handler": "battle.set_infopane_spell('Chained Lightning', 'Elec damage.', '0832', 36, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Chained Lightning",
+            "description": "Elec damage.",
+            "icon_key": "0832",
+            "mana_cost_display": 36,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Chained Lightning",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "141",
+          "text": "Gale",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',141); battle.set_hostile_skill(141)",
+          "tooltip_handler": "battle.set_infopane_spell('Gale', 'A blast of wind hits the target, causing Wind damage.', '0430', 14, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Gale",
+            "description": "A blast of wind hits the target, causing Wind damage.",
+            "icon_key": "0430",
+            "mana_cost_display": 14,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Gale",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "142",
+          "text": "Downburst",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',142); battle.set_hostile_skill(142)",
+          "tooltip_handler": "battle.set_infopane_spell('Downburst', 'Wind damage.', '0930', 36, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Downburst",
+            "description": "Wind damage.",
+            "icon_key": "0930",
+            "mana_cost_display": 36,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Downburst",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "151",
+          "text": "Smite",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',151); battle.set_hostile_skill(151)",
+          "tooltip_handler": "battle.set_infopane_spell('Smite', 'Holy damage.', '1130', 35, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Smite",
+            "description": "Holy damage.",
+            "icon_key": "1130",
+            "mana_cost_display": 35,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Smite",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "161",
+          "text": "Corruption",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',161); battle.set_hostile_skill(161)",
+          "tooltip_handler": "battle.set_infopane_spell('Corruption', 'Dark damage.', '1230', 35, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Corruption",
+            "description": "Dark damage.",
+            "icon_key": "1230",
+            "mana_cost_display": 35,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Corruption",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "211",
+          "text": "Drain",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',211); battle.set_hostile_skill(211)",
+          "tooltip_handler": "battle.set_infopane_spell('Drain', 'Inflicts Drain on one target, causing damage over time.', '0133', 35, 0, 30)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Drain",
+            "description": "Inflicts Drain on one target, causing damage over time.",
+            "icon_key": "0133",
+            "mana_cost_display": 35,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 30,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Drain",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "212",
+          "text": "Weaken",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',212); battle.set_hostile_skill(212)",
+          "tooltip_handler": "battle.set_infopane_spell('Weaken', 'The target is weakened, making it deal less damage, and preventing it from scoring critical hits.', '0333', 24, 0, 3)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Weaken",
+            "description": "The target is weakened, making it deal less damage, and preventing it from scoring critical hits.",
+            "icon_key": "0333",
+            "mana_cost_display": 24,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 3,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Weaken",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "213",
+          "text": "Imperil",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',213); battle.set_hostile_skill(213)",
+          "tooltip_handler": "battle.set_infopane_spell('Imperil', 'The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.', 'm_imperil', 25, 0, 3)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Imperil",
+            "description": "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.",
+            "icon_key": "m_imperil",
+            "mana_cost_display": 25,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 3,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Imperil",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "221",
+          "text": "Slow",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',221); battle.set_hostile_skill(221)",
+          "tooltip_handler": "battle.set_infopane_spell('Slow', 'The target is slowed by 30%, making it attack less frequently.', '0233', 42, 0, 3)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Slow",
+            "description": "The target is slowed by 30%, making it attack less frequently.",
+            "icon_key": "0233",
+            "mana_cost_display": 42,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 3,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Slow",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "222",
+          "text": "Sleep",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',222); battle.set_hostile_skill(222)",
+          "tooltip_handler": "battle.set_infopane_spell('Sleep', 'The target is lulled to sleep, preventing it from taking any actions.', '0433', 61, 0, 7)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Sleep",
+            "description": "The target is lulled to sleep, preventing it from taking any actions.",
+            "icon_key": "0433",
+            "mana_cost_display": 61,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 7,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Sleep",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "223",
+          "text": "Confuse",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',223); battle.set_hostile_skill(223)",
+          "tooltip_handler": "battle.set_infopane_spell('Confuse', 'Confuses the target, making it lunge out wildly and strike friends and foes alike.', '0733', 64, 0, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Confuse",
+            "description": "Confuses the target, making it lunge out wildly and strike friends and foes alike.",
+            "icon_key": "0733",
+            "mana_cost_display": 64,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Confuse",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "231",
+          "text": "Blind",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',231); battle.set_hostile_skill(231)",
+          "tooltip_handler": "battle.set_infopane_spell('Blind', 'Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.', '0933', 46, 0, 7)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Blind",
+            "description": "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.",
+            "icon_key": "0933",
+            "mana_cost_display": 46,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 7,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Blind",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "232",
+          "text": "Silence",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',232); battle.set_hostile_skill(232)",
+          "tooltip_handler": "battle.set_infopane_spell('Silence', 'The target is silenced, preventing it from using special attacks and magic.', '0833', 46, 0, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Silence",
+            "description": "The target is silenced, preventing it from using special attacks and magic.",
+            "icon_key": "0833",
+            "mana_cost_display": 46,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Silence",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "311",
+          "text": "Cure",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',311); battle.set_friendly_skill(311); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Cure', 'Restores a moderate amount of Health on the target.', '0530', 47, 0, 2)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Cure",
+            "description": "Restores a moderate amount of Health on the target.",
+            "icon_key": "0530",
+            "mana_cost_display": 47,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 2,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Cure",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "312",
+          "text": "Regen",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',312); battle.set_friendly_skill(312); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Regen', 'Places a heal over time effect on the target.', '1030', 111, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Regen",
+            "description": "Places a heal over time effect on the target.",
+            "icon_key": "1030",
+            "mana_cost_display": 111,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Regen",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "411",
+          "text": "Protection",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',411); battle.set_friendly_skill(411); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Protection', 'Places a shield effect on the target, absorbing 25% of the damage from all attacks.', '0532', 56, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Protection",
+            "description": "Places a shield effect on the target, absorbing 25% of the damage from all attacks.",
+            "icon_key": "0532",
+            "mana_cost_display": 56,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Protection",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "412",
+          "text": "Haste",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',412); battle.set_friendly_skill(412); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Haste', 'Speeds up all actions of the target, allowing it to attack more frequently.', '0533', 70, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Haste",
+            "description": "Speeds up all actions of the target, allowing it to attack more frequently.",
+            "icon_key": "0533",
+            "mana_cost_display": 70,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Haste",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "413",
+          "text": "Shadow Veil",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',413); battle.set_friendly_skill(413); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Shadow Veil', 'Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.', '0633', 73, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Shadow Veil",
+            "description": "Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.",
+            "icon_key": "0633",
+            "mana_cost_display": 73,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Shadow Veil",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "421",
+          "text": "Absorb",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',421); battle.set_friendly_skill(421); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Absorb', 'The next magical attack against the target has a chance to be absorbed and partially converted to MP.', '1033', 69, 0, 20)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Absorb",
+            "description": "The next magical attack against the target has a chance to be absorbed and partially converted to MP.",
+            "icon_key": "1033",
+            "mana_cost_display": 69,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 20,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Absorb",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "422",
+          "text": "Spark of Life",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',422); battle.set_friendly_skill(422); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Spark of Life', 'Any attack that would one-shot a target with more than 1 HP leaves it alive but on the brink of defeat. The buff is removed when triggered.', '1133', 122, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Spark of Life",
+            "description": "Any attack that would one-shot a target with more than 1 HP leaves it alive but on the brink of defeat. The buff is removed when triggered.",
+            "icon_key": "1133",
+            "mana_cost_display": 122,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Spark of Life",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "431",
+          "text": "Heartseeker",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',431); battle.set_friendly_skill(431); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Heartseeker', 'The target attains intimate knowledge of the flow of life in all living beings, increasing attack power and crit chance.', 'm4021', 246, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Heartseeker",
+            "description": "The target attains intimate knowledge of the flow of life in all living beings, increasing attack power and crit chance.",
+            "icon_key": "m4021",
+            "mana_cost_display": 246,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Heartseeker",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_1",
+          "text": "Health Draught",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_1'); battle.set_friendly_skill('1'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(11191)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Health Draught",
+          "item_type_id": 11191,
+          "item_slot": "1",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_2",
+          "text": "Mana Draught",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_2'); battle.set_friendly_skill('2'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(11291)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Mana Draught",
+          "item_type_id": 11291,
+          "item_slot": "2",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_3",
+          "text": "Spirit Draught",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_3'); battle.set_friendly_skill('3'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(11391)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Spirit Draught",
+          "item_type_id": 11391,
+          "item_slot": "3",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_4",
+          "text": "Scroll of Protection",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_4'); battle.set_friendly_skill('4'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(13111)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Scroll of Protection",
+          "item_type_id": 13111,
+          "item_slot": "4",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_5",
+          "text": "Scroll of Absorption",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_5'); battle.set_friendly_skill('5'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(13201)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Scroll of Absorption",
+          "item_type_id": 13201,
+          "item_slot": "5",
+          "target_selection_observed": "self"
+        }
+      ],
+      "monsters": [
+        {
+          "dom_id": "mkey_1",
+          "target_slot": 1,
+          "name": "Meme0",
+          "onclick_present": true,
+          "health_bar_width": "width:120px"
+        },
+        {
+          "dom_id": "mkey_2",
+          "target_slot": 2,
+          "name": "Draco Not-lich",
+          "onclick_present": true,
+          "health_bar_width": "width:120px"
+        },
+        {
+          "dom_id": "mkey_3",
+          "target_slot": 3,
+          "name": "Xperia R1 Plus",
+          "onclick_present": true,
+          "health_bar_width": "width:120px"
+        },
+        {
+          "dom_id": "mkey_4",
+          "target_slot": 4,
+          "name": "Sexy Love",
+          "onclick_present": true,
+          "health_bar_width": "width:120px"
+        }
+      ],
+      "inventory_slots": [
+        {
+          "slot_label": "P",
+          "item_text": "",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "1",
+          "item_text": "Health Draught",
+          "control_ids": [
+            "ikey_1"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "2",
+          "item_text": "Mana Draught",
+          "control_ids": [
+            "ikey_2"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "3",
+          "item_text": "Spirit Draught",
+          "control_ids": [
+            "ikey_3"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "4",
+          "item_text": "Scroll of Protection",
+          "control_ids": [
+            "ikey_4"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "5",
+          "item_text": "Scroll of Absorption",
+          "control_ids": [
+            "ikey_5"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "S1",
+          "item_text": "",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "N1",
+          "item_text": "",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        }
+      ],
+      "player_vitals_text": {
+        "hp": "6107",
+        "mp": "492",
+        "sp": "323"
+      }
+    },
+    {
+      "source": "docs/research/nextTurnBattle.html",
+      "sha256": "4b1435cce61d05704537638b982cd3c45b1fa005de3f8fabed8d2091a376e8aa",
+      "capture_date": null,
+      "provenance": "user-provided historical repository HTML; not collected from current browser",
+      "asset_version_hints": [
+        "090c"
+      ],
+      "controls": [
+        {
+          "dom_id": "ckey_attack",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'attack')",
+          "tooltip_handler": "battle.set_infopane('Attack')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "attack",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_skill",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'skill')",
+          "tooltip_handler": "battle.set_infopane('Skillbook')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "skill",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_items",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'items')",
+          "tooltip_handler": "battle.set_infopane('Items')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "items",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_spirit",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'spirit')",
+          "tooltip_handler": "battle.set_infopane('Spirit')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "spirit",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_defend",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'defend')",
+          "tooltip_handler": "battle.set_infopane('Defend')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "defend",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_focus",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'focus')",
+          "tooltip_handler": "battle.set_infopane('Focus')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "focus",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "1001",
+          "text": "Flee",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',1001); battle.set_friendly_skill(1001); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Flee', 'Run away from the current battle.', 'sflee', 0, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Flee",
+            "description": "Run away from the current battle.",
+            "icon_key": "sflee",
+            "mana_cost_display": 0,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Flee",
+          "target_selection_observed": "none"
+        },
+        {
+          "dom_id": "1011",
+          "text": "Scan",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',1011); battle.set_hostile_skill(1011)",
+          "tooltip_handler": "battle.set_infopane_spell('Scan', 'Retrieve data on the target.', 'sscan', 0, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Scan",
+            "description": "Retrieve data on the target.",
+            "icon_key": "sscan",
+            "mana_cost_display": 0,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Scan",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "2201",
+          "text": "Shield Bash",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',2201); battle.set_hostile_skill(2201)",
+          "tooltip_handler": "battle.set_infopane_spell('Shield Bash', 'Bash an enemy with your shield to stun it, which opens up for devastating strikes with your weapon.', 'sshieldbash', 0, 1, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Shield Bash",
+            "description": "Bash an enemy with your shield to stun it, which opens up for devastating strikes with your weapon.",
+            "icon_key": "sshieldbash",
+            "mana_cost_display": 0,
+            "charge_cost_display": 1,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Shield Bash",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "2202",
+          "text": "Vital Strike",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',2202); battle.set_hostile_skill(2202)",
+          "tooltip_handler": "battle.set_infopane_spell('Vital Strike', 'Follow up with an attack that, if used on a stunned target, causes a large amount of damage and a chance of inflicting bleed.', 'svital', 0, 2, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Vital Strike",
+            "description": "Follow up with an attack that, if used on a stunned target, causes a large amount of damage and a chance of inflicting bleed.",
+            "icon_key": "svital",
+            "mana_cost_display": 0,
+            "charge_cost_display": 2,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Vital Strike",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "2203",
+          "text": "Merciful Blow",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',2203); battle.set_hostile_skill(2203)",
+          "tooltip_handler": "battle.set_infopane_spell('Merciful Blow', 'Finish off a mortally wounded enemy. Instantly kills a target with bleed and less than 25% health.', 'smerciful', 0, 4, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Merciful Blow",
+            "description": "Finish off a mortally wounded enemy. Instantly kills a target with bleed and less than 25% health.",
+            "icon_key": "smerciful",
+            "mana_cost_display": 0,
+            "charge_cost_display": 4,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Merciful Blow",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "111",
+          "text": "Fiery Blast",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',111); battle.set_hostile_skill(111)",
+          "tooltip_handler": "battle.set_infopane_spell('Fiery Blast', 'A ball of fire is hurled at the target.', '0130', 11, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Fiery Blast",
+            "description": "A ball of fire is hurled at the target.",
+            "icon_key": "0130",
+            "mana_cost_display": 11,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Fiery Blast",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "112",
+          "text": "Inferno",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',112); battle.set_hostile_skill(112)",
+          "tooltip_handler": "battle.set_infopane_spell('Inferno', 'Unleashes an inferno of flames on all hostile targets, causing Fire damage.', '0132', 27, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Inferno",
+            "description": "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "icon_key": "0132",
+            "mana_cost_display": 27,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Inferno",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "121",
+          "text": "Freeze",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',121); battle.set_hostile_skill(121)",
+          "tooltip_handler": "battle.set_infopane_spell('Freeze', 'Cold damage.', '0730', 11, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Freeze",
+            "description": "Cold damage.",
+            "icon_key": "0730",
+            "mana_cost_display": 11,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Freeze",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "122",
+          "text": "Blizzard",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',122); battle.set_hostile_skill(122)",
+          "tooltip_handler": "battle.set_infopane_spell('Blizzard', 'Cold damage.', '0732', 27, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Blizzard",
+            "description": "Cold damage.",
+            "icon_key": "0732",
+            "mana_cost_display": 27,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Blizzard",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "131",
+          "text": "Shockblast",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',131); battle.set_hostile_skill(131)",
+          "tooltip_handler": "battle.set_infopane_spell('Shockblast', 'A bolt of lightning strikes the target, causing Elec damage.', '0330', 11, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Shockblast",
+            "description": "A bolt of lightning strikes the target, causing Elec damage.",
+            "icon_key": "0330",
+            "mana_cost_display": 11,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Shockblast",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "132",
+          "text": "Chained Lightning",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',132); battle.set_hostile_skill(132)",
+          "tooltip_handler": "battle.set_infopane_spell('Chained Lightning', 'Elec damage.', '0832', 27, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Chained Lightning",
+            "description": "Elec damage.",
+            "icon_key": "0832",
+            "mana_cost_display": 27,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Chained Lightning",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "141",
+          "text": "Gale",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',141); battle.set_hostile_skill(141)",
+          "tooltip_handler": "battle.set_infopane_spell('Gale', 'A blast of wind hits the target, causing Wind damage.', '0430', 11, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Gale",
+            "description": "A blast of wind hits the target, causing Wind damage.",
+            "icon_key": "0430",
+            "mana_cost_display": 11,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Gale",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "142",
+          "text": "Downburst",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',142); battle.set_hostile_skill(142)",
+          "tooltip_handler": "battle.set_infopane_spell('Downburst', 'Wind damage.', '0930', 27, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Downburst",
+            "description": "Wind damage.",
+            "icon_key": "0930",
+            "mana_cost_display": 27,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Downburst",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "151",
+          "text": "Smite",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',151); battle.set_hostile_skill(151)",
+          "tooltip_handler": "battle.set_infopane_spell('Smite', 'Holy damage.', '1130', 26, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Smite",
+            "description": "Holy damage.",
+            "icon_key": "1130",
+            "mana_cost_display": 26,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Smite",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "161",
+          "text": "Corruption",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',161); battle.set_hostile_skill(161)",
+          "tooltip_handler": "battle.set_infopane_spell('Corruption', 'Dark damage.', '1230', 26, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Corruption",
+            "description": "Dark damage.",
+            "icon_key": "1230",
+            "mana_cost_display": 26,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Corruption",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "211",
+          "text": "Drain",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',211); battle.set_hostile_skill(211)",
+          "tooltip_handler": "battle.set_infopane_spell('Drain', 'Inflicts Drain on one target, causing damage over time.', '0133', 26, 0, 30)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Drain",
+            "description": "Inflicts Drain on one target, causing damage over time.",
+            "icon_key": "0133",
+            "mana_cost_display": 26,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 30,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Drain",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "212",
+          "text": "Weaken",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',212); battle.set_hostile_skill(212)",
+          "tooltip_handler": "battle.set_infopane_spell('Weaken', 'The target is weakened, making it deal less damage, and preventing it from scoring critical hits.', '0333', 18, 0, 3)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Weaken",
+            "description": "The target is weakened, making it deal less damage, and preventing it from scoring critical hits.",
+            "icon_key": "0333",
+            "mana_cost_display": 18,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 3,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Weaken",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "213",
+          "text": "Imperil",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',213); battle.set_hostile_skill(213)",
+          "tooltip_handler": "battle.set_infopane_spell('Imperil', 'The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.', 'm_imperil', 19, 0, 3)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Imperil",
+            "description": "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.",
+            "icon_key": "m_imperil",
+            "mana_cost_display": 19,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 3,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Imperil",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "221",
+          "text": "Slow",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',221); battle.set_hostile_skill(221)",
+          "tooltip_handler": "battle.set_infopane_spell('Slow', 'The target is slowed by 30%, making it attack less frequently.', '0233', 32, 0, 3)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Slow",
+            "description": "The target is slowed by 30%, making it attack less frequently.",
+            "icon_key": "0233",
+            "mana_cost_display": 32,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 3,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Slow",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "222",
+          "text": "Sleep",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',222); battle.set_hostile_skill(222)",
+          "tooltip_handler": "battle.set_infopane_spell('Sleep', 'The target is lulled to sleep, preventing it from taking any actions.', '0433', 46, 0, 7)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Sleep",
+            "description": "The target is lulled to sleep, preventing it from taking any actions.",
+            "icon_key": "0433",
+            "mana_cost_display": 46,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 7,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Sleep",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "223",
+          "text": "Confuse",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',223); battle.set_hostile_skill(223)",
+          "tooltip_handler": "battle.set_infopane_spell('Confuse', 'Confuses the target, making it lunge out wildly and strike friends and foes alike.', '0733', 48, 0, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Confuse",
+            "description": "Confuses the target, making it lunge out wildly and strike friends and foes alike.",
+            "icon_key": "0733",
+            "mana_cost_display": 48,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Confuse",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "231",
+          "text": "Blind",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',231); battle.set_hostile_skill(231)",
+          "tooltip_handler": "battle.set_infopane_spell('Blind', 'Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.', '0933', 34, 0, 7)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Blind",
+            "description": "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.",
+            "icon_key": "0933",
+            "mana_cost_display": 34,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 7,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Blind",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "232",
+          "text": "Silence",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',232); battle.set_hostile_skill(232)",
+          "tooltip_handler": "battle.set_infopane_spell('Silence', 'The target is silenced, preventing it from using special attacks and magic.', '0833', 34, 0, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Silence",
+            "description": "The target is silenced, preventing it from using special attacks and magic.",
+            "icon_key": "0833",
+            "mana_cost_display": 34,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Silence",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "311",
+          "text": "Cure",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',311); battle.set_friendly_skill(311); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Cure', 'Restores a moderate amount of Health on the target.', '0530', 35, 0, 2)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Cure",
+            "description": "Restores a moderate amount of Health on the target.",
+            "icon_key": "0530",
+            "mana_cost_display": 35,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 2,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Cure",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "312",
+          "text": "Regen",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',312); battle.set_friendly_skill(312); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Regen', 'Places a heal over time effect on the target.', '1030', 83, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Regen",
+            "description": "Places a heal over time effect on the target.",
+            "icon_key": "1030",
+            "mana_cost_display": 83,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Regen",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "411",
+          "text": "Protection",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',411); battle.set_friendly_skill(411); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Protection', 'Places a shield effect on the target, absorbing 25% of the damage from all attacks.', '0532', 42, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Protection",
+            "description": "Places a shield effect on the target, absorbing 25% of the damage from all attacks.",
+            "icon_key": "0532",
+            "mana_cost_display": 42,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Protection",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "412",
+          "text": "Haste",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',412); battle.set_friendly_skill(412); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Haste', 'Speeds up all actions of the target, allowing it to attack more frequently.', '0533', 53, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Haste",
+            "description": "Speeds up all actions of the target, allowing it to attack more frequently.",
+            "icon_key": "0533",
+            "mana_cost_display": 53,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Haste",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "413",
+          "text": "Shadow Veil",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',413); battle.set_friendly_skill(413); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Shadow Veil', 'Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.', '0633', 54, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Shadow Veil",
+            "description": "Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.",
+            "icon_key": "0633",
+            "mana_cost_display": 54,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Shadow Veil",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "421",
+          "text": "Absorb",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',421); battle.set_friendly_skill(421); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Absorb', 'The next magical attack against the target has a chance to be absorbed and partially converted to MP.', '1033', 52, 0, 20)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Absorb",
+            "description": "The next magical attack against the target has a chance to be absorbed and partially converted to MP.",
+            "icon_key": "1033",
+            "mana_cost_display": 52,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 20,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Absorb",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "422",
+          "text": "Spark of Life",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',422); battle.set_friendly_skill(422); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Spark of Life', 'Any attack that would one-shot a target with more than 1 HP leaves it alive but on the brink of defeat. The buff is removed when triggered.', '1133', 91, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Spark of Life",
+            "description": "Any attack that would one-shot a target with more than 1 HP leaves it alive but on the brink of defeat. The buff is removed when triggered.",
+            "icon_key": "1133",
+            "mana_cost_display": 91,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Spark of Life",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "431",
+          "text": "Heartseeker",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',431); battle.set_friendly_skill(431); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Heartseeker', 'The target attains intimate knowledge of the flow of life in all living beings, increasing attack power and crit chance.', 'm4021', 184, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Heartseeker",
+            "description": "The target attains intimate knowledge of the flow of life in all living beings, increasing attack power and crit chance.",
+            "icon_key": "m4021",
+            "mana_cost_display": 184,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Heartseeker",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_3",
+          "text": "Spirit Draught",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_3'); battle.set_friendly_skill('3'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(11391)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Spirit Draught",
+          "item_type_id": 11391,
+          "item_slot": "3",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_4",
+          "text": "Scroll of Protection",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_4'); battle.set_friendly_skill('4'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(13111)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Scroll of Protection",
+          "item_type_id": 13111,
+          "item_slot": "4",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_5",
+          "text": "Scroll of Absorption",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_5'); battle.set_friendly_skill('5'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(13201)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Scroll of Absorption",
+          "item_type_id": 13201,
+          "item_slot": "5",
+          "target_selection_observed": "self"
+        }
+      ],
+      "monsters": [
+        {
+          "dom_id": "mkey_1",
+          "target_slot": 1,
+          "name": "Go For It",
+          "onclick_present": true,
+          "health_bar_width": "width:120px"
+        },
+        {
+          "dom_id": "mkey_2",
+          "target_slot": 2,
+          "name": "Saki Hatsumi",
+          "onclick_present": true,
+          "health_bar_width": "width:120px"
+        },
+        {
+          "dom_id": "mkey_3",
+          "target_slot": 3,
+          "name": "Mirai Kamiki",
+          "onclick_present": true,
+          "health_bar_width": "width:120px"
+        }
+      ],
+      "inventory_slots": [
+        {
+          "slot_label": "P",
+          "item_text": "",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "1",
+          "item_text": "Health Draught",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "2",
+          "item_text": "Mana Draught",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "3",
+          "item_text": "Spirit Draught",
+          "control_ids": [
+            "ikey_3"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "4",
+          "item_text": "Scroll of Protection",
+          "control_ids": [
+            "ikey_4"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "5",
+          "item_text": "Scroll of Absorption",
+          "control_ids": [
+            "ikey_5"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "S1",
+          "item_text": "",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "N1",
+          "item_text": "",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        }
+      ],
+      "player_vitals_text": {
+        "hp": "6088",
+        "mp": "434",
+        "sp": "315"
+      }
+    },
+    {
+      "source": "docs/research/battle1.html",
+      "sha256": "380f5a323e068616ff3a048f5171fe874f4cc1011121974bd112719d8d451b0b",
+      "capture_date": null,
+      "provenance": "user-provided historical repository HTML; not collected from current browser",
+      "asset_version_hints": [
+        "090c"
+      ],
+      "controls": [
+        {
+          "dom_id": "ckey_attack",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'attack')",
+          "tooltip_handler": "battle.set_infopane('Attack')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "attack",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_skill",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'skill')",
+          "tooltip_handler": "battle.set_infopane('Skillbook')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "skill",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_items",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'items')",
+          "tooltip_handler": "battle.set_infopane('Items')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "items",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_spirit",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'spirit')",
+          "tooltip_handler": "battle.set_infopane('Spirit')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "spirit",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_defend",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'defend')",
+          "tooltip_handler": "battle.set_infopane('Defend')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "defend",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "ckey_focus",
+          "text": "",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,0,'focus')",
+          "tooltip_handler": "battle.set_infopane('Focus')",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "focus",
+          "target_selection_observed": null
+        },
+        {
+          "dom_id": "1001",
+          "text": "Flee",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',1001); battle.set_friendly_skill(1001); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Flee', 'Run away from the current battle.', 'sflee', 0, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Flee",
+            "description": "Run away from the current battle.",
+            "icon_key": "sflee",
+            "mana_cost_display": 0,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Flee",
+          "target_selection_observed": "none"
+        },
+        {
+          "dom_id": "1011",
+          "text": "Scan",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',1011); battle.set_hostile_skill(1011)",
+          "tooltip_handler": "battle.set_infopane_spell('Scan', 'Retrieve data on the target.', 'sscan', 0, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Scan",
+            "description": "Retrieve data on the target.",
+            "icon_key": "sscan",
+            "mana_cost_display": 0,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Scan",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "2201",
+          "text": "Shield Bash",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',2201); battle.set_hostile_skill(2201)",
+          "tooltip_handler": "battle.set_infopane_spell('Shield Bash', 'Bash an enemy with your shield to stun it, which opens up for devastating strikes with your weapon.', 'sshieldbash', 0, 1, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Shield Bash",
+            "description": "Bash an enemy with your shield to stun it, which opens up for devastating strikes with your weapon.",
+            "icon_key": "sshieldbash",
+            "mana_cost_display": 0,
+            "charge_cost_display": 1,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Shield Bash",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "2202",
+          "text": "Vital Strike",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',2202); battle.set_hostile_skill(2202)",
+          "tooltip_handler": "battle.set_infopane_spell('Vital Strike', 'Follow up with an attack that, if used on a stunned target, causes a large amount of damage and a chance of inflicting bleed.', 'svital', 0, 2, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Vital Strike",
+            "description": "Follow up with an attack that, if used on a stunned target, causes a large amount of damage and a chance of inflicting bleed.",
+            "icon_key": "svital",
+            "mana_cost_display": 0,
+            "charge_cost_display": 2,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Vital Strike",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "2203",
+          "text": "Merciful Blow",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',2203); battle.set_hostile_skill(2203)",
+          "tooltip_handler": "battle.set_infopane_spell('Merciful Blow', 'Finish off a mortally wounded enemy. Instantly kills a target with bleed and less than 25% health.', 'smerciful', 0, 4, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Merciful Blow",
+            "description": "Finish off a mortally wounded enemy. Instantly kills a target with bleed and less than 25% health.",
+            "icon_key": "smerciful",
+            "mana_cost_display": 0,
+            "charge_cost_display": 4,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Merciful Blow",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "111",
+          "text": "Fiery Blast",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',111); battle.set_hostile_skill(111)",
+          "tooltip_handler": "battle.set_infopane_spell('Fiery Blast', 'A ball of fire is hurled at the target.', '0130', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Fiery Blast",
+            "description": "A ball of fire is hurled at the target.",
+            "icon_key": "0130",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Fiery Blast",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "112",
+          "text": "Inferno",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',112); battle.set_hostile_skill(112)",
+          "tooltip_handler": "battle.set_infopane_spell('Inferno', 'Unleashes an inferno of flames on all hostile targets, causing Fire damage.', '0132', 1, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Inferno",
+            "description": "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "icon_key": "0132",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Inferno",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "121",
+          "text": "Freeze",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',121); battle.set_hostile_skill(121)",
+          "tooltip_handler": "battle.set_infopane_spell('Freeze', 'Cold damage.', '0730', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Freeze",
+            "description": "Cold damage.",
+            "icon_key": "0730",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Freeze",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "122",
+          "text": "Blizzard",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',122); battle.set_hostile_skill(122)",
+          "tooltip_handler": "battle.set_infopane_spell('Blizzard', 'Cold damage.', '0732', 1, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Blizzard",
+            "description": "Cold damage.",
+            "icon_key": "0732",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Blizzard",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "131",
+          "text": "Shockblast",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',131); battle.set_hostile_skill(131)",
+          "tooltip_handler": "battle.set_infopane_spell('Shockblast', 'A bolt of lightning strikes the target, causing Elec damage.', '0330', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Shockblast",
+            "description": "A bolt of lightning strikes the target, causing Elec damage.",
+            "icon_key": "0330",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Shockblast",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "132",
+          "text": "Chained Lightning",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',132); battle.set_hostile_skill(132)",
+          "tooltip_handler": "battle.set_infopane_spell('Chained Lightning', 'Elec damage.', '0832', 1, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Chained Lightning",
+            "description": "Elec damage.",
+            "icon_key": "0832",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Chained Lightning",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "141",
+          "text": "Gale",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',141); battle.set_hostile_skill(141)",
+          "tooltip_handler": "battle.set_infopane_spell('Gale', 'A blast of wind hits the target, causing Wind damage.', '0430', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Gale",
+            "description": "A blast of wind hits the target, causing Wind damage.",
+            "icon_key": "0430",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Gale",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "142",
+          "text": "Downburst",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',142); battle.set_hostile_skill(142)",
+          "tooltip_handler": "battle.set_infopane_spell('Downburst', 'Wind damage.', '0930', 1, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Downburst",
+            "description": "Wind damage.",
+            "icon_key": "0930",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Downburst",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "151",
+          "text": "Smite",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',151); battle.set_hostile_skill(151)",
+          "tooltip_handler": "battle.set_infopane_spell('Smite', 'Holy damage.', '1130', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Smite",
+            "description": "Holy damage.",
+            "icon_key": "1130",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Smite",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "152",
+          "text": "Banishment",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',152); battle.set_hostile_skill(152)",
+          "tooltip_handler": "battle.set_infopane_spell('Banishment', 'Holy damage.', '1132', 1, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Banishment",
+            "description": "Holy damage.",
+            "icon_key": "1132",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Banishment",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "161",
+          "text": "Corruption",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',161); battle.set_hostile_skill(161)",
+          "tooltip_handler": "battle.set_infopane_spell('Corruption', 'Dark damage.', '1230', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Corruption",
+            "description": "Dark damage.",
+            "icon_key": "1230",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Corruption",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "162",
+          "text": "Disintegrate",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',162); battle.set_hostile_skill(162)",
+          "tooltip_handler": "battle.set_infopane_spell('Disintegrate', 'Dark damage.', '1330', 1, 0, 4)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Disintegrate",
+            "description": "Dark damage.",
+            "icon_key": "1330",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 4,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Disintegrate",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "211",
+          "text": "Drain",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',211); battle.set_hostile_skill(211)",
+          "tooltip_handler": "battle.set_infopane_spell('Drain', 'Inflicts Drain on one target, causing damage over time.', '0133', 1, 0, 30)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Drain",
+            "description": "Inflicts Drain on one target, causing damage over time.",
+            "icon_key": "0133",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 30,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Drain",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "212",
+          "text": "Weaken",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',212); battle.set_hostile_skill(212)",
+          "tooltip_handler": "battle.set_infopane_spell('Weaken', 'The target is weakened, making it deal less damage, and preventing it from scoring critical hits.', '0333', 1, 0, 3)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Weaken",
+            "description": "The target is weakened, making it deal less damage, and preventing it from scoring critical hits.",
+            "icon_key": "0333",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 3,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Weaken",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "213",
+          "text": "Imperil",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',213); battle.set_hostile_skill(213)",
+          "tooltip_handler": "battle.set_infopane_spell('Imperil', 'The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.', 'm_imperil', 1, 0, 3)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Imperil",
+            "description": "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.",
+            "icon_key": "m_imperil",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 3,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Imperil",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "221",
+          "text": "Slow",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',221); battle.set_hostile_skill(221)",
+          "tooltip_handler": "battle.set_infopane_spell('Slow', 'The target is slowed by 30%, making it attack less frequently.', '0233', 1, 0, 3)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Slow",
+            "description": "The target is slowed by 30%, making it attack less frequently.",
+            "icon_key": "0233",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 3,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Slow",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "222",
+          "text": "Sleep",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',222); battle.set_hostile_skill(222)",
+          "tooltip_handler": "battle.set_infopane_spell('Sleep', 'The target is lulled to sleep, preventing it from taking any actions.', '0433', 1, 0, 7)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Sleep",
+            "description": "The target is lulled to sleep, preventing it from taking any actions.",
+            "icon_key": "0433",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 7,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Sleep",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "223",
+          "text": "Confuse",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',223); battle.set_hostile_skill(223)",
+          "tooltip_handler": "battle.set_infopane_spell('Confuse', 'Confuses the target, making it lunge out wildly and strike friends and foes alike.', '0733', 1, 0, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Confuse",
+            "description": "Confuses the target, making it lunge out wildly and strike friends and foes alike.",
+            "icon_key": "0733",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Confuse",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "231",
+          "text": "Blind",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',231); battle.set_hostile_skill(231)",
+          "tooltip_handler": "battle.set_infopane_spell('Blind', 'Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.', '0933', 1, 0, 7)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Blind",
+            "description": "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.",
+            "icon_key": "0933",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 7,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Blind",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "232",
+          "text": "Silence",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',232); battle.set_hostile_skill(232)",
+          "tooltip_handler": "battle.set_infopane_spell('Silence', 'The target is silenced, preventing it from using special attacks and magic.', '0833', 1, 0, 10)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Silence",
+            "description": "The target is silenced, preventing it from using special attacks and magic.",
+            "icon_key": "0833",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 10,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Silence",
+          "target_selection_observed": "enemy_anchor"
+        },
+        {
+          "dom_id": "311",
+          "text": "Cure",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',311); battle.set_friendly_skill(311); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Cure', 'Restores a moderate amount of Health on the target.', '0530', 1, 0, 2)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Cure",
+            "description": "Restores a moderate amount of Health on the target.",
+            "icon_key": "0530",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 2,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Cure",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "312",
+          "text": "Regen",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',312); battle.set_friendly_skill(312); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Regen', 'Places a heal over time effect on the target.', '1030', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Regen",
+            "description": "Places a heal over time effect on the target.",
+            "icon_key": "1030",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Regen",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "411",
+          "text": "Protection",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',411); battle.set_friendly_skill(411); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Protection', 'Places a shield effect on the target, absorbing 25% of the damage from all attacks.', '0532', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Protection",
+            "description": "Places a shield effect on the target, absorbing 25% of the damage from all attacks.",
+            "icon_key": "0532",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Protection",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "412",
+          "text": "Haste",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',412); battle.set_friendly_skill(412); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Haste', 'Speeds up all actions of the target, allowing it to attack more frequently.', '0533', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Haste",
+            "description": "Speeds up all actions of the target, allowing it to attack more frequently.",
+            "icon_key": "0533",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Haste",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "413",
+          "text": "Shadow Veil",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',413); battle.set_friendly_skill(413); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Shadow Veil', 'Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.', '0633', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Shadow Veil",
+            "description": "Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.",
+            "icon_key": "0633",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Shadow Veil",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "421",
+          "text": "Absorb",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',421); battle.set_friendly_skill(421); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Absorb', 'The next magical attack against the target has a chance to be absorbed and partially converted to MP.', '1033', 1, 0, 20)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Absorb",
+            "description": "The next magical attack against the target has a chance to be absorbed and partially converted to MP.",
+            "icon_key": "1033",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 20,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Absorb",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "422",
+          "text": "Spark of Life",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',422); battle.set_friendly_skill(422); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Spark of Life', 'Any attack that would one-shot a target with more than 1 HP leaves it alive but on the brink of defeat. The buff is removed when triggered.', '1133', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Spark of Life",
+            "description": "Any attack that would one-shot a target with more than 1 HP leaves it alive but on the brink of defeat. The buff is removed when triggered.",
+            "icon_key": "1133",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Spark of Life",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "431",
+          "text": "Heartseeker",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'magic',431); battle.set_friendly_skill(431); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_spell('Heartseeker', 'The target attains intimate knowledge of the flow of life in all living beings, increasing attack power and crit chance.', 'm4021', 1, 0, 0)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "tooltip": {
+            "name": "Heartseeker",
+            "description": "The target attains intimate knowledge of the flow of life in all living beings, increasing attack power and crit chance.",
+            "icon_key": "m4021",
+            "mana_cost_display": 1,
+            "charge_cost_display": 0,
+            "cooldown_turns_display": 0,
+            "semantics_source": "docs/research/hvc.js:840; cooldown is displayed configured duration, not necessarily remaining cooldown"
+          },
+          "name": "Heartseeker",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_4",
+          "text": "Scroll of Protection",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_4'); battle.set_friendly_skill('4'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(13111)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Scroll of Protection",
+          "item_type_id": 13111,
+          "item_slot": "4",
+          "target_selection_observed": "self"
+        },
+        {
+          "dom_id": "ikey_5",
+          "text": "Scroll of Absorption",
+          "onclick_present": true,
+          "style": "",
+          "onclick": "battle.lock_action(this,1,'items','ikey_5'); battle.set_friendly_skill('5'); battle.touch_and_go()",
+          "tooltip_handler": "battle.set_infopane_item(13201)",
+          "currently_legal": null,
+          "legality_note": "Historical UI evidence only; not a live legality verdict.",
+          "name": "Scroll of Absorption",
+          "item_type_id": 13201,
+          "item_slot": "5",
+          "target_selection_observed": "self"
+        }
+      ],
+      "monsters": [
+        {
+          "dom_id": "mkey_1",
+          "target_slot": 1,
+          "name": "Birds Arent Real",
+          "onclick_present": false,
+          "health_bar_width": null
+        },
+        {
+          "dom_id": "mkey_2",
+          "target_slot": 2,
+          "name": "Usb4",
+          "onclick_present": true,
+          "health_bar_width": "width: 51px"
+        }
+      ],
+      "inventory_slots": [
+        {
+          "slot_label": "P",
+          "item_text": "",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "1",
+          "item_text": "Health Draught",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "2",
+          "item_text": "Mana Draught",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "3",
+          "item_text": "Spirit Draught",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "4",
+          "item_text": "Scroll of Protection",
+          "control_ids": [
+            "ikey_4"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "5",
+          "item_text": "Scroll of Absorption",
+          "control_ids": [
+            "ikey_5"
+          ],
+          "onclick_present": true,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "S1",
+          "item_text": "",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        },
+        {
+          "slot_label": "N1",
+          "item_text": "",
+          "control_ids": [],
+          "onclick_present": false,
+          "styles": [],
+          "cooldown_remaining": null,
+          "available_now": null,
+          "note": "A named item can remain in the slot without an ikey control while unavailable; preserve the slot."
+        }
+      ],
+      "player_vitals_text": {
+        "hp": "5536",
+        "mp": "152",
+        "sp": "327"
+      }
+    }
+  ]
+}

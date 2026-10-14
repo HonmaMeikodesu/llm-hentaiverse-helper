@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HV 策略助手</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">HENTAIVERSE · PERSONAL STRATEGY</p>
+        <h1>让决策理解你的取舍</h1>
+        <p>录制你的游玩，审阅归纳出的偏好，再交给 Jev 接管一场战斗。</p>
+      </header>
+      <p id="message" role="status" aria-live="polite"></p>
+      <section>
+        <h2>运行概况</h2>
+        <p id="cost"></p>
+        <p id="active-preferences"></p>
+        <button id="refresh">刷新</button
+        ><button id="export">导出全部记录</button>
+        <p class="hint">
+          完整记录保存在这台浏览器中。导出不含 API
+          Key。清理前请先导出；卸载扩展会失去本地记录。
+        </p>
+      </section>
+      <section>
+        <h2>固定角色配置</h2>
+        <label>配置名称<input id="profile-name" maxlength="100" /></label
+        ><label
+          >装备流派、难度与能力说明<textarea
+            id="profile-description"
+            rows="3"
+            maxlength="8000"
+          ></textarea>
+        </label>
+        <p class="hint">
+          同一批示范使用相同配置。修改这里会创建新的配置，原来的示范与偏好仍然保留，不混入新配置。
+        </p>
+      </section>
+      <section>
+        <h2>决策模型</h2>
+        <label
+          >Jev 服务商<select id="jev-provider">
+            <option value="typesafe">TypeSafe 直连</option>
+            <option value="vercel">Vercel AI Gateway</option>
+          </select></label
+        >
+        <button id="vercel-preset">使用 Vercel 配置两个模型</button>
+        <p class="hint">
+          Vercel 可使用同一个 AI Gateway Key，分别填入下面两个 Key
+          栏。预设只修改表单，点击保存后生效。网关 Jev
+          使用模型别名，未承诺固定底层版本。
+        </p>
+        <div class="columns">
+          <label
+            >Jev API Key<input
+              id="jev-key"
+              type="password"
+              autocomplete="off" /></label
+          ><label>模型 ID / 版本<input id="jev-model" /></label>
+        </div>
+        <p class="hint">
+          每次只选择当前可用的动作。费用超过每月 $5 时提醒，继续运行。
+        </p>
+      </section>
+      <section>
+        <h2>战后偏好归纳</h2>
+        <label
+          >兼容 Chat Completions 的 HTTPS 接口<input
+            id="summary-endpoint"
+            type="url"
+        /></label>
+        <div class="columns">
+          <label
+            >API Key<input
+              id="summary-key"
+              type="password"
+              autocomplete="off" /></label
+          ><label>模型名称<input id="summary-model" /></label>
+        </div>
+        <div class="columns">
+          <label
+            >每百万输入 token 价格（美元）<input
+              id="input-price"
+              type="number"
+              min="0"
+              step="any"
+              placeholder="留空则费用待核对" /></label
+          ><label
+            >每百万输出 token 价格（美元）<input
+              id="output-price"
+              type="number"
+              min="0"
+              step="any"
+              placeholder="留空则费用待核对"
+          /></label>
+        </div>
+        <button id="save" class="primary">保存设置</button>
+        <p class="hint">
+          Key仅供扩展后台请求使用。保存时会申请归纳接口对应域名的访问权限。
+        </p>
+      </section>
+      <section>
+        <h2>游玩记录</h2>
+        <p>
+          选择同配置的几场已结束记录，归纳你的偏好。仅使用可确认的人工操作作为示范。
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>选择</th>
+                <th>开始时间</th>
+                <th>配置</th>
+                <th>状态</th>
+                <th>记录数</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="sessions"></tbody>
+          </table>
+        </div>
+        <button id="summarize" class="primary">从所选示范归纳偏好</button>
+        <button id="replay">对照回放所选记录</button>
+        <p class="hint">
+          对照使用未参与偏好归纳的另一场记录，最多抽取5个局面，比较未个性化与已个性化的Jev建议。会调用模型并记账，不执行游戏动作。
+        </p>
+        <details id="trace-review">
+          <summary>查看轨迹</summary>
+          <div id="trace-cards"></div>
+          <details>
+            <summary>原始记录 JSON</summary>
+            <pre id="trace">点击记录旁的“查看”。</pre>
+          </details>
+        </details>
+      </section>
+      <section>
+        <h2>对照回放结果</h2>
+        <p>
+          比较建议是否更符合你的取舍。这里无法知道未执行动作会带来什么结果，动作一致率也不等于偏好理解程度。
+        </p>
+        <div id="replay-results">暂无对照记录。</div>
+      </section>
+      <section>
+        <h2>确认你的偏好</h2>
+        <p>
+          检查适用条件，修改不准确的取舍。勾选的条目将用于后续自动战斗；未勾选表示拒绝该推断。
+        </p>
+        <div id="preferences"></div>
+        <button id="confirm" class="primary" disabled>保存本批审阅结果</button>
+      </section>
+      <footer>
+        首版使用示范和偏好辅助 Jev
+        决策，不训练独立策略模型。游戏页面需保持打开。
+      </footer>
+    </main>
+    <script src="../dist/options.js"></script>
+  </body>
+</html>

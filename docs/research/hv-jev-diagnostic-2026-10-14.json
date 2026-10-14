@@ -1,0 +1,2244 @@
+{
+  "source": "jev-diagnostic-not-user-demonstration",
+  "initial": {
+    "at": "2026-10-14T09:13:42.881Z",
+    "revision": "5769dfa725e51af3",
+    "stage": "battle",
+    "round": 1,
+    "totalRounds": 10,
+    "player": {
+      "hp": 3288,
+      "mp": 321,
+      "sp": 197,
+      "spiritStance": false,
+      "chargeSegments": null,
+      "effects": []
+    },
+    "monsters": [
+      {
+        "id": "mkey_1",
+        "name": "Goldhair Redeye Elf",
+        "targetable": true,
+        "healthBarPixels": 120,
+        "effects": []
+      },
+      {
+        "id": "mkey_2",
+        "name": "Akashi Junko",
+        "targetable": true,
+        "healthBarPixels": 120,
+        "effects": []
+      },
+      {
+        "id": "mkey_3",
+        "name": "Konoe Ayatsuki Mercury",
+        "targetable": true,
+        "healthBarPixels": 120,
+        "effects": []
+      }
+    ],
+    "candidates": [
+      {
+        "id": "attack:1:0",
+        "name": "Attack",
+        "target": "mkey_1",
+        "mp": 0
+      },
+      {
+        "id": "attack:2:0",
+        "name": "Attack",
+        "target": "mkey_2",
+        "mp": 0
+      },
+      {
+        "id": "attack:3:0",
+        "name": "Attack",
+        "target": "mkey_3",
+        "mp": 0
+      },
+      {
+        "id": "defend:0:0",
+        "name": "Defend",
+        "mp": 0
+      },
+      {
+        "id": "focus:0:0",
+        "name": "Focus",
+        "mp": 0
+      },
+      {
+        "id": "spirit:0:0",
+        "name": "Enable Spirit Stance",
+        "mp": 0
+      },
+      {
+        "id": "magic:0:1001",
+        "name": "Flee",
+        "mp": 0
+      },
+      {
+        "id": "magic:1:1011",
+        "name": "Scan",
+        "target": "mkey_1",
+        "mp": 0
+      },
+      {
+        "id": "magic:2:1011",
+        "name": "Scan",
+        "target": "mkey_2",
+        "mp": 0
+      },
+      {
+        "id": "magic:3:1011",
+        "name": "Scan",
+        "target": "mkey_3",
+        "mp": 0
+      },
+      {
+        "id": "magic:1:111",
+        "name": "Fiery Blast",
+        "target": "mkey_1",
+        "mp": 10
+      },
+      {
+        "id": "magic:2:111",
+        "name": "Fiery Blast",
+        "target": "mkey_2",
+        "mp": 10
+      },
+      {
+        "id": "magic:3:111",
+        "name": "Fiery Blast",
+        "target": "mkey_3",
+        "mp": 10
+      },
+      {
+        "id": "magic:1:112",
+        "name": "Inferno",
+        "target": "mkey_1",
+        "mp": 25
+      },
+      {
+        "id": "magic:2:112",
+        "name": "Inferno",
+        "target": "mkey_2",
+        "mp": 25
+      },
+      {
+        "id": "magic:3:112",
+        "name": "Inferno",
+        "target": "mkey_3",
+        "mp": 25
+      },
+      {
+        "id": "magic:1:121",
+        "name": "Freeze",
+        "target": "mkey_1",
+        "mp": 10
+      },
+      {
+        "id": "magic:2:121",
+        "name": "Freeze",
+        "target": "mkey_2",
+        "mp": 10
+      },
+      {
+        "id": "magic:3:121",
+        "name": "Freeze",
+        "target": "mkey_3",
+        "mp": 10
+      },
+      {
+        "id": "magic:1:122",
+        "name": "Blizzard",
+        "target": "mkey_1",
+        "mp": 25
+      },
+      {
+        "id": "magic:2:122",
+        "name": "Blizzard",
+        "target": "mkey_2",
+        "mp": 25
+      },
+      {
+        "id": "magic:3:122",
+        "name": "Blizzard",
+        "target": "mkey_3",
+        "mp": 25
+      },
+      {
+        "id": "magic:1:131",
+        "name": "Shockblast",
+        "target": "mkey_1",
+        "mp": 10
+      },
+      {
+        "id": "magic:2:131",
+        "name": "Shockblast",
+        "target": "mkey_2",
+        "mp": 10
+      },
+      {
+        "id": "magic:3:131",
+        "name": "Shockblast",
+        "target": "mkey_3",
+        "mp": 10
+      },
+      {
+        "id": "magic:1:132",
+        "name": "Chained Lightning",
+        "target": "mkey_1",
+        "mp": 25
+      },
+      {
+        "id": "magic:2:132",
+        "name": "Chained Lightning",
+        "target": "mkey_2",
+        "mp": 25
+      },
+      {
+        "id": "magic:3:132",
+        "name": "Chained Lightning",
+        "target": "mkey_3",
+        "mp": 25
+      },
+      {
+        "id": "magic:1:141",
+        "name": "Gale",
+        "target": "mkey_1",
+        "mp": 10
+      },
+      {
+        "id": "magic:2:141",
+        "name": "Gale",
+        "target": "mkey_2",
+        "mp": 10
+      },
+      {
+        "id": "magic:3:141",
+        "name": "Gale",
+        "target": "mkey_3",
+        "mp": 10
+      },
+      {
+        "id": "magic:1:142",
+        "name": "Downburst",
+        "target": "mkey_1",
+        "mp": 25
+      },
+      {
+        "id": "magic:2:142",
+        "name": "Downburst",
+        "target": "mkey_2",
+        "mp": 25
+      },
+      {
+        "id": "magic:3:142",
+        "name": "Downburst",
+        "target": "mkey_3",
+        "mp": 25
+      },
+      {
+        "id": "magic:1:151",
+        "name": "Smite",
+        "target": "mkey_1",
+        "mp": 24
+      },
+      {
+        "id": "magic:2:151",
+        "name": "Smite",
+        "target": "mkey_2",
+        "mp": 24
+      },
+      {
+        "id": "magic:3:151",
+        "name": "Smite",
+        "target": "mkey_3",
+        "mp": 24
+      },
+      {
+        "id": "magic:1:152",
+        "name": "Banishment",
+        "target": "mkey_1",
+        "mp": 38
+      },
+      {
+        "id": "magic:2:152",
+        "name": "Banishment",
+        "target": "mkey_2",
+        "mp": 38
+      },
+      {
+        "id": "magic:3:152",
+        "name": "Banishment",
+        "target": "mkey_3",
+        "mp": 38
+      },
+      {
+        "id": "magic:1:161",
+        "name": "Corruption",
+        "target": "mkey_1",
+        "mp": 24
+      },
+      {
+        "id": "magic:2:161",
+        "name": "Corruption",
+        "target": "mkey_2",
+        "mp": 24
+      },
+      {
+        "id": "magic:3:161",
+        "name": "Corruption",
+        "target": "mkey_3",
+        "mp": 24
+      },
+      {
+        "id": "magic:1:162",
+        "name": "Disintegrate",
+        "target": "mkey_1",
+        "mp": 38
+      },
+      {
+        "id": "magic:2:162",
+        "name": "Disintegrate",
+        "target": "mkey_2",
+        "mp": 38
+      },
+      {
+        "id": "magic:3:162",
+        "name": "Disintegrate",
+        "target": "mkey_3",
+        "mp": 38
+      },
+      {
+        "id": "magic:1:211",
+        "name": "Drain",
+        "target": "mkey_1",
+        "mp": 24
+      },
+      {
+        "id": "magic:2:211",
+        "name": "Drain",
+        "target": "mkey_2",
+        "mp": 24
+      },
+      {
+        "id": "magic:3:211",
+        "name": "Drain",
+        "target": "mkey_3",
+        "mp": 24
+      },
+      {
+        "id": "magic:1:212",
+        "name": "Weaken",
+        "target": "mkey_1",
+        "mp": 17
+      },
+      {
+        "id": "magic:2:212",
+        "name": "Weaken",
+        "target": "mkey_2",
+        "mp": 17
+      },
+      {
+        "id": "magic:3:212",
+        "name": "Weaken",
+        "target": "mkey_3",
+        "mp": 17
+      },
+      {
+        "id": "magic:1:213",
+        "name": "Imperil",
+        "target": "mkey_1",
+        "mp": 17
+      },
+      {
+        "id": "magic:2:213",
+        "name": "Imperil",
+        "target": "mkey_2",
+        "mp": 17
+      },
+      {
+        "id": "magic:3:213",
+        "name": "Imperil",
+        "target": "mkey_3",
+        "mp": 17
+      },
+      {
+        "id": "magic:1:221",
+        "name": "Slow",
+        "target": "mkey_1",
+        "mp": 29
+      },
+      {
+        "id": "magic:2:221",
+        "name": "Slow",
+        "target": "mkey_2",
+        "mp": 29
+      },
+      {
+        "id": "magic:3:221",
+        "name": "Slow",
+        "target": "mkey_3",
+        "mp": 29
+      },
+      {
+        "id": "magic:1:222",
+        "name": "Sleep",
+        "target": "mkey_1",
+        "mp": 42
+      },
+      {
+        "id": "magic:2:222",
+        "name": "Sleep",
+        "target": "mkey_2",
+        "mp": 42
+      },
+      {
+        "id": "magic:3:222",
+        "name": "Sleep",
+        "target": "mkey_3",
+        "mp": 42
+      },
+      {
+        "id": "magic:1:223",
+        "name": "Confuse",
+        "target": "mkey_1",
+        "mp": 44
+      },
+      {
+        "id": "magic:2:223",
+        "name": "Confuse",
+        "target": "mkey_2",
+        "mp": 44
+      },
+      {
+        "id": "magic:3:223",
+        "name": "Confuse",
+        "target": "mkey_3",
+        "mp": 44
+      },
+      {
+        "id": "magic:1:231",
+        "name": "Blind",
+        "target": "mkey_1",
+        "mp": 31
+      },
+      {
+        "id": "magic:2:231",
+        "name": "Blind",
+        "target": "mkey_2",
+        "mp": 31
+      },
+      {
+        "id": "magic:3:231",
+        "name": "Blind",
+        "target": "mkey_3",
+        "mp": 31
+      },
+      {
+        "id": "magic:1:232",
+        "name": "Silence",
+        "target": "mkey_1",
+        "mp": 32
+      },
+      {
+        "id": "magic:2:232",
+        "name": "Silence",
+        "target": "mkey_2",
+        "mp": 32
+      },
+      {
+        "id": "magic:3:232",
+        "name": "Silence",
+        "target": "mkey_3",
+        "mp": 32
+      },
+      {
+        "id": "magic:0:311",
+        "name": "Cure",
+        "mp": 32
+      },
+      {
+        "id": "magic:0:312",
+        "name": "Regen",
+        "mp": 43
+      },
+      {
+        "id": "magic:0:411",
+        "name": "Protection",
+        "mp": 39
+      },
+      {
+        "id": "magic:0:412",
+        "name": "Haste",
+        "mp": 48
+      },
+      {
+        "id": "magic:0:413",
+        "name": "Shadow Veil",
+        "mp": 50
+      },
+      {
+        "id": "magic:0:421",
+        "name": "Absorb",
+        "mp": 48
+      },
+      {
+        "id": "magic:0:422",
+        "name": "Spark of Life",
+        "mp": 84
+      },
+      {
+        "id": "magic:0:431",
+        "name": "Heartseeker",
+        "mp": 169
+      },
+      {
+        "id": "magic:0:432",
+        "name": "Arcane Focus",
+        "mp": 170
+      },
+      {
+        "id": "items:0:1",
+        "name": "Health Draught",
+        "mp": null
+      },
+      {
+        "id": "items:0:2",
+        "name": "Mana Draught",
+        "mp": null
+      },
+      {
+        "id": "items:0:3",
+        "name": "Mana Elixir",
+        "mp": null
+      },
+      {
+        "id": "items:0:4",
+        "name": "Scroll of Protection",
+        "mp": null
+      },
+      {
+        "id": "items:0:5",
+        "name": "Scroll of Absorption",
+        "mp": null
+      }
+    ],
+    "log": [
+      "Spawned Monster C: MID=212741 (Konoe Ayatsuki Mercury) LV=178 HP=6025",
+      "Spawned Monster B: MID=273955 (Akashi Junko) LV=178 HP=6535",
+      "Spawned Monster A: MID=238113 (Goldhair Redeye Elf) LV=178 HP=6015",
+      "Initializing arena challenge #9 (Round 1 / 10) ..."
+    ],
+    "issues": []
+  },
+  "events": [
+    {
+      "message": {
+        "channel": "hv-helper-battle-v1",
+        "kind": "request",
+        "requestId": "ef22cb34-ab4d-4e2d-91dc-f0f1cde4e025",
+        "action": {
+          "mode": "attack",
+          "target": 1,
+          "skill": "0"
+        }
+      },
+      "state": {
+        "at": "2026-10-14T09:13:46.222Z",
+        "revision": "5769dfa725e51af3",
+        "stage": "battle",
+        "round": 1,
+        "totalRounds": 10,
+        "player": {
+          "hp": 3288,
+          "mp": 321,
+          "sp": 197,
+          "spiritStance": false,
+          "chargeSegments": null,
+          "effects": []
+        },
+        "monsters": [
+          {
+            "id": "mkey_1",
+            "name": "Goldhair Redeye Elf",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          },
+          {
+            "id": "mkey_2",
+            "name": "Akashi Junko",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          },
+          {
+            "id": "mkey_3",
+            "name": "Konoe Ayatsuki Mercury",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          }
+        ],
+        "candidates": [
+          {
+            "id": "attack:1:0",
+            "name": "Attack",
+            "target": "mkey_1",
+            "mp": 0
+          },
+          {
+            "id": "attack:2:0",
+            "name": "Attack",
+            "target": "mkey_2",
+            "mp": 0
+          },
+          {
+            "id": "attack:3:0",
+            "name": "Attack",
+            "target": "mkey_3",
+            "mp": 0
+          },
+          {
+            "id": "defend:0:0",
+            "name": "Defend",
+            "mp": 0
+          },
+          {
+            "id": "focus:0:0",
+            "name": "Focus",
+            "mp": 0
+          },
+          {
+            "id": "spirit:0:0",
+            "name": "Enable Spirit Stance",
+            "mp": 0
+          },
+          {
+            "id": "magic:0:1001",
+            "name": "Flee",
+            "mp": 0
+          },
+          {
+            "id": "magic:1:1011",
+            "name": "Scan",
+            "target": "mkey_1",
+            "mp": 0
+          },
+          {
+            "id": "magic:2:1011",
+            "name": "Scan",
+            "target": "mkey_2",
+            "mp": 0
+          },
+          {
+            "id": "magic:3:1011",
+            "name": "Scan",
+            "target": "mkey_3",
+            "mp": 0
+          },
+          {
+            "id": "magic:1:111",
+            "name": "Fiery Blast",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:111",
+            "name": "Fiery Blast",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:111",
+            "name": "Fiery Blast",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:112",
+            "name": "Inferno",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:112",
+            "name": "Inferno",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:112",
+            "name": "Inferno",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:121",
+            "name": "Freeze",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:121",
+            "name": "Freeze",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:121",
+            "name": "Freeze",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:122",
+            "name": "Blizzard",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:122",
+            "name": "Blizzard",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:122",
+            "name": "Blizzard",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:131",
+            "name": "Shockblast",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:131",
+            "name": "Shockblast",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:131",
+            "name": "Shockblast",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:132",
+            "name": "Chained Lightning",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:132",
+            "name": "Chained Lightning",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:132",
+            "name": "Chained Lightning",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:141",
+            "name": "Gale",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:141",
+            "name": "Gale",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:141",
+            "name": "Gale",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:142",
+            "name": "Downburst",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:142",
+            "name": "Downburst",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:142",
+            "name": "Downburst",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:151",
+            "name": "Smite",
+            "target": "mkey_1",
+            "mp": 24
+          },
+          {
+            "id": "magic:2:151",
+            "name": "Smite",
+            "target": "mkey_2",
+            "mp": 24
+          },
+          {
+            "id": "magic:3:151",
+            "name": "Smite",
+            "target": "mkey_3",
+            "mp": 24
+          },
+          {
+            "id": "magic:1:152",
+            "name": "Banishment",
+            "target": "mkey_1",
+            "mp": 38
+          },
+          {
+            "id": "magic:2:152",
+            "name": "Banishment",
+            "target": "mkey_2",
+            "mp": 38
+          },
+          {
+            "id": "magic:3:152",
+            "name": "Banishment",
+            "target": "mkey_3",
+            "mp": 38
+          },
+          {
+            "id": "magic:1:161",
+            "name": "Corruption",
+            "target": "mkey_1",
+            "mp": 24
+          },
+          {
+            "id": "magic:2:161",
+            "name": "Corruption",
+            "target": "mkey_2",
+            "mp": 24
+          },
+          {
+            "id": "magic:3:161",
+            "name": "Corruption",
+            "target": "mkey_3",
+            "mp": 24
+          },
+          {
+            "id": "magic:1:162",
+            "name": "Disintegrate",
+            "target": "mkey_1",
+            "mp": 38
+          },
+          {
+            "id": "magic:2:162",
+            "name": "Disintegrate",
+            "target": "mkey_2",
+            "mp": 38
+          },
+          {
+            "id": "magic:3:162",
+            "name": "Disintegrate",
+            "target": "mkey_3",
+            "mp": 38
+          },
+          {
+            "id": "magic:1:211",
+            "name": "Drain",
+            "target": "mkey_1",
+            "mp": 24
+          },
+          {
+            "id": "magic:2:211",
+            "name": "Drain",
+            "target": "mkey_2",
+            "mp": 24
+          },
+          {
+            "id": "magic:3:211",
+            "name": "Drain",
+            "target": "mkey_3",
+            "mp": 24
+          },
+          {
+            "id": "magic:1:212",
+            "name": "Weaken",
+            "target": "mkey_1",
+            "mp": 17
+          },
+          {
+            "id": "magic:2:212",
+            "name": "Weaken",
+            "target": "mkey_2",
+            "mp": 17
+          },
+          {
+            "id": "magic:3:212",
+            "name": "Weaken",
+            "target": "mkey_3",
+            "mp": 17
+          },
+          {
+            "id": "magic:1:213",
+            "name": "Imperil",
+            "target": "mkey_1",
+            "mp": 17
+          },
+          {
+            "id": "magic:2:213",
+            "name": "Imperil",
+            "target": "mkey_2",
+            "mp": 17
+          },
+          {
+            "id": "magic:3:213",
+            "name": "Imperil",
+            "target": "mkey_3",
+            "mp": 17
+          },
+          {
+            "id": "magic:1:221",
+            "name": "Slow",
+            "target": "mkey_1",
+            "mp": 29
+          },
+          {
+            "id": "magic:2:221",
+            "name": "Slow",
+            "target": "mkey_2",
+            "mp": 29
+          },
+          {
+            "id": "magic:3:221",
+            "name": "Slow",
+            "target": "mkey_3",
+            "mp": 29
+          },
+          {
+            "id": "magic:1:222",
+            "name": "Sleep",
+            "target": "mkey_1",
+            "mp": 42
+          },
+          {
+            "id": "magic:2:222",
+            "name": "Sleep",
+            "target": "mkey_2",
+            "mp": 42
+          },
+          {
+            "id": "magic:3:222",
+            "name": "Sleep",
+            "target": "mkey_3",
+            "mp": 42
+          },
+          {
+            "id": "magic:1:223",
+            "name": "Confuse",
+            "target": "mkey_1",
+            "mp": 44
+          },
+          {
+            "id": "magic:2:223",
+            "name": "Confuse",
+            "target": "mkey_2",
+            "mp": 44
+          },
+          {
+            "id": "magic:3:223",
+            "name": "Confuse",
+            "target": "mkey_3",
+            "mp": 44
+          },
+          {
+            "id": "magic:1:231",
+            "name": "Blind",
+            "target": "mkey_1",
+            "mp": 31
+          },
+          {
+            "id": "magic:2:231",
+            "name": "Blind",
+            "target": "mkey_2",
+            "mp": 31
+          },
+          {
+            "id": "magic:3:231",
+            "name": "Blind",
+            "target": "mkey_3",
+            "mp": 31
+          },
+          {
+            "id": "magic:1:232",
+            "name": "Silence",
+            "target": "mkey_1",
+            "mp": 32
+          },
+          {
+            "id": "magic:2:232",
+            "name": "Silence",
+            "target": "mkey_2",
+            "mp": 32
+          },
+          {
+            "id": "magic:3:232",
+            "name": "Silence",
+            "target": "mkey_3",
+            "mp": 32
+          },
+          {
+            "id": "magic:0:311",
+            "name": "Cure",
+            "mp": 32
+          },
+          {
+            "id": "magic:0:312",
+            "name": "Regen",
+            "mp": 43
+          },
+          {
+            "id": "magic:0:411",
+            "name": "Protection",
+            "mp": 39
+          },
+          {
+            "id": "magic:0:412",
+            "name": "Haste",
+            "mp": 48
+          },
+          {
+            "id": "magic:0:413",
+            "name": "Shadow Veil",
+            "mp": 50
+          },
+          {
+            "id": "magic:0:421",
+            "name": "Absorb",
+            "mp": 48
+          },
+          {
+            "id": "magic:0:422",
+            "name": "Spark of Life",
+            "mp": 84
+          },
+          {
+            "id": "magic:0:431",
+            "name": "Heartseeker",
+            "mp": 169
+          },
+          {
+            "id": "magic:0:432",
+            "name": "Arcane Focus",
+            "mp": 170
+          },
+          {
+            "id": "items:0:1",
+            "name": "Health Draught",
+            "mp": null
+          },
+          {
+            "id": "items:0:2",
+            "name": "Mana Draught",
+            "mp": null
+          },
+          {
+            "id": "items:0:3",
+            "name": "Mana Elixir",
+            "mp": null
+          },
+          {
+            "id": "items:0:4",
+            "name": "Scroll of Protection",
+            "mp": null
+          },
+          {
+            "id": "items:0:5",
+            "name": "Scroll of Absorption",
+            "mp": null
+          }
+        ],
+        "log": [
+          "Spawned Monster C: MID=212741 (Konoe Ayatsuki Mercury) LV=178 HP=6025",
+          "Spawned Monster B: MID=273955 (Akashi Junko) LV=178 HP=6535",
+          "Spawned Monster A: MID=238113 (Goldhair Redeye Elf) LV=178 HP=6015",
+          "Initializing arena challenge #9 (Round 1 / 10) ..."
+        ],
+        "issues": []
+      }
+    },
+    {
+      "message": {
+        "channel": "hv-helper-battle-v1",
+        "kind": "response",
+        "requestId": "ef22cb34-ab4d-4e2d-91dc-f0f1cde4e025",
+        "ok": true,
+        "status": 200
+      },
+      "state": {
+        "at": "2026-10-14T09:13:46.516Z",
+        "revision": "24217abcbd0f1b47",
+        "stage": "battle",
+        "round": 1,
+        "totalRounds": 10,
+        "player": {
+          "hp": 1649,
+          "mp": 321,
+          "sp": 197,
+          "spiritStance": false,
+          "chargeSegments": null,
+          "effects": []
+        },
+        "monsters": [
+          {
+            "id": "mkey_1",
+            "name": "Goldhair Redeye Elf",
+            "targetable": true,
+            "healthBarPixels": 111,
+            "effects": []
+          },
+          {
+            "id": "mkey_2",
+            "name": "Akashi Junko",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          },
+          {
+            "id": "mkey_3",
+            "name": "Konoe Ayatsuki Mercury",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          }
+        ],
+        "candidates": [
+          {
+            "id": "attack:1:0",
+            "name": "Attack",
+            "target": "mkey_1",
+            "mp": 0
+          },
+          {
+            "id": "attack:2:0",
+            "name": "Attack",
+            "target": "mkey_2",
+            "mp": 0
+          },
+          {
+            "id": "attack:3:0",
+            "name": "Attack",
+            "target": "mkey_3",
+            "mp": 0
+          },
+          {
+            "id": "defend:0:0",
+            "name": "Defend",
+            "mp": 0
+          },
+          {
+            "id": "focus:0:0",
+            "name": "Focus",
+            "mp": 0
+          },
+          {
+            "id": "spirit:0:0",
+            "name": "Enable Spirit Stance",
+            "mp": 0
+          },
+          {
+            "id": "magic:0:1001",
+            "name": "Flee",
+            "mp": 0
+          },
+          {
+            "id": "magic:1:1011",
+            "name": "Scan",
+            "target": "mkey_1",
+            "mp": 0
+          },
+          {
+            "id": "magic:2:1011",
+            "name": "Scan",
+            "target": "mkey_2",
+            "mp": 0
+          },
+          {
+            "id": "magic:3:1011",
+            "name": "Scan",
+            "target": "mkey_3",
+            "mp": 0
+          },
+          {
+            "id": "magic:1:111",
+            "name": "Fiery Blast",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:111",
+            "name": "Fiery Blast",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:111",
+            "name": "Fiery Blast",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:112",
+            "name": "Inferno",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:112",
+            "name": "Inferno",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:112",
+            "name": "Inferno",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:121",
+            "name": "Freeze",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:121",
+            "name": "Freeze",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:121",
+            "name": "Freeze",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:122",
+            "name": "Blizzard",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:122",
+            "name": "Blizzard",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:122",
+            "name": "Blizzard",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:131",
+            "name": "Shockblast",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:131",
+            "name": "Shockblast",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:131",
+            "name": "Shockblast",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:132",
+            "name": "Chained Lightning",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:132",
+            "name": "Chained Lightning",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:132",
+            "name": "Chained Lightning",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:141",
+            "name": "Gale",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:141",
+            "name": "Gale",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:141",
+            "name": "Gale",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:142",
+            "name": "Downburst",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:142",
+            "name": "Downburst",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:142",
+            "name": "Downburst",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:151",
+            "name": "Smite",
+            "target": "mkey_1",
+            "mp": 24
+          },
+          {
+            "id": "magic:2:151",
+            "name": "Smite",
+            "target": "mkey_2",
+            "mp": 24
+          },
+          {
+            "id": "magic:3:151",
+            "name": "Smite",
+            "target": "mkey_3",
+            "mp": 24
+          },
+          {
+            "id": "magic:1:152",
+            "name": "Banishment",
+            "target": "mkey_1",
+            "mp": 38
+          },
+          {
+            "id": "magic:2:152",
+            "name": "Banishment",
+            "target": "mkey_2",
+            "mp": 38
+          },
+          {
+            "id": "magic:3:152",
+            "name": "Banishment",
+            "target": "mkey_3",
+            "mp": 38
+          },
+          {
+            "id": "magic:1:161",
+            "name": "Corruption",
+            "target": "mkey_1",
+            "mp": 24
+          },
+          {
+            "id": "magic:2:161",
+            "name": "Corruption",
+            "target": "mkey_2",
+            "mp": 24
+          },
+          {
+            "id": "magic:3:161",
+            "name": "Corruption",
+            "target": "mkey_3",
+            "mp": 24
+          },
+          {
+            "id": "magic:1:162",
+            "name": "Disintegrate",
+            "target": "mkey_1",
+            "mp": 38
+          },
+          {
+            "id": "magic:2:162",
+            "name": "Disintegrate",
+            "target": "mkey_2",
+            "mp": 38
+          },
+          {
+            "id": "magic:3:162",
+            "name": "Disintegrate",
+            "target": "mkey_3",
+            "mp": 38
+          },
+          {
+            "id": "magic:1:211",
+            "name": "Drain",
+            "target": "mkey_1",
+            "mp": 24
+          },
+          {
+            "id": "magic:2:211",
+            "name": "Drain",
+            "target": "mkey_2",
+            "mp": 24
+          },
+          {
+            "id": "magic:3:211",
+            "name": "Drain",
+            "target": "mkey_3",
+            "mp": 24
+          },
+          {
+            "id": "magic:1:212",
+            "name": "Weaken",
+            "target": "mkey_1",
+            "mp": 17
+          },
+          {
+            "id": "magic:2:212",
+            "name": "Weaken",
+            "target": "mkey_2",
+            "mp": 17
+          },
+          {
+            "id": "magic:3:212",
+            "name": "Weaken",
+            "target": "mkey_3",
+            "mp": 17
+          },
+          {
+            "id": "magic:1:213",
+            "name": "Imperil",
+            "target": "mkey_1",
+            "mp": 17
+          },
+          {
+            "id": "magic:2:213",
+            "name": "Imperil",
+            "target": "mkey_2",
+            "mp": 17
+          },
+          {
+            "id": "magic:3:213",
+            "name": "Imperil",
+            "target": "mkey_3",
+            "mp": 17
+          },
+          {
+            "id": "magic:1:221",
+            "name": "Slow",
+            "target": "mkey_1",
+            "mp": 29
+          },
+          {
+            "id": "magic:2:221",
+            "name": "Slow",
+            "target": "mkey_2",
+            "mp": 29
+          },
+          {
+            "id": "magic:3:221",
+            "name": "Slow",
+            "target": "mkey_3",
+            "mp": 29
+          },
+          {
+            "id": "magic:1:222",
+            "name": "Sleep",
+            "target": "mkey_1",
+            "mp": 42
+          },
+          {
+            "id": "magic:2:222",
+            "name": "Sleep",
+            "target": "mkey_2",
+            "mp": 42
+          },
+          {
+            "id": "magic:3:222",
+            "name": "Sleep",
+            "target": "mkey_3",
+            "mp": 42
+          },
+          {
+            "id": "magic:1:223",
+            "name": "Confuse",
+            "target": "mkey_1",
+            "mp": 44
+          },
+          {
+            "id": "magic:2:223",
+            "name": "Confuse",
+            "target": "mkey_2",
+            "mp": 44
+          },
+          {
+            "id": "magic:3:223",
+            "name": "Confuse",
+            "target": "mkey_3",
+            "mp": 44
+          },
+          {
+            "id": "magic:1:231",
+            "name": "Blind",
+            "target": "mkey_1",
+            "mp": 31
+          },
+          {
+            "id": "magic:2:231",
+            "name": "Blind",
+            "target": "mkey_2",
+            "mp": 31
+          },
+          {
+            "id": "magic:3:231",
+            "name": "Blind",
+            "target": "mkey_3",
+            "mp": 31
+          },
+          {
+            "id": "magic:1:232",
+            "name": "Silence",
+            "target": "mkey_1",
+            "mp": 32
+          },
+          {
+            "id": "magic:2:232",
+            "name": "Silence",
+            "target": "mkey_2",
+            "mp": 32
+          },
+          {
+            "id": "magic:3:232",
+            "name": "Silence",
+            "target": "mkey_3",
+            "mp": 32
+          },
+          {
+            "id": "magic:0:311",
+            "name": "Cure",
+            "mp": 32
+          },
+          {
+            "id": "magic:0:312",
+            "name": "Regen",
+            "mp": 43
+          },
+          {
+            "id": "magic:0:411",
+            "name": "Protection",
+            "mp": 39
+          },
+          {
+            "id": "magic:0:412",
+            "name": "Haste",
+            "mp": 48
+          },
+          {
+            "id": "magic:0:413",
+            "name": "Shadow Veil",
+            "mp": 50
+          },
+          {
+            "id": "magic:0:421",
+            "name": "Absorb",
+            "mp": 48
+          },
+          {
+            "id": "magic:0:422",
+            "name": "Spark of Life",
+            "mp": 84
+          },
+          {
+            "id": "magic:0:431",
+            "name": "Heartseeker",
+            "mp": 169
+          },
+          {
+            "id": "magic:0:432",
+            "name": "Arcane Focus",
+            "mp": 170
+          },
+          {
+            "id": "items:0:1",
+            "name": "Health Draught",
+            "mp": null
+          },
+          {
+            "id": "items:0:2",
+            "name": "Mana Draught",
+            "mp": null
+          },
+          {
+            "id": "items:0:3",
+            "name": "Mana Elixir",
+            "mp": null
+          },
+          {
+            "id": "items:0:4",
+            "name": "Scroll of Protection",
+            "mp": null
+          },
+          {
+            "id": "items:0:5",
+            "name": "Scroll of Absorption",
+            "mp": null
+          }
+        ],
+        "log": [
+          "Akashi Junko hits you, causing 718 points of Slashing damage.",
+          "Konoe Ayatsuki Mercury glances you, causing 393 points of Piercing damage.",
+          "Goldhair Redeye Elf hits you, causing 528 points of Piercing damage.",
+          "You hit Goldhair Redeye Elf, causing 452 points of Crushing damage.",
+          "Spawned Monster C: MID=212741 (Konoe Ayatsuki Mercury) LV=178 HP=6025",
+          "Spawned Monster B: MID=273955 (Akashi Junko) LV=178 HP=6535",
+          "Spawned Monster A: MID=238113 (Goldhair Redeye Elf) LV=178 HP=6015",
+          "Initializing arena challenge #9 (Round 1 / 10) ..."
+        ],
+        "issues": []
+      }
+    },
+    {
+      "message": {
+        "channel": "hv-helper-battle-v1",
+        "kind": "request",
+        "requestId": "0fa5dd89-7118-48ae-9e8f-2c3e517358b0",
+        "action": {
+          "mode": "defend",
+          "target": 0,
+          "skill": "0"
+        }
+      },
+      "state": {
+        "at": "2026-10-14T09:13:48.430Z",
+        "revision": "24217abcbd0f1b47",
+        "stage": "battle",
+        "round": 1,
+        "totalRounds": 10,
+        "player": {
+          "hp": 1649,
+          "mp": 321,
+          "sp": 197,
+          "spiritStance": false,
+          "chargeSegments": null,
+          "effects": []
+        },
+        "monsters": [
+          {
+            "id": "mkey_1",
+            "name": "Goldhair Redeye Elf",
+            "targetable": true,
+            "healthBarPixels": 111,
+            "effects": []
+          },
+          {
+            "id": "mkey_2",
+            "name": "Akashi Junko",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          },
+          {
+            "id": "mkey_3",
+            "name": "Konoe Ayatsuki Mercury",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          }
+        ],
+        "candidates": [
+          {
+            "id": "attack:1:0",
+            "name": "Attack",
+            "target": "mkey_1",
+            "mp": 0
+          },
+          {
+            "id": "attack:2:0",
+            "name": "Attack",
+            "target": "mkey_2",
+            "mp": 0
+          },
+          {
+            "id": "attack:3:0",
+            "name": "Attack",
+            "target": "mkey_3",
+            "mp": 0
+          },
+          {
+            "id": "defend:0:0",
+            "name": "Defend",
+            "mp": 0
+          },
+          {
+            "id": "focus:0:0",
+            "name": "Focus",
+            "mp": 0
+          },
+          {
+            "id": "spirit:0:0",
+            "name": "Enable Spirit Stance",
+            "mp": 0
+          },
+          {
+            "id": "magic:0:1001",
+            "name": "Flee",
+            "mp": 0
+          },
+          {
+            "id": "magic:1:1011",
+            "name": "Scan",
+            "target": "mkey_1",
+            "mp": 0
+          },
+          {
+            "id": "magic:2:1011",
+            "name": "Scan",
+            "target": "mkey_2",
+            "mp": 0
+          },
+          {
+            "id": "magic:3:1011",
+            "name": "Scan",
+            "target": "mkey_3",
+            "mp": 0
+          },
+          {
+            "id": "magic:1:111",
+            "name": "Fiery Blast",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:111",
+            "name": "Fiery Blast",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:111",
+            "name": "Fiery Blast",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:112",
+            "name": "Inferno",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:112",
+            "name": "Inferno",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:112",
+            "name": "Inferno",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:121",
+            "name": "Freeze",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:121",
+            "name": "Freeze",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:121",
+            "name": "Freeze",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:122",
+            "name": "Blizzard",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:122",
+            "name": "Blizzard",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:122",
+            "name": "Blizzard",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:131",
+            "name": "Shockblast",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:131",
+            "name": "Shockblast",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:131",
+            "name": "Shockblast",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:132",
+            "name": "Chained Lightning",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:132",
+            "name": "Chained Lightning",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:132",
+            "name": "Chained Lightning",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:141",
+            "name": "Gale",
+            "target": "mkey_1",
+            "mp": 10
+          },
+          {
+            "id": "magic:2:141",
+            "name": "Gale",
+            "target": "mkey_2",
+            "mp": 10
+          },
+          {
+            "id": "magic:3:141",
+            "name": "Gale",
+            "target": "mkey_3",
+            "mp": 10
+          },
+          {
+            "id": "magic:1:142",
+            "name": "Downburst",
+            "target": "mkey_1",
+            "mp": 25
+          },
+          {
+            "id": "magic:2:142",
+            "name": "Downburst",
+            "target": "mkey_2",
+            "mp": 25
+          },
+          {
+            "id": "magic:3:142",
+            "name": "Downburst",
+            "target": "mkey_3",
+            "mp": 25
+          },
+          {
+            "id": "magic:1:151",
+            "name": "Smite",
+            "target": "mkey_1",
+            "mp": 24
+          },
+          {
+            "id": "magic:2:151",
+            "name": "Smite",
+            "target": "mkey_2",
+            "mp": 24
+          },
+          {
+            "id": "magic:3:151",
+            "name": "Smite",
+            "target": "mkey_3",
+            "mp": 24
+          },
+          {
+            "id": "magic:1:152",
+            "name": "Banishment",
+            "target": "mkey_1",
+            "mp": 38
+          },
+          {
+            "id": "magic:2:152",
+            "name": "Banishment",
+            "target": "mkey_2",
+            "mp": 38
+          },
+          {
+            "id": "magic:3:152",
+            "name": "Banishment",
+            "target": "mkey_3",
+            "mp": 38
+          },
+          {
+            "id": "magic:1:161",
+            "name": "Corruption",
+            "target": "mkey_1",
+            "mp": 24
+          },
+          {
+            "id": "magic:2:161",
+            "name": "Corruption",
+            "target": "mkey_2",
+            "mp": 24
+          },
+          {
+            "id": "magic:3:161",
+            "name": "Corruption",
+            "target": "mkey_3",
+            "mp": 24
+          },
+          {
+            "id": "magic:1:162",
+            "name": "Disintegrate",
+            "target": "mkey_1",
+            "mp": 38
+          },
+          {
+            "id": "magic:2:162",
+            "name": "Disintegrate",
+            "target": "mkey_2",
+            "mp": 38
+          },
+          {
+            "id": "magic:3:162",
+            "name": "Disintegrate",
+            "target": "mkey_3",
+            "mp": 38
+          },
+          {
+            "id": "magic:1:211",
+            "name": "Drain",
+            "target": "mkey_1",
+            "mp": 24
+          },
+          {
+            "id": "magic:2:211",
+            "name": "Drain",
+            "target": "mkey_2",
+            "mp": 24
+          },
+          {
+            "id": "magic:3:211",
+            "name": "Drain",
+            "target": "mkey_3",
+            "mp": 24
+          },
+          {
+            "id": "magic:1:212",
+            "name": "Weaken",
+            "target": "mkey_1",
+            "mp": 17
+          },
+          {
+            "id": "magic:2:212",
+            "name": "Weaken",
+            "target": "mkey_2",
+            "mp": 17
+          },
+          {
+            "id": "magic:3:212",
+            "name": "Weaken",
+            "target": "mkey_3",
+            "mp": 17
+          },
+          {
+            "id": "magic:1:213",
+            "name": "Imperil",
+            "target": "mkey_1",
+            "mp": 17
+          },
+          {
+            "id": "magic:2:213",
+            "name": "Imperil",
+            "target": "mkey_2",
+            "mp": 17
+          },
+          {
+            "id": "magic:3:213",
+            "name": "Imperil",
+            "target": "mkey_3",
+            "mp": 17
+          },
+          {
+            "id": "magic:1:221",
+            "name": "Slow",
+            "target": "mkey_1",
+            "mp": 29
+          },
+          {
+            "id": "magic:2:221",
+            "name": "Slow",
+            "target": "mkey_2",
+            "mp": 29
+          },
+          {
+            "id": "magic:3:221",
+            "name": "Slow",
+            "target": "mkey_3",
+            "mp": 29
+          },
+          {
+            "id": "magic:1:222",
+            "name": "Sleep",
+            "target": "mkey_1",
+            "mp": 42
+          },
+          {
+            "id": "magic:2:222",
+            "name": "Sleep",
+            "target": "mkey_2",
+            "mp": 42
+          },
+          {
+            "id": "magic:3:222",
+            "name": "Sleep",
+            "target": "mkey_3",
+            "mp": 42
+          },
+          {
+            "id": "magic:1:223",
+            "name": "Confuse",
+            "target": "mkey_1",
+            "mp": 44
+          },
+          {
+            "id": "magic:2:223",
+            "name": "Confuse",
+            "target": "mkey_2",
+            "mp": 44
+          },
+          {
+            "id": "magic:3:223",
+            "name": "Confuse",
+            "target": "mkey_3",
+            "mp": 44
+          },
+          {
+            "id": "magic:1:231",
+            "name": "Blind",
+            "target": "mkey_1",
+            "mp": 31
+          },
+          {
+            "id": "magic:2:231",
+            "name": "Blind",
+            "target": "mkey_2",
+            "mp": 31
+          },
+          {
+            "id": "magic:3:231",
+            "name": "Blind",
+            "target": "mkey_3",
+            "mp": 31
+          },
+          {
+            "id": "magic:1:232",
+            "name": "Silence",
+            "target": "mkey_1",
+            "mp": 32
+          },
+          {
+            "id": "magic:2:232",
+            "name": "Silence",
+            "target": "mkey_2",
+            "mp": 32
+          },
+          {
+            "id": "magic:3:232",
+            "name": "Silence",
+            "target": "mkey_3",
+            "mp": 32
+          },
+          {
+            "id": "magic:0:311",
+            "name": "Cure",
+            "mp": 32
+          },
+          {
+            "id": "magic:0:312",
+            "name": "Regen",
+            "mp": 43
+          },
+          {
+            "id": "magic:0:411",
+            "name": "Protection",
+            "mp": 39
+          },
+          {
+            "id": "magic:0:412",
+            "name": "Haste",
+            "mp": 48
+          },
+          {
+            "id": "magic:0:413",
+            "name": "Shadow Veil",
+            "mp": 50
+          },
+          {
+            "id": "magic:0:421",
+            "name": "Absorb",
+            "mp": 48
+          },
+          {
+            "id": "magic:0:422",
+            "name": "Spark of Life",
+            "mp": 84
+          },
+          {
+            "id": "magic:0:431",
+            "name": "Heartseeker",
+            "mp": 169
+          },
+          {
+            "id": "magic:0:432",
+            "name": "Arcane Focus",
+            "mp": 170
+          },
+          {
+            "id": "items:0:1",
+            "name": "Health Draught",
+            "mp": null
+          },
+          {
+            "id": "items:0:2",
+            "name": "Mana Draught",
+            "mp": null
+          },
+          {
+            "id": "items:0:3",
+            "name": "Mana Elixir",
+            "mp": null
+          },
+          {
+            "id": "items:0:4",
+            "name": "Scroll of Protection",
+            "mp": null
+          },
+          {
+            "id": "items:0:5",
+            "name": "Scroll of Absorption",
+            "mp": null
+          }
+        ],
+        "log": [
+          "Akashi Junko hits you, causing 718 points of Slashing damage.",
+          "Konoe Ayatsuki Mercury glances you, causing 393 points of Piercing damage.",
+          "Goldhair Redeye Elf hits you, causing 528 points of Piercing damage.",
+          "You hit Goldhair Redeye Elf, causing 452 points of Crushing damage.",
+          "Spawned Monster C: MID=212741 (Konoe Ayatsuki Mercury) LV=178 HP=6025",
+          "Spawned Monster B: MID=273955 (Akashi Junko) LV=178 HP=6535",
+          "Spawned Monster A: MID=238113 (Goldhair Redeye Elf) LV=178 HP=6015",
+          "Initializing arena challenge #9 (Round 1 / 10) ..."
+        ],
+        "issues": []
+      }
+    },
+    {
+      "message": {
+        "channel": "hv-helper-battle-v1",
+        "kind": "response",
+        "requestId": "0fa5dd89-7118-48ae-9e8f-2c3e517358b0",
+        "ok": true,
+        "status": 200
+      },
+      "state": {
+        "at": "2026-10-14T09:13:48.715Z",
+        "revision": "b27089ba738dce97",
+        "stage": "ended",
+        "round": 1,
+        "totalRounds": 10,
+        "player": {
+          "hp": null,
+          "mp": null,
+          "sp": null,
+          "spiritStance": false,
+          "chargeSegments": null,
+          "effects": []
+        },
+        "monsters": [
+          {
+            "id": "mkey_1",
+            "name": "Goldhair Redeye Elf",
+            "targetable": false,
+            "healthBarPixels": 111,
+            "effects": []
+          },
+          {
+            "id": "mkey_2",
+            "name": "Akashi Junko",
+            "targetable": false,
+            "healthBarPixels": 120,
+            "effects": []
+          },
+          {
+            "id": "mkey_3",
+            "name": "Konoe Ayatsuki Mercury",
+            "targetable": false,
+            "healthBarPixels": 120,
+            "effects": []
+          }
+        ],
+        "candidates": [],
+        "log": [
+          "You have been defeated.",
+          "Goldhair Redeye Elf hits you, causing 559 points of Piercing damage.",
+          "Akashi Junko glances you, causing 423 points of Slashing damage.",
+          "Konoe Ayatsuki Mercury hits you, causing 753 points of Piercing damage.",
+          "Goldhair Redeye Elf glances you, causing 234 points of Piercing damage.",
+          "You gain the effect Defending.",
+          "Akashi Junko hits you, causing 718 points of Slashing damage.",
+          "Konoe Ayatsuki Mercury glances you, causing 393 points of Piercing damage.",
+          "Goldhair Redeye Elf hits you, causing 528 points of Piercing damage.",
+          "You hit Goldhair Redeye Elf, causing 452 points of Crushing damage.",
+          "Spawned Monster C: MID=212741 (Konoe Ayatsuki Mercury) LV=178 HP=6025",
+          "Spawned Monster B: MID=273955 (Akashi Junko) LV=178 HP=6535",
+          "Spawned Monster A: MID=238113 (Goldhair Redeye Elf) LV=178 HP=6015",
+          "Initializing arena challenge #9 (Round 1 / 10) ..."
+        ],
+        "issues": []
+      }
+    }
+  ],
+  "finalPanel": "HV 策略助手\n\n本场记录已结束\n\n无偏好测试 2/5 · 不用于学习你的打法。You have been defeated!Arena challenge failed!\n\nJev 已配置 · 归纳 已配置 · 已确认 0 条偏好。本月估算费用 $0.0006\n\n录制 / 恢复录制接管 / 恢复接管无偏好测试（最多5步）暂停结束本场记录设置与偏好"
+}

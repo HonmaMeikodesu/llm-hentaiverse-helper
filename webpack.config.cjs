@@ -1,53 +1,24 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const path = require("node:path");
 
-/** @type {import("webpack").Configuration}  */
-const browserConfig = {
-    target: "web",
-    entry: {
-        content: "./src/browser/content.ts",
-        worker: "./src/browser/worker.ts"
-    },
-    resolve: {
-        extensions: [".ts", ".js"],
-        extensionAlias: {
-            '.js': ['.ts', '.js'],
-            '.jsx': ['.tsx', '.jsx']
-        },
-    },
-    module: {
-        rules: [
-            {
-                test: /\.ts?$/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                        /** @type {import("@babel/core").TransformOptions} */
-                        options: {
-                            presets: [
-                                "@babel/preset-env",
-                            ]
-                        }
-                    },
-                    {
-                        loader: "ts-loader",
-                        /** @type {import("ts-loader").Options} */
-                        options: {
-                            logInfoToStdOut: true,
-                            logLevel: "INFO",
-                        }
-
-                    }
-                ],
-                exclude: /node_modules/,
-            },
-        ],
-    },
-    devtool: "inline-source-map",
-    plugins: [
-        process.env.ANALYZE_FLAG ? new BundleAnalyzerPlugin({ analyzerPort: 9000 }) : undefined
-    ].filter(Boolean),
-};
-
-exports.default = [browserConfig]
-
-
+module.exports = (_env, argv) => ({
+  target: "web",
+  entry: {
+    content: "./src/browser/content.ts",
+    worker: "./src/browser/worker.ts",
+    bridge: "./src/extension/bridge.ts",
+    options: "./src/extension/options.ts",
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+    clean: true,
+  },
+  resolve: {
+    extensions: [".ts", ".js"],
+    extensionAlias: { ".js": [".ts", ".js"] },
+  },
+  module: {
+    rules: [{ test: /\.ts$/, use: "ts-loader", exclude: /node_modules/ }],
+  },
+  devtool: argv.mode === "production" ? false : "source-map",
+});

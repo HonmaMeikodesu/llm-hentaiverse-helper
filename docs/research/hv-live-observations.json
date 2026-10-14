@@ -1,0 +1,685 @@
+{
+  "schema_version": 1,
+  "collected_at": "2026-10-13",
+  "source": "Authenticated browser DOM at https://hentaiverse.org/",
+  "scope": "Read-only navigation and DOM observations; no battle actions executed.",
+  "live_battle_execution_verified": false,
+  "observations": [
+    {
+      "url": "https://hentaiverse.org/",
+      "capturedAt": "2026-10-13T13:26:42.231Z",
+      "pageType": "character",
+      "text": "⚠️\nStamina: 99\nNintendo Lv.172\nPersistent\nActive persona:\nTentacle Monster\nPersona #2\nUsed persona slots: 2 / 3\nPrimary attributes\nStrength\n\t\n214\n\t\n+0\n\t\n+0\n\t\t\n0\n\t\t\n686,841\n\n\nDexterity\n\t\n168\n\t\n+0\n\t\n+0\n\t\t\n0\n\t\t\n166,403\n\n\nAgility\n\t\n168\n\t\n+0\n\t\n+0\n\t\t\n0\n\t\t\n166,403\n\n\nEndurance\n\t\n168\n\t\n+0\n\t\n+0\n\t\t\n0\n\t\t\n166,403\n\n\nIntelligence\n\t\n133\n\t\n+0\n\t\n+0\n\t\t\n0\n\t\t\n54,492\n\n\nWisdom\n\t\n133\n\t\n+0\n\t\n+0\n\t\t\n0\n\t\t\n54,492\n\n\t\t\n17,470,127\nIsekai bonus: +0\nEquipment proficiency\nOne-handed\n\t\n201.235\n\n\nTwo-handed\n\t\n109.353\n\n\nDual-wielding\n\t\n105.309\n\n\nCloth armor\n\t\n105.324\n\n\nLight armor\n\t\n134.370\n\n\nHeavy armor\n\t\n201.237\nMagic proficiency\nStaff\n\t\n105.309\n\n\nElemental\n\t\n113.975\n\n\nDivine\n\t\n110.067\n\n\nForbidden\n\t\n107.269\n\n\nDeprecating\n\t\n118.608\n\n\nSupportive\n\t\n182.078\nMainhand Attack\n568.9\tCrushing Damage\n84.0\tAccuracy\n1.50x\tCrit Multiplier\n0.0%\tAttack Speed Bonus\nMagic Attack\n387.3\tDamage Bonus\n66.5\tAccuracy\n1.50x\tCrit Multiplier\n0.0%\tMana Cost Modifier\n0.0%\tCast Speed Bonus\nVitals\n3218\tBase Health\n314\tBase Mana\n197\tBase Spirit\n10\tMana Regen\n2\tSpirit Regen\nAvoidance\n67.2\tEvade\n0.0\tBlock\n67.2\tParry\n53.2\tResist\nCompromise\n0.0\tInterference\n0.0\tBurden\nDamage Mitigation\n21.9%\tPhysical\n20.7%\tMagical\n0.0%\tFire\n0.0%\tCold\n0.0%\tElec\n0.0%\tWind\n0.0%\tHoly\n0.0%\tDark\n0.0%\tCrushing\n0.0%\tSlashing\n0.0%\tPiercing\nSpell Damage Bonus\n0.0%\tFire\n0.0%\tCold\n0.0%\tElec\n0.0%\tWind\n0.0%\tHoly\n0.0%\tDark\nEffective Primary Stats\n214.0\tStrength\n168.0\tDexterity\n168.0\tAgility\n168.0\tEndurance\n133.0\tIntelligence\n133.0\tWisdom\nEffective Proficiency\n201.2\tOne-handed\n109.4\tTwo-handed\n105.3\tDual-wielding\n105.3\tStaff\n105.3\tCloth Armor\n134.4\tLight Armor\n201.2\tHeavy Armor\n114.0\tElemental\n110.1\tDivine\n107.3\tForbidden\n118.6\tDeprecating\n182.1\tSupportive",
+      "assets": [
+        "/z/091c/hvg.css",
+        "/z/091c/hvo.css"
+      ]
+    },
+    {
+      "url": "https://hentaiverse.org/?s=Character&ss=eq",
+      "capturedAt": "2026-10-13T13:28:22.378Z",
+      "pageType": "equipment",
+      "text": "⚠️\nStamina: 99\nNintendo Lv.173\nPersistent\nEquipment Slots\nMain Hand\n(empty)\nOff Hand\n(unavailable with current mainhand)\nHelmet\n(empty)\nBody\n(empty)\nHands\n(empty)\nLegs\n(empty)\nFeet\n(empty)\nMainhand Attack\n568.9\tCrushing Damage\n84.0\tAccuracy\n1.50x\tCrit Multiplier\n0.0%\tAttack Speed Bonus\nMagic Attack\n387.3\tDamage Bonus\n66.5\tAccuracy\n1.50x\tCrit Multiplier\n0.0%\tMana Cost Modifier\n0.0%\tCast Speed Bonus\nVitals\n3228\tBase Health\n315\tBase Mana\n197\tBase Spirit\n10\tMana Regen\n2\tSpirit Regen\nAvoidance\n67.2\tEvade\n0.0\tBlock\n67.2\tParry\n53.2\tResist\nCompromise\n0.0\tInterference\n0.0\tBurden\nDamage Mitigation\n21.9%\tPhysical\n20.7%\tMagical\n0.0%\tFire\n0.0%\tCold\n0.0%\tElec\n0.0%\tWind\n0.0%\tHoly\n0.0%\tDark\n0.0%\tCrushing\n0.0%\tSlashing\n0.0%\tPiercing\nSpell Damage Bonus\n0.0%\tFire\n0.0%\tCold\n0.0%\tElec\n0.0%\tWind\n0.0%\tHoly\n0.0%\tDark\nEffective Primary Stats\n214.0\tStrength\n168.0\tDexterity\n168.0\tAgility\n168.0\tEndurance\n133.0\tIntelligence\n133.0\tWisdom\nEffective Proficiency\n201.2\tOne-handed\n109.4\tTwo-handed\n105.3\tDual-wielding\n105.3\tStaff\n105.3\tCloth Armor\n134.4\tLight Armor\n201.2\tHeavy Armor\n114.0\tElemental\n110.1\tDivine\n107.3\tForbidden\n118.6\tDeprecating\n182.1\tSupportive"
+    },
+    {
+      "url": "https://hentaiverse.org/?s=Character&ss=it",
+      "capturedAt": "2026-10-13T13:28:45.857Z",
+      "pageType": "inventory",
+      "text": "⚠️\nStamina: 99\nNintendo Lv.174\nPersistent\nItem Inventory\nHealth Draught\n\t107\n\nHealth Potion\n\t45\n\nHealth Elixir\n\t4\n\nMana Draught\n\t102\n\nMana Potion\n\t46\n\nMana Elixir\n\t7\n\nSpirit Draught\n\t100\n\nSpirit Potion\n\t16\n\nSpirit Elixir\n\t1\n\nInfusion of Flames\n\t2\n\nInfusion of Frost\n\t3\n\nInfusion of Lightning\n\t1\n\nInfusion of Storms\n\t2\n\nInfusion of Divinity\n\t2\n\nInfusion of Darkness\n\t1\n\nScroll of Swiftness\n\t8\n\nScroll of Protection\n\t6\n\nScroll of Absorption\n\t5\n\nScroll of Shadows\n\t5\n\nScroll of Life\n\t8\n\nScroll of the Gods\n\t6\n\nFlower Vase\n\t1\n\nBubble-Gum\n\t1\n\nPrecursor Artifact\n\t1\n\nManBearPig Tail\n\t2\n\nHoly Hand Grenade of Antioch\n\t3\n\nMithra's Flower\n\t3\n\nDalek Voicebox\n\t4\n\nToken of Blood\n\t6\n\nChaos Token\n\t11\n\nSoul Fragment\n\t189\n\nCrystal of Vigor\n\t68\n\nCrystal of Finesse\n\t63\n\nCrystal of Swiftness\n\t60\n\nCrystal of Fortitude\n\t55\n\nCrystal of Cunning\n\t61\n\nCrystal of Knowledge\n\t38\n\nCrystal of Flames\n\t59\n\nCrystal of Frost\n\t42\n\nCrystal of Lightning\n\t45\n\nCrystal of Tempest\n\t59\n\nCrystal of Devotion\n\t32\n\nCrystal of Corruption\n\t42\n\nMonster Chow\n\t118\n\nMonster Edibles\n\t79\n\nMonster Cuisine\n\t42\n\nHappy Pills\n\t1\n\nHigh-Grade Cloth\n\t1\n\nMid-Grade Leather\n\t1\n\nLow-Grade Metals\n\t1\n\nLow-Grade Wood\n\t2\n\nScrap Cloth\n\t14\n\nScrap Leather\n\t16\n\nScrap Metal\n\t19\n\nScrap Wood\n\t12\n\nEnergy Cell\n\t1\n\nBinding of Dampening\n\t1\n\nBinding of Deflection\n\t1\n\nBinding of the Spirit-ward\n\t1\n\nFeatherweight Shard\n\t4\nBattle Slots\n1\nHealth Draught\n2\nMana Draught\n3\nMana Elixir\n4\nScroll of Protection\n5\nScroll of Absorption\nS1\nN1",
+      "rows": [
+        {
+          "text": "Health Draught\n\t107",
+          "controls": [
+            {
+              "id": "item_11191",
+              "text": "Health Draught",
+              "onclick": "itemselector.set_item(11191);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Health Potion\n\t45",
+          "controls": [
+            {
+              "id": "item_11195",
+              "text": "Health Potion",
+              "onclick": "itemselector.set_item(11195);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Health Elixir\n\t4",
+          "controls": [
+            {
+              "id": "item_11199",
+              "text": "Health Elixir",
+              "onclick": "itemselector.set_item(11199);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Mana Draught\n\t102",
+          "controls": [
+            {
+              "id": "item_11291",
+              "text": "Mana Draught",
+              "onclick": "itemselector.set_item(11291);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Mana Potion\n\t46",
+          "controls": [
+            {
+              "id": "item_11295",
+              "text": "Mana Potion",
+              "onclick": "itemselector.set_item(11295);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Mana Elixir\n\t7",
+          "controls": [
+            {
+              "id": "item_11299",
+              "text": "Mana Elixir",
+              "onclick": "itemselector.set_item(11299);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Spirit Draught\n\t100",
+          "controls": [
+            {
+              "id": "item_11391",
+              "text": "Spirit Draught",
+              "onclick": "itemselector.set_item(11391);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Spirit Potion\n\t16",
+          "controls": [
+            {
+              "id": "item_11395",
+              "text": "Spirit Potion",
+              "onclick": "itemselector.set_item(11395);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Spirit Elixir\n\t1",
+          "controls": [
+            {
+              "id": "item_11399",
+              "text": "Spirit Elixir",
+              "onclick": "itemselector.set_item(11399);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Infusion of Flames\n\t2",
+          "controls": [
+            {
+              "id": "item_12101",
+              "text": "Infusion of Flames",
+              "onclick": "itemselector.set_item(12101);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Infusion of Frost\n\t3",
+          "controls": [
+            {
+              "id": "item_12201",
+              "text": "Infusion of Frost",
+              "onclick": "itemselector.set_item(12201);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Infusion of Lightning\n\t1",
+          "controls": [
+            {
+              "id": "item_12301",
+              "text": "Infusion of Lightning",
+              "onclick": "itemselector.set_item(12301);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Infusion of Storms\n\t2",
+          "controls": [
+            {
+              "id": "item_12401",
+              "text": "Infusion of Storms",
+              "onclick": "itemselector.set_item(12401);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Infusion of Divinity\n\t2",
+          "controls": [
+            {
+              "id": "item_12501",
+              "text": "Infusion of Divinity",
+              "onclick": "itemselector.set_item(12501);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Infusion of Darkness\n\t1",
+          "controls": [
+            {
+              "id": "item_12601",
+              "text": "Infusion of Darkness",
+              "onclick": "itemselector.set_item(12601);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Scroll of Swiftness\n\t8",
+          "controls": [
+            {
+              "id": "item_13101",
+              "text": "Scroll of Swiftness",
+              "onclick": "itemselector.set_item(13101);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Scroll of Protection\n\t6",
+          "controls": [
+            {
+              "id": "item_13111",
+              "text": "Scroll of Protection",
+              "onclick": "itemselector.set_item(13111);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Scroll of Absorption\n\t5",
+          "controls": [
+            {
+              "id": "item_13201",
+              "text": "Scroll of Absorption",
+              "onclick": "itemselector.set_item(13201);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Scroll of Shadows\n\t5",
+          "controls": [
+            {
+              "id": "item_13211",
+              "text": "Scroll of Shadows",
+              "onclick": "itemselector.set_item(13211);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Scroll of Life\n\t8",
+          "controls": [
+            {
+              "id": "item_13221",
+              "text": "Scroll of Life",
+              "onclick": "itemselector.set_item(13221);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Scroll of the Gods\n\t6",
+          "controls": [
+            {
+              "id": "item_13299",
+              "text": "Scroll of the Gods",
+              "onclick": "itemselector.set_item(13299);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Flower Vase\n\t1",
+          "controls": [
+            {
+              "id": "item_19111",
+              "text": "Flower Vase",
+              "onclick": "itemselector.set_item(19111);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Bubble-Gum\n\t1",
+          "controls": [
+            {
+              "id": "item_19131",
+              "text": "Bubble-Gum",
+              "onclick": "itemselector.set_item(19131);common.text_select(this)"
+            }
+          ]
+        },
+        {
+          "text": "Precursor Artifact\n\t1",
+          "controls": []
+        },
+        {
+          "text": "ManBearPig Tail\n\t2",
+          "controls": []
+        },
+        {
+          "text": "Holy Hand Grenade of Antioch\n\t3",
+          "controls": []
+        },
+        {
+          "text": "Mithra's Flower\n\t3",
+          "controls": []
+        },
+        {
+          "text": "Dalek Voicebox\n\t4",
+          "controls": []
+        },
+        {
+          "text": "Token of Blood\n\t6",
+          "controls": []
+        },
+        {
+          "text": "Chaos Token\n\t11",
+          "controls": []
+        },
+        {
+          "text": "Soul Fragment\n\t189",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Vigor\n\t68",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Finesse\n\t63",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Swiftness\n\t60",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Fortitude\n\t55",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Cunning\n\t61",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Knowledge\n\t38",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Flames\n\t59",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Frost\n\t42",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Lightning\n\t45",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Tempest\n\t59",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Devotion\n\t32",
+          "controls": []
+        },
+        {
+          "text": "Crystal of Corruption\n\t42",
+          "controls": []
+        },
+        {
+          "text": "Monster Chow\n\t118",
+          "controls": []
+        },
+        {
+          "text": "Monster Edibles\n\t79",
+          "controls": []
+        },
+        {
+          "text": "Monster Cuisine\n\t42",
+          "controls": []
+        },
+        {
+          "text": "Happy Pills\n\t1",
+          "controls": []
+        },
+        {
+          "text": "High-Grade Cloth\n\t1",
+          "controls": []
+        },
+        {
+          "text": "Mid-Grade Leather\n\t1",
+          "controls": []
+        },
+        {
+          "text": "Low-Grade Metals\n\t1",
+          "controls": []
+        },
+        {
+          "text": "Low-Grade Wood\n\t2",
+          "controls": []
+        },
+        {
+          "text": "Scrap Cloth\n\t14",
+          "controls": []
+        },
+        {
+          "text": "Scrap Leather\n\t16",
+          "controls": []
+        },
+        {
+          "text": "Scrap Metal\n\t19",
+          "controls": []
+        },
+        {
+          "text": "Scrap Wood\n\t12",
+          "controls": []
+        },
+        {
+          "text": "Energy Cell\n\t1",
+          "controls": []
+        },
+        {
+          "text": "Binding of Dampening\n\t1",
+          "controls": []
+        },
+        {
+          "text": "Binding of Deflection\n\t1",
+          "controls": []
+        },
+        {
+          "text": "Binding of the Spirit-ward\n\t1",
+          "controls": []
+        },
+        {
+          "text": "Featherweight Shard\n\t4",
+          "controls": []
+        }
+      ]
+    },
+    {
+      "url": "https://hentaiverse.org/?s=Character&ss=ab",
+      "capturedAt": "2026-10-13T13:29:09.590Z",
+      "pageType": "abilities",
+      "text": "⚠️\nStamina: 99\nNintendo Lv.175\nPersistent\nAbility Points: 9\nMastery Points: 6\nHP Tank\nCost: 5 AP\nMP Tank\nCost: 4 AP\nSP Tank\nCost: 4 AP\nBetter Health Pots\nCost: 3 AP\nBetter Mana Pots\nCost: 7 AP\nBetter Spirit Pots\nCost: 7 AP",
+      "tooltips": [
+        {
+          "id": "slot_101",
+          "text": "",
+          "handler": "overability(0, '1H Damage','Increases your damage when using the One-Handed fighting style, scaling with your proficiency.','Requires <strong>Level 100</strong> and <strong>3 Ability Points</strong><div><strong>Proficiency-based Stat Modification</strong></div><div>For every ten points of One-Handed Weapon Proficiency, adds:</div><div>+30 Attack Base Damage</div>','Requires <strong>Level 200</strong> and <strong>5 Ability Points</strong><div><strong>Proficiency-based Stat Modification</strong></div><div>For every ten points of One-Handed Weapon Proficiency, adds:</div><div>+40 Attack Base Damage</div>')"
+        },
+        {
+          "id": "slot_102",
+          "text": "",
+          "handler": "overability(0, 'HP Tank','Increases your maximum HP. This adds 10% to your total HP per tier.','Requires <strong>Level 150</strong> and <strong>4 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+70% Maximum Health</div>','Requires <strong>Level 200</strong> and <strong>5 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+80% Maximum Health</div>')"
+        },
+        {
+          "id": "slot_103",
+          "text": "",
+          "handler": "overability(0, 'MP Tank','Increases your maximum MP. This adds 10% to your total MP per tier.','Requires <strong>Level 160</strong> and <strong>4 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+60% Maximum Magic</div>','Requires <strong>Level 210</strong> and <strong>4 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+70% Maximum Magic</div>')"
+        },
+        {
+          "id": "slot_111",
+          "text": "",
+          "handler": "overability(0, 'SP Tank','Increases your maximum SP. This adds 10% to your total SP per tier.','Requires <strong>Level 120</strong> and <strong>3 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+40% Maximum Spirit</div>','Requires <strong>Level 170</strong> and <strong>4 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+50% Maximum Spirit</div>')"
+        },
+        {
+          "id": "slot_112",
+          "text": "",
+          "handler": "overability(0, 'Heavy Crush','Increases your crushing mitigation when using mostly heavy armor, scaling with your proficiency.','Requires <strong>Level 150</strong> and <strong>7 Ability Points</strong><div><strong>Proficiency-based Stat Modification</strong></div><div>For every ten points of Heavy Armor Proficiency, adds:</div><div>+0.5% Crushing Mitigation</div>','At Maximum')"
+        },
+        {
+          "id": "slot_113",
+          "text": "",
+          "handler": "overability(0, 'Heavy Prcg','Increases your piercing mitigation when using mostly heavy armor, scaling with your proficiency.','Requires <strong>Level 150</strong> and <strong>7 Ability Points</strong><div><strong>Proficiency-based Stat Modification</strong></div><div>For every ten points of Heavy Armor Proficiency, adds:</div><div>+0.5% Piercing Mitigation</div>','At Maximum')"
+        },
+        {
+          "id": "slot_114",
+          "text": "",
+          "handler": "overability(0, 'Heavy Slsh','Increases your slashing mitigation when using mostly heavy armor, scaling with your proficiency.','Requires <strong>Level 150</strong> and <strong>7 Ability Points</strong><div><strong>Proficiency-based Stat Modification</strong></div><div>For every ten points of Heavy Armor Proficiency, adds:</div><div>+0.5% Slashing Mitigation</div>','At Maximum')"
+        },
+        {
+          "id": "slot_115",
+          "text": "",
+          "handler": "overability(0, 'Better Health Pots','Improves the overall potency of common health restoratives.','Requires <strong>Level 100</strong> and <strong>2 Ability Points</strong><div>Effects Modified: <strong>Regeneration</strong></div><div>+3.5% Base Health Regen per tick</div><div>Items Modified: <strong>Health Potion</strong></div><div>When Used: Instantly restores 120% of Base Health</div>','Requires <strong>Level 200</strong> and <strong>3 Ability Points</strong><div>Effects Modified: <strong>Regeneration</strong></div><div>+4% Base Health Regen per tick</div><div>Items Modified: <strong>Health Potion</strong></div><div>When Used: Instantly restores 130% of Base Health</div>')"
+        },
+        {
+          "id": "slot_116",
+          "text": "",
+          "handler": "overability(0, '1H Accuracy','Increases your accuracy when using the One-Handed fighting style, scaling with your proficiency.','Requires <strong>Level 150</strong> and <strong>2 Ability Points</strong><div><strong>Proficiency-based Stat Modification</strong></div><div>For every ten points of One-Handed Weapon Proficiency, adds:</div><div>+2 Attack Accuracy</div>','At Maximum')"
+        },
+        {
+          "id": "slot_117",
+          "text": "",
+          "handler": "overability(0, 'Heavy HP','Increases your maximum HP when using mostly heavy armor, scaling with your proficiency.','Requires <strong>Level 110</strong> and <strong>3 Ability Points</strong><div><strong>Proficiency-based Stat Modification</strong></div><div>For every ten points of Heavy Armor Proficiency, adds:</div><div>+0.7% Maximum Health</div>','Requires <strong>Level 170</strong> and <strong>3 Ability Points</strong><div><strong>Proficiency-based Stat Modification</strong></div><div>For every ten points of Heavy Armor Proficiency, adds:</div><div>+0.8% Maximum Health</div>')"
+        },
+        {
+          "id": "slot_118",
+          "text": "",
+          "handler": "overability(0, 'Better Mana Pots','Improves the overall potency of common mana restoratives.','Requires <strong>Level 140</strong> and <strong>5 Ability Points</strong><div>Effects Modified: <strong>Replenishment</strong></div><div>+1.3% Base Mana Regen per tick</div><div>Items Modified: <strong>Mana Potion</strong></div><div>When Used: Instantly restores 65% of Base Magic</div>','Requires <strong>Level 220</strong> and <strong>7 Ability Points</strong><div>Effects Modified: <strong>Replenishment</strong></div><div>+1.4% Base Mana Regen per tick</div><div>Items Modified: <strong>Mana Potion</strong></div><div>When Used: Instantly restores 70% of Base Magic</div>')"
+        },
+        {
+          "id": "slot_119",
+          "text": "",
+          "handler": "overability(0, 'Better Spirit Pots','Improves the overall potency of common spirit restoratives.','Requires <strong>Level 160</strong> and <strong>5 Ability Points</strong><div>Effects Modified: <strong>Refreshment</strong></div><div>+1.3% Base Spirit Regen per tick</div><div>Items Modified: <strong>Spirit Potion</strong></div><div>When Used: Instantly restores 65% of Base Spirit</div>','Requires <strong>Level 240</strong> and <strong>7 Ability Points</strong><div>Effects Modified: <strong>Refreshment</strong></div><div>+1.4% Base Spirit Regen per tick</div><div>Items Modified: <strong>Spirit Potion</strong></div><div>When Used: Instantly restores 70% of Base Spirit</div>')"
+        },
+        {
+          "id": "slot_201",
+          "text": "",
+          "handler": "overability(0, 'Better Cure','Increase the healing power and decrease the cooldown of the Cure spell.','Requires <strong>Level 65</strong> and <strong>5 Ability Points</strong><div>Spells Modified: <strong>Cure</strong></div><div>Changes base damage to 100</div><div>Changes cooldown to 2 turns</div>','At Maximum')"
+        },
+        {
+          "id": "slot_202",
+          "text": "",
+          "handler": "overability(0, 'Better Heartseeker','Heartseeker will further increase the damage of any critical melee hits.','Requires <strong>Level 140</strong> and <strong>1 Ability Points</strong><div>Effects Modified: <strong>Heartseeker</strong></div><div>+28% Attack Crit Multiplier</div><div>Changes effect duration to 60 turns</div>','Requires <strong>Level 185</strong> and <strong>2 Ability Points</strong><div>Effects Modified: <strong>Heartseeker</strong></div><div>+31% Attack Crit Multiplier</div><div>Changes effect duration to 70 turns</div>')"
+        },
+        {
+          "id": "slot_203",
+          "text": "",
+          "handler": "overability(0, 'Better Regen','Increase the power and duration of the Regen spell.','Requires <strong>Level 145</strong> and <strong>4 Ability Points</strong><div>Spells Modified: <strong>Regen</strong></div><div>Changes base mana cost to 45</div><div>Effects Modified: <strong>Regen</strong></div><div>+12% Base Health Regen per tick</div><div>Changes effect duration to 23 turns</div>','Requires <strong>Level 195</strong> and <strong>5 Ability Points</strong><div>Spells Modified: <strong>Regen</strong></div><div>Changes base mana cost to 50</div><div>Effects Modified: <strong>Regen</strong></div><div>+14% Base Health Regen per tick</div><div>Changes effect duration to 25 turns</div>')"
+        },
+        {
+          "id": "slot_213",
+          "text": "",
+          "handler": "overability(0, 'Better Protection','Increases the mitigation bonuses granted by the Protect spell.','Requires <strong>Level 120</strong> and <strong>5 Ability Points</strong><div>Effects Modified: <strong>Protection</strong></div><div>+30 Physical Mitigation</div><div>+30 Magical Mitigation</div><div>Changes effect duration to 30 turns</div>','At Maximum')"
+        },
+        {
+          "id": "slot_1101",
+          "text": "",
+          "handler": "overability(0, 'HP Tank','Increases your maximum HP. This adds 10% to your total HP per tier.','Requires <strong>Level 150</strong> and <strong>4 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+70% Maximum Health</div>','Requires <strong>Level 200</strong> and <strong>5 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+80% Maximum Health</div>')"
+        },
+        {
+          "id": "slot_1102",
+          "text": "",
+          "handler": "overability(20, 'MP Tank','Increases your maximum MP. This adds 10% to your total MP per tier.','Requires <strong>Level 160</strong> and <strong>4 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+60% Maximum Magic</div>','Requires <strong>Level 210</strong> and <strong>4 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+70% Maximum Magic</div>')"
+        },
+        {
+          "id": "slot_1103",
+          "text": "",
+          "handler": "overability(40, 'SP Tank','Increases your maximum SP. This adds 10% to your total SP per tier.','Requires <strong>Level 120</strong> and <strong>3 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+40% Maximum Spirit</div>','Requires <strong>Level 170</strong> and <strong>4 Ability Points</strong><div><strong>Direct Player Stat Modification</strong></div><div>+50% Maximum Spirit</div>')"
+        },
+        {
+          "id": "slot_1104",
+          "text": "",
+          "handler": "overability(60, 'Better Health Pots','Improves the overall potency of common health restoratives.','Requires <strong>Level 100</strong> and <strong>2 Ability Points</strong><div>Effects Modified: <strong>Regeneration</strong></div><div>+3.5% Base Health Regen per tick</div><div>Items Modified: <strong>Health Potion</strong></div><div>When Used: Instantly restores 120% of Base Health</div>','Requires <strong>Level 200</strong> and <strong>3 Ability Points</strong><div>Effects Modified: <strong>Regeneration</strong></div><div>+4% Base Health Regen per tick</div><div>Items Modified: <strong>Health Potion</strong></div><div>When Used: Instantly restores 130% of Base Health</div>')"
+        },
+        {
+          "id": "slot_1105",
+          "text": "",
+          "handler": "overability(80, 'Better Mana Pots','Improves the overall potency of common mana restoratives.','Requires <strong>Level 140</strong> and <strong>5 Ability Points</strong><div>Effects Modified: <strong>Replenishment</strong></div><div>+1.3% Base Mana Regen per tick</div><div>Items Modified: <strong>Mana Potion</strong></div><div>When Used: Instantly restores 65% of Base Magic</div>','Requires <strong>Level 220</strong> and <strong>7 Ability Points</strong><div>Effects Modified: <strong>Replenishment</strong></div><div>+1.4% Base Mana Regen per tick</div><div>Items Modified: <strong>Mana Potion</strong></div><div>When Used: Instantly restores 70% of Base Magic</div>')"
+        },
+        {
+          "id": "slot_1106",
+          "text": "",
+          "handler": "overability(100, 'Better Spirit Pots','Improves the overall potency of common spirit restoratives.','Requires <strong>Level 160</strong> and <strong>5 Ability Points</strong><div>Effects Modified: <strong>Refreshment</strong></div><div>+1.3% Base Spirit Regen per tick</div><div>Items Modified: <strong>Spirit Potion</strong></div><div>When Used: Instantly restores 65% of Base Spirit</div>','Requires <strong>Level 240</strong> and <strong>7 Ability Points</strong><div>Effects Modified: <strong>Refreshment</strong></div><div>+1.4% Base Spirit Regen per tick</div><div>Items Modified: <strong>Spirit Potion</strong></div><div>When Used: Instantly restores 70% of Base Spirit</div>')"
+        }
+      ],
+      "tabs": [
+        {
+          "src": "/y/ab/resetall.png",
+          "onclick": "do_reset_all(24)"
+        },
+        {
+          "src": "/y/ab/tdonehanded.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=onehanded'"
+        },
+        {
+          "src": "/y/ab/tdtwohanded.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=twohanded'"
+        },
+        {
+          "src": "/y/ab/tddualwield.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=dualwield'"
+        },
+        {
+          "src": "/y/ab/tdniten.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=niten'"
+        },
+        {
+          "src": "/y/ab/tdstaff.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=staff'"
+        },
+        {
+          "src": "/y/ab/tdcloth.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=cloth'"
+        },
+        {
+          "src": "/y/ab/tdlight.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=light'"
+        },
+        {
+          "src": "/y/ab/tdheavy.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=heavy'"
+        },
+        {
+          "src": "/y/ab/tddeprecating1.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=deprecating1'"
+        },
+        {
+          "src": "/y/ab/tddeprecating2.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=deprecating2'"
+        },
+        {
+          "src": "/y/ab/tdsupportive1.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=supportive1'"
+        },
+        {
+          "src": "/y/ab/tdsupportive2.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=supportive2'"
+        },
+        {
+          "src": "/y/ab/tdelemental.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=elemental'"
+        },
+        {
+          "src": "/y/ab/tdforbidden.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=forbidden'"
+        },
+        {
+          "src": "/y/ab/tddivine.png",
+          "onclick": "document.location='https://hentaiverse.org/?s=Character&ss=ab&tree=divine'"
+        },
+        {
+          "src": "/y/ab/reset_a.png",
+          "onclick": "do_reset_ability(1101,1)"
+        },
+        {
+          "src": "/y/ab/reset_a.png",
+          "onclick": "do_reset_ability(1102,1)"
+        },
+        {
+          "src": "/y/ab/reset_a.png",
+          "onclick": "do_reset_ability(1103,1)"
+        },
+        {
+          "src": "/y/ab/reset_a.png",
+          "onclick": "do_reset_ability(1104,1)"
+        },
+        {
+          "src": "/y/ab/reset_a.png",
+          "onclick": "do_reset_ability(1105,1)"
+        },
+        {
+          "src": "/y/ab/reset_a.png",
+          "onclick": "do_reset_ability(1106,1)"
+        }
+      ],
+      "battleMenu": "<div><div id=\"parent_Battle\"><img src=\"/y/m/Battle.png\" alt=\"Battle\"></div><div id=\"child_Battle\" class=\"nc\" style=\"position: absolute; visibility: hidden;\"><div><div onclick=\"document.location='https://hentaiverse.org/?s=Battle&amp;ss=ar'\"><div class=\"fc4 fal fcb\"><div>The Arena</div></div></div><div onclick=\"document.location='https://hentaiverse.org/?s=Battle&amp;ss=rb'\"><div class=\"fc4 fal fcb\"><div>Ring of Blood</div></div></div><div onclick=\"document.location='https://hentaiverse.org/?s=Battle&amp;ss=gr'\"><div class=\"fc4 fal fcb\"><div>GrindFest</div></div></div><div onclick=\"document.location='https://hentaiverse.org/?s=Battle&amp;ss=iw'\"><div class=\"fc4 fal fcb\"><div>Item World</div></div></div></div></div></div>"
+    },
+    {
+      "url": "https://hentaiverse.org/?s=Battle&ss=ar",
+      "capturedAt": "2026-10-13T13:31:42.059Z",
+      "pageType": "arena",
+      "text": "⚠️\nStamina: 99\nNintendo Lv.176\nPersistent\nChallenge\n\t\nHighest Clear\n\t\nMin Level\n\t\nRounds\n\t\nEXP Mod\n\t\nEntry Cost\n\t\nClear Bonus\n\t\n\nRoad Less Traveled\n\t\nNintendo\n\t\nLv. 30\n\t\n8\n\t\nX1.0\n\t\n-\n\t\n600 C\n\t\n\nA Rolling Stone\n\t\nNintendo\n\t\nLv. 40\n\t\n10\n\t\nX1.0\n\t\n-\n\t\n800 C\n\t\n\nFresh Meat\n\t\nNintendo\n\t\nLv. 50\n\t\n12\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t\n\nDark Skies\n\t\nNintendo\n\t\nLv. 60\n\t\n15\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t\n\nGrowing Storm\n\t\nNintendo\n\t\nLv. 70\n\t\n20\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t\n\nPower Flux\n\t\nNintendo\n\t\nLv. 80\n\t\n25\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t\n\nKillzone\n\t\nNintendo\n\t\nLv. 90\n\t\n30\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t\n\nEndgame\n\t\nNintendo\n\t\nLv. 100\n\t\n35\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t\n\nLongest Journey\n\t\nNintendo\n\t\nLv. 110\n\t\n40\n\t\nX1.1\n\t\n-\n\t\n1,000 C\n\t\n\nDreamfall\n\t\nNintendo\n\t\nLv. 120\n\t\n45\n\t\nX1.2\n\t\n-\n\t\n1,000 C\n\t\n\nExile\n\t\nNintendo\n\t\nLv. 130\n\t\n50\n\t\nX1.3\n\t\n-\n\t\n1,000 C\n\t\n\nSealed Power\n\t\nNintendo\n\t\nLv. 140\n\t\n55\n\t\nX1.5\n\t\n-\n\t\n1,000 C\n\t\n\nNew Wings\n\t\nNintendo\n\t\nLv. 150\n\t\n60\n\t\nX1.6\n\t\n-\n\t\n1,000 C\n\t\n\nTo Kill a God\n\t\n-\n\t\nLv. 165\n\t\n65\n\t\nX1.8\n\t\n-\n\t\n35,000 C\n\t",
+      "challenges": [
+        {
+          "onclick": "init_battle(8,0)",
+          "row": "Road Less Traveled\n\t\nNintendo\n\t\nLv. 30\n\t\n8\n\t\nX1.0\n\t\n-\n\t\n600 C\n\t"
+        },
+        {
+          "onclick": "init_battle(9,0)",
+          "row": "A Rolling Stone\n\t\nNintendo\n\t\nLv. 40\n\t\n10\n\t\nX1.0\n\t\n-\n\t\n800 C\n\t"
+        },
+        {
+          "onclick": "init_battle(11,0)",
+          "row": "Fresh Meat\n\t\nNintendo\n\t\nLv. 50\n\t\n12\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(12,0)",
+          "row": "Dark Skies\n\t\nNintendo\n\t\nLv. 60\n\t\n15\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(13,0)",
+          "row": "Growing Storm\n\t\nNintendo\n\t\nLv. 70\n\t\n20\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(15,0)",
+          "row": "Power Flux\n\t\nNintendo\n\t\nLv. 80\n\t\n25\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(16,0)",
+          "row": "Killzone\n\t\nNintendo\n\t\nLv. 90\n\t\n30\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(17,0)",
+          "row": "Endgame\n\t\nNintendo\n\t\nLv. 100\n\t\n35\n\t\nX1.0\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(19,0)",
+          "row": "Longest Journey\n\t\nNintendo\n\t\nLv. 110\n\t\n40\n\t\nX1.1\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(20,0)",
+          "row": "Dreamfall\n\t\nNintendo\n\t\nLv. 120\n\t\n45\n\t\nX1.2\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(21,0)",
+          "row": "Exile\n\t\nNintendo\n\t\nLv. 130\n\t\n50\n\t\nX1.3\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(23,0)",
+          "row": "Sealed Power\n\t\nNintendo\n\t\nLv. 140\n\t\n55\n\t\nX1.5\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(24,0)",
+          "row": "New Wings\n\t\nNintendo\n\t\nLv. 150\n\t\n60\n\t\nX1.6\n\t\n-\n\t\n1,000 C\n\t"
+        },
+        {
+          "onclick": "init_battle(26,0)",
+          "row": "To Kill a God\n\t\n-\n\t\nLv. 165\n\t\n65\n\t\nX1.8\n\t\n-\n\t\n35,000 C\n\t"
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

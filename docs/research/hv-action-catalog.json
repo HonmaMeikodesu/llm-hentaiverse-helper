@@ -1,0 +1,3826 @@
+{
+  "schema_version": 1,
+  "collected_on": "2026-10-13",
+  "purpose": "Research catalogue, not executable policy or a claim of current character availability",
+  "version_status": "Current EHWiki is 0.91 with outdated-page notice; saved HTML has 090/090c hints; authenticated noncombat browser pages reference 091c assets; battle behavior unverified",
+  "live_browser_collected": true,
+  "counts": {
+    "basic": 4,
+    "skill": 15,
+    "spell": 38,
+    "item": 31
+  },
+  "timing_reference": "https://ehwiki.org/wiki/Action_Speed",
+  "evidence_priority": [
+    "current rendered control and confirmed outcome",
+    "current tooltip and observed handler",
+    "dated official patch notes",
+    "current wiki with uncertainty annotations",
+    "historical user-provided snapshots",
+    "existing enums"
+  ],
+  "global_conditions": [
+    "state_revision_matches",
+    "no_action_in_flight",
+    "battle_page_ready",
+    "not_terminal_or_challenge_screen"
+  ],
+  "excluded_ui_operations": [
+    "open_skillbook",
+    "open_item_menu",
+    "quickcast_duplicate",
+    "recast_duplicate"
+  ],
+  "noncombat_control_actions": [
+    "continue_round",
+    "exit_result",
+    "pause_for_challenge",
+    "resynchronize"
+  ],
+  "actions": [
+    {
+      "id": "basic.attack",
+      "name": "Attack",
+      "kind": "basic",
+      "group": "basic",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "primary_enemy_and_possible_weapon_splash",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "执行当前武器流派的普通攻击；被动连击/反击属于后果，不是独立选择。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Battles",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "ckey_attack"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [],
+      "notes": []
+    },
+    {
+      "id": "basic.defend",
+      "name": "Defend",
+      "kind": "basic",
+      "group": "basic",
+      "aliases": [],
+      "targeting": {
+        "selection": "none",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "防御并可能用超载换取生命；回血数值存在Wiki冲突。",
+      "availability_conditions": [
+        "battle_accepts_input"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Battles",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "ckey_defend"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Defend",
+            "You are defending from enemy blows. The amount of damage you take is reduced by 25% Defending lasts for 2 turns - the turn in which it was cast and the following turn 25% Overcharge (one whole yellow pip) is consumed to recover 25% base health ."
+          ]
+        }
+      ],
+      "notes": [
+        "Skills says 25% base health; Battles says 10%; do not encode either as verified."
+      ]
+    },
+    {
+      "id": "basic.focus",
+      "name": "Focus",
+      "kind": "basic",
+      "group": "basic",
+      "aliases": [],
+      "targeting": {
+        "selection": "none",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "为施法降低抗性影响并可能恢复魔力；有防御代价。",
+      "availability_conditions": [
+        "battle_accepts_input"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Battles",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "ckey_focus"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Focus",
+            "You are mentally prepared for casting a magical attack. The chance for your spell to miss or being resisted is reduced, but so are your avoidance stats. Focusing will leave the player unable to Evade/Block/Parry/Resist (-100% penalty). Monsters can still miss though. Focusing lasts for 2 turns - the turn in which it was cast and the following turn Increases Magic Hit Chance by 100% and reduces monsters' resist chance by 50%? 25% Overcharge (one whole yellow pip) is consumed to recover 5% base mana ."
+          ]
+        }
+      ],
+      "notes": [
+        "Not a monster-targeted attack preparation. Exact timing and modifiers conflict across references."
+      ]
+    },
+    {
+      "id": "basic.spirit_stance",
+      "name": "Spirit Stance",
+      "kind": "basic",
+      "group": "stance",
+      "aliases": [
+        "Spirit"
+      ],
+      "targeting": {
+        "selection": "none",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "切换精神姿态；开启和关闭条件、维护消耗不同。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "enable_requires_runtime_overcharge_threshold"
+      ],
+      "time_semantics": "stance_toggle_special_timing",
+      "wiki_reference": "https://ehwiki.org/wiki/Battles",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "ckey_spirit"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Spirit Stance",
+            "▼",
+            "25%",
+            "As long as it can be maintained"
+          ]
+        }
+      ],
+      "notes": [
+        "Represent desired enabled state, avoid redundant toggle; OC unit/threshold must be normalized and live verified."
+      ],
+      "parameters": {
+        "enabled": "boolean"
+      }
+    },
+    {
+      "id": "skill.flee",
+      "name": "Flee",
+      "kind": "skill",
+      "group": "innate",
+      "aliases": [],
+      "targeting": {
+        "selection": "none",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "退出当前战斗系列；生效时机受Yakety Sax影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "control_enabled"
+      ],
+      "time_semantics": "flee_timing_depends_on_perk",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "1001"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Flee",
+            "You are running away. Fleeing may take a full turn to take effect, during which monsters may still attack. The Yakety Sax Hath Perk makes fleeing instant. Removes the player from the current battle series. Counts as a victory for monsters involved. There is a cooldown on how often a player can count towards a monster's win stat."
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "skill.scan",
+      "name": "Scan",
+      "kind": "skill",
+      "group": "innate",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "single_enemy",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "扫描一只敌人的详细数据。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "target_alive",
+        "control_enabled"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "1011"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Scan",
+            "Retrieve data on the target. Scan Example Gives further details about a single monster, including its : Health, Mana, and Spirit Points Class and Power Level Owner Melee attack damage type Damage type mitigation values"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "skill.shield_bash",
+      "name": "Shield Bash",
+      "kind": "skill",
+      "group": "one_handed",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "single_enemy",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "眩晕目标。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "2201"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "One-Handed",
+            "Shield Bash",
+            "25",
+            "10",
+            "0",
+            "Does NOT require a shield . Causes Stunned for 5 turns. Does crushing damage."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Shield Bash",
+            "1"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.vital_strike",
+      "name": "Vital Strike",
+      "kind": "skill",
+      "group": "one_handed",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "single_enemy",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "对眩晕目标增伤并可能施加流血。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "2202"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Vital Strike",
+            "50",
+            "10",
+            "50",
+            "High chance (75% if no crit) of causing 5 stacks of Bleeding Wound (DOT% = 50%) to a stunned enemy for 10 turns. Deals extra damage to a Stunned enemy."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Vital Strike",
+            "2.5, 5 if stunned"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.merciful_blow",
+      "name": "Merciful Blow",
+      "kind": "skill",
+      "group": "one_handed",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "single_enemy",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "伤害；满足流血与低血量条件时斩杀。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "2203"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Merciful Blow",
+            "100",
+            "10",
+            "100",
+            "Deals damage, and if the target is affected by Bleeding Wound and below 25% health, instantly kills them."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Merciful Blow",
+            "5? if Monster HP > 25%"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.iris_strike",
+      "name": "Iris Strike",
+      "kind": "skill",
+      "group": "dual_wield",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "single_enemy",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "致盲。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Dual Wielding",
+            "Iris Strike",
+            "50",
+            "5",
+            "0",
+            "Causes Blind for 100 turns."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Iris Strike",
+            "1.5?"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.backstab",
+      "name": "Backstab",
+      "kind": "skill",
+      "group": "dual_wield",
+      "aliases": [
+        "Back Stab"
+      ],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "single_enemy",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "对致盲目标增强，可能施加毒。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Backstab",
+            "50",
+            "5",
+            "50",
+            "Deals double damage to Blinded targets. Has a ~50% chance to inflict Spreading Poison on Blinded targets for 15 turns."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Backstab",
+            "2.5?, 5? if blinded"
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Backstab",
+            "50",
+            "5",
+            "50",
+            "Deals double damage to Blinded targets. Has a ~50% chance to inflict Spreading Poison on Blinded targets for 15 turns."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Backstab",
+            "2.5?, 5? if blinded"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.frenzied_blows",
+      "name": "Frenzied Blows",
+      "kind": "skill",
+      "group": "dual_wield",
+      "aliases": [
+        "Frenzied Blow"
+      ],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "multiple_enemies",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "多目标多次攻击。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Frenzied Blows",
+            "75",
+            "10",
+            "100",
+            "Hits up to 5 targets for a total of 10-20 hits (depends on the number of enemies)."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Frenzied Blows",
+            "1?"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.great_cleave",
+      "name": "Great Cleave",
+      "kind": "skill",
+      "group": "two_handed",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "verify_aoe_geometry",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "强力武器攻击。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Great Cleave",
+            "50",
+            "10",
+            "0",
+            "Does higher than normal damage."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Great Cleave",
+            "2.5?"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.rending_blow",
+      "name": "Rending Blow",
+      "kind": "skill",
+      "group": "two_handed",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "multiple_enemies",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "多目标破甲。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Rending Blow",
+            "50",
+            "10",
+            "50",
+            "Inflicts 3 stacks of Penetrated Armor for 5 turns on up to 5 targets."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Rending Blow",
+            "1?"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.shatter_strike",
+      "name": "Shatter Strike",
+      "kind": "skill",
+      "group": "two_handed",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "multiple_enemies",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "连携多目标眩晕。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Shatter Strike",
+            "50",
+            "10",
+            "100",
+            "Inflicts Stunned for 5 turns on up to 5 targets if used after Rending Blow."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Shatter Strike",
+            "1?"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.skyward_sword",
+      "name": "Skyward Sword",
+      "kind": "skill",
+      "group": "niten_ichiryu",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "multiple_enemies",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "多目标破甲与流血。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Niten Ichiryu",
+            "Skyward Sword",
+            "100",
+            "10",
+            "0",
+            "Inflicts both 3 stacks of Penetrated Armor (reduced to 25% mitigation) and 5 stacks of Bleeding Wound (DOT% = 20%) on up to 5 targets. Both effects have a duration of 5 turns."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Skyward Sword",
+            "1?"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.concussive_strike",
+      "name": "Concussive Strike",
+      "kind": "skill",
+      "group": "staff",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "single_enemy",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "造成魔法伤害与眩晕。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Staff",
+            "Concussive Strike",
+            "50",
+            "10",
+            "0",
+            "Causes Stunned for 5 turns. Will not refresh an existing stun. Does magical damage, not physical. Can proc Coalesced Mana ."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Concussive Strike",
+            "1.5?"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.orbital_friendship_cannon",
+      "name": "Orbital Friendship Cannon",
+      "kind": "skill",
+      "group": "special",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor_unverified",
+        "affected": "all_enemies",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "全体虚空伤害。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Orbital Friendship Cannon",
+            "200",
+            "50",
+            "Hits all targets. Does Void damage. Unlocked as long as the player owns at least 21 different collectables . These must be kept in the player's inventory - not offered at the shrine. (It may take up to one day to become available.) Damage greatly increased by unlocking the Manehattan Project Hath Perk ."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "Orbital Friendship Cannon",
+            "5?"
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "skill.fus_ro_dah",
+      "name": "FUS RO DAH",
+      "kind": "skill",
+      "group": "special",
+      "aliases": [
+        "FUSRODAH"
+      ],
+      "targeting": {
+        "selection": "enemy_anchor_unverified",
+        "affected": "all_enemies",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "全体虚空伤害与眩晕。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "unlocked_for_style_or_special_requirement",
+        "cooldown_ready",
+        "sufficient_overcharge_including_stance_upkeep",
+        "target_valid"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Skills",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "FUS RO DAH",
+            "100",
+            "10",
+            "Hits all targets. Does Void damage. Causes Stunned for 5 turns. Unlocked by obtaining and using the Dovahkiin or Ponyslayer title ."
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/skills.html",
+          "cells": [
+            "FUS RO DAH",
+            "100",
+            "10",
+            "Hits all targets. Does Void damage. Causes Stunned for 5 turns. Unlocked by obtaining and using the Dovahkiin or Ponyslayer title ."
+          ]
+        }
+      ],
+      "notes": [
+        "AoE coverage does not determine whether the UI still requires a primary target."
+      ]
+    },
+    {
+      "id": "spell.fiery_blast",
+      "name": "Fiery Blast",
+      "kind": "spell",
+      "group": "fire",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "fire系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "111"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Fiery Blast",
+            "A ball of fire is hurled at the target.",
+            "1",
+            "15",
+            "0/200",
+            "6",
+            "0",
+            "3/5"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 1
+    },
+    {
+      "id": "spell.inferno",
+      "name": "Inferno",
+      "kind": "spell",
+      "group": "fire",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "fire系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "112"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Inferno",
+            "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "2",
+            "95",
+            "50?/500",
+            "14",
+            "4/2",
+            "5/7"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 2
+    },
+    {
+      "id": "spell.flames_of_loki",
+      "name": "Flames of Loki",
+      "kind": "spell",
+      "group": "fire",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "fire系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Flames of Loki",
+            "Fire damage.",
+            "3",
+            "175",
+            "150/800",
+            "21",
+            "7/4",
+            "7/10"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 3
+    },
+    {
+      "id": "spell.freeze",
+      "name": "Freeze",
+      "kind": "spell",
+      "group": "cold",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "cold系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "121"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Freeze",
+            "Cold damage.",
+            "1",
+            "25",
+            "0/200",
+            "6",
+            "0",
+            "3/5"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 1
+    },
+    {
+      "id": "spell.blizzard",
+      "name": "Blizzard",
+      "kind": "spell",
+      "group": "cold",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "cold系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "122"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Blizzard",
+            "Cold damage.",
+            "2",
+            "105",
+            "50/500",
+            "14",
+            "4/2",
+            "5/7"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 2
+    },
+    {
+      "id": "spell.fimbulvetr",
+      "name": "Fimbulvetr",
+      "kind": "spell",
+      "group": "cold",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "cold系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Fimbulvetr",
+            "Cold damage.",
+            "3",
+            "185",
+            "150/800",
+            "21",
+            "7/4",
+            "7/10"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 3
+    },
+    {
+      "id": "spell.shockblast",
+      "name": "Shockblast",
+      "kind": "spell",
+      "group": "elec",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "elec系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "131"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Shockblast",
+            "A bolt of lightning strikes the target, causing Elec damage.",
+            "1",
+            "35",
+            "0/200",
+            "6",
+            "0",
+            "3/5"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 1
+    },
+    {
+      "id": "spell.chained_lightning",
+      "name": "Chained Lightning",
+      "kind": "spell",
+      "group": "elec",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "elec系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "132"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Chained Lightning",
+            "Elec damage.",
+            "2",
+            "115?",
+            "50?/500",
+            "14",
+            "4/2",
+            "5/7"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 2
+    },
+    {
+      "id": "spell.wrath_of_thor",
+      "name": "Wrath of Thor",
+      "kind": "spell",
+      "group": "elec",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "elec系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Wrath of Thor",
+            "Elec damage.",
+            "3",
+            "195",
+            "150/800",
+            "21",
+            "7/4",
+            "7/10"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 3
+    },
+    {
+      "id": "spell.gale",
+      "name": "Gale",
+      "kind": "spell",
+      "group": "wind",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "wind系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "141"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Gale",
+            "A blast of wind hits the target, causing Wind damage.",
+            "1",
+            "45",
+            "0/200",
+            "6",
+            "0",
+            "3/5"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 1
+    },
+    {
+      "id": "spell.downburst",
+      "name": "Downburst",
+      "kind": "spell",
+      "group": "wind",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "wind系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "142"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Downburst",
+            "Wind damage.",
+            "2",
+            "125?",
+            "60/500",
+            "14",
+            "4/2",
+            "5/7"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 2
+    },
+    {
+      "id": "spell.storms_of_njord",
+      "name": "Storms of Njord",
+      "kind": "spell",
+      "group": "wind",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "wind系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Storms of Njord",
+            "Wind damage.",
+            "3",
+            "205",
+            "150/800",
+            "21",
+            "7/4",
+            "7/10"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 3
+    },
+    {
+      "id": "spell.smite",
+      "name": "Smite",
+      "kind": "spell",
+      "group": "holy",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "holy系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "151"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Smite",
+            "Holy damage.",
+            "1",
+            "65",
+            "0/500",
+            "14",
+            "0",
+            "3/5"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 1
+    },
+    {
+      "id": "spell.banishment",
+      "name": "Banishment",
+      "kind": "spell",
+      "group": "holy",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "holy系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "152"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Banishment",
+            "Holy damage.",
+            "2",
+            "100?",
+            "100/700",
+            "21",
+            "4/2",
+            "5/7"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 2
+    },
+    {
+      "id": "spell.paradise_lost",
+      "name": "Paradise Lost",
+      "kind": "spell",
+      "group": "holy",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "holy系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Paradise Lost",
+            "Holy damage.",
+            "3",
+            "200?",
+            "200/900",
+            "30",
+            "7/4",
+            "7/10"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 3
+    },
+    {
+      "id": "spell.corruption",
+      "name": "Corruption",
+      "kind": "spell",
+      "group": "dark",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "dark系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "161"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Corruption",
+            "Dark damage.",
+            "1",
+            "85",
+            "0/500",
+            "14",
+            "0",
+            "3/5"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 1
+    },
+    {
+      "id": "spell.disintegrate",
+      "name": "Disintegrate",
+      "kind": "spell",
+      "group": "dark",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "dark系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "162"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Disintegrate",
+            "Dark damage.",
+            "2",
+            "100?",
+            "100/700",
+            "18.5?",
+            "4/2",
+            "5/7"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 2
+    },
+    {
+      "id": "spell.ragnarok",
+      "name": "Ragnarok",
+      "kind": "spell",
+      "group": "dark",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_tier_and_abilities",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "dark系伤害；范围和效果受阶级、能力及机制影响。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Ragnarok",
+            "Dark damage.",
+            "3",
+            "245",
+            "200/900",
+            "28?",
+            "7/4",
+            "7/10"
+          ]
+        }
+      ],
+      "notes": [],
+      "tier": 3
+    },
+    {
+      "id": "spell.drain",
+      "name": "Drain",
+      "kind": "spell",
+      "group": "deprecating",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_spell_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "吸取生命；增幅可能附带其他吸取。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "211"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Drain",
+            "Inflicts Drain on one target, causing damage over time. Inflicts Vital Theft on the target",
+            "30?",
+            "0/300?",
+            "11.5",
+            "20/15",
+            "7?"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.slow",
+      "name": "Slow",
+      "kind": "spell",
+      "group": "deprecating",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_spell_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "降低敌人行动速度。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "221"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Slow",
+            "The target is slowed by x%, making it attack less frequently. Base action speed reduction: 30%/50%",
+            "10?",
+            "0/300?",
+            "18/25",
+            "3",
+            "3/6"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.weaken",
+      "name": "Weaken",
+      "kind": "spell",
+      "group": "deprecating",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_spell_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "削弱输出和暴击能力。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "212"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Weaken",
+            "The target is weakened, making it deal less damage, and preventing it from scoring critical hits. Base Physical and Magical damage reduction: 25%/50%",
+            "70",
+            "0/345",
+            "10/16",
+            "3/0",
+            "5/10"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.sleep",
+      "name": "Sleep",
+      "kind": "spell",
+      "group": "deprecating",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_spell_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "使目标睡眠；伤害可能解除。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "222"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Sleep",
+            "The target is lulled to sleep, preventing it from taking any actions. Base chance of breaking on damage: 90%? Sleeping monsters cannot attack, evade, parry, or resist attacks?",
+            "80",
+            "0/410",
+            "22/35",
+            "7",
+            "4/7"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.confuse",
+      "name": "Confuse",
+      "kind": "spell",
+      "group": "deprecating",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_spell_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "使敌人的攻击目标混乱。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "223"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Confuse",
+            "Confuses the target, making it lunge out wildly and strike friends and foes alike. Base chance of breaking on damage: 90%? Base chance of monster hitting itself: 25%?",
+            "150",
+            "45/660",
+            "25/35",
+            "10",
+            "3/6"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.imperil",
+      "name": "Imperil",
+      "kind": "spell",
+      "group": "deprecating",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_spell_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "降低防御/抗性。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "213"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Imperil",
+            "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations. Base Physical and Magical defense reduction: 25%/50% Base Fire/Cold/Elec/Wind resistance reduction: 10%/40% Base Dark/Holy resistance reduction: 0%/25% This reduction is multiplicative (ie, a monster with 80% physical mitigation would be reduced to 60%, or lower with Abilities . The Penetrated Armor multiplier is layered with this reduction (ie 0.8 physical mitigation * 0.5 imperil reduction * 0.25 penetrated armor reduction = 0.1 physical mitigation).",
+            "130",
+            "30/495",
+            "10/15",
+            "3/0",
+            "5/10"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.blind",
+      "name": "Blind",
+      "kind": "spell",
+      "group": "deprecating",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_spell_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "降低敌人命中。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "231"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Blind",
+            "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells. Base attack/magic hit chance reduction: 20%/30%",
+            "80?",
+            "30/610",
+            "18/25",
+            "7/3",
+            "5/10"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.silence",
+      "name": "Silence",
+      "kind": "spell",
+      "group": "deprecating",
+      "aliases": [],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_spell_and_abilities",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "阻止敌人部分特殊/魔法行动。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "232"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Silence",
+            "The target is silenced, preventing it from using special attacks and magic.",
+            "120",
+            "40/665",
+            "18",
+            "10/5",
+            "7/10"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.immobilize",
+      "name": "Immobilize",
+      "kind": "spell",
+      "group": "deprecating",
+      "aliases": [
+        "MagNet",
+        "magnet"
+      ],
+      "targeting": {
+        "selection": "enemy_anchor",
+        "affected": "enemy_area_depends_on_spell_and_abilities",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "限制回避等能力；当前Wiki名称，旧资料为MagNet。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana",
+        "target_alive"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "MagNet",
+            "A net of pure energy ensnares the target, (slowing it by 25%) and making it unable to evade attacks or spells. Slowing effect requires at least 1 AP investment. Does not disable parrying. Also prevents the target from resisting your spells.",
+            "250?",
+            "100?/800",
+            "22",
+            "15/10",
+            "4/9"
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "MagNet",
+            "A net of pure energy ensnares the target, (slowing it by 25%) and making it unable to evade attacks or spells. Slowing effect requires at least 1 AP investment. Does not disable parrying. Also prevents the target from resisting your spells.",
+            "250?",
+            "100?/800",
+            "22",
+            "15/10",
+            "4/9"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.cure",
+      "name": "Cure",
+      "kind": "spell",
+      "group": "curative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "即时治疗。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "311"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Cure",
+            "Restores a moderate amount of Health on the target. Base health restored = base_health * (AP / 100) * MIN (1.5, MAX ((0.8 + supportive_proficiency / player_level * 0.2), (1 + (supportive_proficiency - player_level) / player_level * 0.5)))",
+            "5",
+            "0/385+",
+            "20",
+            "5/2",
+            "N/A"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.regen",
+      "name": "Regen",
+      "kind": "spell",
+      "group": "curative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "持续治疗。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "312"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Regen",
+            "Places a heal over time effect on the target. Base health restored per turn = base_health * ( AP / 100)",
+            "50?",
+            "0/845",
+            "22.5/75",
+            "0",
+            "14/30"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.full_cure",
+      "name": "Full-Cure",
+      "kind": "spell",
+      "group": "curative",
+      "aliases": [
+        "Full Cure"
+      ],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "完全治疗。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Full-Cure",
+            "Fully restores the Health of the target.",
+            "220",
+            "0/945+",
+            "50",
+            "10",
+            "N/A"
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Full-Cure",
+            "Fully restores the Health of the target.",
+            "220",
+            "0/945+",
+            "50",
+            "10",
+            "N/A"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.protection",
+      "name": "Protection",
+      "kind": "spell",
+      "group": "supportive",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "减少受到的伤害。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "411"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Protection",
+            "Places a shield effect on the target, absorbing 25%/30% of the damage from all attacks.",
+            "10?",
+            "0/320",
+            "25",
+            "0",
+            "15?/30"
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Protection",
+            "Grants the Protection effect. Absorbs all damage taken by 50%"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.haste",
+      "name": "Haste",
+      "kind": "spell",
+      "group": "supportive",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "加快行动。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "412"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Haste",
+            "Speeds up all actions of the target, allowing it to attack more frequently. Base Action Speed increase: 25%/50%",
+            "60?",
+            "0/450",
+            "30",
+            "0",
+            "10?/20"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.shadow_veil",
+      "name": "Shadow Veil",
+      "kind": "spell",
+      "group": "supportive",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "提高回避。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "413"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Shadow Veil",
+            "Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells. Base evade chance increase: 15%/25%",
+            "90",
+            "0/610",
+            "30",
+            "0",
+            "10?/20"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.absorb",
+      "name": "Absorb",
+      "kind": "spell",
+      "group": "supportive",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "吸收满足条件的魔法攻击。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "421"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Absorb",
+            "The next magical attack against the target has a chance to be absorbed and partially converted to MP. The effect is permanent until it absorbs a spell. Base chance to absorb: 60%/90% Cannot absorb critical hits Absorbed MP is between 5-10% of the monster's base max MP? Very little MP regained Can absorb more than 1 spell if they occur on the same turn.",
+            "50?",
+            "0/385+?",
+            "30",
+            "20",
+            "∞"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.spark_of_life",
+      "name": "Spark of Life",
+      "kind": "spell",
+      "group": "supportive",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "防止符合条件的致命伤，触发需要精神资源。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "422"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Spark of Life",
+            "Any attack that would one-shot a target with 2 or more HP leaves it alive but on the brink of defeat. The buff is removed when triggered (and 50% of the player's base SP is consumed). If the player does not have enough SP remaining the trigger will fail and the player will die. When active and enough SP is available the player's health bar will turn dark green.",
+            "100",
+            "0/750?",
+            "44?/30",
+            "0",
+            "15?/30"
+          ]
+        }
+      ],
+      "notes": [
+        "Cloak of the Fallen is a triggered effect, not a castable spell."
+      ]
+    },
+    {
+      "id": "spell.arcane_focus",
+      "name": "Arcane Focus",
+      "kind": "spell",
+      "group": "supportive",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "强化魔法输出。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Arcane Focus",
+            "The target attains a higher level of attunement with the arcane forces, increasing magic power and crit chance. Magical damage bonus: 25% Magical crit chance bonus: 10% Magical crit damage bonus: 0%/15%",
+            "175",
+            "0/980?",
+            "100",
+            "0",
+            "50?/100"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.heartseeker",
+      "name": "Heartseeker",
+      "kind": "spell",
+      "group": "supportive",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "强化物理输出。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "431"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Heartseeker",
+            "The target attains intimate knowledge of the flow of life in all living beings, increasing attack power and crit chance. Physical damage bonus: 25% Physical crit chance bonus: 10% ; this means on-battle crit chance will become: (100 - crit) * 0.1 + crit = 10 + 0.9 * crit Physical crit damage bonus: 0%/15%",
+            "140",
+            "0/880?",
+            "100",
+            "0",
+            "50?/100"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "spell.spirit_shield",
+      "name": "Spirit Shield",
+      "kind": "spell",
+      "group": "supportive",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "符合条件的大伤害部分转由精神承担。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "learned_by_level_and_base_proficiency",
+        "cooldown_ready",
+        "sufficient_effective_mana"
+      ],
+      "time_semantics": "normal_action_time_depends_on_speed",
+      "wiki_reference": "https://ehwiki.org/wiki/Spells",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/spell.html",
+          "cells": [
+            "Spirit Shield",
+            "Powerful attacks against you will be partially absorbed and damage your spirit gauge instead of health. Any attack that hits for more than 45-20% of max HP will cause the player to lose exactly 45-20% of their health, with the remainder absorbed as damage to their spirit. (Formula) The spell will fail if the player does not have sufficient SP.",
+            "200",
+            "0/950?",
+            "25",
+            "0",
+            "15?/30"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "item.mystic_gem",
+      "name": "Mystic Gem",
+      "kind": "item",
+      "group": "powerup",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时战斗宝石，只能使用当前P槽中的一种。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Mystic Gem",
+            "",
+            "Grants the Channeling effect for 15 ticks or until a spell is cast."
+          ]
+        }
+      ],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 10008,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.health_gem",
+      "name": "Health Gem",
+      "kind": "item",
+      "group": "powerup",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时战斗宝石，只能使用当前P槽中的一种。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Health Gem",
+            "",
+            "Restores 100% base health."
+          ]
+        }
+      ],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 10005,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.mana_gem",
+      "name": "Mana Gem",
+      "kind": "item",
+      "group": "powerup",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时战斗宝石，只能使用当前P槽中的一种。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Mana Gem",
+            "",
+            "Restores 50% base mana."
+          ]
+        }
+      ],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 10006,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.spirit_gem",
+      "name": "Spirit Gem",
+      "kind": "item",
+      "group": "powerup",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时战斗宝石，只能使用当前P槽中的一种。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Spirit Gem",
+            "",
+            "Restores 25% base spirit."
+          ]
+        }
+      ],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 10007,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.health_draught",
+      "name": "Health Draught",
+      "kind": "item",
+      "group": "restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "持续恢复。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "ikey_1"
+      ],
+      "historical_observation_sources": [
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11191,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.health_potion",
+      "name": "Health Potion",
+      "kind": "item",
+      "group": "restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "即时恢复。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11195,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.health_elixir",
+      "name": "Health Elixir",
+      "kind": "item",
+      "group": "restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "即时与持续恢复。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11199,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.mana_draught",
+      "name": "Mana Draught",
+      "kind": "item",
+      "group": "restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "持续恢复。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "ikey_2"
+      ],
+      "historical_observation_sources": [
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11291,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.mana_potion",
+      "name": "Mana Potion",
+      "kind": "item",
+      "group": "restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "即时恢复。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11295,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.mana_elixir",
+      "name": "Mana Elixir",
+      "kind": "item",
+      "group": "restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "即时与持续恢复。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11299,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.spirit_draught",
+      "name": "Spirit Draught",
+      "kind": "item",
+      "group": "restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "持续恢复。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "ikey_3"
+      ],
+      "historical_observation_sources": [
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11391,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.spirit_potion",
+      "name": "Spirit Potion",
+      "kind": "item",
+      "group": "restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "即时恢复。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11395,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.spirit_elixir",
+      "name": "Spirit Elixir",
+      "kind": "item",
+      "group": "restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "即时与持续恢复。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11399,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.energy_drink",
+      "name": "Energy Drink",
+      "kind": "item",
+      "group": "other_restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "恢复体力/资源，可能具有高机会成本。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Energy Drink",
+            "Energized",
+            "10 ticks",
+            "Restores 10 points of Stamina , up to the maximum of 99. When used in battle, it also boosts Overcharge and Spirit by 10% for 10 ticks. Energy Drink can only be traded in The Market . Players with the Long Gone Before Daylight Hath Perk receive 20 stamina instead (limit once per day) both in- and off-battle."
+          ]
+        }
+      ],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11401,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.caffeinated_candy",
+      "name": "Caffeinated Candy",
+      "kind": "item",
+      "group": "other_restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "恢复体力/资源，可能具有高机会成本。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Caffeinated Candy",
+            "Energized",
+            "5 ticks",
+            "Restores 5 points of Stamina , up to the maximum of 99. When used in battle, it also boosts Overcharge and Spirit by 10% for 5 ticks. Caffeinated Candy can only be traded in The Market ."
+          ]
+        }
+      ],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11402,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.last_elixir",
+      "name": "Last Elixir",
+      "kind": "item",
+      "group": "other_restorative",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "恢复体力/资源，可能具有高机会成本。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Last Elixir",
+            "Regeneration",
+            "100 ticks",
+            "Fully restores all vitals, and grants long-lasting restoration effects. the combined effect of a Health Elixir + a Mana Elixir + a Spirit Elixir"
+          ]
+        }
+      ],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 11501,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.infusion_of_flames",
+      "name": "Infusion of Flames",
+      "kind": "item",
+      "group": "infusion",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时元素强化；最多同时存在一种灌注效果。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 12101,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.infusion_of_frost",
+      "name": "Infusion of Frost",
+      "kind": "item",
+      "group": "infusion",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时元素强化；最多同时存在一种灌注效果。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 12201,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.infusion_of_lightning",
+      "name": "Infusion of Lightning",
+      "kind": "item",
+      "group": "infusion",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时元素强化；最多同时存在一种灌注效果。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 12301,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.infusion_of_storms",
+      "name": "Infusion of Storms",
+      "kind": "item",
+      "group": "infusion",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时元素强化；最多同时存在一种灌注效果。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 12401,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.infusion_of_divinity",
+      "name": "Infusion of Divinity",
+      "kind": "item",
+      "group": "infusion",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时元素强化；最多同时存在一种灌注效果。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 12501,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.infusion_of_darkness",
+      "name": "Infusion of Darkness",
+      "kind": "item",
+      "group": "infusion",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "临时元素强化；最多同时存在一种灌注效果。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 12601,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.scroll_of_swiftness",
+      "name": "Scroll of Swiftness",
+      "kind": "item",
+      "group": "scroll",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "提供对应强化效果，可能覆盖同名法术或自动施法。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 13101,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.scroll_of_protection",
+      "name": "Scroll of Protection",
+      "kind": "item",
+      "group": "scroll",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "提供对应强化效果，可能覆盖同名法术或自动施法。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "ikey_4"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 13111,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.scroll_of_the_avatar",
+      "name": "Scroll of the Avatar",
+      "kind": "item",
+      "group": "scroll",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "提供对应强化效果，可能覆盖同名法术或自动施法。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 13199,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.scroll_of_shadows",
+      "name": "Scroll of Shadows",
+      "kind": "item",
+      "group": "scroll",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "提供对应强化效果，可能覆盖同名法术或自动施法。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 13211,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.scroll_of_absorption",
+      "name": "Scroll of Absorption",
+      "kind": "item",
+      "group": "scroll",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "historical_handler_confirmed"
+      },
+      "effect_summary": "提供对应强化效果，可能覆盖同名法术或自动施法。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [
+        "ikey_5"
+      ],
+      "historical_observation_sources": [
+        "docs/research/battle1.html",
+        "docs/research/nextTurnBattle.html",
+        "docs/research/startBattle.html"
+      ],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 13201,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.scroll_of_life",
+      "name": "Scroll of Life",
+      "kind": "item",
+      "group": "scroll",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "提供对应强化效果，可能覆盖同名法术或自动施法。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 13221,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.scroll_of_the_gods",
+      "name": "Scroll of the Gods",
+      "kind": "item",
+      "group": "scroll",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "提供对应强化效果，可能覆盖同名法术或自动施法。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 13299,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.bubble_gum",
+      "name": "Bubble-Gum",
+      "kind": "item",
+      "group": "special",
+      "aliases": [
+        "Bubble Gum"
+      ],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "稀有临时战斗强化。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Bubble Gum",
+            "Kicking Ass",
+            "Your attacks and spells deal significantly more damage for a short time, will always hit, and will always land critical hits. +100% damage Lasts 50 ticks",
+            "They Live"
+          ]
+        },
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Bubble Gum",
+            "Kicking Ass",
+            "Your attacks and spells deal significantly more damage for a short time, will always hit, and will always land critical hits. +100% damage Lasts 50 ticks",
+            "They Live"
+          ]
+        }
+      ],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 19131,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    },
+    {
+      "id": "item.flower_vase",
+      "name": "Flower Vase",
+      "kind": "item",
+      "group": "special",
+      "aliases": [],
+      "targeting": {
+        "selection": "self",
+        "affected": "self",
+        "status": "reference_or_design_inference_requires_live_confirmation"
+      },
+      "effect_summary": "稀有临时战斗强化。",
+      "availability_conditions": [
+        "battle_accepts_input",
+        "assigned_slot_or_powerup_present",
+        "stock_positive_if_consumable",
+        "item_cooldown_ready",
+        "slot_enabled"
+      ],
+      "time_semantics": "item_action_no_time_units_but_item_cooldowns_change",
+      "wiki_reference": "https://ehwiki.org/wiki/Items",
+      "live_verified": false,
+      "historical_dom_ids": [],
+      "historical_observation_sources": [],
+      "historical_reference_rows": [
+        {
+          "source": "src/prompt-builder/rag-database/item.html",
+          "cells": [
+            "Flower Vase",
+            "Sleeper Imprint",
+            "Your attack/magic damage, attack/magic hit/crit chance, and evade/resist chance increases significantly for a short time. +25% damage Lasts 50 ticks",
+            "Dollhouse"
+          ]
+        }
+      ],
+      "notes": [
+        "Catalogue presence does not authorize automatic consumption; user strategy can separately reserve rare items."
+      ],
+      "historical_item_type_id": 19111,
+      "parameters": {
+        "slot_id": "runtime slot, not item type ID"
+      }
+    }
+  ],
+  "live_observation_sources": [
+    "docs/research/hv-live-observations.json"
+  ],
+  "live_observation_scope": "Character, equipment, inventory, abilities and arena pages only; no battle action execution"
+}

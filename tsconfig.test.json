@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": ".test-build",
+    "rootDir": ".",
+    "types": ["node", "chrome"]
+  },
+  "include": ["src/automation/**/*.ts", "tests/*.test.ts"],
+  "exclude": ["node_modules"]
+}

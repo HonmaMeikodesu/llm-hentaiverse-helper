@@ -1,0 +1,2691 @@
+{
+  "source": "agent-live-test-not-preference-demonstration",
+  "events": [
+    {
+      "message": {
+        "channel": "hv-helper-battle-v1",
+        "kind": "request",
+        "requestId": "91f4a31e-00df-46fa-84ba-be9e4fcf0dc0",
+        "action": {
+          "mode": "magic",
+          "target": 0,
+          "skill": "311"
+        }
+      },
+      "snapshot": {
+        "stage": "battle",
+        "round": null,
+        "totalRounds": null,
+        "completion": "",
+        "assets": [
+          "/z/091c/hvg.css",
+          "/z/091c/hvb.css"
+        ],
+        "player": {
+          "hp": 2081,
+          "mp": 319,
+          "sp": 197,
+          "spiritStance": false,
+          "chargeSegments": null,
+          "effects": []
+        },
+        "monsters": [
+          {
+            "id": "mkey_1",
+            "name": "Giantess Miku",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          },
+          {
+            "id": "mkey_2",
+            "name": "Brimstone Howler",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          },
+          {
+            "id": "mkey_3",
+            "name": "Shion",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          }
+        ],
+        "items": [
+          {
+            "slot": "P",
+            "name": "",
+            "available": false
+          },
+          {
+            "slot": "1",
+            "name": "Health Draught",
+            "available": true
+          },
+          {
+            "slot": "2",
+            "name": "Mana Draught",
+            "available": true
+          },
+          {
+            "slot": "3",
+            "name": "Mana Elixir",
+            "available": true
+          },
+          {
+            "slot": "4",
+            "name": "Scroll of Protection",
+            "available": true
+          },
+          {
+            "slot": "5",
+            "name": "Scroll of Absorption",
+            "available": true
+          },
+          {
+            "slot": "S1",
+            "name": "",
+            "available": false
+          },
+          {
+            "slot": "N1",
+            "name": "",
+            "available": false
+          }
+        ],
+        "candidates": [
+          {
+            "id": "attack:1:0",
+            "name": "Attack",
+            "description": "Normal weapon attack on the selected enemy. Weapon effects may affect other enemies.",
+            "action": {
+              "mode": "attack",
+              "target": 1,
+              "skill": "0"
+            },
+            "controlId": "ckey_attack",
+            "targetId": "mkey_1",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "attack:2:0",
+            "name": "Attack",
+            "description": "Normal weapon attack on the selected enemy. Weapon effects may affect other enemies.",
+            "action": {
+              "mode": "attack",
+              "target": 2,
+              "skill": "0"
+            },
+            "controlId": "ckey_attack",
+            "targetId": "mkey_2",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "attack:3:0",
+            "name": "Attack",
+            "description": "Normal weapon attack on the selected enemy. Weapon effects may affect other enemies.",
+            "action": {
+              "mode": "attack",
+              "target": 3,
+              "skill": "0"
+            },
+            "controlId": "ckey_attack",
+            "targetId": "mkey_3",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "defend:0:0",
+            "name": "Defend",
+            "description": "Increase defensive capabilities for the next turn.",
+            "action": {
+              "mode": "defend",
+              "target": 0,
+              "skill": "0"
+            },
+            "controlId": "ckey_defend",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "focus:0:0",
+            "name": "Focus",
+            "description": "Prepare spellcasting; defenses are reduced. Exact resource recovery is not verified.",
+            "action": {
+              "mode": "focus",
+              "target": 0,
+              "skill": "0"
+            },
+            "controlId": "ckey_focus",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "spirit:0:0",
+            "name": "Enable Spirit Stance",
+            "description": "Toggle the currently observed spirit stance.",
+            "action": {
+              "mode": "spirit",
+              "target": 0,
+              "skill": "0"
+            },
+            "controlId": "ckey_spirit",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:1001",
+            "name": "Flee",
+            "description": "Run away from the current battle.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "1001"
+            },
+            "controlId": "1001",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:1011",
+            "name": "Scan",
+            "description": "Retrieve data on the target.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "1011"
+            },
+            "controlId": "1011",
+            "targetId": "mkey_1",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:1011",
+            "name": "Scan",
+            "description": "Retrieve data on the target.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "1011"
+            },
+            "controlId": "1011",
+            "targetId": "mkey_2",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:1011",
+            "name": "Scan",
+            "description": "Retrieve data on the target.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "1011"
+            },
+            "controlId": "1011",
+            "targetId": "mkey_3",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:111",
+            "name": "Fiery Blast",
+            "description": "A ball of fire is hurled at the target.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "111"
+            },
+            "controlId": "111",
+            "targetId": "mkey_1",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:111",
+            "name": "Fiery Blast",
+            "description": "A ball of fire is hurled at the target.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "111"
+            },
+            "controlId": "111",
+            "targetId": "mkey_2",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:111",
+            "name": "Fiery Blast",
+            "description": "A ball of fire is hurled at the target.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "111"
+            },
+            "controlId": "111",
+            "targetId": "mkey_3",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:112",
+            "name": "Inferno",
+            "description": "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "112"
+            },
+            "controlId": "112",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:112",
+            "name": "Inferno",
+            "description": "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "112"
+            },
+            "controlId": "112",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:112",
+            "name": "Inferno",
+            "description": "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "112"
+            },
+            "controlId": "112",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:121",
+            "name": "Freeze",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "121"
+            },
+            "controlId": "121",
+            "targetId": "mkey_1",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:121",
+            "name": "Freeze",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "121"
+            },
+            "controlId": "121",
+            "targetId": "mkey_2",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:121",
+            "name": "Freeze",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "121"
+            },
+            "controlId": "121",
+            "targetId": "mkey_3",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:122",
+            "name": "Blizzard",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "122"
+            },
+            "controlId": "122",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:122",
+            "name": "Blizzard",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "122"
+            },
+            "controlId": "122",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:122",
+            "name": "Blizzard",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "122"
+            },
+            "controlId": "122",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:131",
+            "name": "Shockblast",
+            "description": "A bolt of lightning strikes the target, causing Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "131"
+            },
+            "controlId": "131",
+            "targetId": "mkey_1",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:131",
+            "name": "Shockblast",
+            "description": "A bolt of lightning strikes the target, causing Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "131"
+            },
+            "controlId": "131",
+            "targetId": "mkey_2",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:131",
+            "name": "Shockblast",
+            "description": "A bolt of lightning strikes the target, causing Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "131"
+            },
+            "controlId": "131",
+            "targetId": "mkey_3",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:132",
+            "name": "Chained Lightning",
+            "description": "Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "132"
+            },
+            "controlId": "132",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:132",
+            "name": "Chained Lightning",
+            "description": "Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "132"
+            },
+            "controlId": "132",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:132",
+            "name": "Chained Lightning",
+            "description": "Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "132"
+            },
+            "controlId": "132",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:141",
+            "name": "Gale",
+            "description": "A blast of wind hits the target, causing Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "141"
+            },
+            "controlId": "141",
+            "targetId": "mkey_1",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:141",
+            "name": "Gale",
+            "description": "A blast of wind hits the target, causing Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "141"
+            },
+            "controlId": "141",
+            "targetId": "mkey_2",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:141",
+            "name": "Gale",
+            "description": "A blast of wind hits the target, causing Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "141"
+            },
+            "controlId": "141",
+            "targetId": "mkey_3",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:142",
+            "name": "Downburst",
+            "description": "Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "142"
+            },
+            "controlId": "142",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:142",
+            "name": "Downburst",
+            "description": "Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "142"
+            },
+            "controlId": "142",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:142",
+            "name": "Downburst",
+            "description": "Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "142"
+            },
+            "controlId": "142",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:151",
+            "name": "Smite",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "151"
+            },
+            "controlId": "151",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:151",
+            "name": "Smite",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "151"
+            },
+            "controlId": "151",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:151",
+            "name": "Smite",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "151"
+            },
+            "controlId": "151",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:152",
+            "name": "Banishment",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "152"
+            },
+            "controlId": "152",
+            "targetId": "mkey_1",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:152",
+            "name": "Banishment",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "152"
+            },
+            "controlId": "152",
+            "targetId": "mkey_2",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:152",
+            "name": "Banishment",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "152"
+            },
+            "controlId": "152",
+            "targetId": "mkey_3",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:161",
+            "name": "Corruption",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "161"
+            },
+            "controlId": "161",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:161",
+            "name": "Corruption",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "161"
+            },
+            "controlId": "161",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:161",
+            "name": "Corruption",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "161"
+            },
+            "controlId": "161",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:162",
+            "name": "Disintegrate",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "162"
+            },
+            "controlId": "162",
+            "targetId": "mkey_1",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:162",
+            "name": "Disintegrate",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "162"
+            },
+            "controlId": "162",
+            "targetId": "mkey_2",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:162",
+            "name": "Disintegrate",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "162"
+            },
+            "controlId": "162",
+            "targetId": "mkey_3",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:211",
+            "name": "Drain",
+            "description": "Inflicts Drain on one target, causing damage over time.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "211"
+            },
+            "controlId": "211",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 30
+          },
+          {
+            "id": "magic:2:211",
+            "name": "Drain",
+            "description": "Inflicts Drain on one target, causing damage over time.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "211"
+            },
+            "controlId": "211",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 30
+          },
+          {
+            "id": "magic:3:211",
+            "name": "Drain",
+            "description": "Inflicts Drain on one target, causing damage over time.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "211"
+            },
+            "controlId": "211",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 30
+          },
+          {
+            "id": "magic:1:212",
+            "name": "Weaken",
+            "description": "The target is weakened, making it deal less damage, and preventing it from scoring critical hits.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "212"
+            },
+            "controlId": "212",
+            "targetId": "mkey_1",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:2:212",
+            "name": "Weaken",
+            "description": "The target is weakened, making it deal less damage, and preventing it from scoring critical hits.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "212"
+            },
+            "controlId": "212",
+            "targetId": "mkey_2",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:3:212",
+            "name": "Weaken",
+            "description": "The target is weakened, making it deal less damage, and preventing it from scoring critical hits.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "212"
+            },
+            "controlId": "212",
+            "targetId": "mkey_3",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:1:213",
+            "name": "Imperil",
+            "description": "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "213"
+            },
+            "controlId": "213",
+            "targetId": "mkey_1",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:2:213",
+            "name": "Imperil",
+            "description": "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "213"
+            },
+            "controlId": "213",
+            "targetId": "mkey_2",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:3:213",
+            "name": "Imperil",
+            "description": "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "213"
+            },
+            "controlId": "213",
+            "targetId": "mkey_3",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:1:221",
+            "name": "Slow",
+            "description": "The target is slowed by 30%, making it attack less frequently.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "221"
+            },
+            "controlId": "221",
+            "targetId": "mkey_1",
+            "manaCost": 29,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:2:221",
+            "name": "Slow",
+            "description": "The target is slowed by 30%, making it attack less frequently.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "221"
+            },
+            "controlId": "221",
+            "targetId": "mkey_2",
+            "manaCost": 29,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:3:221",
+            "name": "Slow",
+            "description": "The target is slowed by 30%, making it attack less frequently.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "221"
+            },
+            "controlId": "221",
+            "targetId": "mkey_3",
+            "manaCost": 29,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:1:222",
+            "name": "Sleep",
+            "description": "The target is lulled to sleep, preventing it from taking any actions.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "222"
+            },
+            "controlId": "222",
+            "targetId": "mkey_1",
+            "manaCost": 42,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:2:222",
+            "name": "Sleep",
+            "description": "The target is lulled to sleep, preventing it from taking any actions.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "222"
+            },
+            "controlId": "222",
+            "targetId": "mkey_2",
+            "manaCost": 42,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:3:222",
+            "name": "Sleep",
+            "description": "The target is lulled to sleep, preventing it from taking any actions.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "222"
+            },
+            "controlId": "222",
+            "targetId": "mkey_3",
+            "manaCost": 42,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:1:223",
+            "name": "Confuse",
+            "description": "Confuses the target, making it lunge out wildly and strike friends and foes alike.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "223"
+            },
+            "controlId": "223",
+            "targetId": "mkey_1",
+            "manaCost": 43,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:2:223",
+            "name": "Confuse",
+            "description": "Confuses the target, making it lunge out wildly and strike friends and foes alike.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "223"
+            },
+            "controlId": "223",
+            "targetId": "mkey_2",
+            "manaCost": 43,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:3:223",
+            "name": "Confuse",
+            "description": "Confuses the target, making it lunge out wildly and strike friends and foes alike.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "223"
+            },
+            "controlId": "223",
+            "targetId": "mkey_3",
+            "manaCost": 43,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:1:231",
+            "name": "Blind",
+            "description": "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "231"
+            },
+            "controlId": "231",
+            "targetId": "mkey_1",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:2:231",
+            "name": "Blind",
+            "description": "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "231"
+            },
+            "controlId": "231",
+            "targetId": "mkey_2",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:3:231",
+            "name": "Blind",
+            "description": "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "231"
+            },
+            "controlId": "231",
+            "targetId": "mkey_3",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:1:232",
+            "name": "Silence",
+            "description": "The target is silenced, preventing it from using special attacks and magic.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "232"
+            },
+            "controlId": "232",
+            "targetId": "mkey_1",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:2:232",
+            "name": "Silence",
+            "description": "The target is silenced, preventing it from using special attacks and magic.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "232"
+            },
+            "controlId": "232",
+            "targetId": "mkey_2",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:3:232",
+            "name": "Silence",
+            "description": "The target is silenced, preventing it from using special attacks and magic.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "232"
+            },
+            "controlId": "232",
+            "targetId": "mkey_3",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:0:311",
+            "name": "Cure",
+            "description": "Restores a moderate amount of Health on the target.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "311"
+            },
+            "controlId": "311",
+            "manaCost": 32,
+            "charges": 0,
+            "cooldownDuration": 5
+          },
+          {
+            "id": "magic:0:312",
+            "name": "Regen",
+            "description": "Places a heal over time effect on the target.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "312"
+            },
+            "controlId": "312",
+            "manaCost": 42,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:411",
+            "name": "Protection",
+            "description": "Places a shield effect on the target, absorbing 25% of the damage from all attacks.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "411"
+            },
+            "controlId": "411",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:412",
+            "name": "Haste",
+            "description": "Speeds up all actions of the target, allowing it to attack more frequently.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "412"
+            },
+            "controlId": "412",
+            "manaCost": 48,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:413",
+            "name": "Shadow Veil",
+            "description": "Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "413"
+            },
+            "controlId": "413",
+            "manaCost": 50,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:421",
+            "name": "Absorb",
+            "description": "The next magical attack against the target has a chance to be absorbed and partially converted to MP.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "421"
+            },
+            "controlId": "421",
+            "manaCost": 47,
+            "charges": 0,
+            "cooldownDuration": 20
+          },
+          {
+            "id": "magic:0:422",
+            "name": "Spark of Life",
+            "description": "Any attack that would one-shot a target with more than 1 HP leaves it alive but on the brink of defeat. The buff is removed when triggered.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "422"
+            },
+            "controlId": "422",
+            "manaCost": 84,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:431",
+            "name": "Heartseeker",
+            "description": "The target attains intimate knowledge of the flow of life in all living beings, increasing attack and crit damage.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "431"
+            },
+            "controlId": "431",
+            "manaCost": 168,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:432",
+            "name": "Arcane Focus",
+            "description": "The target attains a higher level of attunement with the arcane forces, increasing spell and crit damage.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "432"
+            },
+            "controlId": "432",
+            "manaCost": 169,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "items:0:1",
+            "name": "Health Draught",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "1"
+            },
+            "controlId": "ikey_1",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          },
+          {
+            "id": "items:0:2",
+            "name": "Mana Draught",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "2"
+            },
+            "controlId": "ikey_2",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          },
+          {
+            "id": "items:0:3",
+            "name": "Mana Elixir",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "3"
+            },
+            "controlId": "ikey_3",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          },
+          {
+            "id": "items:0:4",
+            "name": "Scroll of Protection",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "4"
+            },
+            "controlId": "ikey_4",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          },
+          {
+            "id": "items:0:5",
+            "name": "Scroll of Absorption",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "5"
+            },
+            "controlId": "ikey_5",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          }
+        ],
+        "log": [
+          "Brimstone Howler glances you, causing 410 points of Crushing damage.",
+          "Shion glances you, causing 284 points of Slashing damage.",
+          "Giantess Miku glances you, causing 493 points of Crushing damage.",
+          "Giantess Miku dodges your attack."
+        ],
+        "issues": [],
+        "at": "2026-10-14T08:18:31.614Z",
+        "revision": "d5038abdc7f9f4b7"
+      }
+    },
+    {
+      "message": {
+        "channel": "hv-helper-battle-v1",
+        "kind": "response",
+        "requestId": "91f4a31e-00df-46fa-84ba-be9e4fcf0dc0",
+        "ok": true,
+        "status": 200
+      },
+      "snapshot": {
+        "stage": "battle",
+        "round": null,
+        "totalRounds": null,
+        "completion": "",
+        "assets": [
+          "/z/091c/hvg.css",
+          "/z/091c/hvb.css"
+        ],
+        "player": {
+          "hp": null,
+          "mp": 287,
+          "sp": 197,
+          "spiritStance": false,
+          "chargeSegments": null,
+          "effects": []
+        },
+        "monsters": [
+          {
+            "id": "mkey_1",
+            "name": "Giantess Miku",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          },
+          {
+            "id": "mkey_2",
+            "name": "Brimstone Howler",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          },
+          {
+            "id": "mkey_3",
+            "name": "Shion",
+            "targetable": true,
+            "healthBarPixels": 120,
+            "effects": []
+          }
+        ],
+        "items": [
+          {
+            "slot": "P",
+            "name": "",
+            "available": false
+          },
+          {
+            "slot": "1",
+            "name": "Health Draught",
+            "available": true
+          },
+          {
+            "slot": "2",
+            "name": "Mana Draught",
+            "available": true
+          },
+          {
+            "slot": "3",
+            "name": "Mana Elixir",
+            "available": true
+          },
+          {
+            "slot": "4",
+            "name": "Scroll of Protection",
+            "available": true
+          },
+          {
+            "slot": "5",
+            "name": "Scroll of Absorption",
+            "available": true
+          },
+          {
+            "slot": "S1",
+            "name": "",
+            "available": false
+          },
+          {
+            "slot": "N1",
+            "name": "",
+            "available": false
+          }
+        ],
+        "candidates": [
+          {
+            "id": "attack:1:0",
+            "name": "Attack",
+            "description": "Normal weapon attack on the selected enemy. Weapon effects may affect other enemies.",
+            "action": {
+              "mode": "attack",
+              "target": 1,
+              "skill": "0"
+            },
+            "controlId": "ckey_attack",
+            "targetId": "mkey_1",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "attack:2:0",
+            "name": "Attack",
+            "description": "Normal weapon attack on the selected enemy. Weapon effects may affect other enemies.",
+            "action": {
+              "mode": "attack",
+              "target": 2,
+              "skill": "0"
+            },
+            "controlId": "ckey_attack",
+            "targetId": "mkey_2",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "attack:3:0",
+            "name": "Attack",
+            "description": "Normal weapon attack on the selected enemy. Weapon effects may affect other enemies.",
+            "action": {
+              "mode": "attack",
+              "target": 3,
+              "skill": "0"
+            },
+            "controlId": "ckey_attack",
+            "targetId": "mkey_3",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "defend:0:0",
+            "name": "Defend",
+            "description": "Increase defensive capabilities for the next turn.",
+            "action": {
+              "mode": "defend",
+              "target": 0,
+              "skill": "0"
+            },
+            "controlId": "ckey_defend",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "focus:0:0",
+            "name": "Focus",
+            "description": "Prepare spellcasting; defenses are reduced. Exact resource recovery is not verified.",
+            "action": {
+              "mode": "focus",
+              "target": 0,
+              "skill": "0"
+            },
+            "controlId": "ckey_focus",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "spirit:0:0",
+            "name": "Enable Spirit Stance",
+            "description": "Toggle the currently observed spirit stance.",
+            "action": {
+              "mode": "spirit",
+              "target": 0,
+              "skill": "0"
+            },
+            "controlId": "ckey_spirit",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:1001",
+            "name": "Flee",
+            "description": "Run away from the current battle.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "1001"
+            },
+            "controlId": "1001",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:1011",
+            "name": "Scan",
+            "description": "Retrieve data on the target.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "1011"
+            },
+            "controlId": "1011",
+            "targetId": "mkey_1",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:1011",
+            "name": "Scan",
+            "description": "Retrieve data on the target.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "1011"
+            },
+            "controlId": "1011",
+            "targetId": "mkey_2",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:1011",
+            "name": "Scan",
+            "description": "Retrieve data on the target.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "1011"
+            },
+            "controlId": "1011",
+            "targetId": "mkey_3",
+            "manaCost": 0,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:111",
+            "name": "Fiery Blast",
+            "description": "A ball of fire is hurled at the target.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "111"
+            },
+            "controlId": "111",
+            "targetId": "mkey_1",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:111",
+            "name": "Fiery Blast",
+            "description": "A ball of fire is hurled at the target.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "111"
+            },
+            "controlId": "111",
+            "targetId": "mkey_2",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:111",
+            "name": "Fiery Blast",
+            "description": "A ball of fire is hurled at the target.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "111"
+            },
+            "controlId": "111",
+            "targetId": "mkey_3",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:112",
+            "name": "Inferno",
+            "description": "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "112"
+            },
+            "controlId": "112",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:112",
+            "name": "Inferno",
+            "description": "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "112"
+            },
+            "controlId": "112",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:112",
+            "name": "Inferno",
+            "description": "Unleashes an inferno of flames on all hostile targets, causing Fire damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "112"
+            },
+            "controlId": "112",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:121",
+            "name": "Freeze",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "121"
+            },
+            "controlId": "121",
+            "targetId": "mkey_1",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:121",
+            "name": "Freeze",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "121"
+            },
+            "controlId": "121",
+            "targetId": "mkey_2",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:121",
+            "name": "Freeze",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "121"
+            },
+            "controlId": "121",
+            "targetId": "mkey_3",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:122",
+            "name": "Blizzard",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "122"
+            },
+            "controlId": "122",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:122",
+            "name": "Blizzard",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "122"
+            },
+            "controlId": "122",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:122",
+            "name": "Blizzard",
+            "description": "Cold damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "122"
+            },
+            "controlId": "122",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:131",
+            "name": "Shockblast",
+            "description": "A bolt of lightning strikes the target, causing Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "131"
+            },
+            "controlId": "131",
+            "targetId": "mkey_1",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:131",
+            "name": "Shockblast",
+            "description": "A bolt of lightning strikes the target, causing Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "131"
+            },
+            "controlId": "131",
+            "targetId": "mkey_2",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:131",
+            "name": "Shockblast",
+            "description": "A bolt of lightning strikes the target, causing Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "131"
+            },
+            "controlId": "131",
+            "targetId": "mkey_3",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:132",
+            "name": "Chained Lightning",
+            "description": "Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "132"
+            },
+            "controlId": "132",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:132",
+            "name": "Chained Lightning",
+            "description": "Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "132"
+            },
+            "controlId": "132",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:132",
+            "name": "Chained Lightning",
+            "description": "Elec damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "132"
+            },
+            "controlId": "132",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:141",
+            "name": "Gale",
+            "description": "A blast of wind hits the target, causing Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "141"
+            },
+            "controlId": "141",
+            "targetId": "mkey_1",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:141",
+            "name": "Gale",
+            "description": "A blast of wind hits the target, causing Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "141"
+            },
+            "controlId": "141",
+            "targetId": "mkey_2",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:141",
+            "name": "Gale",
+            "description": "A blast of wind hits the target, causing Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "141"
+            },
+            "controlId": "141",
+            "targetId": "mkey_3",
+            "manaCost": 10,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:142",
+            "name": "Downburst",
+            "description": "Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "142"
+            },
+            "controlId": "142",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:142",
+            "name": "Downburst",
+            "description": "Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "142"
+            },
+            "controlId": "142",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:142",
+            "name": "Downburst",
+            "description": "Wind damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "142"
+            },
+            "controlId": "142",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:151",
+            "name": "Smite",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "151"
+            },
+            "controlId": "151",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:151",
+            "name": "Smite",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "151"
+            },
+            "controlId": "151",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:151",
+            "name": "Smite",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "151"
+            },
+            "controlId": "151",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:152",
+            "name": "Banishment",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "152"
+            },
+            "controlId": "152",
+            "targetId": "mkey_1",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:152",
+            "name": "Banishment",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "152"
+            },
+            "controlId": "152",
+            "targetId": "mkey_2",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:152",
+            "name": "Banishment",
+            "description": "Holy damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "152"
+            },
+            "controlId": "152",
+            "targetId": "mkey_3",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:161",
+            "name": "Corruption",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "161"
+            },
+            "controlId": "161",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:2:161",
+            "name": "Corruption",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "161"
+            },
+            "controlId": "161",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:3:161",
+            "name": "Corruption",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "161"
+            },
+            "controlId": "161",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:1:162",
+            "name": "Disintegrate",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "162"
+            },
+            "controlId": "162",
+            "targetId": "mkey_1",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:2:162",
+            "name": "Disintegrate",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "162"
+            },
+            "controlId": "162",
+            "targetId": "mkey_2",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:3:162",
+            "name": "Disintegrate",
+            "description": "Dark damage.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "162"
+            },
+            "controlId": "162",
+            "targetId": "mkey_3",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 4
+          },
+          {
+            "id": "magic:1:211",
+            "name": "Drain",
+            "description": "Inflicts Drain on one target, causing damage over time.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "211"
+            },
+            "controlId": "211",
+            "targetId": "mkey_1",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 30
+          },
+          {
+            "id": "magic:2:211",
+            "name": "Drain",
+            "description": "Inflicts Drain on one target, causing damage over time.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "211"
+            },
+            "controlId": "211",
+            "targetId": "mkey_2",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 30
+          },
+          {
+            "id": "magic:3:211",
+            "name": "Drain",
+            "description": "Inflicts Drain on one target, causing damage over time.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "211"
+            },
+            "controlId": "211",
+            "targetId": "mkey_3",
+            "manaCost": 24,
+            "charges": 0,
+            "cooldownDuration": 30
+          },
+          {
+            "id": "magic:1:212",
+            "name": "Weaken",
+            "description": "The target is weakened, making it deal less damage, and preventing it from scoring critical hits.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "212"
+            },
+            "controlId": "212",
+            "targetId": "mkey_1",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:2:212",
+            "name": "Weaken",
+            "description": "The target is weakened, making it deal less damage, and preventing it from scoring critical hits.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "212"
+            },
+            "controlId": "212",
+            "targetId": "mkey_2",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:3:212",
+            "name": "Weaken",
+            "description": "The target is weakened, making it deal less damage, and preventing it from scoring critical hits.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "212"
+            },
+            "controlId": "212",
+            "targetId": "mkey_3",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:1:213",
+            "name": "Imperil",
+            "description": "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "213"
+            },
+            "controlId": "213",
+            "targetId": "mkey_1",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:2:213",
+            "name": "Imperil",
+            "description": "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "213"
+            },
+            "controlId": "213",
+            "targetId": "mkey_2",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:3:213",
+            "name": "Imperil",
+            "description": "The target is imperiled, reducing physical and magical mitigation as well as elemental mitigations.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "213"
+            },
+            "controlId": "213",
+            "targetId": "mkey_3",
+            "manaCost": 17,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:1:221",
+            "name": "Slow",
+            "description": "The target is slowed by 30%, making it attack less frequently.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "221"
+            },
+            "controlId": "221",
+            "targetId": "mkey_1",
+            "manaCost": 29,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:2:221",
+            "name": "Slow",
+            "description": "The target is slowed by 30%, making it attack less frequently.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "221"
+            },
+            "controlId": "221",
+            "targetId": "mkey_2",
+            "manaCost": 29,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:3:221",
+            "name": "Slow",
+            "description": "The target is slowed by 30%, making it attack less frequently.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "221"
+            },
+            "controlId": "221",
+            "targetId": "mkey_3",
+            "manaCost": 29,
+            "charges": 0,
+            "cooldownDuration": 3
+          },
+          {
+            "id": "magic:1:222",
+            "name": "Sleep",
+            "description": "The target is lulled to sleep, preventing it from taking any actions.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "222"
+            },
+            "controlId": "222",
+            "targetId": "mkey_1",
+            "manaCost": 42,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:2:222",
+            "name": "Sleep",
+            "description": "The target is lulled to sleep, preventing it from taking any actions.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "222"
+            },
+            "controlId": "222",
+            "targetId": "mkey_2",
+            "manaCost": 42,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:3:222",
+            "name": "Sleep",
+            "description": "The target is lulled to sleep, preventing it from taking any actions.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "222"
+            },
+            "controlId": "222",
+            "targetId": "mkey_3",
+            "manaCost": 42,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:1:223",
+            "name": "Confuse",
+            "description": "Confuses the target, making it lunge out wildly and strike friends and foes alike.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "223"
+            },
+            "controlId": "223",
+            "targetId": "mkey_1",
+            "manaCost": 43,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:2:223",
+            "name": "Confuse",
+            "description": "Confuses the target, making it lunge out wildly and strike friends and foes alike.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "223"
+            },
+            "controlId": "223",
+            "targetId": "mkey_2",
+            "manaCost": 43,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:3:223",
+            "name": "Confuse",
+            "description": "Confuses the target, making it lunge out wildly and strike friends and foes alike.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "223"
+            },
+            "controlId": "223",
+            "targetId": "mkey_3",
+            "manaCost": 43,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:1:231",
+            "name": "Blind",
+            "description": "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "231"
+            },
+            "controlId": "231",
+            "targetId": "mkey_1",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:2:231",
+            "name": "Blind",
+            "description": "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "231"
+            },
+            "controlId": "231",
+            "targetId": "mkey_2",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:3:231",
+            "name": "Blind",
+            "description": "Blinds the target, reducing the chance of it landing attacks and hitting with magic spells.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "231"
+            },
+            "controlId": "231",
+            "targetId": "mkey_3",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 7
+          },
+          {
+            "id": "magic:1:232",
+            "name": "Silence",
+            "description": "The target is silenced, preventing it from using special attacks and magic.",
+            "action": {
+              "mode": "magic",
+              "target": 1,
+              "skill": "232"
+            },
+            "controlId": "232",
+            "targetId": "mkey_1",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:2:232",
+            "name": "Silence",
+            "description": "The target is silenced, preventing it from using special attacks and magic.",
+            "action": {
+              "mode": "magic",
+              "target": 2,
+              "skill": "232"
+            },
+            "controlId": "232",
+            "targetId": "mkey_2",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:3:232",
+            "name": "Silence",
+            "description": "The target is silenced, preventing it from using special attacks and magic.",
+            "action": {
+              "mode": "magic",
+              "target": 3,
+              "skill": "232"
+            },
+            "controlId": "232",
+            "targetId": "mkey_3",
+            "manaCost": 31,
+            "charges": 0,
+            "cooldownDuration": 10
+          },
+          {
+            "id": "magic:0:312",
+            "name": "Regen",
+            "description": "Places a heal over time effect on the target.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "312"
+            },
+            "controlId": "312",
+            "manaCost": 42,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:411",
+            "name": "Protection",
+            "description": "Places a shield effect on the target, absorbing 25% of the damage from all attacks.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "411"
+            },
+            "controlId": "411",
+            "manaCost": 38,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:412",
+            "name": "Haste",
+            "description": "Speeds up all actions of the target, allowing it to attack more frequently.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "412"
+            },
+            "controlId": "412",
+            "manaCost": 48,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:413",
+            "name": "Shadow Veil",
+            "description": "Surrounds the target with a veil of shadows, making it harder to hit with attacks and spells.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "413"
+            },
+            "controlId": "413",
+            "manaCost": 50,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:421",
+            "name": "Absorb",
+            "description": "The next magical attack against the target has a chance to be absorbed and partially converted to MP.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "421"
+            },
+            "controlId": "421",
+            "manaCost": 47,
+            "charges": 0,
+            "cooldownDuration": 20
+          },
+          {
+            "id": "magic:0:422",
+            "name": "Spark of Life",
+            "description": "Any attack that would one-shot a target with more than 1 HP leaves it alive but on the brink of defeat. The buff is removed when triggered.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "422"
+            },
+            "controlId": "422",
+            "manaCost": 84,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:431",
+            "name": "Heartseeker",
+            "description": "The target attains intimate knowledge of the flow of life in all living beings, increasing attack and crit damage.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "431"
+            },
+            "controlId": "431",
+            "manaCost": 168,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "magic:0:432",
+            "name": "Arcane Focus",
+            "description": "The target attains a higher level of attunement with the arcane forces, increasing spell and crit damage.",
+            "action": {
+              "mode": "magic",
+              "target": 0,
+              "skill": "432"
+            },
+            "controlId": "432",
+            "manaCost": 169,
+            "charges": 0,
+            "cooldownDuration": 0
+          },
+          {
+            "id": "items:0:1",
+            "name": "Health Draught",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "1"
+            },
+            "controlId": "ikey_1",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          },
+          {
+            "id": "items:0:2",
+            "name": "Mana Draught",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "2"
+            },
+            "controlId": "ikey_2",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          },
+          {
+            "id": "items:0:3",
+            "name": "Mana Elixir",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "3"
+            },
+            "controlId": "ikey_3",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          },
+          {
+            "id": "items:0:4",
+            "name": "Scroll of Protection",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "4"
+            },
+            "controlId": "ikey_4",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          },
+          {
+            "id": "items:0:5",
+            "name": "Scroll of Absorption",
+            "description": "Use the item currently equipped in this slot. Exact effects depend on item and abilities.",
+            "action": {
+              "mode": "items",
+              "target": 0,
+              "skill": "5"
+            },
+            "controlId": "ikey_5",
+            "manaCost": null,
+            "charges": null,
+            "cooldownDuration": null
+          }
+        ],
+        "log": [
+          "Giantess Miku uses Stomp, which hits! You take 3162 Crushing damage.",
+          "You are healed for 1197 Health Points.",
+          "You cast Cure.",
+          "Brimstone Howler glances you, causing 410 points of Crushing damage.",
+          "Shion glances you, causing 284 points of Slashing damage.",
+          "Giantess Miku glances you, causing 493 points of Crushing damage.",
+          "Giantess Miku dodges your attack."
+        ],
+        "issues": [
+          "Missing player vitals"
+        ],
+        "at": "2026-10-14T08:18:32.534Z",
+        "revision": "238254f9e6b30a95"
+      }
+    }
+  ],
+  "vitals": "<div id=\"pane_vitals\" class=\"nosel\"><div id=\"vbh\" style=\"background-color: rgb(230, 50, 50);\"><div><img src=\"/y/bar_bgreen.png\" style=\"width:18px\"></div></div><div id=\"vbm\"><div><img src=\"/y/bar_blue.png\" style=\"width:186px\"></div></div><div id=\"vbs\"><div><img src=\"/y/bar_red.png\" style=\"width:207px\"></div></div><div id=\"vrm\">287</div><div id=\"vrs\">197</div></div>",
+  "panel": "HV 策略助手\n\n已暂停\n\n用户暂停\n\n本月估算费用 $0.0000\n\n录制 / 恢复录制接管 / 恢复接管暂停结束本场记录设置与偏好"
+}

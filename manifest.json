@@ -1,26 +1,28 @@
 {
-    "manifest_version": 3,
-    "name": "Hentaiverse-LLM-helper",
-    "description": "An unofficial demo to apply llm to playing hentaiverse game",
-    "version": "1.0",
-    "action": {
-        "default_icon": "icons/icon128.png"
+  "manifest_version": 3,
+  "minimum_chrome_version": "111",
+  "name": "Hentaiverse-LLM-helper",
+  "description": "Record Hentaiverse demonstrations and apply reviewed play preferences with Jev",
+  "version": "1.0",
+  "action": { "default_title": "HV 策略助手 · 设置与偏好" },
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.typesafe.ai/*"],
+  "optional_host_permissions": ["https://*/*"],
+  "options_page": "extension/options.html",
+  "content_scripts": [
+    {
+      "matches": ["*://hentaiverse.org/*", "http://127.0.0.1:7001/*"],
+      "js": ["dist/bridge.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
     },
-    "permissions": ["storage"],
-    "host_permissions": [],
-    "content_scripts": [
-        {
-            "matches": ["*://hentaiverse.org/*", "http://127.0.0.1:7001/*"],
-            "js": ["dist/content.js"]
-        }
-    ],
-    "icons": {
-        "16": "icons/icon16.png",
-        "32": "icons/icon32.png",
-        "48": "icons/icon48.png",
-        "128": "icons/icon128.png"
-    },
-    "background": {
-        "service_worker": "dist/worker.js"
+    {
+      "matches": ["*://hentaiverse.org/*", "http://127.0.0.1:7001/*"],
+      "js": ["dist/content.js"],
+      "run_at": "document_start"
     }
+  ],
+  "background": {
+    "service_worker": "dist/worker.js"
+  }
 }
